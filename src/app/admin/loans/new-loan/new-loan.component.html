@@ -1,0 +1,295 @@
+<p>new-loan works!</p>
+<!DOCTYPE html>
+<html lang="he">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Paper Dashboard 2 by Creative Tim
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+    name='viewport' />
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <!-- CSS Files -->
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="../assets/demo/demo.css" rel="stylesheet" />
+</head>
+
+<body class="">
+  <div class="wrapper ">
+    <div class="col-md-8">
+      <div class="card card-user">
+        <div class="card-header">
+          <h5 class="card-title pull-right">פרטי הלוואה</h5>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="loanerDetailesLoanForm" style="direction: rtl;">
+            <div class="row">
+              <div class="col-md-3 pr-1">
+                <div class="form-group">
+                  <label for="loanDate" class="pull-right">תאריך הלוואה</label>
+                  <input formControlName="loanDate" id="loanDate" type="date" class="form-control"
+                    placeholder="loanDate">
+                </div>
+              </div>
+              <div class="col-md-3 px-1">
+                <div class="form-group">
+                  <label for="hebrewLoanDate" class="pull-right">תאריך הלוואה עברי</label>
+                  <input type="text" formControlName="hebrewLoanDate" class="form-control" placeholder="hebrewLoanDate"
+                    id="hebrewLoanDate" value="תאריך הלוואה עבר">
+                </div>
+              </div>
+            </div>
+          </form>
+          <form [formGroup]="loanerDetailesUserForm" style="direction: rtl;">
+            <div class="row">
+              <div class="col-md-3 pr-1">
+                <div class="form-group">
+                  <label for="identityNumber" class="pull-right">ת"ז/דרכון</label>
+                  <input type="text" formControlName="identityNumber" class="form-control"
+                    (blur)="checkUserForLoan($event)" id="identityNumber" placeholder="identityNumber">
+                </div>
+              </div>
+              <div class="col-md-3 px-1">
+                <div class="form-group">
+                  <label for="firstName" class="pull-right">שם פרטי</label>
+                  <input type="text" formControlName="firstName" id="firstName" class="form-control"
+                    placeholder="firstName" value="שם פרטי">
+                </div>
+              </div>
+              <div class="col-md-3 pl-1">
+                <div class="form-group">
+                  <label for="lastName" class="pull-right">שם משפחה</label>
+                  <input type="text" formControlName="lastName" id="lastName" class="form-control"
+                    placeholder="lastName" value="שם משפחה">
+                </div>
+              </div>
+              <div class="col-md-3 pl-1">
+                <div class="form-group">
+                  <label for="email" class="pull-right">כתובת מייל</label>
+                  <input formControlName="email" id="email" type="email" class="form-control" placeholder="Email">
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-3 pr-1">
+                <div class="form-group">
+                  <label for="address" class="pull-right">כתובת</label>
+                  <input formControlName="address" id="address" type="text" class="form-control" placeholder="address"
+                    value="כתובת">
+                </div>
+              </div>
+              <div class="col-md-3 px-1">
+                <div class="form-group">
+                  <label for="city" class="pull-right">עיר</label>
+                  <input formControlName="city" id="city" type="number" class="form-control" placeholder="city"
+                    value="עיר">
+                </div>
+              </div>
+              <div class="col-md-3 pl-1">
+                <div class="form-group">
+                  <label for="telephoneNumber1" class="pull-right">טלפון בית/נייד</label>
+                  <input type="text" formControlName="telephoneNumber1" id="telephoneNumber1" class="form-control"
+                    placeholder="telephoneNumber1">
+                </div>
+              </div>
+              <div class="col-md-3 pl-1">
+                <div class="form-group">
+                  <label for="telephoneNumber2" class="pull-right">נייד/טלפון בית</label>
+                  <input formControlName="telephoneNumber2" id="telephoneNumber2" type="tel" class="form-control"
+                    placeholder="telephoneNumber2">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+          <div class="wrapper ">
+            <div class="col-md-8">
+              <div class="card card-user">
+                <div class="card-header">
+                  <h5 class="card-title pull-right">פרטי לווה</h5>
+                </div>
+                  <div class="card-body">
+                  <form [formGroup]="loanerDetailesLoanForm" style="direction: rtl;">
+                    <div class="row">
+                      <div class="col-md-2 pr-1">
+                        <div class="form-group">
+                          <label for="sum" class="pull-right">סכום הלווא</label>
+                          <input formControlName="sum" id="sum" type="number" class="form-control" placeholder="sum">
+                        </div>
+                      </div>
+                      <div class="col-md-1 pr-1">
+                        <div class="form-group">
+                          <label for="currency" class="pull-right">מטבע</label>
+                          <select formControlName="currencyId" class="form-control">
+                            <option value=1>
+                              שקל
+                            </option>
+                            <option value=3 selected="selected">
+                              דולר
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-3 pl-1">
+                        <div class="form-group">
+                          <label for="repaymentDate" class="pull-right">תאריך החזר ההלוואה</label>
+                          <input formControlName="repaymentDate" id="repaymentDate" type="date" class="form-control"
+                            placeholder="repaymentDate">
+                        </div>
+                      </div>
+                      <div class="col-md-3 px-1">
+                        <div class="form-group">
+                          <label for="hebrewRepaymentDate" class="pull-right"> עבר תאריך החזר ההלוואה</label>
+                          <input formControlName="hebrewRepaymentDate" id="hebrewRepaymentDate" type="text"
+                            class="form-control" placeholder="hebrewRepaymentDate">
+                        </div>
+                      </div>
+                      <div class="col-md-3 pl-1">
+                        <div class="form-group">
+                          <label for="paymentsNumber" class="pull-right"> מספר תשלומיה</label>
+                          <input formControlName="paymentsNumber" id="paymentsNumber" type="number" class="form-control"
+                            placeholder="paymentsNumber">
+                        </div>
+                      </div>
+
+                      <div class="col-md-3 pr-1">
+                        <div class="form-group">
+                          <label for="monthlyPaymentDay" class="pull-right"> יום תשלום חודש</label>
+                          <input formControlName="monthlyPaymentDay" id="monthlyPaymentDay" type="date"
+                            class="form-control" placeholder="monthlyPaymentDay">
+                        </div>
+                      </div>
+
+                      <div class="col-md-3 px-1">
+                        <div class="form-group">
+                          <label for="monthlyPaymentSum" class="pull-right"> סכום החזר חודש</label>
+                          <input formControlName="monthlyPaymentSum" id="monthlyPaymentSum" type="number"
+                            class="form-control" placeholder="monthlyPaymentSum">
+                        </div>
+                      </div>
+
+                      <div class="col-md-3 pl-1">
+                        <div class="form-group">
+                          <label for="repaymentFirstDate" class="pull-right"> אריך ראשון להחזרה</label>
+                          <input formControlName="repaymentFirstDate" id="repaymentFirstDate" type="date"
+                            class="form-control" placeholder="repaymentFirstDate">
+                        </div>
+                        <div class="container">
+                          <form class="form">
+                            <div class="file-upload-wrapper" data-text="Select your file!">
+                              <input name="file-upload-field" type="file" class="file-upload-field" value="">
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                      <!-- <div class="col-md-3 pl-1">
+                        <div class="form-group">
+                          
+                          <label for="image" class="pull-right">צרוף תמונה</label>
+                          <input class="basic-slide" id="image" type="file" (change)="onFileChanged($event)"
+                            [accept]="['.jpg','.jpeg','.png']" #file>
+                          <img [src]="imageSrc" *ngIf="imageSrc" style="height: 200px; width: 200px">
+                        </div>
+                      </div> -->
+                    </div>
+                  </form>
+                </div>
+            </div>
+            <app-guaranty-details></app-guaranty-details>
+            <app-guaranty-details></app-guaranty-details>
+            <app-guaranty-details></app-guaranty-details>
+            <app-guaranty-details></app-guaranty-details>
+            <app-guaranty-details></app-guaranty-details>
+            <div class="col-md-8">
+              <div class="card card-user">
+                <div class="card-body">
+                  <form [formGroup]="loanerDetailesUserForm" style="direction: rtl;">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="pull-right">הערות</label>
+                          <textarea 
+                            class="form-control textarea"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="update ml-auto mr-auto">
+                        <button type="button" (click)="save()" class="btn btn-primary btn-primary btn-lg ladda-button"> שמור הלוואה</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <button style="direction: rtl;" type="button" pButton  class="ui-button-success">שמור</button> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <footer class="footer footer-black  footer-white ">
+      <div class="container-fluid">
+        <div class="row">
+          <nav class="footer-nav">
+            <ul>
+              <li><a href="https://www.creative-tim.com" target="_blank">Creative Tim</a></li>
+              <li><a href="https://www.creative-tim.com/blog" target="_blank">Blog</a></li>
+              <li><a href="https://www.creative-tim.com/license" target="_blank">Licenses</a></li>
+            </ul>
+          </nav>
+          <div class="credits ml-auto">
+            <span class="copyright">
+              ©
+              <script>
+                document.write(new Date().getFullYear())
+              </script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
+            </span>
+          </div>
+        </div>
+      </div>
+    </footer> -->
+    <!-- </div> -->
+  </div>
+  <!--   Core JS Files   -->
+  <script src="../assets/js/core/jquery.min.js"></script>
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <!--  Google Maps Plugin    -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+  <!-- Chart JS -->
+  <script src="../assets/js/plugins/chartjs.min.js"></script>
+  <!--  Notifications Plugin    -->
+  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+  <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script>
+  <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+  <script src="../assets/demo/demo.js"></script>
+
+</body>
+</html>

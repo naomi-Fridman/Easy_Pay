@@ -1,0 +1,29 @@
+.p-tabMenuId{
+    float: right;
+    width: 100%;
+    display: flex;
+    box-shadow: 0 1px 6px rgb(0 0 0 / 16%);
+}
+.header-menu{
+    float: right;
+    width: 100%;
+    display: flex;
+    box-shadow: 0 1px 6px rgb(0 0 0 / 16%);
+}
+.main-panel {
+    height: 600px;
+    direction: rtl;
+    grid-area: main-panel;
+}
+.wrapper{
+    /* display: grid; */
+    grid-template-areas:
+    "sidebar sidebar sidebar"
+    "main-panel main-panel main-panel";
+    grid-template-rows: 10% 90%;
+    grid-template-columns: 10% 90%;
+   direction: rtl;
+}
+.nav>li>a {
+    color: #2f2f94;
+}

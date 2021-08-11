@@ -1,0 +1,23 @@
+<p>edit-currency-type works!</p>
+{{Id}}
+
+<form [formGroup]="currencyDetailesForm" >
+    <div class="p-field p-grid">
+        <label for="accountNumber" class="p-col-fixed" style="width:100px">סוג מטבע</label>
+        <div class="p-col">
+            <input formControlName="accountNumber" id="" type="text" pInputText> 
+        </div>
+    </div>
+    <div class="p-field p-grid">
+        <label for="ValueInShkalim" class="p-col-fixed" style="width:100px">ערך בשקלים</label>
+        <div class="p-col">
+            <input formControlName="ValueInShkalim" id="ValueInShkalim" type="text" pInputText> 
+        </div>
+    </div>
+    <div class="p-field p-grid">
+        <label for="updatedLast" class="p-col-fixed" style="width:100px">תאריך עדכון אחרון</label>
+        <div class="p-col">
+            <input formControlName="updatedLast" id="updatedLast" type="text" pInputText> 
+        </div>
+    </div>
+    </form>

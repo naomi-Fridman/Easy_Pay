@@ -1,0 +1,9 @@
+div.card{
+    width: 1300px;
+    padding: 10px;
+    border-radius: 0;
+  }
+  
+    div  div.card-header{
+    background-color:peachpuff;
+  }
