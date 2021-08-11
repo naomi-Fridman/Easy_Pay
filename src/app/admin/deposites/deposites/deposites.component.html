@@ -1,0 +1,85 @@
+<p>deposites works!</p>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<div class="ad-sektion-top hidden-xs" style="margin-top:80px;">
+    <div class="container-fluid text-center">
+        <div class="row">
+        </div>
+    </div>
+</div>
+<div id="top-filter" class="top-filter tfilter-box hidden-xs" data-spy="affix" data-offset-top="197">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input #sumInput class="form-control" placeholder="סכום" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <select class="form-control">
+                    <option value="0" selected="selected">
+                        סכום
+                    </option>
+                    <option value="1">
+                        שם פרטי
+                    </option>
+                    <option value="2">
+                        שם משפחה
+                    </option>
+                    <option value="3">
+                        תאריך
+                    </option>
+                </select>
+            </div>
+            <div class="col-sm-1">
+                <button type="button" class="btn btn-danger glyphicon glyphicon-search"
+                    (click)="getAllPayments(sumInput.value)">חפש </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="l-container">
+    <ul *ngFor="let depositor of depositorToDisplay">
+        <li class="list" data-name="JoeBrown">
+            <div class="list__profile">
+                <div> <img src="https://img.icons8.com/officel/16/000000/contacts.png"/> </div>
+                <div class="list__label">
+                    <div class="list__label--header"> {{depositor.user.firstName}} - {{depositor.user.lastName}} </div>
+                    <div class="list__label--value"> {{depositor.deposit.sum}} </div>
+                </div>
+            </div>
+            <div class="list__photos">
+                <button pButton type="button" label="הצג פרטים" icon="pi pi-info-circle" iconPos="right" (click)="showDetails(depositor)"></button>
+            </div>
+        </li>
+    </ul>
+</div>
+<!-- <p-orderList [value]="depositorToDisplay" filterBy="user.lastName">
+    <ng-template let-depositor pTemplate="item">
+        <div class="ui-helper-clearfix">
+            <div style="font-size:14px;float:right;margin:15px 5px 0 0">
+                {{depositor.user.firstName}} - {{depositor.user.lastName}} - {{depositor.deposit.sum}}
+                <button pButton type="button" label="הצג פרטים" icon="pi pi-info-circle" iconPos="right" (click)="showDetails(depositor)"></button>
+            </div>
+        </div>
+    </ng-template>
+</p-orderList> -->
+       
+    <p-dialog  *ngIf='depositor1'  header="{{depositor1.user.firstName}}" [(visible)]="display" modal="modal" [style]="{width: '350px'}" [responsive]="true">
+     <span >
+            <edit-details  [depositorr]="depositor1"></edit-details>
+        <p-footer>
+            <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                <button type="button" pButton icon="pi pi-times" (click)="display=false" label="אישור"></button>
+            </div>
+        </p-footer>
+    </span>
+    </p-dialog>

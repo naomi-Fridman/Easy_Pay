@@ -1,0 +1,79 @@
+<p>edit-user-details works!</p>
+<form [formGroup]="userDetailesForm" >
+    <div class="p-field p-grid">
+    <label for="userName" class="p-col-fixed" style="width:100px">userName</label>
+    <div class="p-col">
+        <input formControlName="userName" id="userName" type="text" pInputText> 
+    </div>
+    </div>
+    <div class="p-field p-grid">
+        <label for="password" class="p-col-fixed" style="width:100px">password</label>
+        <div class="p-col">
+            <input formControlName="password" id="password" type="text" pInputText> 
+        </div>
+        </div>
+    <div class="p-field p-grid">
+    <label for="firstName" class="p-col-fixed" style="width:100px">firstName</label>
+    <div class="p-col">
+        <input formControlName="firstName" id="firstName" type="text" pInputText> 
+    </div>
+    </div>
+
+    <div class="p-field p-grid">
+    <label for="lastname" class="p-col-fixed" style="width:100px">שם משפחה</label>
+    <div class="p-col">
+        <input formControlName="lastName" id="lastname" type="text" pInputText> 
+    </div>
+    </div>
+
+    <div class="p-field p-grid">
+    <label for="identityNumber" class="p-col-fixed" style="width:100px">identityNumber</label>
+    <div class="p-col">
+        <input formControlName="identityNumber" id="identityNumber" type="text" pInputText> 
+    </div>
+    </div>
+
+    <div class="p-field p-grid">
+    <label for="email" class="p-col-fixed" style="width:100px">מייל</label>
+    <div class="p-col">
+        <input formControlName="email" id="email" type="text" pInputText> 
+    </div>
+    </div>
+
+    <div class="p-field p-grid">
+    <label for="address" class="p-col-fixed" style="width:100px">כתובת</label>
+    <div class="p-col">
+        <input formControlName="address" id="address" type="text" pInputText> 
+    </div>
+    </div>
+
+    <div class="p-field p-grid">
+    <label for="city" class="p-col-fixed" style="width:100px">city</label>
+    <div class="p-col">
+        <input formControlName="city" id="city" type="text" pInputText> 
+    </div>
+    </div>
+
+    <div class="p-field p-grid">
+    <label for="telephoneNumber1" class="p-col-fixed" style="width:100px">telephoneNumber</label>
+    <div class="p-col">
+        <input formControlName="telephoneNumber1" id="telephoneNumber1" type="text" pInputText> 
+    </div>
+    </div>
+    
+    <div class="p-field p-grid">
+    <label for="telephoneNumber2" class="p-col-fixed" style="width:100px">telephoneNumber2</label>
+    <div class="p-col">
+        <input formControlName="telephoneNumber2" id="telephoneNumber2" type="text" pInputText> 
+    </div>
+    </div>
+
+    <div class="p-field p-grid">
+    <label for="comments" class="p-col-fixed" style="width:100px">comments</label>
+    <div class="p-col">
+        <input formControlName="comments" id="comments" type="text" pInputText> 
+    </div>
+    </div>
+    <button type="button" pButton icon="pi pi-times" (click)="save()" label="אישור"></button>
+
+</form>

@@ -1,0 +1,163 @@
+<p>payments works!</p>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<div class="ad-sektion-top hidden-xs" style="margin-top:80px;">
+    <div class="container-fluid text-center">
+        <div class="row">
+        </div>
+    </div>
+</div>
+<div id="top-filter" class="top-filter tfilter-box hidden-xs" data-spy="affix" data-offset-top="197">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-sm-2">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input [(ngModel)]="dtoPayments.firstName" #firstNameInput class="form-control" placeholder="שם פרטי" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input [(ngModel)]="dtoPayments.lastName" #lastNameInput class="form-control" placeholder="שם משפחה" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <select (change)="onChange($event.target.value)"[(ngModel)]="selectedSum" class="form-control" >
+
+                    <option value="sum" >
+                        סכום מדויק
+                    </option>
+                    <option value="from">
+                        החל מ
+                    </option>
+                    <option value="till">
+                        עד 
+                    </option>
+                    <option value="range" >
+                        טווח
+                    </option>
+                </select>
+            </div>
+            <div  *ngIf="selectedSum=='from' || selectedSum=='range'" class="col-sm-2">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input [(ngModel)]="dtoPayments.collectionSumFrom" #fromSumInput class="form-control" placeholder=" החל מ" type="text">
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="selectedSum=='till' || selectedSum=='range' " class="col-sm-2">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input [(ngModel)]="dtoPayments.collectionSumTill" #tillSumInput class="form-control" placeholder="עד" type="text">
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="selectedSum=='sum'" class="col-sm-2">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input  [(ngModel)]="dtoPayments.collectionSumExact" #sumInput class="form-control" placeholder=" סכום" type="text" >
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <select (change)="onChange($event.target.value)"[(ngModel)]="selectedDate" class="form-control" >
+                    <option value="exactD" >
+                        תאריך מדויק
+                    </option>
+                    <option value="fromD">
+                        החל מ
+                    </option>
+                    <option value="tillD">
+                        עד 
+                    </option>
+                    <option value="rangeD" >
+                        טווח
+                    </option>
+                </select>
+            </div>
+            <div  *ngIf="selectedDate=='fromD' || selectedDate=='rangeD'" class="col-sm-2">
+                <div class="row">
+                    <!-- <div class="col-md-12">
+                        <input [(ngModel)]="dtoPayments.dateFrom" #fromDateInput class="form-control" placeholder=" החל מ" type="datetime('dd/MM/yyyy')">
+                    </div> -->
+
+                    <p-calendar [(ngModel)]="dateValue" [(ngModel)]="dtoPayments.dateFrom"  #fromDateInput   dateFormat="dd/mm/yy" showButtonBar="true"></p-calendar>
+                </div>
+            </div>
+            <div *ngIf="selectedDate=='tillD' || selectedDate=='rangeD' " class="col-sm-2">
+                <div class="row">
+                    <p-calendar [(ngModel)]="dateValue" [(ngModel)]="dtoPayments.dateFrom"  #tillDateInput   dateFormat="dd/mm/yy" showButtonBar="true"></p-calendar>
+
+                </div>
+            </div>
+            <div *ngIf="selectedDate=='sum'" class="col-sm-2">
+                <div class="row">
+                    <p-calendar [(ngModel)]="dateValue" [(ngModel)]="dtoPayments.dateExact"  #exactDateInput   dateFormat="dd/mm/yy" showButtonBar="true"></p-calendar>
+
+                    <!-- <div class="col-md-12">
+                        <input  [(ngModel)]="dtoPayments.dateExact" #exactDateInput class="form-control" placeholder=" סכום" type="text">
+                    </div> -->
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <button type="button" class="btn btn-danger glyphicon glyphicon-search"
+                    (click)="getAllPayments()">חפש </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="l-container">
+    <ul *ngFor="let payment of paymentListToDisplay">
+        <li class="list" data-name="JoeBrown">
+            <div class="list__profile">
+                <div> <img src="https://tinyurl.com/glz9lv7"> </div>
+                <div class="list__label">
+                    <div class="list__label--header"> {{payment.user.firstName}} - {{payment.user.lastName}} </div>
+                    <div class="list__label--value"> {{payment.payment.paymentDate | date:"dd/MM/yyyy" }} - {{payment.payment.collectionSum}} </div>
+                </div>
+            </div>
+            <div class="list__photos">
+                <button pButton type="button" label="הצג פרטים" icon="pi pi-info-circle" iconPos="right"
+                (click)="showDetails(payment)"></button>
+            </div>
+        </li>
+    </ul>
+</div>
+<!-- <p-orderList [value]="paymentListToDisplay" filterBy="payment.FirstName" name="paymentListToDisplay">
+    <ng-template  let-payment pTemplate="item">
+        <div class="ui-helper-clearfix">
+            <div style="font-size:14px;float:right;margin:15px 5px 0 0">
+                {{payment.payment.paymentDate | date:"dd/MM/yyyy" }} - {{payment.user.firstName}} -
+                {{payment.payment.collectionSum}}
+                <button pButton type="button" label="הצג פרטים" icon="pi pi-info-circle" iconPos="right"
+                    (click)="showDetails(payment)"></button>
+            </div>
+        </div>
+    </ng-template>
+</p-orderList> -->
+
+<p-dialog *ngIf="paymentUser1" header={{paymentUser1.user.firstName}} [(visible)]="display" modal="modal"
+    [style]="{width: '350px'}" [responsive]="true">
+    <span>
+        <app-payments-details [payment]="paymentUser1"></app-payments-details>
+    </span>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="pi pi-times" (click)="display=false" label="אישור"></button>
+        </div>
+    </p-footer>
+</p-dialog>
+
+
+

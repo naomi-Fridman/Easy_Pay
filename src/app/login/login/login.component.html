@@ -1,0 +1,16 @@
+<p>login works!</p>
+<!-- <div>
+    <input type="text" pInputText [(ngModel)]="property"/>
+    סיסמא:<input id="password"/>
+<button (click)="LogIn(password,accessName)">></button>
+</div> -->
+<div class="p-field p-grid">
+    <label for="userName" class="p-col-fixed" style="width:100px">שם משתמש</label>
+    <div class="p-col"><input id="userName" type="text" pInputText> </div>
+</div>
+<div class="p-field p-grid">
+    <label for="password" class="p-col-fixed" style="width:100px">סיסמא</label>
+    <div class="p-col"><input type="password" pPassword /> </div>
+</div>
+<button type="button" pButton (click)="enter()" label="כניסה" class="ui-button-success"></button>
+<button type="button" pButton (click)="register()" label="משתמש חדש" class="ui-button-success"></button>

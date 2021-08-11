@@ -1,0 +1,69 @@
+<p>new-payment works!</p>
+
+<head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+</head>
+<form [formGroup]="PaymentDetailesUserForm" style="direction: rtl;">
+    <div class="p-field p-grid">
+        <label for="identityNumber" class="p-col-fixed" style="width:100px">ת"ז/דרכון</label>
+        <div class="p-col">
+            <input  formControlName="identityNumber" id="identityNumber" type="number" pInputText>
+        </div>
+    </div>
+    <div dir="rtl" *ngIf="identity" class="alert alert-danger" style = "height:35px;padding-top:8px;width:50%;Float:left;">
+        <button (click)="identity=false" type="button" class="close" data-dismiss="alert" aria-hidden="true">
+            ×</button>
+    <span class="a">{{ l }}    </span>
+        <span class="glyphicon glyphicon-exclamation-sign"></span> 
+        תעודת הזהות אינה תקינה!!
+    </div>
+</form>
+<form [formGroup]="PaymentDetailesForm" style="direction: rtl;">
+ 
+    <div class="p-field p-grid">
+        <label for="hebrewPaymenteDate" class="p-col-fixed" style="width:100px">תאריך תשלום עברי</label>
+        <div class="p-col">
+            <input formControlName="hebrewPaymenteDate" id="hebrewPaymenteDate" type="text" pInputText>
+        </div>
+    </div>
+    <div class="p-field p-grid">
+        <label for="inputDate" class="p-col-fixed" style="width:100px">תאריך קלט</label>
+        <div class="p-col">
+            <input formControlName="inputDate" id="inputDate" type="text" pInputText>
+
+        </div>
+    </div>
+    <div class="p-field p-grid">
+        <label for="collectionSum" class="p-col-fixed" style="width:100px">סכום</label>
+        <div class="p-col">
+            <input formControlName="collectionSum" id="collectionSum" type="number" pInputText>
+        </div>
+    </div>
+    <div class="p-field p-grid">
+        <!-- [(ngModel)]="loanCurrency" -->
+        <label for="currency" class="p-col-fixed" style="width:100px">מטבע</label>
+        <select formControlName="currencyId" class="form-control">
+            <option value=1>
+                שקל
+            </option>
+            <option value=3 selected="selected">
+                דולר
+            </option>
+        </select>
+    </div>
+    <div class="p-field p-grid">
+        <label for="comments" class="p-col-fixed" style="width:100px">הערות</label>
+        <div class="p-col">
+            <input formControlName="comments" id="comments" type="text" pInputText>
+        </div>
+    </div>
+</form>
+<button style="direction: rtl;" type="button" pButton (click)="save()" class="ui-button-success">שמור</button>
+
+
+
+
+

@@ -1,0 +1,59 @@
+<p>payments-details works!</p>
+<div style="direction: rtl;">
+    <b>{{_paymentUser.user.firstName}} {{_paymentUser.user.lastName}}</b><br>
+     {{_paymentUser.user.telephoneNumber1}} | {{_paymentUser.user.telephoneNumber2}} <br>
+    <a href="mailto:{{_paymentUser.user.email}}">לחץ כאן לשליחת מייל לבעל התשלום</a><br>
+    <a [routerLink]="['/editUserDetails/' ,_paymentUser.user.id]">לפרטי המשתמש המלאים</a>
+    <!-- <button [routerLink]="['/editUserDetails/' ,_loaner.user.id]" pButton type="button" label="פרטי המשתמש המלאים" icon="pi pi-user" iconPos="right" ></button> -->
+</div>
+<form [formGroup]="paymentDetailesForm" style="direction: rtl;">
+  <div class="p-field p-grid">
+    <label for="accountNumber" class="p-col-fixed" style="width:100px">מספר חשבון</label>
+    <div class="p-col">
+        <input formControlName="accountNumber" id="accountNumber" type="text" pInputText> 
+    </div>
+    </div>
+
+    <div class="p-field p-grid">
+        <label for="collectionSum" class="p-col-fixed" style="width:100px">סכום לגבייה</label>
+        <div class="p-col">
+            <input formControlName="collectionSum" id="collectionSum" type="text" pInputText> 
+        </div>
+        </div>
+
+    <div class="p-field p-grid">
+    <label for="comments" class="p-col-fixed" style="width:100px">הערות</label>
+    <div class="p-col">
+        <input formControlName="comments" id="comments" type="text" pInputText> 
+    </div>
+    </div>
+
+    <div class="p-field p-grid">
+    <label for="hebrewPaymentDate" class="p-col-fixed" style="width:100px">תאריך תשלום עברי</label>
+    <div class="p-col">
+        <input formControlName="hebrewPaymentDate" id="hebrewPaymentDate" type="text" pInputText> 
+    </div>
+    </div>
+
+    <div class="p-field p-grid">
+    <label for="paymentDate" class="p-col-fixed" style="width:100px">תאריך תשלום</label>
+    <div class="p-col">
+        <input formControlName="paymentDate" id="paymentDate" type="text" pInputText> 
+    </div>
+    </div>
+
+    <div class="p-field p-grid">
+    <label for="inputDate" class="p-col-fixed" style="width:100px">תאריך קלט</label>
+    <div class="p-col">
+        <input formControlName="inputDate" id="inputDate" type="text" pInputText> 
+    </div>
+    </div>
+
+    <div class="p-field p-grid">
+    <label for="deleted" class="p-col-fixed" style="width:100px"> האם התשלום קיים?</label>
+    <div class="p-col">
+        <p-checkbox [formControl]="paymentDetailesForm.controls['deleted']" [binary]="true" id="deleted"></p-checkbox>
+    </div>
+    </div>
+    <button (click)="editDetails()">עדכן פרטים</button>
+  </form>

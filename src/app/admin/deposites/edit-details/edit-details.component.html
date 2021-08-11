@@ -1,0 +1,70 @@
+<p>edit-details works!</p>
+<div style="direction: rtl;">
+    <b>{{_depositor.user.firstName}} {{_depositor.user.lastName}}</b><br>
+    <!-- <label class="p-col-fixed" style="width:100px">טלפונים: </label> -->
+        {{_depositor.user.telephoneNumber1}} | {{_depositor.user.telephoneNumber2}} <br>
+    <a href="mailto:{{_depositor.user.email}}">לחץ כאן לשליחת מייל </a><br>
+    <a [routerLink]="['/editUserDetails/' ,_depositor.user.id]">לפרטי המשתמש המלאים</a>
+</div>
+<form [formGroup]="depositorDetailesForm">
+
+    <div class="p-field p-grid" style="direction: rtl;">
+        <label for="sum" class="p-col-fixed" style="width:100px" >סכום ההפקדה</label>
+        <div class="p-col">
+            <input formControlName="sum" id="sum" type="text" pInputText>
+        </div>
+    </div>
+
+    <div class="p-field p-grid" style="direction: rtl;">
+        <label for="depositeDate" class="p-col-fixed" style="width:100px" >תאריך הפקדה</label>
+        <div class="p-col">
+            <input formControlName="depositeDate" id="depositeDate" type="text" pInputText>
+        </div>
+    </div>
+    
+    <div class="p-field p-grid" style="direction: rtl;">
+        <label for="hebrewDepositeDate" class="p-col-fixed" style="width:100px" >תאריך הפקדה עברי</label>
+        <div class="p-col">
+            <input formControlName="hebrewDepositeDate" id="hebrewDepositeDate" type="text" pInputText>
+        </div>
+    </div>
+
+    <div class="p-field p-grid" style="direction: rtl;">
+        <label for="returnDate" class="p-col-fixed" style="width:100px" >תאריך החזר</label>
+        <div class="p-col">
+            <input formControlName="returnDate" id="returnDate" type="text" pInputText>
+        </div>
+    </div>
+
+    <div class="p-field p-grid" style="direction: rtl;">
+        <label for="hebrewDepositeReturnDate" class="p-col-fixed" style="width:100px" >תאריך החזר עברי</label>
+        <div class="p-col">
+            <input formControlName="hebrewDepositeReturnDate" id="hebrewDepositeReturnDate" type="text" pInputText>
+        </div>
+    </div>
+
+    <div class="p-field p-grid" style="direction: rtl;">
+        <label for="paymentsNumber" class="p-col-fixed" style="width:100px" >מספר תשלומים</label>
+        <div class="p-col">
+            <input formControlName="paymentsNumber" id="paymentsNumber" type="text" pInputText>
+        </div>
+    </div>
+    <div class="p-field p-grid" style="direction: rtl;">
+        <label for="status" class="p-col-fixed" style="width:100px" >מצב ההפקדה</label>
+        <div class="p-col">
+            <p-checkbox [formControl]="depositorDetailesForm.controls['status']" [binary]="true" id="status"></p-checkbox>
+        </div>
+    </div>
+   
+
+    <div class="p-field p-grid" style="direction: rtl;">
+        <label for="comment" class="p-col-fixed" style="width:100px" >הערות</label>
+        <div class="p-col">
+            <input formControlName="comment" id="comment" type="text" pInputText>
+        </div>
+    </div>
+</form>
+
+<!-- <p-dropdown [options]="currencyArr" [(ngModel)]="currencyArr"></p-dropdown> -->
+
+<button style="direction: rtl;" type="button" pButton (click)="save()" label="שמור" class="ui-button-success"></button>
