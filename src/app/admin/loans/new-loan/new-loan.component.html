@@ -1,4 +1,3 @@
-<p>new-loan works!</p>
 <!DOCTYPE html>
 <html lang="he">
 
@@ -127,7 +126,7 @@
           <div class="row formRow">
             <div class="col-md-2 pr-1">
               <div class="form-group">
-                <label for="sum" class="pull-right fileLabel required">סכום הלווא</label>
+                <label for="sum" class="pull-right fileLabel required">סכום הלוואה</label>
                 <input formControlName="sum" id="sum" type="number" class="form-control" placeholder="sum">
               </div>
             </div>
@@ -153,14 +152,14 @@
             </div>
             <div class="col-md-3 px-1">
               <div class="form-group">
-                <label for="hebrewRepaymentDate" class="pull-right fileLabel"> עבר תאריך החזר ההלוואה</label>
+                <label for="hebrewRepaymentDate" class="pull-right fileLabel"> תאריך החזר הלוואה עברי</label>
                 <input formControlName="hebrewRepaymentDate" id="hebrewRepaymentDate" type="text"
                   class="form-control" placeholder="hebrewRepaymentDate">
               </div>
             </div>
             <div class="col-md-3 pl-1">
               <div class="form-group">
-                <label for="paymentsNumber" class="pull-right fileLabel required"> מספר תשלומיה</label>
+                <label for="paymentsNumber" class="pull-right fileLabel required">מספר תשלומים </label>
                 <input formControlName="paymentsNumber" id="paymentsNumber" type="number" class="form-control"
                   placeholder="paymentsNumber">
               </div>
@@ -168,7 +167,7 @@
 
             <div class="col-md-3 pr-1">
               <div class="form-group">
-                <label for="monthlyPaymentDay" class="pull-right fileLabel required"> יום תשלום חודש</label>
+                <label for="monthlyPaymentDay" class="pull-right fileLabel required"> יום תשלום חודשי</label>
                 <input formControlName="monthlyPaymentDay" id="monthlyPaymentDay" type="date"
                   class="form-control" placeholder="monthlyPaymentDay">
               </div>
@@ -176,7 +175,7 @@
 
             <div class="col-md-3 px-1">
               <div class="form-group">
-                <label for="monthlyPaymentSum" class="pull-right fileLabel required"> סכום החזר חודש</label>
+                <label for="monthlyPaymentSum" class="pull-right fileLabel required"> סכום החזר חודשי</label>
                 <input formControlName="monthlyPaymentSum" id="monthlyPaymentSum" type="number"
                   class="form-control" placeholder="monthlyPaymentSum">
               </div>
@@ -184,7 +183,7 @@
 
             <div class="col-md-3 pl-1">
               <div class="form-group">
-                <label for="repaymentFirstDate" class="pull-right fileLabel required"> אריך ראשון להחזרה</label>
+                <label for="repaymentFirstDate" class="pull-right fileLabel required"> תאריך ראשון לפרעון</label>
                 <input formControlName="repaymentFirstDate" id="repaymentFirstDate" type="date"
                   class="form-control" placeholder="repaymentFirstDate">
               </div>
@@ -203,89 +202,6 @@
       </div>
           <div class="wrapper ">
             <div class="col-md-8">
-              <div class="card card-user">
-                <div class="card-header">
-                  <h5 class="card-title pull-right">פרטי לווה</h5>
-                </div>
-                  <div class="card-body">
-                  <form [formGroup]="loanerDetailesLoanForm" style="direction: rtl;">
-                    <div class="row formRow">
-                      <div class="col-md-2 pr-1">
-                        <div class="form-group">
-                          <label for="sum" class="pull-right">סכום הלווא</label>
-                          <input formControlName="sum" id="sum" type="number" class="form-control" placeholder="sum">
-                        </div>
-                      </div>
-                      <div class="col-md-1 pr-1">
-                        <div class="form-group">
-                          <label for="currency" class="pull-right">מטבע</label>
-                          <select formControlName="currencyId" class="form-control">
-                            <option value=1>
-                              שקל
-                            </option>
-                            <option value=3 selected="selected">
-                              דולר
-                            </option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-md-3 pl-1">
-                        <div class="form-group">
-                          <label for="repaymentDate" class="pull-right">תאריך החזר ההלוואה</label>
-                          <input formControlName="repaymentDate" id="repaymentDate" type="date" class="form-control"
-                            placeholder="repaymentDate">
-                        </div>
-                      </div>
-                      <div class="col-md-3 px-1">
-                        <div class="form-group">
-                          <label for="hebrewRepaymentDate" class="pull-right"> עבר תאריך החזר ההלוואה</label>
-                          <input formControlName="hebrewRepaymentDate" id="hebrewRepaymentDate" type="text"
-                            class="form-control" placeholder="hebrewRepaymentDate">
-                        </div>
-                      </div>
-                      <div class="col-md-3 pl-1">
-                        <div class="form-group">
-                          <label for="paymentsNumber" class="pull-right"> מספר תשלומיה</label>
-                          <input formControlName="paymentsNumber" id="paymentsNumber" type="number" class="form-control"
-                            placeholder="paymentsNumber">
-                        </div>
-                      </div>
-
-                      <div class="col-md-3 pr-1">
-                        <div class="form-group">
-                          <label for="monthlyPaymentDay" class="pull-right"> יום תשלום חודש</label>
-                          <input formControlName="monthlyPaymentDay" id="monthlyPaymentDay" type="date"
-                            class="form-control" placeholder="monthlyPaymentDay">
-                        </div>
-                      </div>
-
-                      <div class="col-md-3 px-1">
-                        <div class="form-group">
-                          <label for="monthlyPaymentSum" class="pull-right"> סכום החזר חודש</label>
-                          <input formControlName="monthlyPaymentSum" id="monthlyPaymentSum" type="number"
-                            class="form-control" placeholder="monthlyPaymentSum">
-                        </div>
-                      </div>
-
-                      <div class="col-md-3 pl-1">
-                        <div class="form-group">
-                          <label for="repaymentFirstDate" class="pull-right"> אריך ראשון להחזרה</label>
-                          <input formControlName="repaymentFirstDate" id="repaymentFirstDate" type="date"
-                            class="form-control" placeholder="repaymentFirstDate">
-                        </div>
-                        <div class="container">
-                          <form class="form">
-                            <div class="file-upload-wrapper" data-text="Select your file!">
-                              <input name="file-upload-field" type="file" class="file-upload-field" value="">
-                            </div>
-                          </form>
-                        </div>
-                      </div>
-                     
-                    </div>
-                  </form>
-                </div>
-            </div>
             <app-guaranty-details></app-guaranty-details>
             <app-guaranty-details></app-guaranty-details>
             <app-guaranty-details></app-guaranty-details>
