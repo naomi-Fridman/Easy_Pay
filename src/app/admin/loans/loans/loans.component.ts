@@ -35,6 +35,7 @@ export class LoansComponent implements OnInit {
   dtoUsersPrms: DTO_userParms = new DTO_userParms();
   selectedSum: string;
   typId: number
+  
   onChange(newValue: string) {
     if (newValue == "from") {
       this.dto_loans.sumExact = null;

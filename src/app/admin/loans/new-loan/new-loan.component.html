@@ -26,22 +26,22 @@
   <div class="wrapper ">
     <div class="col-md-8">
       <div class="card card-user">
-        <div class="card-header">
-          <h5 class="card-title pull-right">פרטי הלוואה</h5>
+        <div class="subTitleDiv">
+          <label class="card-title pull-right subTitle"> פרטים אישיים</label>
         </div>
         <div class="card-body">
           <form [formGroup]="loanerDetailesLoanForm" style="direction: rtl;">
             <div class="row">
               <div class="col-md-3 pr-1">
                 <div class="form-group">
-                  <label for="loanDate" class="pull-right">תאריך הלוואה</label>
+                  <label for="loanDate" class="pull-right fileLabel required">תאריך הלוואה</label>
                   <input formControlName="loanDate" id="loanDate" type="date" class="form-control"
                     placeholder="loanDate">
                 </div>
               </div>
               <div class="col-md-3 px-1">
                 <div class="form-group">
-                  <label for="hebrewLoanDate" class="pull-right">תאריך הלוואה עברי</label>
+                  <label for="hebrewLoanDate" class="pull-right fileLabel">תאריך הלוואה עברי</label>
                   <input type="text" formControlName="hebrewLoanDate" class="form-control" placeholder="hebrewLoanDate"
                     id="hebrewLoanDate" value="תאריך הלוואה עבר">
                 </div>
@@ -52,28 +52,28 @@
             <div class="row">
               <div class="col-md-3 pr-1">
                 <div class="form-group">
-                  <label for="identityNumber" class="pull-right">ת"ז/דרכון</label>
+                  <label for="identityNumber" class="pull-right fileLabel required">ת"ז/דרכון</label>
                   <input type="text" formControlName="identityNumber" class="form-control"
                     (blur)="checkUserForLoan($event)" id="identityNumber" placeholder="identityNumber">
                 </div>
               </div>
               <div class="col-md-3 px-1">
                 <div class="form-group">
-                  <label for="firstName" class="pull-right">שם פרטי</label>
+                  <label for="firstName" class="pull-right fileLabel required">שם פרטי</label>
                   <input type="text" formControlName="firstName" id="firstName" class="form-control"
                     placeholder="firstName" value="שם פרטי">
                 </div>
               </div>
               <div class="col-md-3 pl-1">
                 <div class="form-group">
-                  <label for="lastName" class="pull-right">שם משפחה</label>
+                  <label for="lastName" class="pull-right fileLabel required">שם משפחה</label>
                   <input type="text" formControlName="lastName" id="lastName" class="form-control"
                     placeholder="lastName" value="שם משפחה">
                 </div>
               </div>
               <div class="col-md-3 pl-1">
                 <div class="form-group">
-                  <label for="email" class="pull-right">כתובת מייל</label>
+                  <label for="email" class="pull-right fileLabel required">כתובת מייל</label>
                   <input formControlName="email" id="email" type="email" class="form-control" placeholder="Email">
                 </div>
               </div>
@@ -193,15 +193,7 @@
                           </form>
                         </div>
                       </div>
-                      <!-- <div class="col-md-3 pl-1">
-                        <div class="form-group">
-                          
-                          <label for="image" class="pull-right">צרוף תמונה</label>
-                          <input class="basic-slide" id="image" type="file" (change)="onFileChanged($event)"
-                            [accept]="['.jpg','.jpeg','.png']" #file>
-                          <img [src]="imageSrc" *ngIf="imageSrc" style="height: 200px; width: 200px">
-                        </div>
-                      </div> -->
+                     
                     </div>
                   </form>
                 </div>
@@ -239,41 +231,6 @@
 
       <!-- <button style="direction: rtl;" type="button" pButton  class="ui-button-success">שמור</button> -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- <footer class="footer footer-black  footer-white ">
-      <div class="container-fluid">
-        <div class="row">
-          <nav class="footer-nav">
-            <ul>
-              <li><a href="https://www.creative-tim.com" target="_blank">Creative Tim</a></li>
-              <li><a href="https://www.creative-tim.com/blog" target="_blank">Blog</a></li>
-              <li><a href="https://www.creative-tim.com/license" target="_blank">Licenses</a></li>
-            </ul>
-          </nav>
-          <div class="credits ml-auto">
-            <span class="copyright">
-              ©
-              <script>
-                document.write(new Date().getFullYear())
-              </script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
-            </span>
-          </div>
-        </div>
-      </div>
-    </footer> -->
-    <!-- </div> -->
   </div>
   <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery.min.js"></script>
