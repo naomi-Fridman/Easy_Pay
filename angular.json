@@ -132,5 +132,8 @@
       }
     }
   },
-  "defaultProject": "GmachProject"
+  "defaultProject": "GmachProject",
+  "cli": {
+    "analytics": false
+  }
 }
