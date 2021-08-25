@@ -1,9 +1,55 @@
 div.card{
-    width: 1300px;
-    padding: 10px;
-    border-radius: 0;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  /* box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); */
+  
   }
+  .card-body{
+    width: 100%;
+    margin: 24px;
+    }
   
     div  div.card-header{
     background-color:peachpuff;
   }
+  .subTitle{
+    margin: 0 15px;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    color: #285c7e !important;
+    
+}
+.subTitleDiv{
+    background-color: #e9f4fa;
+    border-right: 4px solid #285c7e;
+    font-family: arimo-bold,Arial;
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-image: linear-gradient(to left,rgb(246 201 98 / 61%),rgb(255 223 79 / 76%)) !important;
+    height: 51px;
+}
+
+div.card.card-user{
+  margin-right: 10%;
+
+}
+.formRow{
+  width: 95%;
+}
+
+
+.required::before{
+  content:" *";
+  color: #db4848;
+}
+
+
+
+
+
+
+
+
+

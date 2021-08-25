@@ -10,7 +10,6 @@ import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
 import { InputTextModule } from 'primeng/inputtext';
 import { DialogModule } from 'primeng/dialog';
-import { AccordionModule } from 'primeng/accordion';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import {CheckboxModule} from 'primeng/checkbox';
@@ -20,12 +19,17 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import { GuarantyModule } from 'src/app/models-components/guaranty/guaranty.module';
 import { NewLoanComponent } from './new-loan/new-loan.component';
 import {FileUploadModule} from 'primeng/fileupload';
+// import { AccordionModule } from 'ngx-bootstrap/accordion';
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {AccordionModule} from 'primeng/accordion';
+
 
 // import {VirtualScrollerModule} from 'primeng/virtualscroller';
 
 @NgModule({
   declarations: [LoansComponent, LoanerDetailesComponent, NewLoanComponent,NewLoanComponent],
   imports: [
+    // NgbModule,
     GuarantyModule,
     ReactiveFormsModule,
     CommonModule,
