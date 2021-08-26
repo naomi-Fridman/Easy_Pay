@@ -4,16 +4,8 @@ import { AdminComponent } from './admin/admin.component';
 import { UsersModule } from './users/users.module';
 import { LoansModule } from './loans/loans.module';
 import { DepositesModule } from './deposites/deposites.module';
-import { LoansComponent } from './loans/loans/loans.component';
-import { UsersComponent } from './users/users/users.component';
 import { RouterModule } from '@angular/router';
-import { DepositesComponent } from './deposites/deposites/deposites.component';
-import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LoanerDetailesComponent } from './loans/loaner-detailes/loaner-detailes.component';
-import { ShowDetailsComponent } from './deposites/show-details/show-details.component';
-import { EditDetailsComponent } from './deposites/edit-details/edit-details.component';
-import { EditUserDetailsComponent } from './users/edit-user-details/edit-user-details.component';
 import { OrderListModule } from 'primeng/orderlist';
 import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
@@ -25,12 +17,9 @@ import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import {TabMenuModule} from 'primeng/tabmenu';
 import { PaymentsModule } from './payments/payments.module';
-import { PaymentsComponent } from './payments/payments/payments.component';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import { AdminRoutes } from './admin.routing';
 import { DailyActivityComponent } from './daily-activity/daily-activity.component';
-import { PaymentComponent } from '../models-components/payment/payment/payment.component';
-
 
 
 @NgModule({
@@ -52,7 +41,6 @@ import { PaymentComponent } from '../models-components/payment/payment/payment.c
     InputTextModule,
     ReactiveFormsModule,
     DialogModule,
-    AccordionModule,
     MessagesModule,
     MessageModule,
     RouterModule.forChild(AdminRoutes)
