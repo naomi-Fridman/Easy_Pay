@@ -28,16 +28,17 @@ export class GuarantyDetailsComponent implements OnInit {
       }
     })
   }
-  GuarantyDetailsForm :FormGroup =new FormGroup({
-    firstName:new FormControl(""),
-    lastName: new FormControl(""),
-    email: new FormControl(),
-    city: new FormControl(""),
-    address: new FormControl(""),
-    telephoneNumber1: new FormControl(),
-    telephoneNumber2: new FormControl(),
-    identityNumber: new FormControl(null),
-  })
+  GuarantyDetailsForm :FormGroup
+  //  =new FormGroup({
+  //   firstName:new FormControl(""),
+  //   lastName: new FormControl(""),
+  //   email: new FormControl(),
+  //   city: new FormControl(""),
+  //   address: new FormControl(""),
+  //   telephoneNumber1: new FormControl(),
+  //   telephoneNumber2: new FormControl(),
+  //   identityNumber: new FormControl(null),
+  // })
   
   ngOnInit() {
   }

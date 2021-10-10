@@ -1,45 +1,49 @@
 import { QueryList } from "@angular/core";
 import { Component, Input, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef, ViewChildren } from "@angular/core";
-// import bootstrap from 'bootstrap' 
-import { FormGroup, FormControl, EmailValidator, Validators } from '@angular/forms';
-import { Loaner } from 'src/app/models/Loaner';
-import { MessageService } from 'primeng/api';
+import { FormGroup, FormControl, EmailValidator, Validators, FormBuilder } from '@angular/forms';
 import { LoansService } from 'src/app/services/loans.service';
 import { Router } from '@angular/router';
-import { Loan } from 'src/app/models/Loan';
-import { User } from 'src/app/models/User';
 import { Guaranty } from 'src/app/models/Guaranty';
 import { LoanDetailes } from 'src/app/models/LoanDetailes';
 import { DirectDebit } from 'src/app/models/directDebit';
 import { GuarantyDetailsComponent } from 'src/app/models-components/guaranty/guaranty-details/guaranty-details.component';
 import { UsersService } from 'src/app/services/users.service';
+import { CustomvalidationService } from "src/app/services/customvalidation.service";
 
 @Component({
   selector: 'app-new-loan',
   templateUrl: './new-loan.component.html',
   styleUrls: ['./new-loan.component.css']
 })
-export class NewLoanComponent implements OnInit ,AfterViewInit{
+export class NewLoanComponent implements OnInit, AfterViewInit {
+
   newLoanDetailes: LoanDetailes = new LoanDetailes();
-  loanCurrency: number=3;
-  returnCurrency:number=1
+  loanCurrency: number = 3;
+  returnCurrency: number = 1
   uploadedFiles: any[] = [];
   selectedFile: File;
   imageSrc: string;
   saveGuarantyEvent: boolean = false;
   shtarFD = new FormData();
-  private shtarUploaded : boolean = false;
+  submitted = false;
+  private shtarUploaded: boolean = false;
+  registerForm: FormGroup;
 
   l: DirectDebit = new DirectDebit();
   @ViewChildren(GuarantyDetailsComponent) guarantyDetailsComponent: QueryList<GuarantyDetailsComponent>;
-  isExistUser: boolean=false;
+  isExistUser: boolean = false;
 
-
-  constructor(private userService: UsersService,private loansService: LoansService, private cd: ChangeDetectorRef, private route :Router) {}  //private messageService: MessageService
+  constructor(
+    private userService: UsersService,
+    private loansService: LoansService,
+    private cd: ChangeDetectorRef,
+    private route: Router,
+    private fb: FormBuilder,
+    private customValidator: CustomvalidationService
+  ) { }
 
   ngAfterViewInit() {
     this.guarantyDetailsComponent.forEach(g => console.log(g));
-    //console.log(this.guarantyDetailsComponent);
     //this.newLoanDetailes.guaranty.push(this.guarantyDetailsComponent.first.GuarantyDetailsForm.value) //<= This will set data
     this.cd.detectChanges();
   }
@@ -49,7 +53,7 @@ export class NewLoanComponent implements OnInit ,AfterViewInit{
   checkUserForLoan(event) {
     this.userService.getUserByIdentityNumber(event.target.value).subscribe(user => {
       if (user) {
-        this.isExistUser=true;
+        this.isExistUser = true;
         this.loanerDetailesUserForm.controls["firstName"].setValue(user.firstName);
         this.loanerDetailesUserForm.controls["lastName"].setValue(user.lastName);
         this.loanerDetailesUserForm.controls["telephoneNumber1"].setValue(user.telephoneNumber1);
@@ -75,16 +79,19 @@ export class NewLoanComponent implements OnInit ,AfterViewInit{
     this.newLoanDetailes.user = this.loanerDetailesUserForm.value;
     debugger
     const uploadData = new FormData();
-      uploadData.append('file', this.selectedFile);
-      uploadData.append('newLoaner', JSON.stringify(this.newLoanDetailes));
-      //check if exists
-      this.loansService.postLoan(uploadData).subscribe(e=>{
-        this.route.navigate(["/homePage"]);
-      });
+    uploadData.append('file', this.selectedFile);
+    uploadData.append('newLoaner', JSON.stringify(this.newLoanDetailes));
+    //check if exists
+    this.loansService.postLoan(uploadData).subscribe(e => {
+      this.route.navigate(["/homePage"]);
+    });
   }
   id(event) {
     event.target.value;
   }
+
+
+
   onUpload(event) {
     for (let file of event.files) {
       this.uploadedFiles.push(file);
@@ -93,48 +100,52 @@ export class NewLoanComponent implements OnInit ,AfterViewInit{
   }
   onFileChanged(event) {
     this.selectedFile = event.target.files[0];
-    if(this.selectedFile){
+    if (this.selectedFile) {
       this.shtarFD.append("shter", this.selectedFile);
     }
   }
-  loanerDetailesUserForm: FormGroup = new FormGroup({
-    firstName: new FormControl(""),
-    lastName: new FormControl("" ),
-    email: new FormControl(),
-    city: new FormControl(""),
-    address: new FormControl(""),
-    identityNumber: new FormControl(null),
-    password: new FormControl(""),
-    userName: new FormControl("",Validators.required,),
-    telephoneNumber1: new FormControl(),
-    telephoneNumber2: new FormControl( ),
-    idUser: new FormControl(null),
-  });
 
-  loanerDetailesLoanForm: FormGroup = new FormGroup({
-    userId: new FormControl(),
-    id: new FormControl(),
-    sum: new FormControl(),
-    loanDate: new FormControl(),
-    hebrewLoanDate: new FormControl(),
-    repaymentDate: new FormControl(),
-    repaymentManner: new FormControl(),
-    hebrewRepaymentDate: new FormControl(),
-    paymentsNumber: new FormControl(),
-    currencyId: new FormControl(),
-    // currencyIdReturn: new FormControl(),
-    creditCardId: new FormControl(),
-    paidUp: new FormControl(),
-    directDebitId: new FormControl(),
-    monthlyPaymentSum: new FormControl(),
-    monthlyPaymentDay: new FormControl(),
-    repaymentFirstDate: new FormControl(),
-    guaranty: new FormControl(),
-    guarantyId2: new FormControl(),
-    guarantyId3: new FormControl(),
-    guarantyId4: new FormControl(),
-    guarantyId5: new FormControl()
-  });
+  loanerDetailesUserForm : FormGroup
+  // = new FormGroup({
+  //   firstName: new FormControl(""),
+  //   lastName: new FormControl(""),
+  //   email: new FormControl(""),
+  //   city: new FormControl(""),
+  //   address: new FormControl(""),
+  //   identityNumber: new FormControl(null),
+  //   password: new FormControl(""),
+  //   userName: new FormControl("", Validators.required,),
+  //   telephoneNumber1: new FormControl(""),
+  //   telephoneNumber2: new FormControl(""),
+  //   idUser: new FormControl(null),
+  // });
+  
+
+  loanerDetailesLoanForm: FormGroup
+  //  = new FormGroup({
+  //   userId: new FormControl(),
+  //   id: new FormControl(),
+  //   sum: new FormControl(),
+  //   loanDate: new FormControl(),
+  //   hebrewLoanDate: new FormControl(),
+  //   repaymentDate: new FormControl(),
+  //   repaymentManner: new FormControl(),
+  //   hebrewRepaymentDate: new FormControl(),
+  //   paymentsNumber: new FormControl(),
+  //   currencyId: new FormControl(),
+  //   // currencyIdReturn: new FormControl(),
+  //   creditCardId: new FormControl(),
+  //   paidUp: new FormControl(),
+  //   directDebitId: new FormControl(),
+  //   monthlyPaymentSum: new FormControl(),
+  //   monthlyPaymentDay: new FormControl(),
+  //   repaymentFirstDate: new FormControl(),
+  //   guaranty: new FormControl(),
+  //   guarantyId2: new FormControl(),
+  //   guarantyId3: new FormControl(),
+  //   guarantyId4: new FormControl(),
+  //   guarantyId5: new FormControl()
+  // });
 
   loanerDetailesDDForm: FormGroup = new FormGroup({
     idDD: new FormControl(),
@@ -153,7 +164,83 @@ export class NewLoanComponent implements OnInit ,AfterViewInit{
     bankId: new FormControl(0)
 
   });
+
+get userForm(){
+  return this.loanerDetailesUserForm.controls;
+}
+  onSubmit() {
+    this.submitted = true;
+    if (this.registerForm.valid) {
+      alert('Form Submitted succesfully!!!\n Check the values in browser console.');
+      console.table(this.registerForm.value);
+    }
+    else {
+      alert('invaled');
+    }
+  }
+
+  
+
   ngOnInit() {
+
+    this.loanerDetailesUserForm= this.fb.group({
+      firstName: new FormControl(""),
+    lastName: new FormControl(""),
+    email: new FormControl(""),
+    city: new FormControl(""),
+    address: new FormControl(""),
+    identityNumber: new FormControl(null),
+    password: new FormControl(""),
+    userName: new FormControl("", Validators.required,),
+    telephoneNumber1: new FormControl(""),
+    telephoneNumber2: new FormControl(""),
+    idUser: new FormControl(null),
+    })
+
+    this.loanerDetailesLoanForm=this.fb.group({
+         userId: new FormControl(""),
+        id: new FormControl(""),
+        sum: new FormControl(""),
+        loanDate: new FormControl(''),
+        hebrewLoanDate: new FormControl(''),
+        repaymentDate: new FormControl(""),
+        repaymentManner: new FormControl(''),
+        hebrewRepaymentDate: new FormControl(''),
+        paymentsNumber: new FormControl(''),
+        currencyId: new FormControl(''),
+        // currencyIdReturn: new FormControl(),
+        creditCardId: new FormControl(''),
+        paidUp: new FormControl(''),
+        directDebitId: new FormControl(''),
+        monthlyPaymentSum: new FormControl(''),
+        monthlyPaymentDay: new FormControl(''),
+        repaymentFirstDate: new FormControl(''),
+        guaranty: new FormControl(''),
+        guarantyId2: new FormControl(''),
+        guarantyId3: new FormControl(''),
+        guarantyId4: new FormControl(''),
+        guarantyId5: new FormControl('')
+    })
+    // this.loanerDetailesUserForm.get('requestdate').patchValue(this.formatDate(new Date()));
+   
+
+
+
+
+    // this.registerForm = this.fb.group({
+    //   name: ['', Validators.required],
+    //   email: ['', [Validators.required, Validators.email]],
+    //   username: ['', [Validators.required], this.customValidator.userNameValidator.bind(this.customValidator)],
+    //   password: ['', Validators.compose([Validators.required, this.customValidator.patternValidator()])],
+    //   confirmPassword: ['', [Validators.required]],
+    // },
+    //   {
+    //     validator: this.customValidator.MatchPassword('password', 'confirmPassword'),
+    //   }
+    // );
+
+
+
   }
 
 }

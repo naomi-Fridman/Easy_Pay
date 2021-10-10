@@ -1,0 +1,28 @@
+<!--                   
+ <label>סיסמא</label>
+<input type="{{ vis ? 'password' : 'text' }}" class="form-control" placeholder="סיסמא" [(ngModel)]="pass"
+  [ngModelOptions]="{standalone: true}" id="my_pass" name="my_pass" #my_pass="ngModel" maxlength="8"
+  required pattern="[a-zA-Z ]*" title="סיסמא באותיות אנגלית בלבד עד 8 תווים">
+<div *ngIf="my_pass.invalid && (my_pass.dirty || my_pass.touched)">
+  <p *ngIf="my_pass.errors.required" class="text-danger">
+    הזנת סיסמא חובה!
+  </p>
+  <p *ngIf="my_pass.errors.pattern" class="text-danger">
+    אותיות אנגלית בלבד!
+  </p>
+</div>‏  -->
+
+
+<form class="form-group"  style="direction: rtl;">
+
+    <label for="firstName" class="pull-right fileLabel required">שם פרטי</label>
+    <input type="text" name="firstName" #_firstName="ngModel" id="firstName" class="form-control" required
+        placeholder="firstName" [(ngModel)]="firstName">
+
+
+    <div *ngIf="_firstName.invalid && (_firstName.dirty || _firstName.touched)">
+        <p class="help is-danger" *ngIf="_firstName.errors.required">
+            Name is required.
+        </p>
+    </div>
+</form>

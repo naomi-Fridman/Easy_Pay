@@ -13,10 +13,10 @@ import { InputTextModule } from 'primeng/inputtext';
 import {ToastModule} from 'primeng/toast';
 import {MessageService} from 'primeng/api';
 import {AutoCompleteModule} from 'primeng/autocomplete';
-
+import { FormTryOutComponent } from './form-try-out/form-try-out.component';
 
 @NgModule({
-  declarations: [UsersComponent, EditUserDetailsComponent],
+  declarations: [UsersComponent, EditUserDetailsComponent, FormTryOutComponent],
   imports: [
     CommonModule,AccordionModule,ButtonModule,BrowserModule,
     FormsModule,

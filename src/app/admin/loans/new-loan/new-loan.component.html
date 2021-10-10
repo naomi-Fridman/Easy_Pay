@@ -22,7 +22,7 @@
   <div class="wrapper ">
     <div class="col-md-12 hello">
       <div class="card card-user">
-        <div class="title">
+        <!-- <div class="title">
           <label class="card-title pull-right mainTitle"> הלוואה חדשה</label>
         </div>
         <div>
@@ -48,7 +48,7 @@
                 <div class="form-group">
                   <label for="hebrewLoanDate" class="pull-right fileLabel">תאריך הלוואה עברי</label>
                   <input type="text" formControlName="hebrewLoanDate" class="form-control" placeholder="hebrewLoanDate"
-                    id="hebrewLoanDate" value="תאריך הלוואה עבר">
+                    id="hebrewLoanDate" value="תאריך הלוואה עבר" >
                 </div>
               </div>
             </div>
@@ -58,22 +58,109 @@
               <div class="col-md-3 pr-1">
                 <div class="form-group">
                   <label for="identityNumber" class="pull-right fileLabel required">ת"ז/דרכון</label>
-                  <input type="text" formControlName="identityNumber" class="form-control"
+                  <input type="text"  class="form-control" 
                     (blur)="checkUserForLoan($event)" id="identityNumber" placeholder="identityNumber">
                 </div>
               </div>
+              
+             
+
               <div class="col-md-3 px-1">
                 <div class="form-group">
                   <label for="firstName" class="pull-right fileLabel required">שם פרטי</label>
-                  <input type="text" formControlName="firstName" id="firstName" class="form-control" required
-                    placeholder="firstName"  [(ngModel)]="hero.firstName" >
-                  <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
+                  <input type="text" formControlName="firstName" id="firstName" class="form-control"   placeholder="firstName"   > -->
 
-                    <div *ngIf="firstName.errors?.required">
-                      firstName is required.
-                    </div>
-                   
-                  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  <!-- <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+                    <p class="help is-danger" *ngIf="firstName.errors.required">
+                      Name is required.
+                    </p>
+                  </div>  -->
+
+
+
+
+                  
+<!-- <label>סיסמא</label>
+<input type="{{ vis ? 'password' : 'text' }}" class="form-control" placeholder="סיסמא" [(ngModel)]="pass"
+  [ngModelOptions]="{standalone: true}" id="my_pass" name="my_pass" #my_pass="ngModel" maxlength="8"
+  required pattern="[a-zA-Z ]*" title="סיסמא באותיות אנגלית בלבד עד 8 תווים">
+<div *ngIf="my_pass.invalid && (my_pass.dirty || my_pass.touched)">
+  <p *ngIf="my_pass.errors.required" class="text-danger">
+    הזנת סיסמא חובה!
+  </p>
+  <p *ngIf="my_pass.errors.pattern" class="text-danger">
+    אותיות אנגלית בלבד!
+  </p>
+</div>‏ -->
+
+
+
+‏
+ <!-- <form (Submit)="Login(pass , userName)" [formGroup]="form">
+        <div class="col-md-12 px-1">
+          <div class="form-group">
+            <label>שם משתמש</label>
+            <input type="text" class="form-control" id="name" name="name" #name="ngModel" [(ngModel)]="userName"
+              [ngModelOptions]="{standalone: true}" placeholder="שם משתמש" minlength="2" maxlength="8"
+              pattern="[a-zA-Z ]*" required title="שם משתמש באותיות אנגלית מינימום 2 תווים מקסימום 8">
+          </div>
+          <div *ngIf="name.invalid && (name.dirty || name.touched)">
+            <p *ngIf="name.errors.required" class="text-danger">
+              הזנת שם - חובה!
+            </p>
+            <p *ngIf="name.errors.minlength" class="text-danger">
+              שם משתמש צריך להכיל מינימום 2 אותיות
+            </p>
+            <p *ngIf="name.errors.pattern" class="text-danger">
+              אותיות אנגלית בלבד!
+            </p>
+          </div>
+        </div>
+        <div class="col-md-12 px-1">
+          <div class="form-group">
+            <label>סיסמא</label>
+            <input type="{{ vis ? 'password' : 'text' }}" class="form-control" placeholder="סיסמא" [(ngModel)]="pass"
+              [ngModelOptions]="{standalone: true}" id="my_pass" name="my_pass" #my_pass="ngModel" maxlength="8"
+              required pattern="[a-zA-Z ]*" title="סיסמא באותיות אנגלית בלבד עד 8 תווים">
+            <div *ngIf="my_pass.invalid && (my_pass.dirty || my_pass.touched)">
+              <p *ngIf="my_pass.errors.required" class="text-danger">
+                הזנת סיסמא חובה!
+              </p>
+              <p *ngIf="my_pass.errors.pattern" class="text-danger">
+                אותיות אנגלית בלבד!
+              </p>
+            </div>
+            <button class="btn" (click)="vis=!vis;">
+              <i class="now-ui-icons ui-1_zoom-bold"></i>
+            </button>
+          </div>
+          <div *ngIf="errVis">
+            <p class="text-danger"> סיסמא שגויה - נא להזים סיסמא בשנית </p>
+          </div>
+ -->
+
+<!-- 
                 </div>
               </div>
               <div class="col-md-3 pl-1">
@@ -209,7 +296,7 @@
               </div>
             </div>
           </form>
-        </div>
+        </div> -->
 
         <!-- <div class="wrapper "> -->
         <div class="">
@@ -219,7 +306,6 @@
           <app-guaranty-details></app-guaranty-details>
           <app-guaranty-details></app-guaranty-details>
           <div class="end">
-            <!-- <div class="card card-user"> -->
             <div class="subTitleDiv">
               <label class="card-title pull-right subTitle"> הערות</label>
             </div>

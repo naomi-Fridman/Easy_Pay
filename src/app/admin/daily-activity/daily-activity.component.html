@@ -11,7 +11,7 @@
 <div class="container">
     <div class='card dollarRate'>
         <div class="card-body">
-              Todays Dollar Rate:{{currencyValue}}$
+              שער הדולר היומי:{{currencyValue}} ש"ח 
         </div>
     </div>
 <div class="topDaily row"><label class="daily-activity-lable">פעילות יומית</label></div>
@@ -20,7 +20,7 @@
             <div class='actionBtns'>
                 <button class='actionBtn' type="button" (click)="newLoan()">הלוואה חדשה </button>
                 <button class='actionBtn' type="button" (click)="newDeposite()">הפקדה חדשה </button>
-                <button class='actionBtn' type="button" (click)="newPayment()">החזר חוב </button>   
+                <button class='actionBtn' type="button" (click)="newPayment()">פרעון חדש  </button>   
             </div>   
         </div>
       </div>
@@ -31,7 +31,7 @@
                     <div class="row">
                         <div class="user_panel">
                             <div class="panel-heading">
-                                <h3 style="direction: rtl;" class="panel-title">תשלומים שהיו צריכים להיכנס ולא נכנסו</h3>
+                                <h3 style="direction: rtl;" class="panel-title">חדלות פרעון </h3>
                             </div>
                             <!-- <div class="panel-body" > -->
                                 <ul *ngFor="let user of todaysUsersListThatWerentPaid" class="list-group list-group-flush" style="padding: 0;">
@@ -90,7 +90,7 @@
                     <div class="row">
                         <div class="panel panel-default user_panel">
                             <div class="panel-heading">
-                                <h3 style="direction: rtl;" class="panel-title">תשלומים שנכנסו</h3>
+                                <h3 style="direction: rtl;" class="panel-title"> פרעונות יומיים </h3>
                                 <a routerLink="/payments">לכל התשלומים</a>
                             </div>
                             <div class="panel-body">
@@ -133,7 +133,7 @@
                     <div class="row">
                         <div class="panel panel-default user_panel">
                             <div class="panel-heading">
-                                <h3 style="direction: rtl;" class="panel-title">הלוואות שיצאו היום</h3>
+                                <h3 style="direction: rtl;" class="panel-title"> הלוואות יומיות</h3>
                             </div>
                             <div class="panel-body">
                                 <div class="table-container">
@@ -173,5 +173,6 @@
     
 </div>
 </div>
+
 
 
