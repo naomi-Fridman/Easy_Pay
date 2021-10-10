@@ -18,6 +18,7 @@ export class NewDepositeComponent implements OnInit {
   checkUserForDeposite(event) {
     this.userService.getUserByIdentityNumber(event.target.value).subscribe(user => {
       if (user) {
+        debugger
         this.isExistUser=true;
         this.DepositorDetailesUserForm.controls["id"].setValue(user.id);
         this.DepositorDetailesUserForm.controls["firstName"].setValue(user.firstName);
@@ -34,6 +35,7 @@ export class NewDepositeComponent implements OnInit {
   save() {
     if(this.isExistUser==true)
     {
+      debugger
       this.userService.updateUser(this.DepositorDetailesUserForm.value).subscribe(data=>{
         this.DepositorDetailesDepositeForm.controls["userId"].setValue(data.id)
         if(this.DepositorDetailesDepositeForm.controls["currencyId"].value=="3")
@@ -47,6 +49,7 @@ export class NewDepositeComponent implements OnInit {
     }
     else{
       this.userService.postUser(this.DepositorDetailesUserForm.value).subscribe(data=>{
+        debugger
         this.DepositorDetailesDepositeForm.controls["userId"].setValue(data)
         if(this.DepositorDetailesDepositeForm.controls["currencyId"].value=="3")
         this.DepositorDetailesDepositeForm.controls["currencyId"].setValue(JSON.parse(this.DepositorDetailesDepositeForm.controls["currencyId"].value))
@@ -77,7 +80,7 @@ export class NewDepositeComponent implements OnInit {
     telephoneNumber2: new FormControl(),
     email: new FormControl(""),
     comments: new FormControl(""),
-    identityNumber: new FormControl(0),   
+    identityNumber: new FormControl(),   
   });
 
   DepositorDetailesDepositeForm: FormGroup = new FormGroup({

@@ -12,6 +12,7 @@ export class DepositesService {
 
   constructor(private _http: HttpClient) { }
   postDeposite(newDeposite: Deposit): Observable<void> {
+    debugger
     // let headers = new Headers();
     // headers.append('Content-Type', 'application/json');
     return this._http.post<void>("/api/Deposit",newDeposite );
@@ -25,5 +26,8 @@ export class DepositesService {
   }
   getcurrancyTypeByCurrancyId(currancyId: number): Observable<Currency> {
     return this._http.get<Currency>("/api/CurrencyType/" + currancyId);
+  }
+  getDepositByUserId(userId:number):Observable<Deposit>{
+    return this._http.get<Deposit>("/api/Deposit/getDepositByUserId/" + userId);
   }
 }

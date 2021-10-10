@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { async } from '@angular/core/testing';
 import { Loaner } from 'src/app/models/Loaner';
 @Component({
@@ -9,7 +9,7 @@ import { Loaner } from 'src/app/models/Loaner';
   styleUrls: ['./loaner-detailes.component.css']
 })
 export class LoanerDetailesComponent implements OnInit {
-  constructor(private _acr: ActivatedRoute) {
+  constructor(private _acr: ActivatedRoute, private router: Router) {
   }
   private _loaner: Loaner
 
@@ -27,6 +27,10 @@ export class LoanerDetailesComponent implements OnInit {
   }
   editDetails() {
 
+  }
+  sendEmail(){
+    window.location.href="https://mailto:/_loaner.user.email"
+    // this.router.navigateByUrl("mailto:{{_loaner.user.email}}");
   }
   loanerDetailesForm: FormGroup = new FormGroup({
     // password:new FormControl(""),

@@ -1,28 +1,42 @@
+<!-- <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head> -->
 
-<div class="wrapper">
-        <div class="sidebar" >
-           
-            <ul class="nav header-menu" >
-                <li class="nav-item" [routerLinkActive]="['active']" >
-                  <a class="nav-link active" [routerLink]="['homePage']" aria-current="page" href="/homePage">פעילות יומית</a>
-                </li>
-                <li class="nav-item" [routerLinkActive]="['active']">
-                  <a class="nav-link" [routerLink]="['loans']" href="/loans">הלוואות</a>
-                </li>
-                <li class="nav-item" [routerLinkActive]="['active']">
-                  <a class="nav-link" [routerLink]="['payments']" href="/payments">תשלומים</a>
-                </li>
-                <li class="nav-item" [routerLinkActive]="['active']">
-                  <a class="nav-link " [routerLink]="['deposites']" href="/deposites" >פקדונות</a>
-                </li>
-                <li class="nav-item" [routerLinkActive]="['active']">
-                  <a class="nav-link " [routerLink]="['users']" href="/users" >משתמשים</a>
-                </li>
-              </ul>
-        </div>
-       
-        <div class="main-panel">
-            <router-outlet>
-            </router-outlet>
-        </div>
+<!-- <div class="wrapper">
+    <div class="sidebar">
+        <p-sidebar [style]="{height:'6em'}" [(visible)]="display" [modal]=false [showCloseIcon]=false position="top" [baseZIndex]="10000">
+                    <p-tabMenu class="p-tabMenuId" *ngIf="isLogged" [activeItem]="items3[4]" [model]="items3">
+        </p-tabMenu>
+        <h2 >שער הדולר <span class="badge badge-info">{{currencyValue}}</span></h2>
+
+        </p-sidebar>
+
+    </div>
+    <div class="main-panel">
+        <router-outlet>
+        </router-outlet>
+    </div>
+</div> -->
+<!-- <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light"> -->
+<!-- 
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
+
+<!-- <ul class="fixed-top navbar-light navbar-expand-lg bg-light" style="text-align: right; direction: rtl;" ngbNav
+    [activeId]="route.fragment | async"
+    >
+    <li [ngbNavItem]="link.routerLink" *ngFor="let link of links">
+        <a ngbNavLink routerLink={{link.routerLink}} [fragment]="link.routerLink">{{ link.label }}</a>
+    </li>
+    <h2 class="navbar-text" style="padding-top: 10px;">שער הדולר <span class="badge badge-info">{{currencyValue}}</span>
+    </h2>
+</ul> -->
+<!-- </div> -->
+<!-- </nav> -->
+<div style="direction: rtl;">
+    <router-outlet>
+    </router-outlet>
 </div>

@@ -13,6 +13,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import {ToastModule} from 'primeng/toast';
 import {MessageService} from 'primeng/api';
 import {AutoCompleteModule} from 'primeng/autocomplete';
+import {SelectButtonModule} from 'primeng/selectbutton';
+import {ToggleButtonModule} from 'primeng/togglebutton';
 
 
 @NgModule({
@@ -20,7 +22,7 @@ import {AutoCompleteModule} from 'primeng/autocomplete';
   imports: [
     CommonModule,AccordionModule,ButtonModule,BrowserModule,
     FormsModule,
-    ReactiveFormsModule,InputTextModule,ToastModule,AutoCompleteModule
+    ReactiveFormsModule,InputTextModule,ToastModule,AutoCompleteModule,SelectButtonModule,ToggleButtonModule
   ],
  providers: [MessageService],
  exports:[UsersComponent]

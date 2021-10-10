@@ -1,79 +1,86 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
 <p>edit-user-details works!</p>
-<form [formGroup]="userDetailesForm" >
-    <div class="p-field p-grid">
-    <label for="userName" class="p-col-fixed" style="width:100px">userName</label>
-    <div class="p-col">
-        <input formControlName="userName" id="userName" type="text" pInputText> 
-    </div>
-    </div>
-    <div class="p-field p-grid">
-        <label for="password" class="p-col-fixed" style="width:100px">password</label>
-        <div class="p-col">
-            <input formControlName="password" id="password" type="text" pInputText> 
+<div class="container register-form">
+    <form [formGroup]="userDetailesForm">
+
+        <div class="note">
+            <p>פרטי המשתמש {{_user.firstName}} {{_user.lastName}}</p>
         </div>
+    <div class="form-content">
+        <div class="row">
+            <div class="p-field p-grid col">
+                <label for="firstName"  style="width:100px">שם פרטי</label>
+                <div class="p-col">
+                    <input formControlName="firstName" id="firstName" type="text" pInputText>
+                </div>
+            </div>
+
+            <div class="p-field p-grid col">
+                <label for="lastname"  style="width:100px">שם משפחה</label>
+                <div class="p-col">
+                    <input formControlName="lastName" id="lastname" type="text" pInputText>
+                </div>
+            </div>
+
+            <div class="p-field p-grid col">
+                <label for="identityNumber"  style="width:100px">מספר זהות</label>
+                <div class="p-col">
+                    <input formControlName="identityNumber" id="identityNumber" type="text" pInputText>
+                </div>
+            </div>
         </div>
-    <div class="p-field p-grid">
-    <label for="firstName" class="p-col-fixed" style="width:100px">firstName</label>
-    <div class="p-col">
-        <input formControlName="firstName" id="firstName" type="text" pInputText> 
-    </div>
-    </div>
+        <div class="row">
+            <div class="p-field p-grid col">
+                <label for="telephoneNumber1"  style="width:100px"> טלפון</label>
+                <div class="p-col">
+                    <input formControlName="telephoneNumber1" id="telephoneNumber1" type="text" pInputText>
+                </div>
+            </div>
 
-    <div class="p-field p-grid">
-    <label for="lastname" class="p-col-fixed" style="width:100px">שם משפחה</label>
-    <div class="p-col">
-        <input formControlName="lastName" id="lastname" type="text" pInputText> 
-    </div>
-    </div>
+            <div class="p-field p-grid col">
+                <label for="telephoneNumber2" style="width:100px"> פלאפון</label>
+                <div class="p-col">
+                    <input formControlName="telephoneNumber2" id="telephoneNumber2" type="text" pInputText>
+                </div>
+            </div>
 
-    <div class="p-field p-grid">
-    <label for="identityNumber" class="p-col-fixed" style="width:100px">identityNumber</label>
-    <div class="p-col">
-        <input formControlName="identityNumber" id="identityNumber" type="text" pInputText> 
-    </div>
-    </div>
+            <div class="p-field p-grid col">
+                <label for="email" style="width:100px">מייל</label>
+                <div class="p-col">
+                    <input formControlName="email" id="email" type="text" pInputText>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="p-field p-grid col">
+                <label for="address" style="width:100px">כתובת</label>
+                <div class="p-col">
+                    <input formControlName="address" id="address" type="text" pInputText>
+                </div>
+            </div>
 
-    <div class="p-field p-grid">
-    <label for="email" class="p-col-fixed" style="width:100px">מייל</label>
-    <div class="p-col">
-        <input formControlName="email" id="email" type="text" pInputText> 
-    </div>
-    </div>
+            <div class="p-field p-grid col">
+                <label for="city" style="width:100px">עיר</label>
+                <div class="p-col">
+                    <input formControlName="city" id="city" type="text" pInputText>
+                </div>
+            </div>
 
-    <div class="p-field p-grid">
-    <label for="address" class="p-col-fixed" style="width:100px">כתובת</label>
-    <div class="p-col">
-        <input formControlName="address" id="address" type="text" pInputText> 
+            <div class="p-field p-grid col">
+                <label for="comments"  style="width:100px"> הערות</label>
+                <div class="p-col">
+                    <input formControlName="comments" id="comments" type="text" pInputText>
+                </div>
+            </div>
+        </div>
+       
+            <button class="btnSubmit" type="button" pButton  (click)="save()" label="אישור"></button>
+      
     </div>
-    </div>
-
-    <div class="p-field p-grid">
-    <label for="city" class="p-col-fixed" style="width:100px">city</label>
-    <div class="p-col">
-        <input formControlName="city" id="city" type="text" pInputText> 
-    </div>
-    </div>
-
-    <div class="p-field p-grid">
-    <label for="telephoneNumber1" class="p-col-fixed" style="width:100px">telephoneNumber</label>
-    <div class="p-col">
-        <input formControlName="telephoneNumber1" id="telephoneNumber1" type="text" pInputText> 
-    </div>
-    </div>
-    
-    <div class="p-field p-grid">
-    <label for="telephoneNumber2" class="p-col-fixed" style="width:100px">telephoneNumber2</label>
-    <div class="p-col">
-        <input formControlName="telephoneNumber2" id="telephoneNumber2" type="text" pInputText> 
-    </div>
-    </div>
-
-    <div class="p-field p-grid">
-    <label for="comments" class="p-col-fixed" style="width:100px">comments</label>
-    <div class="p-col">
-        <input formControlName="comments" id="comments" type="text" pInputText> 
-    </div>
-    </div>
-    <button type="button" pButton icon="pi pi-times" (click)="save()" label="אישור"></button>
-
-</form>
+    </form>
+</div>

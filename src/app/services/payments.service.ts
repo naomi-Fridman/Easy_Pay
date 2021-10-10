@@ -13,6 +13,7 @@ export class PaymentsService {
   constructor(private _http: HttpClient) { }
 
   // getAllPayments(dtoPayments:DTO_Payments):Observable< Payment[]>{
+  //   debugger
   //   const params = new HttpParams()
   //   .set('collectionSumFrom', JSON.stringify(dtoPayments.collectionSumFrom))
   //   .set('collectionSumTill', JSON.stringify(dtoPayments.collectionSumTill));
@@ -56,14 +57,11 @@ export class PaymentsService {
     return this._http.post<Payment[]>("/api/Payments", dtoPayments);
   }
   postPayment(newPayment: Payment): Observable<number> {
+    debugger
     return this._http.post<number>("/api/Payments/newPayment", newPayment);
   }
   getTheLastPayment(): Observable<Payment> {
     return this._http.get<Payment>("/api/Payments");
-  }
-  getPaymentForLoan(userId: number, typeId): Observable<Payment[]> {
-    //return this._http.get<Payment[]>(`/api/Payments/${userId}/${typeId}`);
-    return this._http.get<Payment[]>("/api/Payments/"+{userId}+"/"+{typeId});
   }
 }
 

@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: "payments", component: PaymentsComponent },
   { path: "homePage", component: DailyActivityComponent },
   { path: "admin", redirectTo: 'adminl', pathMatch: 'full' },
-  { path: "", component: AppComponent },
+  // { path: "", component: AppComponent },
   // {path: "AdminComponent",loadChildren: "./admin/admin.module#AdminModule"},
   // {path: "register",component: RegisterComponent},
   // {path:"admin" , redirectTo:'adminl' ,pathMatch:'full'},

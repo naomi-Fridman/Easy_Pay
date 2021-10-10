@@ -1,0 +1,46 @@
+/* body{
+    background-color: #525252;
+} */
+
+.centered-form{
+	margin-top: 60px;
+}
+
+.centered-form .panel{
+	background: rgba(255, 255, 255, 0.8);
+	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+/* div.panel.panel-default{
+    width: 100%;
+
+} */
+
+body {
+    padding: 20px 0;
+    font-family: Lato, sans-serif;
+}
+  
+div.card{
+    width: 95%;
+    
+    /* padding-bottom: 10px;
+    padding-top: 10px; */
+    
+}
+div.card-body{
+    padding: 10px;
+}
+.bg-overlay{
+    background: rgba(0,0,0, .7);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right:0;
+    z-index: 0;
+}
+.btn{
+    min-width: 190px;
+    min-height: 50px;
+    font-size: larger;
+}

@@ -1,64 +1,83 @@
-<p>edit-details works!</p>
-<div style="direction: rtl;">
-    <b>{{_depositor.user.firstName}} {{_depositor.user.lastName}}</b><br>
-    <!-- <label class="p-col-fixed" style="width:100px">טלפונים: </label> -->
-        {{_depositor.user.telephoneNumber1}} | {{_depositor.user.telephoneNumber2}} <br>
-    <a href="mailto:{{_depositor.user.email}}">לחץ כאן לשליחת מייל </a><br>
-    <a [routerLink]="['/editUserDetails/' ,_depositor.user.id]">לפרטי המשתמש המלאים</a>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+<div class="container" style="direction: rtl; text-align: center; margin-bottom: 5px;">
+    <!-- <div class="row">
+        <div class="col-12">
+            <b>{{_depositor.user.firstName}} {{_depositor.user.lastName}}</b>
+        </div>
+    </div> -->
+    <div class="row">
+        <div class="col">
+            {{_depositor.user.telephoneNumber1}}
+        </div>
+        <div class="col">
+            {{_depositor.user.telephoneNumber2}}
+        </div>
+    </div>
+    <div class="row  d-flex justify-content-center">
+        <a href="mailto:{{_depositor.user.email}}">{{_depositor.user.email}} </a><br>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <a [routerLink]="['/editUserDetails/' ,_depositor.user.id]" class="btn btn-outline-info btn-lg"
+            role="button">לפרטי המשתמש המלאים</a>
+    </div>
+    <!-- <a href="mailto:{{_depositor.user.email}}" class="btn btn-primary btn-lg " tabindex="-1" role="button" aria-disabled="false">{{_depositor.user.email}}</a> -->
 </div>
 <form [formGroup]="depositorDetailesForm">
 
     <div class="p-field p-grid" style="direction: rtl;">
-        <label for="sum" class="p-col-fixed" style="width:100px" >סכום ההפקדה</label>
+        <label for="sum" class="p-col">סכום ההפקדה</label>
         <div class="p-col">
             <input formControlName="sum" id="sum" type="text" pInputText>
         </div>
     </div>
 
     <div class="p-field p-grid" style="direction: rtl;">
-        <label for="depositeDate" class="p-col-fixed" style="width:100px" >תאריך הפקדה</label>
+        <label for="depositeDate" class="p-col">תאריך הפקדה</label>
         <div class="p-col">
             <input formControlName="depositeDate" id="depositeDate" type="text" pInputText>
         </div>
     </div>
-    
+
     <div class="p-field p-grid" style="direction: rtl;">
-        <label for="hebrewDepositeDate" class="p-col-fixed" style="width:100px" >תאריך הפקדה עברי</label>
+        <label for="hebrewDepositeDate" class="p-col">תאריך הפקדה עברי</label>
         <div class="p-col">
             <input formControlName="hebrewDepositeDate" id="hebrewDepositeDate" type="text" pInputText>
         </div>
     </div>
 
     <div class="p-field p-grid" style="direction: rtl;">
-        <label for="returnDate" class="p-col-fixed" style="width:100px" >תאריך החזר</label>
+        <label for="returnDate" class="p-col">תאריך החזר</label>
         <div class="p-col">
             <input formControlName="returnDate" id="returnDate" type="text" pInputText>
         </div>
     </div>
 
     <div class="p-field p-grid" style="direction: rtl;">
-        <label for="hebrewDepositeReturnDate" class="p-col-fixed" style="width:100px" >תאריך החזר עברי</label>
+        <label for="hebrewDepositeReturnDate" class="p-col">תאריך החזר עברי</label>
         <div class="p-col">
             <input formControlName="hebrewDepositeReturnDate" id="hebrewDepositeReturnDate" type="text" pInputText>
         </div>
     </div>
 
     <div class="p-field p-grid" style="direction: rtl;">
-        <label for="paymentsNumber" class="p-col-fixed" style="width:100px" >מספר תשלומים</label>
+        <label for="paymentsNumber" class="p-col">מספר תשלומים</label>
         <div class="p-col">
-            <input formControlName="paymentsNumber" id="paymentsNumber" type="text" pInputText>
+            <input min="0" formControlName="paymentsNumber" id="paymentsNumber" type="number" pInputText>
         </div>
     </div>
     <div class="p-field p-grid" style="direction: rtl;">
-        <label for="status" class="p-col-fixed" style="width:100px" >מצב ההפקדה</label>
+        <label for="status" class="p-col">מצב ההפקדה</label>
         <div class="p-col">
-            <p-checkbox [formControl]="depositorDetailesForm.controls['status']" [binary]="true" id="status"></p-checkbox>
+            <p-checkbox [formControl]="depositorDetailesForm.controls['status']" [binary]="true" id="status">
+            </p-checkbox>
         </div>
     </div>
-   
+
 
     <div class="p-field p-grid" style="direction: rtl;">
-        <label for="comment" class="p-col-fixed" style="width:100px" >הערות</label>
+        <label for="comment" class="p-col">הערות</label>
         <div class="p-col">
             <input formControlName="comment" id="comment" type="text" pInputText>
         </div>

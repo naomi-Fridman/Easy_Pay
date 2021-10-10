@@ -51,6 +51,7 @@ export class DailyActivityComponent implements OnInit {
     const date = new Date(Date.now())
     //var tryOut = new Date(Date.parse('2020/07/01'));
     this.paymentsService.getAllPaymentsThatWerentPadeByDate(date).subscribe(data => {
+      debugger
       this.todaysUsersListThatWerentPaid = data;
     })
     this.dtoPayment.dateExact = new Date();

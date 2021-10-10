@@ -211,11 +211,12 @@ button:focus {
   margin-top: 15px;
 }
 .list__label--header {
-  color: #9a9a9a;
+  color: #423c3c;
+  font-size: medium;
 }
-.list__label--value {
-  font-size: 1.3em;
-}
+/* .list__label--value {
+  font-size: 1.5em;
+} */
 @media screen and (max-width: 650px) {
   .list {
     -webkit-box-orient: vertical;
@@ -247,4 +248,261 @@ button:focus {
   background: -webkit-linear-gradient(left, #cb2d3e, #ef473a);
   background: linear-gradient(to right, #cb2d3e, #ef473a);
   color: white;
+}
+
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
+body {font-family: "Roboto", Helvetica, Arial, sans-serif;}
+* {
+  /*margin: 100;*/
+  /*padding: 0;*/
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+body {
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  font-size: 12px;
+  line-height: 30px;
+  color: #777;
+  background: #FFF;
+}
+/* The Modal (background) */
+.modal {
+  /*display: none;  Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  
+  margin: auto;
+  padding: 0;
+  /*border: 1px solid #888;
+  /*border-radius: 20px;*/
+  max-width: 400px;
+  width: 100%;
+  height: 450px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.5s
+}
+
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+#myBtn{
+  background-color: #00a68c;
+  border: none;
+  border-radius: 30px;
+  outline: none;
+  width: 100px;
+  height: 30px;
+  box-shadow: inset 0 0 0 0 #3a7999;
+  cursor: pointer;
+ overflow: hidden;
+ /*margin: 50px 50px;*/
+ position: relative;
+ left: 50px;
+ top: 100px;
+}
+#contact input[type="text"],
+#contact input[type="text"],
+#contact input[type="text"],
+#contact input[type="url"],
+#contact datetime-local,
+#contact input[type="text"]
+#contact button[type="submit"] {
+  font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
+}
+#contact {
+  /*background: #F9F9F9;*/
+  
+  /*margin: 150px 0;*/
+  /*box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);*/
+}
+#contact h3 {
+  display: block;
+  font-size: 30px;
+  font-weight: 300;
+  margin-bottom: 10px;
+  color:#777;
+}
+#contact h5 {
+  margin: 5px 0 15px;
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+  color:#777;
+
+}
+fieldset {
+  border: medium none !important;
+  margin: 0 0 10px;
+  min-width: 100%;
+  padding: 0;
+  width: 100%;
+}
+#contact input[type="text"],
+#contact input[type="text"],
+#contact input[type="text"],
+#contact input[type="url"],
+#contact input[type="text"]
+#contact datetime-local {
+  width: 100%;
+  border: 1px solid #ccc;
+  background: #FFF;
+  margin: 0 0 5px;
+  padding: 10px;
+    opacity:1;
+}
+#contact input[type="text"]:hover,
+#contact input[type="text"]:hover,
+#contact input[type="text"]:hover,
+#contact input[type="url"]:hover,
+#contact input[type="text"]:hover,
+#contact datetime-local:hover {
+  -webkit-transition: border-color 0.3s ease-in-out;
+  -moz-transition: border-color 0.3s ease-in-out;
+  transition: border-color 0.3s ease-in-out;
+  border: 1px solid #aaa;
+}
+#contact button[type="submit"] {
+  cursor: pointer;
+  width: 50%;
+  border: none;
+  background: #4CAF50;
+  color: #FFF;
+  margin: 0 0 5px;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 30px;
+
+}
+
+#contact button[type="submit"]:hover {
+  background: #43A047;
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+  text-color:white;
+}
+
+#contact button[type="submit"]:active {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+.myBtn{
+  color:white;
+  
+}
+.copyright {
+  text-align: left;
+}
+
+
+body{
+  height: 100vh;
+  text-align: center;
+}
+  /*Trigger Button*/
+.login-trigger {
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(to bottom right, #B05574, #F87E7B);
+  padding: 15px 30px;
+  border-radius: 30px;
+  position: relative; 
+  top: 50%;
+}
+
+/*Modal*/
+h4 {
+  font-weight: bold;
+  color: #fff;
+}
+.close {
+  color: #fff;
+  transform: scale(1.2)
+}
+.modal-content {
+  font-weight: bold;
+  background: linear-gradient(to bottom right,#F87E7B,#B05574);
+}
+.form-control {
+  margin: 1em 0;
+}
+.form-control:hover, .form-control:focus {
+  box-shadow: none;  
+  border-color: #fff;
+}
+.username, .password {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  border-bottom: 2px solid #eee;
+  padding-left: 0;
+  font-weight: normal;
+  background: transparent;  
+}
+.form-control::-webkit-input-placeholder {
+  color: #eee;  
+}
+.form-control:focus::-webkit-input-placeholder {
+  font-weight: bold;
+  color: #fff;
 }

@@ -15,21 +15,26 @@ export class LoansService {
   constructor(private _http: HttpClient) { }
   getAllLoans(dtoLoans:DTO_loans):Observable< Loan[]>{
     var sum;
-    sum=dtoLoans.sumTill
+    if(dtoLoans!=null){
+      sum=dtoLoans.sumTill
     dtoLoans.sumTill=parseInt(sum)
     sum=dtoLoans.sumFrom
     dtoLoans.sumFrom=parseInt(sum)
     sum=dtoLoans.sumExact
     dtoLoans.sumExact=parseInt(sum)
+    }
     return this._http.post<Loan[]>("/api/Loans",dtoLoans);
    }
   // getAllLoans(dto_loans : DTO_loans):Observable< Loan[]>{
+  //   debugger
   //   return this._http.post<Loan[]>("/api/Loans",dto_loans);
   // }
   getPaymentIdByTypeName(typeName: string): Observable<number> {
     return this._http.get<number>(`/api/PaymentType/${typeName}`)
   }
-  
+  getPaymentForLoan(userId: number, typeId): Observable<Payment[]> {
+    return this._http.get<Payment[]>(`/api/Payments/${userId}/${typeId}`);
+  }
   getGuarantiesForLoan(guarantiesId: number[]): Observable<Guaranty[]> {
     let params = new HttpParams();
     for (const guaranty of guarantiesId) {
@@ -44,6 +49,10 @@ export class LoansService {
     return this._http.post<void>("/api/Loans/uploadShtar",newLoan)
   }
   checkIfUserHasLoan(userId:number):Observable<Loan>{
+    debugger
     return this._http.get<Loan>("/api/Loans/checkIfUserHasLoan/"+userId)
+  }
+  getLoanByUserId(userId:number):Observable<Loan>{
+    return this._http.get<Loan>("/api/Loans/getLoanByUserId/" + userId);
   }
 }

@@ -49,6 +49,7 @@ export class UsersService {
     return this._http.get<Array<string>>("/api/User/getAddress/"+JSON.stringify(text));
   }
   postUser(newUser:User):Observable<number>{
+    debugger
     return this._http.post<number>("/api/User/newUser", newUser);
   }
 }

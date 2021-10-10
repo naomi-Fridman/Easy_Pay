@@ -26,12 +26,19 @@ export class DepositesComponent implements OnInit {
   dtoUsersPrms:DTO_userParms=new DTO_userParms();
   // :Observable< Depositor[]>;
   display: boolean = false;
+
+  display1: boolean = false;
   editDetails(depositor:Depositor){ 
     this.router.navigate(['/editDetails',JSON.stringify(depositor.deposite.id)]);
   }
   showDetails(depositor:Depositor){ 
     this.depositor1=depositor;
     this.display = true;
+  }
+  showDialog(){
+   var modal = document.getElementById("myModal")
+   debugger
+   modal.style.display = "block";
   }
   constructor(private userService:UsersService,private router:Router,private depositesService:DepositesService) { 
    
@@ -51,9 +58,11 @@ export class DepositesComponent implements OnInit {
             this.depositorToDisplay[i]= new Depositor()            
             this.depositorToDisplay[i].user=user;
             this.depositorToDisplay[i].deposite=deposit;
+            i++;
             }
           });     
         });
+        debugger
     },err=>{
       this.userList=[];
     });

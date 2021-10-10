@@ -26,6 +26,7 @@ export class NewPaymentComponent implements OnInit {
   save() {
     this.userService.getUserByIdentityNumber(this.PaymentDetailesUserForm.controls["identityNumber"].value).subscribe(user => {
       this.loanService.checkIfUserHasLoan(user.id).subscribe(loan => {
+        debugger
         if (loan) {
           if (this.PaymentDetailesForm.controls["currencyId"].value == "3")
             this.PaymentDetailesForm.controls["currencyId"].setValue(JSON.parse(this.PaymentDetailesForm.controls["currencyId"].value))
@@ -39,6 +40,7 @@ export class NewPaymentComponent implements OnInit {
           this.payment.collectionSum = this.PaymentDetailesForm.controls["collectionSum"].value;
           this.payment.comments = this.PaymentDetailesForm.controls["comments"].value;
           this.payment.paymentMethodId = 1//1 is cash but we have another option of 2 - chek - so we have to check it
+            debugger
             if(loan.monthlyPaymentSum>this.payment.collectionSum){
               alert("שים לב: סכום התשלום החודשי הוא:"+ loan.monthlyPaymentSum +"האם אתה בטוח שאתה רוצה להכיס את הסכום המבוקש?")
               this.payment.comments+=" הוכנס תשלום נמוך מהתשלום החודשי"

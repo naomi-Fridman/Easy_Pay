@@ -30,6 +30,7 @@ export class PaymentsComponent implements OnInit {
   dtoUsers:DTO_userParms=new DTO_userParms();
   userList: User[]
   selectedSum: string = "sum";
+  public isCollapsed = false;
   
   onChange(newValue: string) {
     if (newValue == "from") {

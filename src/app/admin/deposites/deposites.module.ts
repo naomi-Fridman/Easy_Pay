@@ -3,11 +3,10 @@ import { CommonModule } from '@angular/common';
 import { DepositesComponent } from './deposites/deposites.component';
 import {OrderListModule} from 'primeng/orderlist'; 
 import {ButtonModule} from 'primeng/button';
-import { ShowDetailsComponent } from './show-details/show-details.component';
 import { EditDetailsComponent } from './edit-details/edit-details.component';
 import {CalendarModule} from 'primeng/calendar';
 import { InputTextModule } from 'primeng/inputtext';
-import {  ReactiveFormsModule } from '@angular/forms';
+import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {DialogModule} from 'primeng/dialog';
 import {AccordionModule} from 'primeng/accordion';
 import {MessagesModule} from 'primeng/messages';
@@ -20,7 +19,7 @@ import { NewDepositeComponent } from './new-deposite/new-deposite.component';
 
 
 @NgModule({
-  declarations: [DepositesComponent, ShowDetailsComponent, EditDetailsComponent, NewDepositeComponent],
+  declarations: [DepositesComponent, EditDetailsComponent, NewDepositeComponent],
   imports: [
     CommonModule,
     OrderListModule,
@@ -34,6 +33,7 @@ import { NewDepositeComponent } from './new-deposite/new-deposite.component';
     MessageModule,
     CurrencyModule,
     RouterModule,
+    FormsModule,
     CheckboxModule
   ],
   exports:[

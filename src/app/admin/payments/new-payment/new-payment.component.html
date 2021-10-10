@@ -10,7 +10,7 @@
     <div class="p-field p-grid">
         <label for="identityNumber" class="p-col-fixed" style="width:100px">ת"ז/דרכון</label>
         <div class="p-col">
-            <input  formControlName="identityNumber" id="identityNumber" type="number" pInputText>
+            <input  min="0" formControlName="identityNumber" id="identityNumber" type="number" pInputText>
         </div>
     </div>
     <div dir="rtl" *ngIf="identity" class="alert alert-danger" style = "height:35px;padding-top:8px;width:50%;Float:left;">
@@ -39,7 +39,7 @@
     <div class="p-field p-grid">
         <label for="collectionSum" class="p-col-fixed" style="width:100px">סכום</label>
         <div class="p-col">
-            <input formControlName="collectionSum" id="collectionSum" type="number" pInputText>
+            <input min="0" formControlName="collectionSum" id="collectionSum" type="number" pInputText>
         </div>
     </div>
     <div class="p-field p-grid">

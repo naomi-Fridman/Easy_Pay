@@ -9,7 +9,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { LoginModule } from './login/login.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {TabMenuModule} from 'primeng/tabmenu';
-// import { AccordionModule } from 'ngx-bootstrap/accordion';
+import {SidebarModule} from 'primeng/sidebar';
 
 
 @NgModule({
@@ -18,13 +18,13 @@ import {TabMenuModule} from 'primeng/tabmenu';
     PageNotFoundComponent
   ],
   imports: [
+    SidebarModule,
     BrowserModule,
     AppRoutingModule,
     AdminModule,
     LoginModule,
     BrowserAnimationsModule,
-    TabMenuModule,
-    // AccordionModule.forRoot(),
+    TabMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

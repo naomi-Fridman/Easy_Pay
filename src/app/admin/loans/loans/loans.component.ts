@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { User } from 'src/app/models/User';
 import { Loan } from 'src/app/models/Loan';
+import { AdminService } from '../../../services/admin.service';
 import { Payment } from 'src/app/models/Payment';
 import { Router } from '@angular/router';
 import { Loaner } from 'src/app/models/Loaner';
@@ -9,10 +10,7 @@ import { GuarantyUser } from 'src/app/models/GuarantyUser';
 import { UsersService } from '../../../services/users.service';
 import { DTO_loans } from 'src/app/models/DTO_loans';
 import { DTO_userParms } from 'src/app/models/DTO_userParms';
-import { PaymentsService } from 'src/app/services/payments.service';
-import { LoanPaymantsStatus } from 'src/app/models/loanPaymantsStatus';
-import { error } from 'protractor';
-import { DTO_Payments } from 'src/app/models/DTO_Payments';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-loans',
@@ -22,7 +20,6 @@ import { DTO_Payments } from 'src/app/models/DTO_Payments';
 export class LoansComponent implements OnInit {
   loansList: Loan[];
   userList: User[];
-  dtoPayments: DTO_Payments = new DTO_Payments();
   paymentList: Payment[];
   loanerToDisplay: Loaner[];
   display: boolean = false;
@@ -30,11 +27,11 @@ export class LoansComponent implements OnInit {
   guarantiesId: number[] = new Array();
   guarantyList: GuarantyUser[];
   guaranty: GuarantyUser = new GuarantyUser();
-  selectedPayment: Payment;
-  dto_loans: DTO_loans = new DTO_loans();
-  dtoUsersPrms: DTO_userParms = new DTO_userParms();
+  selectedPayment:Payment;
+  dto_loans: DTO_loans= new DTO_loans();
+  dtoUsersPrms:DTO_userParms=new DTO_userParms();
   selectedSum: string;
-  typId: number
+
   onChange(newValue: string) {
     if (newValue == "from") {
       this.dto_loans.sumExact = null;
@@ -55,18 +52,32 @@ export class LoansComponent implements OnInit {
   editDetails(loaner: Loaner) {
     this.router.navigate(['/loanerDetails', JSON.stringify(loaner.loaner.id)]);
   }
-  showDetails(_loaner: Loaner) {
+  
+  showDetails(_loaner: Loaner,content) {
+    debugger
+    // this.loanerDetailesForm.controls["sum"].setValue(_loaner.loaner.sum);
+    // this.loanerDetailesForm.controls["loanDate"].setValue(_loaner.loaner.loanDate);
+    // this.loanerDetailesForm.controls["hebrewLoanDate"].setValue(_loaner.loaner.hebrewLoanDate);
+    // this.loanerDetailesForm.controls["repaymentDate"].setValue(_loaner.loaner.repaymentDate);
+    // this.loanerDetailesForm.controls["hebrewRepaymentDate"].setValue(_loaner.loaner.hebrewRepaymentDate);
+    // this.loanerDetailesForm.controls["paymentsNumber"].setValue(_loaner.loaner.paymentsNumber);
+    // this.loanerDetailesForm.controls["paidUp"].setValue(_loaner.loaner.paidUp);
     this.loaner = _loaner;
     this.display = true;
+    // //this.modalService.open(longContent, { scrollable: true });
+
+    //  this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    //   this.closeResult = `Closed with: ${result}`;
+    //   }, (reason) => {
+    //   this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    //  });
   }
   getPaymentsForLoan(userId: number) {
-    var payments = [];
-    var i = 0;
     this.loanService.getPaymentIdByTypeName("פרעון").subscribe(data =>
-      this.paymentService.getPaymentForLoan(userId, data).subscribe(p => {
-        this.loaner.payments = p;
-        payments[i++] = p;
-      }),
+      this.loanService.getPaymentForLoan(userId, data).subscribe(
+         p =>
+        this.loaner.payments = p
+      )
     )
   }
   getGuarantiesForLoan() {
@@ -91,19 +102,7 @@ export class LoansComponent implements OnInit {
         }))
       this.loaner.guaranty = this.guarantyList;
     }
-  }
-  culcLoanPadeUp(loaner: Loaner) {
-    loaner.payments.forEach(p => {
-      if (p.paymentDate > loaner.loaner.loanDate) {
-        loaner.loanPaymantsStatus.sumPadeUp += p.collectionSum;
-      }
-    }
-    );
-    loaner.loanPaymantsStatus.sumLeft = loaner.loaner.sum - loaner.loanPaymantsStatus.sumPadeUp;
-    loaner.loanPaymantsStatus.numberOfPaymentsThatWerePayed = loaner.loanPaymantsStatus.sumPadeUp / loaner.loaner.monthlyPaymentSum;
-    loaner.loanPaymantsStatus.numberOfPaymentsThatWerentPayed = loaner.loaner.paymentsNumber - loaner.loanPaymantsStatus.numberOfPaymentsThatWerePayed;
-    loaner.loanPaymantsStatus.rest = loaner.loanPaymantsStatus.sumPadeUp % loaner.loaner.monthlyPaymentSum;
-    return loaner.loanPaymantsStatus;
+    //document.getElementById("guarantysCo").innerHTML = ""; 
   }
   getAllPayments() {
     this.loanService.getAllLoans(this.dto_loans).subscribe(data => {
@@ -122,77 +121,44 @@ export class LoansComponent implements OnInit {
             i += 1;
           }
         })
-      })
+      }) 
     });
   }
-  constructor(private router: Router, private loanService: LoansService, private userService: UsersService, private paymentService: PaymentsService) {
+
+
+  closeResult = '';
+
+
+  constructor( private router: Router, private loanService: LoansService,private userService: UsersService) {
     this.loanerToDisplay = new Array();
-    this.paymentService.getAllPayments(this.dtoPayments).subscribe(data => {
-      this.paymentList = data;
-      this.loanService.getPaymentIdByTypeName("פרעון").subscribe(typeId => this.typId = typeId);
-      this.loanService.getAllLoans(this.dto_loans).subscribe(data => {
-        this.loansList = data;
-        this.userService.getAllUsers(this.dtoUsersPrms).subscribe(data => {
-          this.userList = data;
-          var i = 0, j = 0;
-          this.loansList.forEach(loan => {
-            this.userList.forEach(user => {
-              if (user.id == loan.userId) {
-                this.loanerToDisplay[i] = new Loaner()
-                this.loanerToDisplay[i].user = user;
-                this.loanerToDisplay[i].loaner = loan;
-              }
-            });
-            this.paymentList.forEach(p => {
-              if (p.userId == loan.userId && p.typeId == this.typId)
-              this.loanerToDisplay[i].payments = [];
-              this.loanerToDisplay[i].payments[j] = new Payment();
-              this.loanerToDisplay[i].payments[j++] = p;
-            });
-
-            if (loan.paidUp == false) {
-              if (this.loanerToDisplay[i].payments != [] && this.loanerToDisplay[i].payments != null) {
-                this.loanerToDisplay[i].loanPaymantsStatus = new LoanPaymantsStatus();
-                this.loanerToDisplay[i].loanPaymantsStatus.sumPadeUp = 0;
-                this.loanerToDisplay[i].payments.forEach(p => {
-                  if (p.paymentDate > this.loanerToDisplay[i].loaner.loanDate) {
-                    if (this.loanerToDisplay[i].loanPaymantsStatus.sumPadeUp == null) {
-                      this.loanerToDisplay[i].loanPaymantsStatus.sumPadeUp += p.collectionSum;
-                    }
-                    else {
-                      this.loanerToDisplay[i].loanPaymantsStatus.sumPadeUp += p.collectionSum;
-                    }
-                  }
-                }
-                );
-                if (this.loanerToDisplay[i].loanPaymantsStatus == null || this.loanerToDisplay[i].loanPaymantsStatus == undefined) {
-                  this.loanerToDisplay[i].loanPaymantsStatus = new LoanPaymantsStatus();
-                  this.loanerToDisplay[i].loanPaymantsStatus.sumPadeUp = 0;
-                }
-                this.loanerToDisplay[i].loanPaymantsStatus.sumLeft = this.loanerToDisplay[i].loaner.sum - this.loanerToDisplay[i].loanPaymantsStatus.sumPadeUp;
-                this.loanerToDisplay[i].loanPaymantsStatus.numberOfPaymentsThatWerePayed = this.loanerToDisplay[i].loanPaymantsStatus.sumPadeUp / this.loanerToDisplay[i].loaner.monthlyPaymentSum;
-                this.loanerToDisplay[i].loanPaymantsStatus.numberOfPaymentsThatWerentPayed = this.loanerToDisplay[i].loaner.paymentsNumber - this.loanerToDisplay[i].loanPaymantsStatus.numberOfPaymentsThatWerePayed;
-                this.loanerToDisplay[i].loanPaymantsStatus.rest = this.loanerToDisplay[i].loanPaymantsStatus.sumPadeUp % this.loanerToDisplay[i].loaner.monthlyPaymentSum;
-              }
-              else {
-
-                this.loanerToDisplay[i].loanPaymantsStatus = new LoanPaymantsStatus();
-                this.loanerToDisplay[i].loanPaymantsStatus.sumLeft = this.loanerToDisplay[i].loaner.sum;
-                this.loanerToDisplay[i].loanPaymantsStatus.numberOfPaymentsThatWerePayed = this.loanerToDisplay[i].loaner.sum / this.loanerToDisplay[i].loaner.monthlyPaymentSum;
-                this.loanerToDisplay[i].loanPaymantsStatus.numberOfPaymentsThatWerentPayed = this.loanerToDisplay[i].loaner.paymentsNumber;
-                this.loanerToDisplay[i].loanPaymantsStatus.rest = this.loanerToDisplay[i].loaner.sum;
-              }
+    this.loanService.getAllLoans(this.dto_loans).subscribe(data => {
+      this.loansList = data;
+      console.log(this.loansList);
+      this.userService.getAllUsers(this.dtoUsersPrms).subscribe(data => {
+        this.userList = data;
+        console.log(this.userList);
+        // this.adminService.getAllPayments().subscribe(data=>{
+        //   this.paymentList=data; 
+        //   console.log(this.paymentList) ;
+        var i = 0;
+        this.loansList.forEach(loan => {
+          this.userList.forEach(user => {
+            if (user.id == loan.userId) {
+              this.loanerToDisplay[i] = new Loaner()
+              this.loanerToDisplay[i].user = user;
+              this.loanerToDisplay[i].loaner = loan;
+              i+=1;
+              // this.loanerToDisplay[i].payments=[];
+              // this.loanService.getPaymentForLoan(user.id,"פרעון").subscribe(data=>
+              //   this.loanerToDisplay[i].payments=data)
+              // this.loanerToDisplay[i].payments=
+              // this.paymentList.filter(x => x.userId == loan.userId);    
             }
-            else {
-              this.loanerToDisplay[i].loanPaymantsStatus = new LoanPaymantsStatus();
-              this.loanerToDisplay[i].loanPaymantsStatus.sumLeft = 0;
-              this.loanerToDisplay[i].loanPaymantsStatus.numberOfPaymentsThatWerePayed = this.loanerToDisplay[i].loaner.paymentsNumber;
-              this.loanerToDisplay[i].loanPaymantsStatus.numberOfPaymentsThatWerentPayed = 0;
-              this.loanerToDisplay[i].loanPaymantsStatus.rest = 0;
-            }
-            i += 1;
           });
         });
+        // },err=>{
+        //   this.paymentList=[];
+        // });
       }, err => {
         this.userList = [];
       });
@@ -201,7 +167,33 @@ export class LoansComponent implements OnInit {
     });
     console.log(this.loanerToDisplay)
   }
+
   ngOnInit() {
   }
+  loanerDetailesForm: FormGroup = new FormGroup({
+    // password:new FormControl(""),
+    // userName:new FormControl(""),
+    firstName: new FormControl(""),
+    lastName: new FormControl(""),
+    telephoneNumber1: new FormControl(),
+    telephoneNumber2: new FormControl(),
+    email: new FormControl(""),
+    // address:new FormControl(),
+    // city :new FormControl(),
+    // comments:new FormControl(),
+    // identityNumber:new FormControl(),
+    currency: new FormControl(),
+    sum: new FormControl(),
+    loanDate: new FormControl(),
+    hebrewLoanDate: new FormControl(),
+    repaymentDate: new FormControl(""),
+    hebrewRepaymentDate: new FormControl(""),
+    repaymentManner: new FormControl(),
+    // firstPaymentDate:new FormControl(),
+    paymentsNumber: new FormControl(),
+    // accountNumber:new FormControl(),
+    // dayInMonth:new FormControl(),
+    paidUp: new FormControl(),
+  });
 
 }

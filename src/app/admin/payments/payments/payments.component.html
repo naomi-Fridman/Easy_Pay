@@ -1,11 +1,15 @@
 <p>payments works!</p>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!-- <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/joining_form.css">
+<script src="js/jquery-3.4.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 
 <div class="ad-sektion-top hidden-xs" style="margin-top:80px;">
     <div class="container-fluid text-center">
@@ -16,102 +20,80 @@
 <div id="top-filter" class="top-filter tfilter-box hidden-xs" data-spy="affix" data-offset-top="197">
     <div class="container">
         <div class="row">
-            
-            <div class="col-sm-2">
-                <div class="row">
-                    <div class="col-md-12">
-                        <input [(ngModel)]="dtoPayments.firstName" #firstNameInput class="form-control" placeholder="שם פרטי" type="text">
-                    </div>
-                </div>
+            <div class="col">
+                <input [(ngModel)]="dtoPayments.firstName" #firstNameInput class="form-control" placeholder="שם פרטי"
+                    type="text">
             </div>
-            <div class="col-sm-2">
-                <div class="row">
-                    <div class="col-md-12">
-                        <input [(ngModel)]="dtoPayments.lastName" #lastNameInput class="form-control" placeholder="שם משפחה" type="text">
-                    </div>
-                </div>
+            <div class="col">
+                <input [(ngModel)]="dtoPayments.lastName" #lastNameInput class="form-control" placeholder="שם משפחה"
+                    type="text">
             </div>
-            <div class="col-sm-2">
-                <select (change)="onChange($event.target.value)"[(ngModel)]="selectedSum" class="form-control" >
+            <div class="col">
+                <select (change)="onChange($event.target.value)" [(ngModel)]="selectedSum" class="form-control">
 
-                    <option value="sum" >
+                    <option value="sum">
                         סכום מדויק
                     </option>
                     <option value="from">
                         החל מ
                     </option>
                     <option value="till">
-                        עד 
+                        עד
                     </option>
-                    <option value="range" >
+                    <option value="range">
                         טווח
                     </option>
                 </select>
             </div>
-            <div  *ngIf="selectedSum=='from' || selectedSum=='range'" class="col-sm-2">
-                <div class="row">
-                    <div class="col-md-12">
-                        <input [(ngModel)]="dtoPayments.collectionSumFrom" #fromSumInput class="form-control" placeholder=" החל מ" type="text">
-                    </div>
-                </div>
+            <div *ngIf="selectedSum=='from' || selectedSum=='range'" class="col">
+                <input [(ngModel)]="dtoPayments.collectionSumFrom" #fromSumInput class="form-control"
+                    placeholder=" החל מ" type="text">
             </div>
-            <div *ngIf="selectedSum=='till' || selectedSum=='range' " class="col-sm-2">
-                <div class="row">
-                    <div class="col-md-12">
-                        <input [(ngModel)]="dtoPayments.collectionSumTill" #tillSumInput class="form-control" placeholder="עד" type="text">
-                    </div>
-                </div>
+            <div *ngIf="selectedSum=='till' || selectedSum=='range' " class="col">
+                <input [(ngModel)]="dtoPayments.collectionSumTill" #tillSumInput class="form-control" placeholder="עד"
+                    type="text">
             </div>
-            <div *ngIf="selectedSum=='sum'" class="col-sm-2">
-                <div class="row">
-                    <div class="col-md-12">
-                        <input  [(ngModel)]="dtoPayments.collectionSumExact" #sumInput class="form-control" placeholder=" סכום" type="text" >
-                    </div>
-                </div>
+            <div *ngIf="selectedSum=='sum'" class="col">
+                <input [(ngModel)]="dtoPayments.collectionSumExact" #sumInput class="form-control" placeholder=" סכום"
+                    type="text">
             </div>
-            <div class="col-sm-2">
-                <select (change)="onChange($event.target.value)"[(ngModel)]="selectedDate" class="form-control" >
-                    <option value="exactD" >
+            <div class="col">
+                <select (change)="onChange($event.target.value)" [(ngModel)]="selectedDate" class="form-control">
+                    <option value="exactD">
                         תאריך מדויק
                     </option>
                     <option value="fromD">
                         החל מ
                     </option>
                     <option value="tillD">
-                        עד 
+                        עד
                     </option>
-                    <option value="rangeD" >
+                    <option value="rangeD">
                         טווח
                     </option>
                 </select>
             </div>
-            <div  *ngIf="selectedDate=='fromD' || selectedDate=='rangeD'" class="col-sm-2">
-                <div class="row">
-                    <!-- <div class="col-md-12">
+            <div *ngIf="selectedDate=='fromD' || selectedDate=='rangeD'" class="col">
+                <!-- <div class="col-md-12">
                         <input [(ngModel)]="dtoPayments.dateFrom" #fromDateInput class="form-control" placeholder=" החל מ" type="datetime('dd/MM/yyyy')">
                     </div> -->
-
-                    <p-calendar [(ngModel)]="dateValue" [(ngModel)]="dtoPayments.dateFrom"  #fromDateInput   dateFormat="dd/mm/yy" showButtonBar="true"></p-calendar>
-                </div>
+                <p-calendar [(ngModel)]="dateValue" [(ngModel)]="dtoPayments.dateFrom" #fromDateInput
+                    dateFormat="dd/mm/yy" showButtonBar="true"></p-calendar>
             </div>
-            <div *ngIf="selectedDate=='tillD' || selectedDate=='rangeD' " class="col-sm-2">
-                <div class="row">
-                    <p-calendar [(ngModel)]="dateValue" [(ngModel)]="dtoPayments.dateFrom"  #tillDateInput   dateFormat="dd/mm/yy" showButtonBar="true"></p-calendar>
-
-                </div>
+            <div *ngIf="selectedDate=='tillD' || selectedDate=='rangeD' " class="col">
+                <p-calendar [(ngModel)]="dateValue" [(ngModel)]="dtoPayments.dateFrom" #tillDateInput
+                    dateFormat="dd/mm/yy" showButtonBar="true"></p-calendar>
             </div>
-            <div *ngIf="selectedDate=='sum'" class="col-sm-2">
-                <div class="row">
-                    <p-calendar [(ngModel)]="dateValue" [(ngModel)]="dtoPayments.dateExact"  #exactDateInput   dateFormat="dd/mm/yy" showButtonBar="true"></p-calendar>
-
-                    <!-- <div class="col-md-12">
+            <div *ngIf="selectedDate=='sum'" class="col">
+                <p-calendar [(ngModel)]="dateValue" [(ngModel)]="dtoPayments.dateExact" #exactDateInput
+                    dateFormat="dd/mm/yy" showButtonBar="true"></p-calendar>
+                <!-- <div class="col-md-12">
                         <input  [(ngModel)]="dtoPayments.dateExact" #exactDateInput class="form-control" placeholder=" סכום" type="text">
                     </div> -->
-                </div>
             </div>
-            <div class="col-sm-4">
-                <button type="button" class="btn btn-danger glyphicon glyphicon-search"
-                    (click)="getAllPayments()">חפש </button>
+            <div class="col-1">
+                <button type="button" class="btn btn-danger glyphicon glyphicon-search" (click)="getAllPayments()">חפש
+                </button>
             </div>
         </div>
     </div>
@@ -124,13 +106,16 @@
                 <div> <img src="https://tinyurl.com/glz9lv7"> </div>
                 <div class="list__label">
                     <div class="list__label--header"> {{payment.user.firstName}} - {{payment.user.lastName}} </div>
-                    <div class="list__label--value"> {{payment.payment.paymentDate | date:"dd/MM/yyyy" }} - {{payment.payment.collectionSum}} </div>
+                    <div class="list__label--value"> {{payment.payment.paymentDate | date:"dd/MM/yyyy" }} -
+                        {{payment.payment.collectionSum}} </div>
                 </div>
             </div>
             <div class="list__photos">
                 <button pButton type="button" label="הצג פרטים" icon="pi pi-info-circle" iconPos="right"
-                (click)="showDetails(payment)"></button>
+                    (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed"
+                    ></button>
             </div>
+
         </li>
     </ul>
 </div>
@@ -147,8 +132,8 @@
     </ng-template>
 </p-orderList> -->
 
-<p-dialog *ngIf="paymentUser1" header={{paymentUser1.user.firstName}} [(visible)]="display" modal="modal"
-    [style]="{width: '350px'}" [responsive]="true">
+<p-dialog *ngIf="paymentUser1" header={{paymentUser1.user.firstName}} [(visible)]="display" [modal]="true"
+    [style]="{width: '350px'}" [responsive]="true" [baseZIndex]="10000">
     <span>
         <app-payments-details [payment]="paymentUser1"></app-payments-details>
     </span>
@@ -160,4 +145,907 @@
 </p-dialog>
 
 
+<div class="container imi-joingform">
 
+
+    <!-- Start Header -->
+  
+    <div class="imc-jfheader">
+      <div class="row">
+          <div class="col-lg-6">
+            <div class="imc-logo">
+              <h3>Shyam</h3>
+            </div>
+          </div>
+           <div class="col-lg-6 text-right">
+            <div class="imc-text">
+              <h1>Congratulations Shyam!</h1>
+              <h2>Last Visited on <span id="dateandtime"> 08-May-2019 12:01 PM </span> | My Profile | <span id="logstatus"> <a href="">Logout </a> </span> </h2>
+            </div>
+          </div>
+      </div>
+    </div>
+  
+  <!-- End Header -->
+  
+  
+  <!-- Start Joining Form -->
+  
+  <!-- Start row -->
+  
+    <div class="row">
+    <div class="col-md-12">
+  
+      <!-- Start accordion -->
+                      <div id="accordion" class="">
+  
+                        <!-- Start First collapse -->
+                          <div class="panel checkout-step">
+                              <div role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" > 
+  
+                                 <div class="row">
+                                          <div class="col-10 col-lg-10">
+                                               <span class="checkout-step-number">1</span>
+                                  <h4 class="checkout-step-title"> <a role="button"> Personal Details</a></h4>
+                                          </div>
+  
+                                          <div class="col-2 col-lg-2 text-right d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                                              <button id="nextBtn" name="nextBtn" class="btn btn-default imc-jfeditbtn">Edit <i class="fa fa-edit"></i></button>
+                                          </div>
+  
+                                           <div class="col-2 col-lg-2 text-right d-md-none d-lg-none">
+                                              <button id="nextBtn" name="nextBtn" class="btn btn-default imc-jfeditbtn"><i class="fa fa-edit"></i></button>
+                                          </div>
+                                  </div>
+                              </div>
+                              <div id="collapseOne" class="collapse in">
+                                <!-- Start collapse body -->
+                                  <div class="checkout-step-body">
+  
+                                    <!-- Start row -->
+                                      
+                                      <div class="row">
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                 
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name">First Name</label>
+                                                          <input id="name" name="name" type="text" placeholder="First Name" class="form-control input-md" required="">
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                             
+                                          </div>
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name">Middle Name</label>
+                                                          <input id="name" name="name" type="text" placeholder="Middle Name" class="form-control input-md" required="">
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                              
+                                          </div>
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name">Last Name</label>
+                                                          <input id="name" name="name" type="text" placeholder="Last Name" class="form-control input-md" required="">
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                             
+                                          </div>
+                                      </div>
+  
+                                      <!-- End row -->
+  
+  
+                                    <!-- Start row -->
+                                      
+                                      <div class="row">
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                 
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name">Mobile No</label>
+                                                          <input id="name" name="name" type="text" placeholder="+91" class="form-control input-md" required="">
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                             
+                                          </div>
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name">Email Id</label>
+                                                          <input id="name" name="name" type="text" placeholder="Email Id" class="form-control input-md" required="">
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                              
+                                          </div>
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name">Address</label>
+                                                          <input id="name" name="name" type="text" placeholder="Address" class="form-control input-md" required="">
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                             
+                                          </div>
+                                          
+                                      </div>
+  
+                                      <!-- End row -->
+  
+                                      <!-- Start button row -->
+                                      
+                                      <div class="row">
+  
+                                        <div class="col-lg-4"></div>
+                                        <div class="col-lg-4"></div>
+                                        <div class="col-lg-4 text-right">
+                                          <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <button id="nextBtn" name="nextBtn" class="btn btn-primary">Next</button>
+                                                      </div>
+                                          </div>
+                                        </div>
+                                      </div>
+  
+                                      <!-- End button row -->
+                                    
+                                  </div>
+                                  <!-- End collapse body -->
+                              </div>
+                          </div>
+  
+                          <!-- End First collapse -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+                          <!-- Start Second collapse -->
+  
+                          <div class="panel checkout-step">
+                              <div role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" > 
+  
+                                 <div class="row">
+                                          <div class="col-10 col-lg-10">
+                                               <span class="checkout-step-number">2</span>
+                                  <h4 class="checkout-step-title"> <a role="button"> Professional Details</a></h4>
+                                          </div>
+  
+                                          <div class="col-2 col-lg-2 text-right d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                                              <button id="nextBtn" name="nextBtn" class="btn btn-default imc-jfeditbtn">Edit <i class="fa fa-edit"></i></button>
+                                          </div>
+  
+                                           <div class="col-2 col-lg-2 text-right d-md-none d-lg-none">
+                                              <button id="nextBtn" name="nextBtn" class="btn btn-default imc-jfeditbtn"><i class="fa fa-edit"></i></button>
+                                          </div>
+                                  </div>
+                               
+                              </div>
+                              <div id="collapseTwo" class="collapse">
+  
+                                <!-- Start collapse body -->
+  
+                                  <div class="checkout-step-body">
+  
+                                    <!-- Start row -->
+                                      
+                                      <div class="row">
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                 
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name">First Name</label>
+                                                          <input id="name" name="name" type="text" placeholder="First Name" class="form-control input-md" required="">
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                             
+                                          </div>
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name">Middle Name</label>
+                                                          <input id="name" name="name" type="text" placeholder="Middle Name" class="form-control input-md" required="">
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                              
+                                          </div>
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name">Last Name</label>
+                                                          <input id="name" name="name" type="text" placeholder="Last Name" class="form-control input-md" required="">
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                             
+                                          </div>
+                                          
+                                      </div>
+  
+                                      <!-- End row -->
+  
+  
+                                    <!-- Start row -->
+                                      
+                                      <div class="row">
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                 
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name">Mobile No</label>
+                                                          <input id="name" name="name" type="text" placeholder="+91" class="form-control input-md" required="">
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                             
+                                          </div>
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name">Email Id</label>
+                                                          <input id="name" name="name" type="text" placeholder="Email Id" class="form-control input-md" required="">
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                              
+                                          </div>
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name">Address</label>
+                                                          <input id="name" name="name" type="text" placeholder="Address" class="form-control input-md" required="">
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                             
+                                          </div>
+                                          
+                                      </div>
+  
+                                      <!-- End row -->
+  
+                                      <!-- Start button row -->
+                                      
+                                      <div class="row">
+  
+                                        <div class="col-lg-4"></div>
+                                        <div class="col-lg-4"></div>
+                                        <div class="col-lg-4 text-right">
+                                          <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <button id="nextBtn" name="nextBtn" class="btn btn-primary">Next</button>
+                                                      </div>
+                                          </div>
+                                        </div>
+                                      </div>
+  
+                                      <!-- End button row -->
+                                    
+                                  </div>
+                                  <!-- End collapse body -->
+                              </div>
+                          </div>
+  
+                          <!-- End Second collapse -->
+  
+  
+  
+  
+                          <!-- Start Third collapse -->
+  
+                          <div class="panel checkout-step">
+                              <div role="tab" id="headingThree" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" > 
+  
+                                 <div class="row">
+                                          <div class="col-10 col-lg-10">
+                                               <span class="checkout-step-number">3</span>
+                                  <h4 class="checkout-step-title"> <a role="button"> Educational Details</a></h4>
+                                          </div>
+  
+                                          <div class="col-2 col-lg-2 text-right d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                                              <button id="nextBtn" name="nextBtn" class="btn btn-default imc-jfeditbtn">Edit <i class="fa fa-edit"></i></button>
+                                          </div>
+  
+                                           <div class="col-2 col-lg-2 text-right d-md-none d-lg-none">
+                                              <button id="nextBtn" name="nextBtn" class="btn btn-default imc-jfeditbtn"><i class="fa fa-edit"></i></button>
+                                          </div>
+                                  </div>
+                               
+                              </div>
+                              <div id="collapseThree" class="collapse">
+  
+                                <!-- Start collapse body -->
+  
+                                  <div class="checkout-step-body">
+  
+                                    <!-- Start row -->
+                                      
+                                      <div class="row">
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                 
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name">First Name</label>
+                                                          <input id="name" name="name" type="text" placeholder="First Name" class="form-control input-md" required="">
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                             
+                                          </div>
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name">Middle Name</label>
+                                                          <input id="name" name="name" type="text" placeholder="Middle Name" class="form-control input-md" required="">
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                              
+                                          </div>
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name">Last Name</label>
+                                                          <input id="name" name="name" type="text" placeholder="Last Name" class="form-control input-md" required="">
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                             
+                                          </div>
+                                          
+                                      </div>
+  
+                                      <!-- End row -->
+  
+  
+                                    <!-- Start row -->
+                                      
+                                      <div class="row">
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                 
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name">Mobile No</label>
+                                                          <input id="name" name="name" type="text" placeholder="+91" class="form-control input-md" required="">
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                             
+                                          </div>
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name">Email Id</label>
+                                                          <input id="name" name="name" type="text" placeholder="Email Id" class="form-control input-md" required="">
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                              
+                                          </div>
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name">Address</label>
+                                                          <input id="name" name="name" type="text" placeholder="Address" class="form-control input-md" required="">
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                             
+                                          </div>
+                                          
+                                      </div>
+  
+                                      <!-- End row -->
+  
+                                      <!-- Start button row -->
+                                      
+                                      <div class="row">
+  
+                                        <div class="col-lg-4"></div>
+                                        <div class="col-lg-4"></div>
+                                        <div class="col-lg-4 text-right">
+                                          <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <button id="nextBtn" name="nextBtn" class="btn btn-primary">Next</button>
+                                                      </div>
+                                          </div>
+                                        </div>
+                                      </div>
+  
+                                      <!-- End button row -->
+                                    
+                                  </div>
+                                  <!-- End collapse body -->
+                              </div>
+                          </div>
+  
+                          <!-- End Third collapse -->
+  
+  
+  
+                          <!-- Start Fourth collapse -->
+  
+                          <div class="panel checkout-step">
+                              <div role="tab" id="headingFour" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" > 
+  
+                                 <div class="row">
+                                          <div class="col-10 col-lg-10">
+                                               <span class="checkout-step-number">4</span>
+                                  <h4 class="checkout-step-title"> <a role="button"> Nominee Details</a></h4>
+                                          </div>
+  
+                                          <div class="col-2 col-lg-2 text-right d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                                              <button id="nextBtn" name="nextBtn" class="btn btn-default imc-jfeditbtn">Edit <i class="fa fa-edit"></i></button>
+                                          </div>
+  
+                                           <div class="col-2 col-lg-2 text-right d-md-none d-lg-none">
+                                              <button id="nextBtn" name="nextBtn" class="btn btn-default imc-jfeditbtn"><i class="fa fa-edit"></i></button>
+                                          </div>
+                                  </div>
+                               
+                              </div>
+                              <div id="collapseFour" class="collapse">
+  
+                                <!-- Start collapse body -->
+  
+                                  <div class="checkout-step-body">
+  
+                                    <!-- Start row -->
+                                      
+                                      <div class="row">
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                 
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name">First Name</label>
+                                                          <input id="name" name="name" type="text" placeholder="First Name" class="form-control input-md" required="">
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                             
+                                          </div>
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name">Middle Name</label>
+                                                          <input id="name" name="name" type="text" placeholder="Middle Name" class="form-control input-md" required="">
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                              
+                                          </div>
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name">Last Name</label>
+                                                          <input id="name" name="name" type="text" placeholder="Last Name" class="form-control input-md" required="">
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                             
+                                          </div>
+                                          
+                                      </div>
+  
+                                      <!-- End row -->
+  
+  
+                                    <!-- Start row -->
+                                      
+                                      <div class="row">
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                 
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name">Mobile No</label>
+                                                          <input id="name" name="name" type="text" placeholder="+91" class="form-control input-md" required="">
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                             
+                                          </div>
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name">Email Id</label>
+                                                          <input id="name" name="name" type="text" placeholder="Email Id" class="form-control input-md" required="">
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                              
+                                          </div>
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name">Address</label>
+                                                          <input id="name" name="name" type="text" placeholder="Address" class="form-control input-md" required="">
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                             
+                                          </div>
+                                          
+                                      </div>
+  
+                                      <!-- End row -->
+  
+                                      <!-- Start button row -->
+                                      
+                                      <div class="row">
+  
+                                        <div class="col-lg-4"></div>
+                                        <div class="col-lg-4"></div>
+                                        <div class="col-lg-4 text-right">
+                                          <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <button id="nextBtn" name="nextBtn" class="btn btn-primary">Next</button>
+                                                      </div>
+                                          </div>
+                                        </div>
+                                      </div>
+  
+                                      <!-- End button row -->
+                                    
+                                  </div>
+                                  <!-- End collapse body -->
+                              </div>
+                          </div>
+  
+                          <!-- End Fourth collapse -->
+  
+  
+  
+                          <!-- Start Five collapse -->
+  
+                          <div class="panel checkout-step">
+                              <div role="tab" id="headingFive" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" > 
+  
+                                 <div class="row">
+                                          <div class="col-10 col-lg-10">
+                                               <span class="checkout-step-number">5</span>
+                                  <h4 class="checkout-step-title"> <a role="button"> Documents Details</a></h4>
+                                          </div>
+  
+                                          <div class="col-2 col-lg-2 text-right d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                                              <button id="nextBtn" name="nextBtn" class="btn btn-default imc-jfeditbtn">Edit <i class="fa fa-edit"></i></button>
+                                          </div>
+  
+                                           <div class="col-2 col-lg-2 text-right d-md-none d-lg-none">
+                                              <button id="nextBtn" name="nextBtn" class="btn btn-default imc-jfeditbtn"><i class="fa fa-edit"></i></button>
+                                          </div>
+                                  </div>
+                               
+                              </div>
+                              <div id="collapseFive" class="collapse">
+  
+                                <!-- Start collapse body -->
+  
+                                  <div class="checkout-step-body">
+  
+                                    <!-- Start row -->
+                                      
+                                      <div class="row">
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                 
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name">First Name</label>
+                                                          <input id="name" name="name" type="text" placeholder="First Name" class="form-control input-md" required="">
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                             
+                                          </div>
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name">Middle Name</label>
+                                                          <input id="name" name="name" type="text" placeholder="Middle Name" class="form-control input-md" required="">
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                              
+                                          </div>
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name">Last Name</label>
+                                                          <input id="name" name="name" type="text" placeholder="Last Name" class="form-control input-md" required="">
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                             
+                                          </div>
+                                          
+                                      </div>
+  
+                                      <!-- End row -->
+  
+  
+                                    <!-- Start row -->
+                                      
+                                      <div class="row">
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                 
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name">Mobile No</label>
+                                                          <input id="name" name="name" type="text" placeholder="+91" class="form-control input-md" required="">
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                             
+                                          </div>
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name">Email Id</label>
+                                                          <input id="name" name="name" type="text" placeholder="Email Id" class="form-control input-md" required="">
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                              
+                                          </div>
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name">Address</label>
+                                                          <input id="name" name="name" type="text" placeholder="Address" class="form-control input-md" required="">
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                             
+                                          </div>
+                                          
+                                      </div>
+  
+                                      <!-- End row -->
+  
+                                      <!-- Start button row -->
+                                      
+                                      <div class="row">
+  
+                                        <div class="col-lg-4"></div>
+                                        <div class="col-lg-4"></div>
+                                        <div class="col-lg-4 text-right">
+                                          <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <button id="nextBtn" name="nextBtn" class="btn btn-primary">Next</button>
+                                                      </div>
+                                          </div>
+                                        </div>
+                                      </div>
+  
+                                      <!-- End button row -->
+                                    
+                                  </div>
+                                  <!-- End collapse body -->
+                              </div>
+                          </div>
+  
+                          <!-- End Five collapse -->
+  
+  
+  
+                          <!-- Start Six collapse -->
+  
+                          <div class="panel checkout-step">
+                              <div role="tab" id="headingSix" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" > 
+  
+                                 <div class="row">
+                                          <div class="col-10 col-lg-10">
+                                               <span class="checkout-step-number">6</span>
+                                  <h4 class="checkout-step-title"> <a role="button"> Reviews </a></h4>
+                                          </div>
+                                  </div>
+                               
+                              </div>
+                              <div id="collapseSix" class="collapse">
+  
+                                <!-- Start collapse body -->
+  
+                                  <div class="checkout-step-body">
+  
+                                    <!-- Start row -->
+                                      
+                                      <div class="row">
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                 
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name"><strong>Name : </strong></label>
+                                                          <label class="control-label" for="name">Shyam Manohar Sanjul</label>
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                             
+                                          </div>
+                                          <div class="col-lg-4">
+                                              <div class="">
+  
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name"><strong>Gender : </strong></label>
+                                                          <label class="control-label" for="name">Male</label>
+                                                      </div>
+                                                  </div>
+  
+  
+                                              </div>
+                                              
+                                          </div>
+                                          <div class="col-lg-4">
+                                              <div class="">
+  
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name"><strong>Mobile No : </strong></label>
+                                                          <label class="control-label" for="name">9576116054</label>
+                                                      </div>
+                                                  </div>
+  
+                                              
+                                              </div>
+                                             
+                                          </div>
+                                          
+                                      </div>
+  
+                                      <!-- End row -->
+  
+  
+                                    <!-- Start row -->
+                                      
+                                      <div class="row">
+                                          <div class="col-lg-4">
+                                              <div class="">
+  
+                                                  <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name"><strong>Email Id : </strong></label>
+                                                          <label class="control-label" for="name">shyam.manohar.sanjul@gmail.com</label>
+                                                      </div>
+                                                  </div>
+  
+  
+                                              </div>
+                                             
+                                          </div>
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                   <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <label class="control-label" for="name"><strong>Address : </strong></label>
+                                                          <label class="control-label" for="name">Btm 1st stage bangalore, karnataka </label>
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                              
+                                          </div>
+                                          <div class="col-lg-4">
+                                              <div class="">
+                                                 
+  
+                                              </div>
+                                             
+                                          </div>
+                                          
+                                      </div>
+  
+                                      <!-- End row -->
+  
+                                      <!-- Start button row -->
+                                      
+                                      <div class="row">
+  
+                                        <div class="col-lg-4"></div>
+                                        <div class="col-lg-4"></div>
+                                        <div class="col-lg-4 text-right">
+                                          <div class="form-group">
+                                                      <div class="col-md-12">
+                                                          <button id="nextBtn" name="nextBtn" class="btn btn-primary">Print</button>
+                                                      </div>
+                                          </div>
+                                        </div>
+                                      </div>
+  
+                                      <!-- End button row -->
+                                    
+                                  </div>
+                                  <!-- End collapse body -->
+                              </div>
+                          </div>
+  
+                          <!-- End Six collapse -->
+  
+                        
+                      
+                      </div>
+                      <!-- End accordion -->
+                  </div>
+    </div>
+    <!-- End row -->
+  
+  <!-- End Joining Form -->
+  
+  
+  </div>
+  

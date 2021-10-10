@@ -51,6 +51,7 @@ export class EditUserDetailsComponent implements OnInit {
     this.updateUser = this.userDetailesForm.value;
     this.userService.updateUser(this.updateUser).subscribe(data=>{
     //       if(this._user!=this.updateUser)
+    // debugger
     //     this.msgs.push({ severity: 'success', summary: 'עדכון הפקדה', detail: 'העדכון בוצע בהצלחה' });
 
     })  

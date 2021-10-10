@@ -124,8 +124,7 @@
     overflow: hidden;
     position: relative;
 }
-body  div  div.main-panel  div  div  aside{
-}
+
 .card{
     /* display: inline-block;
     vertical-align: middle; */
@@ -136,3 +135,5 @@ body  div  div.main-panel  div  div  aside{
 body > app-root > div > div.main-panel > app-loans > div.wrapper > aside > div{
     text-align: center;
 }
+
+

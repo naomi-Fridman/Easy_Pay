@@ -110,59 +110,81 @@ h3{
   .user_panel {
       width: 100%;
   }
-  .daily-activity-lable{
-      justify-content: center;
-      font-size: 19px;
-      margin-top: 50px;
-  }
-  .topDaily{
-      display: flex;
-      justify-content: center;
-  }
-  .containerRow{
-    background-color: #f8f7fa;
 
-  }
-  .panel-heading{
-       background-image: linear-gradient(to left,rgb(246 173 6 / 61%),rgb(253 214 34 / 76%)) !important
-  }
-.btnCard{
-    height: 74px;
+.btn_img{
+    background-image: url(https://www.gstatic.com/images/icons/material/colored_icons/1x/create_32dp.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 32px;
+    content: '';
+    display: block;
+    height: 48px;
+    min-width: 56px;
+}
+.add{
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302), 0 1px 3px 1px rgba(60,64,67,0.149);
+    -webkit-font-smoothing: antialiased;
+    font-family: 'Google Sans', Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    /* font-size: .875rem; */
+    letter-spacing: .25px;
+    /* -webkit-align-items: center; */
+    align-items: center;
+    background-color: #fff;
+    /* background-image: none; */
+    /* -webkit-border-radius: 24px; */
+    border-radius: 24px;
+    color: #3c4043;
+    /* display: -webkit-inline-box;
+    display: -webkit-inline-flex; */
+    display: inline-block;
+    font-weight: 500;
+    height: 48px;
+    min-width: 56px;
+    overflow: hidden;
+    padding: 0 0 0 24px;
+    text-transform: none;
+    margin-left: 0;
+    cursor: pointer;
+    line-height: 32px;
     border: none;
-    border-radius: 2px;
-    display: flex;
+    -webkit-user-drag: none;
+    text-align: center;
+    white-space: nowrap;
+    outline: 0;
+
+}
+/* .icon-btn{
+    background:#f5f5f5;
+    float:left;
+} */
+
+.icon-btn button{
+    float: right;;
+    margin:10px;
+}
+.btn-text{
+    width:60%;
+}
+.btn-gradient {    
+    width:40%;
+    position: relative;
+    display: inline-block;
+    left:-20px;
+    background: rgba(214, 212, 212, 0.15);
+/* background-color: white; */
+    border-top-right-radius: 60px;
+    padding: 8px 24px 8px 16px;
+    box-shadow: 2px 0px 0px 0px rgba(78, 72, 72, 0.4);
+}
+
+.btn-green{
+    font-size:23px;
+    padding:20px 20px;
+    color: rgb(82, 75, 75);
+    background-color: white;
+    border:white;
     justify-content: center;
     align-items: center;
-    background-color:transparent ;
-}
-.actionBtn{
-    width: 159px;
-    height: 42px;
-    border: none;
-    border-radius: 5px;
-    background-color: #5f5f9a;
-    margin-left: 5px;
-    color: white;
-    margin-right: 8px;
-}
-
-.mainCard{
-    background-color: transparent !important;
-    border: none !important;
-}
-.dollarRate{
-    width: 209px;
-    height: 55px;
-    margin: 0;
-    margin-left: 0;
-    position: absolute;
-    left: 15px;
-    top: 56px;
-    color: #2f2f94;
-}
-.dailyList{
-    padding-right: 24px;
-    padding-left: 24px;
-    justify-content: space-between;
     display: flex;
+    width:200px;
 }

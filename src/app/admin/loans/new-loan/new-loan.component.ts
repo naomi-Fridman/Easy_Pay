@@ -1,6 +1,6 @@
 import { QueryList } from "@angular/core";
 import { Component, Input, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef, ViewChildren } from "@angular/core";
-// import bootstrap from 'bootstrap' 
+
 import { FormGroup, FormControl, EmailValidator, Validators } from '@angular/forms';
 import { Loaner } from 'src/app/models/Loaner';
 import { MessageService } from 'primeng/api';
@@ -24,11 +24,9 @@ export class NewLoanComponent implements OnInit ,AfterViewInit{
   loanCurrency: number=3;
   returnCurrency:number=1
   uploadedFiles: any[] = [];
-  selectedFile: File;
+  selectedFile: any;
   imageSrc: string;
   saveGuarantyEvent: boolean = false;
-  shtarFD = new FormData();
-  private shtarUploaded : boolean = false;
 
   l: DirectDebit = new DirectDebit();
   @ViewChildren(GuarantyDetailsComponent) guarantyDetailsComponent: QueryList<GuarantyDetailsComponent>;
@@ -68,6 +66,7 @@ export class NewLoanComponent implements OnInit ,AfterViewInit{
   //   this.returnCurrency=value;
   // }
   save() {
+    debugger
     this.guarantyDetailsComponent.forEach(g =>
       this.newLoanDetailes.guaranty.push(g.GuarantyDetailsForm.value));
     this.newLoanDetailes.loaner = this.loanerDetailesLoanForm.value;
@@ -75,12 +74,19 @@ export class NewLoanComponent implements OnInit ,AfterViewInit{
     this.newLoanDetailes.user = this.loanerDetailesUserForm.value;
     debugger
     const uploadData = new FormData();
+    // if (this.selectedFile == null) {
+    //   //alert("please attach the shtar scan");
+    // }
+    // else {
       uploadData.append('file', this.selectedFile);
       uploadData.append('newLoaner', JSON.stringify(this.newLoanDetailes));
       //check if exists
+      debugger
       this.loansService.postLoan(uploadData).subscribe(e=>{
         this.route.navigate(["/homePage"]);
       });
+      //his.router.navigate(["/adminl"]);
+    //}
   }
   id(event) {
     event.target.value;
@@ -92,9 +98,18 @@ export class NewLoanComponent implements OnInit ,AfterViewInit{
     // this.messageService.add({ severity: 'info', summary: 'File Uploaded', detail: '' });
   }
   onFileChanged(event) {
+    debugger
     this.selectedFile = event.target.files[0];
-    if(this.selectedFile){
-      this.shtarFD.append("shter", this.selectedFile);
+    const reader = new FileReader();
+    if (event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.imageSrc = reader.result as string;
+        this.loanerDetailesLoanForm.patchValue({
+          fileResources: reader.result
+        });
+      }
     }
   }
   loanerDetailesUserForm: FormGroup = new FormGroup({
@@ -105,7 +120,7 @@ export class NewLoanComponent implements OnInit ,AfterViewInit{
     address: new FormControl(""),
     identityNumber: new FormControl(null),
     password: new FormControl(""),
-    userName: new FormControl("",Validators.required,),
+    userName: new FormControl(""),
     telephoneNumber1: new FormControl(),
     telephoneNumber2: new FormControl( ),
     idUser: new FormControl(null),

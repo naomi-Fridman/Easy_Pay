@@ -7,13 +7,14 @@ import { UsersService } from 'src/app/services/users.service';
 @Component({
   selector: 'app-guaranty-details',
   templateUrl: './guaranty-details.component.html',
-  // styleUrls: ['../new-loan.component.css']
   styleUrls: ['./guaranty-details.component.css']
 })
 export class GuarantyDetailsComponent implements OnInit {
 
   constructor(private userService:UsersService) {}
 
+  // @Output()
+  // onsaveGuarantyForm:EventEmitter<Guaranty>=new EventEmitter<Guaranty>();
   checkUserForGuaranty(event){
     this.userService.getUserByIdentityNumber(event.target.value).subscribe(user => {
       if (user) {

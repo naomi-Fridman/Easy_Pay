@@ -4,7 +4,7 @@ import { Payment } from './Payment';
 import { Currency } from './Currency';
 import { GuarantyUser } from './GuarantyUser';
 import { DirectDebit } from './directDebit';
-import { LoanPaymantsStatus } from './loanPaymantsStatus';
+import { ArrayType } from '@angular/compiler';
 
 export class Loaner{
   user:User;
@@ -13,5 +13,4 @@ export class Loaner{
   currency:Currency;
   guaranty:GuarantyUser[];
   directDebit:DirectDebit;
-  loanPaymantsStatus:LoanPaymantsStatus;
   }
