@@ -1,12 +1,12 @@
 
-.centered-form{
+/* .centered-form{
 	margin-top: 60px;
 }
 
 .centered-form .panel{
 	background: rgba(255, 255, 255, 0.8);
 	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
-}
+} */
 div.panel.panel-default{
     width: 200%;
 
@@ -43,12 +43,12 @@ body {
 
   
 
-body  div  div  div.card.card-user  div.card-header{
+/* body  div  div  div.card.card-user  div.card-header{
   background-color:peachpuff;
 }
 body div  div.card-header{
   background-color:peachpuff;
-}
+} */
 .card-body{
 width: 100%;
 margin: 24px;

@@ -1,114 +1,148 @@
-<p>new-deposite works!</p>
-<form [formGroup]="DepositorDetailesDepositeForm" style="direction: rtl;">
-    <div class="p-field p-grid">
-        <label for="depositeDate" class="p-col-fixed" style="width:100px">תאריך הפקדה</label>
-        <div class="p-col">
-            <input formControlName="depositeDate" id="depositeDate" type="text" pInputText>
-        </div>
+<div class="card card-user">
+    <div class="title">
+        <label class="card-title pull-right mainTitle"> הלוואה חדשה</label>
     </div>
-    <div class="p-field p-grid">
-        <label for="hebrewDepositeDate" class="p-col-fixed" style="width:100px">תאריך הפקדה עברי</label>
-        <div class="p-col">
-            <input formControlName="hebrewDepositeDate" id="hebrewDepositeDate" type="text" pInputText>
-        </div>
+    <div>
+        <label style="font-size: 15px; color: black;margin: 7px;" class="pull-right">שדות המסומנים בכוכבית (*) הם
+            שדות
+            חובה
+        </label>
     </div>
-</form>
-<form [formGroup]="DepositorDetailesUserForm" style="direction: rtl;">
-    <div class="p-field p-grid">
-        <label for="identityNumber" class="p-col-fixed" style="width:100px">ת"ז/דרכון</label>
-        <div class="p-col">
-            <input formControlName="identityNumber" (blur)="checkUserForDeposite($event)" id="identityNumber" type="number"
-                pInputText>
-        </div>
-    </div>
-    <div class="p-field p-grid">
-        <label for="firstName" class="p-col-fixed" style="width:100px">שם פרטי</label>
-        <div class="p-col">
-            <input formControlName="firstName" id="firstName" type="text" pInputText>
-        </div>
-    </div>
+    <form [formGroup]="DepositorDetailesDepositeForm" style="direction: rtl;">
+        <div class="card-body">
+            <div class="row formRow">
 
-    <div class="p-field p-grid">
-        <label for="lastName" class="p-col-fixed" style="width:100px">שם משפחה</label>
-        <div class="p-col">
-            <input formControlName="lastName" id="lastName" type="text" pInputText>
+                <div class="col-md-3 pr-1">
+                    <div class="form-group">
+                        <label for="sum" class="pull-right fileLabel required">סכום להפקדה</label>
+                        <input formControlName="sum" id="sum" type="number" class="form-control" placeholder="sum">
+                    </div>
+                </div>
+                <div class="col-md-3 pr-1">
+                    <div class="form-group">
+                        <label for="currency" class="pull-right fileLabel required">מטבע</label>
+                        <select formControlName="currencyId" class="form-control">
+                            <option value=1>
+                                שקל
+                            </option>
+                            <option value=3 selected="selected">
+                                דולר
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3 pr-1">
+                    <div class="form-group">
+                        <label for="depositeDate" class="pull-right fileLabel required">תאריך הפקדה</label>
+                        <input formControlName="depositeDate" id="depositeDate" type="date" class="form-control"
+                            placeholder="depositeDate">
+                    </div>
+                </div>
+                <div class="col-md-3 px-1">
+                    <div class="form-group">
+                        <label for="hebrewDepositeDate" class="pull-right fileLabel">תאריך הפקדה עברי</label>
+                        <input type="text" formControlName="hebrewDepositeDate" class="form-control"
+                            placeholder="hebrewDepositeDate" id="hebrewDepositeDate" value="תאריך הפקדה עבר">
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <div class="p-field p-grid">
-        <label for="address" class="p-col-fixed" style="width:100px">כתובת</label>
-        <div class="p-col">
-            <input formControlName="address" id="address" type="text" pInputText>
-        </div>
-    </div>
 
-    <div class="p-field p-grid">
-        <label for="city" class="p-col-fixed" style="width:100px">עיר</label>
-        <div class="p-col">
-            <input formControlName="city" id="city" type="text" pInputText>
-        </div>
-    </div>
 
-    <div class="p-field p-grid">
-        <label for="telephoneNumber1" class="p-col-fixed" style="width:100px">טלפון בית</label>
-        <div class="p-col">
-            <input formControlName="telephoneNumber1" id="telephoneNumber1" type="number" pInputText>
-        </div>
-    </div>
 
-    <div class="p-field p-grid">
-        <label for="telephoneNumber2" class="p-col-fixed" style="width:100px">טל' נייד</label>
-        <div class="p-col">
-            <input formControlName="telephoneNumber2" id="telephoneNumber2" type="number" pInputText>
+        <!-- <div class="p-field p-grid">
+            <label for="depositeDate" class="p-col-fixed" style="width:100px">תאריך הפקדה</label>
+            <div class="p-col">
+                <input formControlName="depositeDate" id="depositeDate" type="text" pInputText>
+            </div>
+        </div> -->
+        <!-- <div class="p-field p-grid">
+            <label for="hebrewDepositeDate" class="p-col-fixed" style="width:100px">תאריך הפקדה עברי</label>
+            <div class="p-col">
+                <input formControlName="hebrewDepositeDate" id="hebrewDepositeDate" type="text" pInputText>
+            </div>
+        </div> -->
+    </form>
+    <form [formGroup]="DepositorDetailesUserForm" style="direction: rtl;">
+        <div class="row formRow">
+            <div class="col-md-3 pr-1">
+                <div class="form-group">
+                    <label for="identityNumber" class="p-col-fixed" style="width:100px">ת"ז/דרכון</label>
+                    <input formControlName="identityNumber" (blur)="checkUserForDeposite($event)" id="identityNumber"
+                        type="number" pInputText>
+                </div>
+            </div>
+            <div class="p-field p-grid">
+                <label for="firstName" class="p-col-fixed" style="width:100px">שם פרטי</label>
+                <div class="p-col">
+                    <input formControlName="firstName" id="firstName" type="text" pInputText>
+                </div>
+            </div>
         </div>
-    </div>
-</form>
-<form [formGroup]="DepositorDetailesDepositeForm" style="direction: rtl;">
-    <div class="p-field p-grid">
-        <label for="sum" class="p-col-fixed" style="width:100px">סכום הפקדה</label>
-        <div class="p-col">
-            <input formControlName="sum" id="sum" type="number" pInputText>
+        <div class="p-field p-grid">
+            <label for="lastName" class="p-col-fixed" style="width:100px">שם משפחה</label>
+            <div class="p-col">
+                <input formControlName="lastName" id="lastName" type="text" pInputText>
+            </div>
         </div>
-    </div>
 
-    <div class="p-field p-grid">
-        <!-- [(ngModel)]="loanCurrency" -->
-        <label for="currency" class="p-col-fixed" style="width:100px">מטבע</label>
-        <select formControlName="currencyId" class="form-control">
-            <option value=1>
-                שקל
-            </option>
-            <option value=3 selected="selected">
-                דולר
-            </option>
-        </select>
-    </div>
-
-    <div class="p-field p-grid">
-        <label for="returnDate" class="p-col-fixed" style="width:100px">תאריך החזר הפקדה</label>
-        <div class="p-col">
-            <input formControlName="returnDate" id="returnDate" type="text" pInputText>
+        <div class="p-field p-grid">
+            <label for="address" class="p-col-fixed" style="width:100px">כתובת</label>
+            <div class="p-col">
+                <input formControlName="address" id="address" type="text" pInputText>
+            </div>
         </div>
-    </div>
 
-    <div class="p-field p-grid">
-        <label for="hebrewDepositeReturnDate" class="p-col-fixed" style="width:100px">תאריך החזר הפקדה עברי</label>
-        <div class="p-col">
-            <input formControlName="hebrewDepositeReturnDate" id="hebrewDepositeReturnDate" type="text" pInputText>
+        <div class="p-field p-grid">
+            <label for="city" class="p-col-fixed" style="width:100px">עיר</label>
+            <div class="p-col">
+                <input formControlName="city" id="city" type="text" pInputText>
+            </div>
         </div>
-    </div>
-</form>
+
+        <div class="p-field p-grid">
+            <label for="telephoneNumber1" class="p-col-fixed" style="width:100px">טלפון בית</label>
+            <div class="p-col">
+                <input formControlName="telephoneNumber1" id="telephoneNumber1" type="number" pInputText>
+            </div>
+        </div>
+
+        <div class="p-field p-grid">
+            <label for="telephoneNumber2" class="p-col-fixed" style="width:100px">טל' נייד</label>
+            <div class="p-col">
+                <input formControlName="telephoneNumber2" id="telephoneNumber2" type="number" pInputText>
+            </div>
+        </div>
+    </form>
+    <form [formGroup]="DepositorDetailesDepositeForm" style="direction: rtl;">
+
+        <div class="p-field p-grid">
+            <label for="returnDate" class="p-col-fixed" style="width:100px">תאריך החזר הפקדה</label>
+            <div class="p-col">
+                <input formControlName="returnDate" id="returnDate" type="text" pInputText>
+            </div>
+        </div>
+
+        <div class="p-field p-grid">
+            <label for="hebrewDepositeReturnDate" class="p-col-fixed" style="width:100px">תאריך החזר הפקדה עברי</label>
+            <div class="p-col">
+                <input formControlName="hebrewDepositeReturnDate" id="hebrewDepositeReturnDate" type="text" pInputText>
+            </div>
+        </div>
+    </form>
     <!-- <div class="p-field p-grid">
-        <label for="currency" class="p-col-fixed" style="width:100px">מטבע</label>
-        <select formControlName="currencyIdReturn" class="form-control">
-            <option value=1 selected="selected">
-                שקל
-            </option>
-            <option value=3>
-                דולר
-            </option>
-        </select>
-    </div> -->
+            <label for="currency" class="p-col-fixed" style="width:100px">מטבע</label>
+            <select formControlName="currencyIdReturn" class="form-control">
+                <option value=1 selected="selected">
+                    שקל
+                </option>
+                <option value=3>
+                    דולר
+                </option>
+            </select>
+        </div> -->
 
 
     <button style="direction: rtl;" type="button" pButton (click)="save()" class="ui-button-success">שמור</button>
+</div>
