@@ -11,19 +11,31 @@
     box-shadow: 0 1px 6px rgb(0 0 0 / 16%);
 }
 .main-panel {
-    height: 600px;
     direction: rtl;
-    grid-area: main-panel;
+    position: relative;
+    top: 43px;
 }
 .wrapper{
-    /* display: grid; */
-    grid-template-areas:
-    "sidebar sidebar sidebar"
-    "main-panel main-panel main-panel";
-    grid-template-rows: 10% 90%;
-    grid-template-columns: 10% 90%;
    direction: rtl;
+   overflow: hidden;
 }
 .nav>li>a {
     color: #2f2f94;
+}
+.mainCard{
+    background-color: transparent !important;
+    border: none !important;
+    position: absolute;
+    top: 6px;
+    left: 0px;
+}
+.actionBtn{
+    width: 105px;
+    height: 27px;
+    border: none;
+    border-radius: 5px;
+    background-color: #5f5f9a;
+    margin-left: 5px;
+    color: white;
+    margin-right: 8px;
 }

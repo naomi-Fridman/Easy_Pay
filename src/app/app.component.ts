@@ -13,7 +13,15 @@ export class AppComponent {
   items3: MenuItem[]
   currentChoice: string = "homePage";
 
-  
+  newLoan(){
+    this.router.navigate(["/newLoan"]);
+  }
+  newDeposite(){
+    this.router.navigate(["/newDeposite"]);
+  }
+  newPayment(){
+    this.router.navigate(["/newPayment"]);
+  }
   constructor(private router: Router) {
   
    }

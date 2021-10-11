@@ -33,15 +33,7 @@ export class DailyActivityComponent implements OnInit {
   allIncomingPaymentsTodayList: Payment[];
   userPayment: PaymentUser;
   userPaymentList: PaymentUser[] = new Array();
-  newLoan(){
-    this.router.navigate(["/newLoan"]);
-  }
-  newDeposite(){
-    this.router.navigate(["/newDeposite"]);
-  }
-  newPayment(){
-    this.router.navigate(["/newPayment"]);
-  }
+
   constructor(private paymentsService: PaymentsService, private currencyService:CurrancyService ,private userService: UsersService, private loanService: LoansService, private router: Router) { }
   ngOnInit() {
     this.currencyService.getExchangeRate().subscribe(data=>{
