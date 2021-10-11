@@ -17,7 +17,7 @@
 }
 .wrapper{
    direction: rtl;
-   overflow: hidden;
+  
 }
 .nav>li>a {
     color: #2f2f94;

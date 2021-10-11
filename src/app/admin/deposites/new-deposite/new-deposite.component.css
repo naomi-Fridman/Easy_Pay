@@ -10,6 +10,7 @@ body {
   }
   
   div.card{
+    border-radius: 0.75rem;  
     width: 80%;
     display: flex;
     justify-content: center;
@@ -38,7 +39,7 @@ margin: 24px;
 .fileLabel{
   color: black !important;
   font-size: 15px !important;
-  
+  float: right;
 }
 .required::before{
   content:" *";
@@ -58,7 +59,7 @@ margin: 24px;
     padding-top: 10px;
     padding-bottom: 10px;
     background-image: linear-gradient(to left,rgb(246 201 98 / 61%),rgb(255 223 79 / 76%)) !important;
-    height: 51px;
+    height: 1px;
 
 }
 .title{
@@ -84,7 +85,7 @@ div.card.card-user{
 }
 .formRow{
   width: 95%;
-  /* margin-right: 10%; */
+ justify-content: center;
 
 }
 .upload-btn{
@@ -100,11 +101,29 @@ div.card.card-user{
   align-items: flex-end;
 }
 .saveBtn{
-  background-color: #5f5f9a !important;
-    width: 26vw !important;
-    border-radius: 3px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 6vh !important;
+    font-size: 20px !important;
+    color: rgb(255 209 3 / 76%) !important;
+    background-color: #5f5f9a !important;
+    width: 14vw !important;
+    border-radius: 5px;
+    margin-top: 18px;
 }
 .update{
   display: flex;
   justify-content: center;
+}
+.comment{
+    float: right;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.row2{
+    justify-content: start !important;
 }
