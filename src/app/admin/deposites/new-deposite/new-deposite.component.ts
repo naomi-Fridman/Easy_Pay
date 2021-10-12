@@ -1,6 +1,6 @@
 import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Depositor } from 'src/app/models/Depositor';
 import { DepositesService } from 'src/app/services/deposites.service';
@@ -65,17 +65,22 @@ export class NewDepositeComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  get DepositorUserFormControl() { return this.DepositorDetailesUserForm.controls; }
+  get DepositorDepositeFormControl() { return this.DepositorDetailesDepositeForm.controls; }
+
+
   DepositorDetailesUserForm: FormGroup = new FormGroup({
     id: new FormControl(0),
     password: new FormControl(""),
     userName: new FormControl(""),
-    firstName: new FormControl(""),
-    lastName: new FormControl("" ),
-    address: new FormControl(""),
+    firstName: new FormControl("",{validators:[Validators.required],updateOn: 'blur'}),
+    lastName: new FormControl("" ,{validators:[Validators.required],updateOn: 'blur'}),
+    address: new FormControl("",{validators:[Validators.required],updateOn: 'blur'}),
     city: new FormControl(""),
     telephoneNumber1: new FormControl(),
-    telephoneNumber2: new FormControl(),
-    email: new FormControl(""),
+    telephoneNumber2: new FormControl("",{validators:[Validators.required],updateOn: 'blur'}),
+    email: new FormControl("" ,{validators:[Validators.email],updateOn: 'blur'}),
     comments: new FormControl(""),
     identityNumber: new FormControl(0),   
   });
@@ -83,8 +88,8 @@ export class NewDepositeComponent implements OnInit {
   DepositorDetailesDepositeForm: FormGroup = new FormGroup({
     
     id: new FormControl(0),
-    sum: new FormControl(0),
-    currencyId: new FormControl(0),
+    sum: new FormControl(0,{validators:[Validators.required],updateOn: 'blur'}),
+    currencyId: new FormControl(0,{validators:[Validators.required],updateOn: 'blur'}),
     returnDate: new FormControl(""),
     comments : new FormControl(""),
     status: new FormControl(true),
@@ -94,7 +99,7 @@ export class NewDepositeComponent implements OnInit {
     paymentsNumber : new FormControl(0),
     // creditCardId: new FormControl(0),
     userId: new FormControl(0),
-    depositeDate: new FormControl(""),
+    depositeDate: new FormControl("",{validators:[Validators.required],updateOn: 'blur'}),
     // currencyIdReturn: new FormControl(),
   });
 }
