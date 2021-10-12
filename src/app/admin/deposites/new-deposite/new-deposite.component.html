@@ -22,9 +22,9 @@
                 </div>
                 <div class="col-md-3 pr-1">
                     <div class="form-group">
-                        <label for="currency" class="pull-right fileLabel required">מטבע</label>
-                        <select formControlName="currencyId" class="form-control">
-                            <option value=1>
+                        <label for="currency" class="pull-right fileLabel currency required" >מטבע</label>
+                        <select formControlName="currencyId" class="form-control" style="cursor: pointer">
+                            <option value=1 >
                                 שקל
                             </option>
                             <option value=3 selected="selected">
@@ -44,8 +44,7 @@
                 <div class="col-md-3 px-1">
                     <div class="form-group">
                         <label for="hebrewDepositeDate" class="pull-right fileLabel">תאריך הפקדה עברי</label>
-                        <input type="text" formControlName="hebrewDepositeDate" class="form-control"
-                            placeholder="hebrewDepositeDate" id="hebrewDepositeDate" value="תאריך הפקדה עבר">
+                        <input type="text" formControlName="hebrewDepositeDate" class="form-control" id="hebrewDepositeDate" >
                     </div>
                 </div>
             </div>
