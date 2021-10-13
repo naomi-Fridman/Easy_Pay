@@ -76,19 +76,19 @@ export class NewDepositeComponent implements OnInit {
     userName: new FormControl(""),
     firstName: new FormControl("",{validators:[Validators.required],updateOn: 'blur'}),
     lastName: new FormControl("" ,{validators:[Validators.required],updateOn: 'blur'}),
-    address: new FormControl("",{validators:[Validators.required],updateOn: 'blur'}),
+    address: new FormControl(""),
     city: new FormControl(""),
     telephoneNumber1: new FormControl(),
     telephoneNumber2: new FormControl("",{validators:[Validators.required],updateOn: 'blur'}),
     email: new FormControl("" ,{validators:[Validators.email],updateOn: 'blur'}),
     comments: new FormControl(""),
-    identityNumber: new FormControl(0),   
+    identityNumber: new FormControl(null,{validators:[Validators.required],updateOn: 'blur'}),   
   });
 
   DepositorDetailesDepositeForm: FormGroup = new FormGroup({
     
     id: new FormControl(0),
-    sum: new FormControl(0,{validators:[Validators.required],updateOn: 'blur'}),
+    sum: new FormControl(null,{validators:[Validators.required],updateOn: 'blur'}),
     currencyId: new FormControl(0,{validators:[Validators.required],updateOn: 'blur'}),
     returnDate: new FormControl(""),
     comments : new FormControl(""),

@@ -13,13 +13,11 @@
         <form [formGroup]="DepositorDetailesDepositeForm" style="direction: rtl;">
 
             <div class="row formRow">
-
                 <div class="col-md-3 pr-1">
                     <div class="form-group">
                         <label for="sum" class="pull-right fileLabel required">סכום להפקדה</label>
-                        <input formControlName="sum" id="sum" type="number" class="form-control" placeholder="sum"
-                            required>
-                        <div class="validate" *ngIf="DepositorUserFormControl.firstName.errors?.required">
+                        <input formControlName="sum" id="sum" type="number" class="form-control" required>
+                        <div class="validate" *ngIf="DepositorDepositeFormControl.sum.errors?.required">
                             זהו שדה חובה
                         </div>
                     </div>
@@ -35,7 +33,7 @@
                                 דולר
                             </option>
                         </select>
-                        <div class="validate" *ngIf="DepositorUserFormControl.firstName.errors?.required">
+                        <div class="validate" *ngIf="DepositorDepositeFormControl.currencyId.errors?.required">
                             זהו שדה חובה
                         </div>
                     </div>
@@ -45,8 +43,8 @@
                     <div class="form-group">
                         <label for="depositeDate" class="pull-right fileLabel required">תאריך הפקדה</label>
                         <input formControlName="depositeDate" id="depositeDate" type="date" class="form-control"
-                            placeholder="depositeDate" required>
-                        <div class="validate" *ngIf="DepositorUserFormControl.firstName.errors?.required">
+                            required>
+                        <div class="validate" *ngIf="DepositorDepositeFormControl.depositeDate.errors?.required">
                             זהו שדה חובה
                         </div>
                     </div>
@@ -69,8 +67,11 @@
                         <label for="identityNumber" class="pull-right fileLabel required">ת"ז/דרכון</label>
                         <input formControlName="identityNumber" (blur)="checkUserForDeposite($event)"
                             id="identityNumber" type="number" class="form-control" required>
-                        <div class="validate" *ngIf="DepositorUserFormControl.firstName.errors?.required">
-                            זהו שדה חובה
+                        <div *ngIf="DepositorUserFormControl.identityNumber.invalid && (DepositorUserFormControl.identityNumber.dirty || DepositorUserFormControl.identityNumber.touched)"
+                            class="alert alert-danger">
+                            <div class="validate" *ngIf="DepositorUserFormControl.identityNumber.errors.required">
+                                זהו שדה חובה
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -79,12 +80,8 @@
                         <label for="firstName" class="pull-right fileLabel required">שם פרטי</label>
                         <input formControlName="firstName" id="firstName" type="text" class="form-control" required>
 
-                        <div *ngIf="DepositorUserFormControl.firstName.invalid && (DepositorUserFormControl.firstName.dirty || DepositorUserFormControl.firstName.touched)"
-                            class="alert alert-danger">
-
-                            <div class="validate" *ngIf="DepositorUserFormControl.firstName.errors?.required">
-                                זהו שדה חובה
-                            </div>
+                        <div *ngIf="(DepositorUserFormControl.firstName.invalid && (DepositorUserFormControl.firstName.dirty || DepositorUserFormControl.firstName.touched)) && DepositorUserFormControl.firstName.errors?.required "
+                            class=""><div>זהו שדה חובה</div>
                         </div>
                     </div>
                 </div>
@@ -92,8 +89,11 @@
                     <div class="form-group">
                         <label for="lastName" class="pull-right fileLabel required">שם משפחה</label>
                         <input formControlName="lastName" id="lastName" type="text" class="form-control" required>
-                        <div class="validate" *ngIf="DepositorUserFormControl.firstName.errors?.required">
-                            זהו שדה חובה
+                        <div *ngIf="DepositorUserFormControl.lastName.invalid && (DepositorUserFormControl.lastName.dirty || DepositorUserFormControl.lastName.touched)"
+                            class="alert alert-danger">
+                            <div class="validate" *ngIf="DepositorUserFormControl.lastName.errors?.required">
+                                זהו שדה חובה
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -103,7 +103,7 @@
                     <div class="form-group">
                         <label for="address" class="pull-right fileLabel required">כתובת</label>
                         <input formControlName="address" id="address" type="text" class="form-control" required>
-                        <div class="validate" *ngIf="DepositorUserFormControl.firstName.errors?.required">
+                        <div class="validate" *ngIf="DepositorUserFormControl.address.errors?.required">
                             זהו שדה חובה
                         </div>
                     </div>
@@ -112,10 +112,8 @@
                 <div class="col-md-3 pr-1">
                     <div class="form-group">
                         <label for="city" class="pull-right fileLabel required">עיר</label>
-                        <input formControlName="city" id="city" type="text" class="form-control" required>
-                        <div class="validate" *ngIf="DepositorUserFormControl.firstName.errors?.required">
-                            זהו שדה חובה
-                        </div>
+                        <input formControlName="city" id="city" type="text" class="form-control">
+
                     </div>
                 </div>
 
@@ -132,7 +130,7 @@
                         <label for="telephoneNumber2" class="pull-right fileLabel required">טל' נייד</label>
                         <input formControlName="telephoneNumber2" id="telephoneNumber2" type="number"
                             class="form-control" required>
-                        <div class="validate" *ngIf="DepositorUserFormControl.firstName.errors?.required">
+                        <div class="validate" *ngIf="DepositorUserFormControl.telephoneNumber2.errors?.required">
                             זהו שדה חובה
                         </div>
                     </div>
@@ -146,7 +144,7 @@
                     <div class="form-group">
                         <label for="returnDate" class="pull-right fileLabel required">תאריך משיכת הפקדה</label>
                         <input formControlName="returnDate" id="returnDate" type="text" class="form-control" required>
-                        <div class="validate" *ngIf="DepositorUserFormControl.firstName.errors?.required">
+                        <div class="validate" *ngIf="DepositorUserFormControl.returnDate.errors?.required">
                             זהו שדה חובה
                         </div>
                     </div>
