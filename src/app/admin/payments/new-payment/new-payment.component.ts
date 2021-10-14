@@ -1,26 +1,27 @@
 import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Payment } from 'src/app/models/Payment';
 import { PaymentUser } from 'src/app/models/PaymentUser';
 import { LoansService } from 'src/app/services/loans.service';
 import { PaymentsService } from 'src/app/services/payments.service';
 import { UsersService } from 'src/app/services/users.service';
-import {Message,MessageService} from 'primeng/api';
+import { Message, MessageService } from 'primeng/api';
 import { DialogService } from 'src/app/services/dialogService';
 
 @Component({
   selector: 'app-new-payment',
   templateUrl: './new-payment.component.html',
   styleUrls: ['./new-payment.component.css'],
-  providers:[MessageService]
+  providers: [MessageService]
 })
 export class NewPaymentComponent implements OnInit {
   payment: Payment = new Payment();
-  identity:boolean=false
-  
-  constructor(private userService: UsersService, private paymentService: PaymentsService, private loanService: LoansService, private route: Router,private messageService: MessageService, private dialogService: DialogService) { }
+  identity: boolean = false;
+  formSubmitAttempt: boolean = false;
+
+  constructor(private userService: UsersService, private paymentService: PaymentsService, private loanService: LoansService, private route: Router, private messageService: MessageService, private dialogService: DialogService) { }
 
 
   save() {
@@ -39,22 +40,22 @@ export class NewPaymentComponent implements OnInit {
           this.payment.collectionSum = this.PaymentDetailesForm.controls["collectionSum"].value;
           this.payment.comments = this.PaymentDetailesForm.controls["comments"].value;
           this.payment.paymentMethodId = 1//1 is cash but we have another option of 2 - chek - so we have to check it
-            if(loan.monthlyPaymentSum>this.payment.collectionSum){
-              alert("שים לב: סכום התשלום החודשי הוא:"+ loan.monthlyPaymentSum +"האם אתה בטוח שאתה רוצה להכיס את הסכום המבוקש?")
-              this.payment.comments+=" הוכנס תשלום נמוך מהתשלום החודשי"
-            }
-            else if(loan.monthlyPaymentSum<this.payment.collectionSum){
-              alert("שים לב: סכום התשלום החודשי הוא:"+ loan.monthlyPaymentSum +"האם אתה בטוח שאתה רוצה להכיס את הסכום המבוקש?")
-              this.payment.comments+=" הוכנס תשלום גבוה מהתשלום החודשי"
-            }
-            else{
-              this.paymentService.postPayment(this.payment).subscribe(data => {
-                alert("ההלוואה עודכנה סכום היתרה הוא" + data)
-              })
-            }
+          if (loan.monthlyPaymentSum > this.payment.collectionSum) {
+            alert("שים לב: סכום התשלום החודשי הוא:" + loan.monthlyPaymentSum + "האם אתה בטוח שאתה רוצה להכיס את הסכום המבוקש?")
+            this.payment.comments += " הוכנס תשלום נמוך מהתשלום החודשי"
+          }
+          else if (loan.monthlyPaymentSum < this.payment.collectionSum) {
+            alert("שים לב: סכום התשלום החודשי הוא:" + loan.monthlyPaymentSum + "האם אתה בטוח שאתה רוצה להכיס את הסכום המבוקש?")
+            this.payment.comments += " הוכנס תשלום גבוה מהתשלום החודשי"
+          }
+          else {
+            this.paymentService.postPayment(this.payment).subscribe(data => {
+              alert("ההלוואה עודכנה סכום היתרה הוא" + data)
+            })
+          }
         }
         else {
-          this.identity=true;
+          this.identity = true;
         }
       })
     })
@@ -64,16 +65,21 @@ export class NewPaymentComponent implements OnInit {
   }
   ngOnInit() {
   }
+  get PaymentDetailesUserFormControl() { return this.PaymentDetailesUserForm.controls; }
+  get PaymentDetailesFormControl() { return this.PaymentDetailesForm.controls; }
+
   PaymentDetailesUserForm: FormGroup = new FormGroup({
-    identityNumber: new FormControl(0)
+    identityNumber: new FormControl(0, { validators: [Validators.required], updateOn: 'blur' }),
+    firstName: new FormControl("", { validators: [Validators.required], updateOn: 'blur' }),
+    lastName: new FormControl("", { validators: [Validators.required], updateOn: 'blur' })
   });
   PaymentDetailesForm: FormGroup = new FormGroup({
     id: new FormControl(0),
-    paymentDate: new FormControl(""),
-    currencyId: new FormControl(0),
-    collectionSum: new FormControl(0),
+    paymentDate: new FormControl("", { validators: [Validators.required], updateOn: 'blur' }),
+    currencyId: new FormControl(0, { validators: [Validators.required], updateOn: 'blur' }),
+    collectionSum: new FormControl(0, { validators: [Validators.required], updateOn: 'blur' }),
     comments: new FormControl(""),
     hebrewPaymenteDate: new FormControl(""),
-    inputDate: new FormControl("")
+    inputDate: new FormControl("", { validators: [Validators.required], updateOn: 'blur' })
   });
 }
