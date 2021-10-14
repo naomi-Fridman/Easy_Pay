@@ -8,11 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'GmachProject';
+  title = 'Gmach';
   isLogged = true;
   items3: MenuItem[]
   currentChoice: string = "homePage";
-
+  display = true;
   newLoan(){
     this.router.navigate(["/newLoan"]);
   }
@@ -23,11 +23,9 @@ export class AppComponent {
     this.router.navigate(["/newPayment"]);
   }
   constructor(private router: Router) {
-  
-   }
+  }
   ngOnInit() {
     this.items3 = [
-
       { label: 'הלוואות', routerLink: ['/loans'] },
       { label: 'הפקדות', routerLink: ['/deposites'] },
       { label: 'משתמשים', icon: 'pi pi-users', routerLink: ['/users'] },
@@ -35,5 +33,4 @@ export class AppComponent {
       { label: 'דף הבית', routerLink: ['/homePage'] }
     ];
   }
-
 }

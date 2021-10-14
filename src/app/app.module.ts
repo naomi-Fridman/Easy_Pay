@@ -9,9 +9,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { LoginModule } from './login/login.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {TabMenuModule} from 'primeng/tabmenu';
+import {SidebarModule} from 'primeng/sidebar';
+
 // import { AccordionModule } from 'ngx-bootstrap/accordion';
-
-
 @NgModule({
   declarations: [    
     AppComponent,
@@ -24,6 +24,7 @@ import {TabMenuModule} from 'primeng/tabmenu';
     LoginModule,
     BrowserAnimationsModule,
     TabMenuModule,
+    SidebarModule
     // AccordionModule.forRoot(),
   ],
   providers: [],
