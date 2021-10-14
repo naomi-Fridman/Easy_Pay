@@ -122,3 +122,8 @@ input::-webkit-inner-spin-button {
 .currency{
   cursor: pointer !important;
 }
+.validate{
+  color: #e83f3f;
+  font-size: 13px;
+  font-weight: 550;  float: right;
+}
