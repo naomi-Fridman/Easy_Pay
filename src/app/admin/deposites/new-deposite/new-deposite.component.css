@@ -1,5 +1,8 @@
 
+.main-panel{
+  top: 30px !important;
 
+}
 div.panel.panel-default{
     width: 200%;
 }
@@ -26,6 +29,8 @@ body {
 
 .card-body{
 width: 100%;
+margin-top: 0 !important;
+margin-bottom: 0 !important;
 margin: 24px;
 }
 .fileLabel{
@@ -47,7 +52,7 @@ margin: 24px;
     background-color: #e9f4fa;
     border-right: 4px solid #285c7e;
     font-family: arimo-bold,Arial;
-    margin-top: 20px;
+    margin-top: 0px;
     padding-top: 10px;
     padding-bottom: 10px;
     background-image: linear-gradient(to left,rgb(246 201 98 / 61%),rgb(255 223 79 / 76%)) !important;
@@ -102,7 +107,7 @@ div.card.card-user{
     background-color: #5f5f9a !important;
     width: 14vw !important;
     border-radius: 5px;
-    margin-top: 18px;
+    margin-top: 0px;
 }
 .update{
   display: flex;
