@@ -18,6 +18,7 @@ div.panel.panel-default{
 body {
     padding: 20px 0;
     font-family: Lato, sans-serif;
+    background-color: #fff0 !important;
   }
   
   div.card{

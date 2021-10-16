@@ -5,6 +5,8 @@
     box-shadow: 0 1px 6px rgb(0 0 0 / 16%);
 }
 .header-menu{
+    background-color: #ffffffc9;
+
     float: right;
     width: 100%;
     display: flex;
@@ -14,9 +16,11 @@
     direction: rtl;
     position: relative;
     top: 43px;
+    
 }
 .wrapper{
    direction: rtl;
+   
   
 }
 .nav>li>a {
@@ -28,6 +32,7 @@
     position: absolute;
     top: 6px;
     left: 0px;
+    
 }
 .actionBtn{
     width: 105px;

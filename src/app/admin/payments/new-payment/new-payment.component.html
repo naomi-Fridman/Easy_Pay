@@ -18,7 +18,7 @@
                         <input formControlName="collectionSum" id="collectionSum" type="number" class="form-control"
                             required>
                         <div class="validate"
-                            *ngIf="(PaymentDetailesFormControl.sum.invalid && (PaymentDetailesFormControl.sum.dirty || PaymentDetailesFormControl.sum.touched || formSubmitAttempt)) && PaymentDetailesFormControl.sum.errors.required ">
+                            *ngIf="(PaymentDetailesFormControl.collectionSum.invalid && (PaymentDetailesFormControl.collectionSum.dirty || PaymentDetailesFormControl.collectionSum.touched || formSubmitAttempt)) && PaymentDetailesFormControl.collectionSum.errors.required ">
                             <div>
                                 זהו שדה חובה
                             </div>
@@ -81,7 +81,7 @@
                         <label for="firstName" class="fileLabel required">שם פרטי</label>
                         <input formControlName="firstName" id="firstName" type="text" class="form-control" required>
 
-                        <div *ngIf="(PaymentDetailesUserFormControl.firstName.invalid && ( PaymentDetailesUserFormControl.firstName.dirty ||  PaymentDetailesUserFormControl.firstName.touched || formSubmitAttempt)) &&  PaymentDetailesUserFormControl.firstName.errors?.required "
+                        <div *ngIf="(PaymentDetailesUserFormControl.firstName.invalid && (PaymentDetailesUserFormControl.firstName.dirty ||  PaymentDetailesUserFormControl.firstName.touched || formSubmitAttempt)) &&  PaymentDetailesUserFormControl.firstName.errors?.required "
                             class="validate">
                             <div>זהו שדה חובה</div>
                         </div>
@@ -92,7 +92,7 @@
                         <label for="lastName" class="fileLabel required">שם משפחה</label>
                         <input formControlName="lastName" id="lastName" type="text" class="form-control" required>
                         <div class="validate"
-                            *ngIf="(PaymentDetailesUserFormControl.lastName.invalid && ( PaymentDetailesUserFormControl.lastName.dirty ||  PaymentDetailesUserFormControl.lastName.touched || formSubmitAttempt)) &&  PaymentDetailesUserFormControl.lastName.errors?.required ">
+                            *ngIf="(PaymentDetailesUserFormControl.lastName.invalid && (PaymentDetailesUserFormControl.lastName.dirty ||  PaymentDetailesUserFormControl.lastName.touched || formSubmitAttempt)) &&  PaymentDetailesUserFormControl.lastName.errors?.required ">
                             <div>
                                 זהו שדה חובה
                             </div>
