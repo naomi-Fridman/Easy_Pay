@@ -1,79 +1,177 @@
-<p>edit-user-details works!</p>
-<form [formGroup]="userDetailesForm" >
+<!-- <p>edit-user-details works!</p>
+<form [formGroup]="userDetailesForm">
     <div class="p-field p-grid">
-    <label for="userName" class="p-col-fixed" style="width:100px">userName</label>
-    <div class="p-col">
-        <input formControlName="userName" id="userName" type="text" pInputText> 
-    </div>
+        <label for="userName" class="p-col-fixed" style="width:100px">userName</label>
+        <div class="p-col">
+            <input formControlName="userName" id="userName" type="text" pInputText>
+        </div>
     </div>
     <div class="p-field p-grid">
         <label for="password" class="p-col-fixed" style="width:100px">password</label>
         <div class="p-col">
-            <input formControlName="password" id="password" type="text" pInputText> 
+            <input formControlName="password" id="password" type="text" pInputText>
         </div>
+    </div>
+    <div class="p-field p-grid">
+        <label for="firstName" class="p-col-fixed" style="width:100px">firstName</label>
+        <div class="p-col">
+            <input formControlName="firstName" id="firstName" type="text" pInputText>
         </div>
-    <div class="p-field p-grid">
-    <label for="firstName" class="p-col-fixed" style="width:100px">firstName</label>
-    <div class="p-col">
-        <input formControlName="firstName" id="firstName" type="text" pInputText> 
     </div>
+    <div class="p-field p-grid">
+        <label for="lastname" class="p-col-fixed" style="width:100px">שם משפחה</label>
+        <div class="p-col">
+            <input formControlName="lastName" id="lastname" type="text" pInputText>
+        </div>
+    </div>
+    <div class="p-field p-grid">
+        <label for="identityNumber" class="p-col-fixed" style="width:100px">identityNumber</label>
+        <div class="p-col">
+            <input formControlName="identityNumber" id="identityNumber" type="text" pInputText>
+        </div>
     </div>
 
     <div class="p-field p-grid">
-    <label for="lastname" class="p-col-fixed" style="width:100px">שם משפחה</label>
-    <div class="p-col">
-        <input formControlName="lastName" id="lastname" type="text" pInputText> 
+        <label for="email" class="p-col-fixed" style="width:100px">מייל</label>
+        <div class="p-col">
+            <input formControlName="email" id="email" type="text" pInputText>
+        </div>
     </div>
-    </div>
-
     <div class="p-field p-grid">
-    <label for="identityNumber" class="p-col-fixed" style="width:100px">identityNumber</label>
-    <div class="p-col">
-        <input formControlName="identityNumber" id="identityNumber" type="text" pInputText> 
+        <label for="address" class="p-col-fixed" style="width:100px">כתובת</label>
+        <div class="p-col">
+            <input formControlName="address" id="address" type="text" pInputText>
+        </div>
     </div>
-    </div>
-
     <div class="p-field p-grid">
-    <label for="email" class="p-col-fixed" style="width:100px">מייל</label>
-    <div class="p-col">
-        <input formControlName="email" id="email" type="text" pInputText> 
+        <label for="city" class="p-col-fixed" style="width:100px">city</label>
+        <div class="p-col">
+            <input formControlName="city" id="city" type="text" pInputText>
+        </div>
     </div>
-    </div>
-
     <div class="p-field p-grid">
-    <label for="address" class="p-col-fixed" style="width:100px">כתובת</label>
-    <div class="p-col">
-        <input formControlName="address" id="address" type="text" pInputText> 
+        <label for="telephoneNumber1" class="p-col-fixed" style="width:100px">telephoneNumber</label>
+        <div class="p-col">
+            <input formControlName="telephoneNumber1" id="telephoneNumber1" type="text" pInputText>
+        </div>
     </div>
-    </div>
-
     <div class="p-field p-grid">
-    <label for="city" class="p-col-fixed" style="width:100px">city</label>
-    <div class="p-col">
-        <input formControlName="city" id="city" type="text" pInputText> 
+        <label for="telephoneNumber2" class="p-col-fixed" style="width:100px">telephoneNumber2</label>
+        <div class="p-col">
+            <input formControlName="telephoneNumber2" id="telephoneNumber2" type="text" pInputText>
+        </div>
     </div>
-    </div>
-
     <div class="p-field p-grid">
-    <label for="telephoneNumber1" class="p-col-fixed" style="width:100px">telephoneNumber</label>
-    <div class="p-col">
-        <input formControlName="telephoneNumber1" id="telephoneNumber1" type="text" pInputText> 
-    </div>
-    </div>
-    
-    <div class="p-field p-grid">
-    <label for="telephoneNumber2" class="p-col-fixed" style="width:100px">telephoneNumber2</label>
-    <div class="p-col">
-        <input formControlName="telephoneNumber2" id="telephoneNumber2" type="text" pInputText> 
-    </div>
-    </div>
-
-    <div class="p-field p-grid">
-    <label for="comments" class="p-col-fixed" style="width:100px">comments</label>
-    <div class="p-col">
-        <input formControlName="comments" id="comments" type="text" pInputText> 
-    </div>
+        <label for="comments" class="p-col-fixed" style="width:100px">comments</label>
+        <div class="p-col">
+            <input formControlName="comments" id="comments" type="text" pInputText>
+        </div>
     </div>
     <button type="button" pButton icon="pi pi-times" (click)="save()" label="אישור"></button>
 
 </form>
+ -->
+
+<div class="card card-user">
+    <div class="title">
+        <label class="card-title pull-right mainTitle"> פרטי המשתמש {{_user.firstName}} {{_user.lastName}}</label>
+    </div>
+    <div>
+        <label style="font-size: 15px; color: black;margin: 7px;" class="comment">שדות המסומנים בכוכבית (*) הם
+            שדות
+            חובה
+        </label>
+    </div>
+    <div class="subTitleDiv"></div>
+    <div class="card-body">
+        <form [formGroup]="userDetailesForm" style="direction: rtl;">
+            <div class="row formRow row2">
+                <div class="col-md-3 pr-1">
+                    <div class="form-group">
+                        <label for="identityNumber" class="fileLabel required">ת"ז/דרכון</label>
+                        <input formControlName="identityNumber" id="identityNumber" type="number" class="form-control" required>
+                        <div *ngIf="(userDetailesFormControl.identityNumber.invalid && (userDetailesFormControl.identityNumber.dirty || userDetailesFormControl.identityNumber.touched || formSubmitAttempt)) && userDetailesFormControl.identityNumber.errors.required  "
+                            class="validate">
+                            <div>זהו שדה חובה</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 pr-1">
+                    <div class="form-group">
+                        <label for="firstName" class="  fileLabel required">שם פרטי</label>
+                        <input formControlName="firstName" id="firstName" type="text" class="form-control" required>
+                        <div *ngIf="(userDetailesFormControl.firstName.invalid && (userDetailesFormControl.firstName.dirty || userDetailesFormControl.firstName.touched || formSubmitAttempt)) && userDetailesFormControl.firstName.errors?.required "
+                            class="validate">
+                            <div>זהו שדה חובה</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 pr-1">
+                    <div class="form-group">
+                        <label for="lastName" class="  fileLabel required">שם משפחה</label>
+                        <input formControlName="lastName" id="lastName" type="text" class="form-control" required>
+                        <div class="validate"
+                            *ngIf="(userDetailesFormControl.lastName.invalid && (userDetailesFormControl.lastName.dirty || userDetailesFormControl.lastName.touched || formSubmitAttempt)) && userDetailesFormControl.lastName.errors?.required ">
+                            <div>זהו שדה חובה</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 pr-1">
+                    <div class="form-group">
+                        <label for="lastName" class="  fileLabel ">דואר אלקטרוני</label>
+                        <input formControlName="email" id="email" type="email" class="form-control">
+                        <div class="validate"
+                            *ngIf="(userDetailesFormControl.email.invalid && (userDetailesFormControl.email.dirty || userDetailesFormControl.email.touched || formSubmitAttempt)) && userDetailesFormControl.email.errors?.email ">
+                            <div> כתובת דואר אלקטרוני לא תקינה</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row formRow">
+                <div class="col-md-3 pr-1">
+                    <div class="form-group">
+                        <label for="address" class="fileLabel ">כתובת</label>
+                        <input formControlName="address" id="address" type="text" class="form-control" required>
+                    </div>
+                </div>
+                <div class="col-md-3 pr-1">
+                    <div class="form-group">
+                        <label for="city" class="fileLabel ">עיר</label>
+                        <input formControlName="city" id="city" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-3 pr-1">
+                    <div class="form-group">
+                        <label for="telephoneNumber1" class="fileLabel">טלפון בית</label>
+                        <input formControlName="telephoneNumber1" id="telephoneNumber1" type="number"
+                            class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-3 pr-1">
+                    <div class="form-group">
+                        <label for="telephoneNumber2" class="  fileLabel required">טלפון נייד</label>
+                        <input formControlName="telephoneNumber2" id="telephoneNumber2" type="number"
+                            class="form-control" required>
+                        <div class="validate"
+                            *ngIf="(userDetailesFormControl.telephoneNumber2.invalid && (userDetailesFormControl.telephoneNumber2.dirty || userDetailesFormControl.telephoneNumber2.touched || formSubmitAttempt)) && userDetailesFormControl.telephoneNumber2.errors?.required ">
+                            <div> זהו שדה חובה</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row formRow">
+                <div class="col-md-12 pr-1">
+                    <div class="form-group">
+                        <label for="comments" class="fileLabel">הערות</label>
+                        <textarea class="form-control textarea" formControlName="comments" id="comments" type="text"
+                            class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row formRow">
+        <div class="fileLabel"></div>
+        <button type="button" pButton (click)="save()" class="saveBtn">שמור</button>
+    </div>
+</div>
