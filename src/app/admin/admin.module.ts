@@ -20,11 +20,13 @@ import { PaymentsModule } from './payments/payments.module';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import { AdminRoutes } from './admin.routing';
 import { DailyActivityComponent } from './daily-activity/daily-activity.component';
+import { DialogComponent } from '../models-components/dialog/dialog.component';
 
 
 @NgModule({
-  declarations: [AdminComponent,AdminLayoutComponent, DailyActivityComponent],
+  declarations: [AdminComponent,AdminLayoutComponent, DailyActivityComponent,DialogComponent],
   imports: [
+    
     CommonModule,UsersModule,LoansModule,DepositesModule,HttpClientModule,OrderListModule,PaymentsModule,
     ButtonModule,
     CalendarModule,
@@ -45,6 +47,6 @@ import { DailyActivityComponent } from './daily-activity/daily-activity.componen
     MessageModule,
     RouterModule.forChild(AdminRoutes)
   ],
-   exports:[AdminLayoutComponent,AdminComponent]
+   exports:[AdminLayoutComponent,AdminComponent,DialogComponent]
 })
 export class AdminModule { }

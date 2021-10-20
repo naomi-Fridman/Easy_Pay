@@ -14,28 +14,29 @@ import { DirectDebit } from 'src/app/models/directDebit';
 import { GuarantyDetailsComponent } from 'src/app/models-components/guaranty/guaranty-details/guaranty-details.component';
 import { UsersService } from 'src/app/services/users.service';
 
+
 @Component({
   selector: 'app-new-loan',
   templateUrl: './new-loan.component.html',
   styleUrls: ['./new-loan.component.css']
 })
-export class NewLoanComponent implements OnInit ,AfterViewInit{
+export class NewLoanComponent implements OnInit, AfterViewInit {
   newLoanDetailes: LoanDetailes = new LoanDetailes();
-  loanCurrency: number=3;
-  returnCurrency:number=1
+  loanCurrency: number = 3;
+  returnCurrency: number = 1
   uploadedFiles: any[] = [];
   selectedFile: File;
   imageSrc: string;
   saveGuarantyEvent: boolean = false;
   shtarFD = new FormData();
-  private shtarUploaded : boolean = false;
-
+  private shtarUploaded: boolean = false;
+ 
   l: DirectDebit = new DirectDebit();
   @ViewChildren(GuarantyDetailsComponent) guarantyDetailsComponent: QueryList<GuarantyDetailsComponent>;
-  isExistUser: boolean=false;
+  isExistUser: boolean = false;
 
 
-  constructor(private userService: UsersService,private loansService: LoansService, private cd: ChangeDetectorRef, private route :Router) {}  //private messageService: MessageService
+  constructor(private userService: UsersService, private loansService: LoansService, private cd: ChangeDetectorRef, private route: Router) { }  //private messageService: MessageService
 
   ngAfterViewInit() {
     this.guarantyDetailsComponent.forEach(g => console.log(g));
@@ -49,7 +50,7 @@ export class NewLoanComponent implements OnInit ,AfterViewInit{
   checkUserForLoan(event) {
     this.userService.getUserByIdentityNumber(event.target.value).subscribe(user => {
       if (user) {
-        this.isExistUser=true;
+        this.isExistUser = true;
         this.loanerDetailesUserForm.controls["firstName"].setValue(user.firstName);
         this.loanerDetailesUserForm.controls["lastName"].setValue(user.lastName);
         this.loanerDetailesUserForm.controls["telephoneNumber1"].setValue(user.telephoneNumber1);
@@ -75,13 +76,16 @@ export class NewLoanComponent implements OnInit ,AfterViewInit{
     this.newLoanDetailes.user = this.loanerDetailesUserForm.value;
     debugger
     const uploadData = new FormData();
-      uploadData.append('file', this.selectedFile);
-      uploadData.append('newLoaner', JSON.stringify(this.newLoanDetailes));
-      //check if exists
-      this.loansService.postLoan(uploadData).subscribe(e=>{
-        this.route.navigate(["/homePage"]);
-      });
+    uploadData.append('file', this.selectedFile);
+    uploadData.append('newLoaner', JSON.stringify(this.newLoanDetailes));
+    //check if exists
+    this.loansService.postLoan(uploadData).subscribe(e => {
+      this.route.navigate(["/homePage"]);
+    });
   }
+
+
+
   id(event) {
     event.target.value;
   }
@@ -93,21 +97,21 @@ export class NewLoanComponent implements OnInit ,AfterViewInit{
   }
   onFileChanged(event) {
     this.selectedFile = event.target.files[0];
-    if(this.selectedFile){
+    if (this.selectedFile) {
       this.shtarFD.append("shter", this.selectedFile);
     }
   }
   loanerDetailesUserForm: FormGroup = new FormGroup({
     firstName: new FormControl(""),
-    lastName: new FormControl("" ),
+    lastName: new FormControl(""),
     email: new FormControl(),
     city: new FormControl(""),
     address: new FormControl(""),
     identityNumber: new FormControl(null),
     password: new FormControl(""),
-    userName: new FormControl("",Validators.required,),
+    userName: new FormControl("", Validators.required,),
     telephoneNumber1: new FormControl(),
-    telephoneNumber2: new FormControl( ),
+    telephoneNumber2: new FormControl(),
     idUser: new FormControl(null),
   });
 
@@ -154,6 +158,7 @@ export class NewLoanComponent implements OnInit ,AfterViewInit{
 
   });
   ngOnInit() {
+   
   }
 
 }

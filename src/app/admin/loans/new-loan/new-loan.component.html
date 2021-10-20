@@ -26,10 +26,8 @@
           <label class="card-title pull-right mainTitle"> הלוואה חדשה</label>
         </div>
         <div>
-          <label style="font-size: 15px; color: black;margin: 7px;" class="pull-right">שדות המסומנים בכוכבית (*) הם
-            שדות
-            חובה
-          </label>
+          <label style="font-size: 15px; color: black;margin: 7px;" class="pull-right">שדות המסומנים בכוכבית (*) הם שדות
+            חובה</label>
         </div>
         <div class="subTitleDiv">
           <label class="card-title pull-right subTitle"> פרטים אישיים</label>
@@ -66,13 +64,13 @@
                 <div class="form-group">
                   <label for="firstName" class="pull-right fileLabel required">שם פרטי</label>
                   <input type="text" formControlName="firstName" id="firstName" class="form-control" required
-                    placeholder="firstName"  [(ngModel)]="hero.firstName" >
+                    placeholder="firstName" [(ngModel)]="hero.firstName">
                   <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
 
                     <div *ngIf="firstName.errors?.required">
                       firstName is required.
                     </div>
-                   
+
                   </div>
                 </div>
               </div>
@@ -211,39 +209,38 @@
           </form>
         </div>
 
-        <!-- <div class="wrapper "> -->
-        <div class="">
-          <app-guaranty-details></app-guaranty-details>
-          <app-guaranty-details></app-guaranty-details>
-          <app-guaranty-details></app-guaranty-details>
-          <app-guaranty-details></app-guaranty-details>
-          <app-guaranty-details></app-guaranty-details>
-          <div class="end">
-            <!-- <div class="card card-user"> -->
-            <div class="subTitleDiv">
-              <label class="card-title pull-right subTitle"> הערות</label>
-            </div>
-            <div class="card-body">
-              <form [formGroup]="loanerDetailesUserForm" style="direction: rtl;">
-                <div class="row formRow">
-                  <div class="form-group">
-                    <div class="col-md-12">
-                      <label class="pull-right fileLabel">הערות</label>
-                      <textarea class="form-control textarea"></textarea>
-                    </div>
+          <app-guaranty-details ></app-guaranty-details>
+          <app-guaranty-details ></app-guaranty-details>
+          <app-guaranty-details ></app-guaranty-details>
+          
+         
+        <div class="end">
+          <!-- <div class="card card-user"> -->
+          <div class="subTitleDiv">
+            <label class="card-title pull-right subTitle"> הערות</label>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="loanerDetailesUserForm" style="direction: rtl;">
+              
+              <div class="row formRow">
+                <div class="form-group">
+                  <div class="col-md-12">
+                    <label class="pull-right fileLabel">הערות</label>
+                    <textarea class="form-control textarea"></textarea>
                   </div>
                 </div>
-                <div class="row formRow">
-                  <div class="update ml-auto mr-auto">
-                    <button type="button" (click)="save()"
-                      class="btn btn-primary btn-primary btn-lg ladda-button saveBtn">
-                      שמור הלוואה</button>
-                  </div>
+              </div>
+              <div class="row formRow">
+                <div class="update ml-auto mr-auto">
+                  <button type="button" (click)="save()"
+                    class="btn btn-primary btn-primary btn-lg ladda-button saveBtn">
+                    שמור הלוואה</button>
                 </div>
-              </form>
-            </div>
+              </div>
+            </form>
           </div>
         </div>
+
       </div>
     </div>
   </div>

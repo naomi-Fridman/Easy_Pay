@@ -15,7 +15,7 @@ import { PaymentsDetailsComponent } from './payments-details/payments-details.co
 import { RouterLink, RouterModule } from '@angular/router';
 import { CheckboxModule } from 'primeng/checkbox';
 import { NewPaymentComponent } from './new-payment/new-payment.component';
-
+import { DialogComponent } from 'src/app/models-components/dialog/dialog.component';
 
 @NgModule({
   declarations: [PaymentsComponent, PaymentsDetailsComponent, NewPaymentComponent],
@@ -35,6 +35,7 @@ import { NewPaymentComponent } from './new-payment/new-payment.component';
     CheckboxModule,
     MessagesModule,
     MessageModule,
+    
   ],
   exports:[PaymentsComponent]
 })
