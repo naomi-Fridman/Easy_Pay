@@ -117,19 +117,22 @@
     </div>
 </div>
 
+
 <div class="l-container">
-    <ul *ngFor="let payment of paymentListToDisplay">
+    <ul style="padding-right: 0px" *ngFor="let payment of paymentListToDisplay">
         <li class="list" data-name="JoeBrown">
             <div class="list__profile">
-                <div> <img src="https://tinyurl.com/glz9lv7"> </div>
+                <img class="pull-left img-circle nav-user-photo" width="90"
+                    src="../../../assets/img//faces/face-0.jpg" />  
                 <div class="list__label">
-                    <div class="list__label--header"> {{payment.user.firstName}} - {{payment.user.lastName}} </div>
-                    <div class="list__label--value"> {{payment.payment.paymentDate | date:"dd/MM/yyyy" }} - {{payment.payment.collectionSum}} </div>
+                    <div class="list__label--header">  {{payment.user.firstName}}  {{payment.user.lastName}} </div>
+                    <div class="list__label--value"> סכום  - {{payment.payment.collectionSum}}  </div>
+                    <div class="list__label--value"> תאריך  - {{payment.payment.paymentDate | date:"dd/MM/yyyy" }}   </div>
                 </div>
-            </div>
-            <div class="list__photos">
-                <button pButton type="button" label="הצג פרטים" icon="pi pi-info-circle" iconPos="right"
-                (click)="showDetails(payment)"></button>
+                <div >
+                    <button class='searchBtn' type="button" (click)="showDetails(payment)">ערוך פרטים </button>
+                    <button data-toggle="modal" href="#myModal"  class='searchBtn' type="button" (click)="showConfirm()">מחק משתמש </button>
+                </div>
             </div>
         </li>
     </ul>

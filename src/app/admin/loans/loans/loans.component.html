@@ -1,4 +1,3 @@
-<p>loans works!</p>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -11,42 +10,33 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<div class="ad-sektion-top hidden-xs" style="margin-top:80px;">
-    <div class="container-fluid text-center">
-        <div class="row">
-        </div>
-    </div>
-</div>
-<div class="wrapper">
-    <header>
-        <div id="top-filter" class="top-filter tfilter-box hidden-xs" data-spy="affix" data-offset-top="197">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-2">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <input [(ngModel)]="dto_loans.firstName" #firstNameInput class="form-control"
-                                    placeholder="שם פרטי" type="text">
-                            </div>
+<header>
+    <div id="top-filter" class=" tfilter-box hidden-xs" data-spy="affix" data-offset-top="197">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input [(ngModel)]="dto_loans.firstName" #firstNameInput class="form-control"
+                                placeholder="שם פרטי" type="text">
                         </div>
                     </div>
-                    <div class="col-sm-2">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <input [(ngModel)]="dto_loans.lastName" #lastNameInput class="form-control"
-                                    placeholder="שם משפחה" type="text">
-                            </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input [(ngModel)]="dto_loans.lastName" #lastNameInput class="form-control"
+                                placeholder="שם משפחה" type="text">
                         </div>
                     </div>
-                    <!-- <div class="col-sm-2">
+                </div>
+                <!-- <div class="col-sm-2">
                         <select (change)="onChange($event.target.value)" [(ngModel)]="selectedSum" class="form-control">
-
                             <option value="sum">
                                 סכום מדויק
                             </option>
@@ -85,115 +75,109 @@
                             </div>
                         </div>
                     </div> -->
-                    <div class="col-sm-4">
-                        <button type="button" class="btn btn-danger glyphicon glyphicon-search"
-                            (click)="getAllPayments()">חפש
-                        </button>
-                    </div>
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-danger glyphicon glyphicon-search"
+                        (click)="getAllPayments()">חפש
+                    </button>
                 </div>
             </div>
         </div>
-    </header>
-    <aside class="col-sm-6">
-        <div style="width: 330px;" class="card">
+    </div>
+</header>
+<div style="display: flex; margin-top: 3rem;">
+    <div class="col-2" style="margin-right: 5rem;">
+        <div class="filterSide">
             <article class="card-group-item">
                 <header class="card-header">
-                    <h6 style="text-align: center; margin: 0px 0px 0px;" class="title">סינון לפי סכום </h6>
+                    <h4 style="text-align: center; margin: 0px 0px 0px;" class="title">סינון לפי סכום </h4>
                 </header>
                 <div class="filter-content">
                     <div class="card-body">
-                        <div class="form-row">
-                            <div class="form-group col-md-6 text-right">
-                                <label>סכום מדויק</label>
-                                <input type="number" class="form-control" id="inputEmail4" placeholder="סכום מדויק">
-                            </div>
-                            <pre style="background-color: white; border: white;"></pre>
-                            <div class="form-group col-md-6 text-right">
-                                <label>החל מסכום</label>
-                                <input type="number" class="form-control" id="inputEmail4" placeholder="החל מסכום">
-                            </div>
-                            <div class="form-group col-md-6 text-right">
-                                <label>עד סכום</label>
-                                <input type="number" class="form-control" placeholder="עד סכום">
-                            </div>
+                        <div class="row filter_title">
+                            סכום מדויק
                         </div>
-                    </div> <!-- card-body.// -->
+                        <div class="row filter_input">
+                            <input type="number" class="form-control" id="inputEmail4" placeholder="סכום מדויק">
+                        </div>
+                        <div class="row filter_title">
+                            החל מסכום
+                        </div>
+                        <div class="row filter_input">
+                            <input type="number" class="form-control" id="inputEmail4" placeholder="החל מסכום">
+                        </div>
+                        <div class="row filter_title">
+                            עד סכום
+                        </div>
+                        <div class="row filter_input">
+                            <input type="number" class="form-control" placeholder="עד סכום">
+                        </div>
+                    </div>
                 </div>
-            </article> <!-- card-group-item.// -->
+            </article>
             <article class="card-group-item">
                 <header class="card-header">
-                    <h6 style="text-align: center;  margin: 0px 0px 0px;" class="title">סינון לפי תאריך </h6>
+                    <h4 style="text-align: center;  margin: 0px 0px 0px;" class="title">סינון לפי תאריך </h4>
                 </header>
                 <div style="margin: 0px 0px 0px" class="filter-content">
                     <div class="card-body">
-                        <div class="form-row">
-                            <div class="form-group col-md-6 text-right">
-                                <label>תאריך מדויק</label>
-                                <input style="width: 150px;" type="date" class="form-control" placeholder="עד לתאריך">
-                            </div>
-                            <pre style="background-color: white; border: white;"></pre>
-                            <div class="form-group col-md-6 text-right">
-                                <label>החל מתאריך</label>
-                                <input style="width: 150px;" type="date" class="form-control" id="inputEmail4"
-                                    placeholder="החל מתאריך">
-                            </div>
-                            <div class="form-group col-md-6 text-right">
-                                <label>עד לתאריך</label>
-                                <input style="width: 150px;" type="date" class="form-control" placeholder="עד לתאריך">
-                            </div>
+                        <div class="row filter_title">
+                            תאריך מדויק
                         </div>
-                    </div> <!-- card-body.// -->
+                        <div class="row filter_input">
+                            <input  type="date" class="form-control">
+                        </div>
+                        <div class="row filter_title">
+                            החל מתאריך
+                        </div>
+                        <div class="row filter_input">
+                            <input  type="date" class="form-control" >
+                        </div>
+                        <div class="row filter_title">
+                            עד לתאריך
+                        </div>
+                        <div class="row filter_input">
+                            <input  type="date" class="form-control" >
+                        </div>
+                    </div>
                 </div>
-            </article> <!-- card-group-item.// -->
+            </article>
             <article class="card-group-item">
                 <header class="card-header">
-                    <h6 style="text-align: center; margin: 0px 0px 0px;" class="title">הלוואות פעילות </h6>
+                    <h4 style="text-align: center; margin: 0px 0px 0px;" class="title">הלוואות פעילות </h4>
                 </header>
                 <div class="filter-content text-right">
-
-                    <div  class="boxes">
-                        <input  type="checkbox" id="box-1">
-                        <label style="right: 20px;" for="box-1">הצג את ההלוואות הפעילות&nbsp;</label>
+                    <div class="boxes">
+                        <input type="checkbox" id="box-1">
+                        <label style="right: 18px;" for="box-1">הצג את ההלוואות הפעילות</label>
                     </div>
-
                 </div>
-            </article> <!-- card-group-item.// -->
-
-        </div> <!-- card.// -->
-    </aside> <!-- col.// -->
-    <section>
+            </article>
+        </div>
+    </div>
+    <div class="col-9">
         <div class="l-container">
-            <ul *ngFor="let loan of loanerToDisplay">
+            <ul style="padding-right: 0px" *ngFor="let loan of loanerToDisplay">
                 <li class="list" data-name="JoeBrown">
                     <div class="list__profile">
-                        <div> <img src="https://tinyurl.com/glz9lv7"> </div>
+                        <img class="pull-left img-circle nav-user-photo" width="90"
+                            src="../../../assets/img//faces/face-0.jpg" />  
                         <div class="list__label">
-                            <div class="list__label--header"> {{loan.user.firstName}} - {{loan.user.lastName}} </div>
-                            <div class="list__label--value"> - {{loan.loaner.sum}} סכום הלוואה:</div>
-                            <div class="list__label--value">  {{loan.loanPaymantsStatus.sumPadeUp}}סכום ששולם:  </div>
-                            <div class="list__label--value">  {{loan.loanPaymantsStatus.rest}}סכום שנותר:  </div>
+                            <div class="list__label--header"> {{loan.user.firstName}} {{loan.user.lastName}}</div>
+                            <div class="list__label--value"> - {{loan.loaner.sum}} סכום הלוואה: </div>
+                            <div class="list__label--value"> {{loan.loanPaymantsStatus.sumPadeUp}}סכום ששולם: </div>
+                            <div class="list__label--value"> {{loan.loanPaymantsStatus.rest}}סכום שנותר: </div>
                         </div>
-                    </div>
-                    <div class="list__photos">
-                        <button pButton type="button" label="הצג פרטים" icon="pi pi-info-circle" iconPos="right"
-                            (click)="showDetails(loan)"></button>
+                        <div>
+                            <button class='searchBtn' type="button" (click)="showDetails(loan)">ערוך פרטים </button>
+                            <button data-toggle="modal" href="#myModal" class='searchBtn' type="button"
+                                (click)="showConfirm()">מחק משתמש </button>
+                        </div>
                     </div>
                 </li>
             </ul>
         </div>
-    </section>
+    </div>
 </div>
-<!-- <p-orderList [value]="loanerToDisplay" filterBy="user.lastName">
-    <ng-template let-loaner pTemplate="item">
-        <div class="ui-helper-clearfix">
-            <div style="font-size:14px;float:right;margin:15px 5px 0 0">
-                {{loaner.user.firstName}} - {{loaner.user.lastName}} - {{loaner.loaner.sum}}
-                <button pButton type="button" label="הצג פרטים" icon="pi pi-info-circle" iconPos="right"
-                    (click)="showDetails(loaner)"></button>
-            </div>
-        </div>
-    </ng-template>
-</p-orderList> -->
 
 <p-dialog *ngIf="loaner" header={{loaner.user.firstName}} [(visible)]="display" modal="modal" [style]="{width: '350px'}"
     [responsive]="true">
@@ -202,11 +186,9 @@
         <!-- <label  class="p-col-fixed" style="width:100px">שם פרטי</label>
             {{loaner.user.firstName}}
             <br/> -->
-
         <button type="button" pButton (click)="getPaymentsForLoan(loaner.user.id)"
             label="צפה בתשלומים שנכנסו עבור הלוואה זו"></button>
         <button type="button" pButton (click)="getGuarantiesForLoan()" label="ערבים"></button>
-
         <!-- <div *ngIf="loaner.payments"></div> -->
         <!-- <p-virtualScroller *ngIf="loaner.payments" [value]="loaner.payments" scrollHeight="500px" [itemSize]="150">
             <ng-template pTemplate="item" let-car>

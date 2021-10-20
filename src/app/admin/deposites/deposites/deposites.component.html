@@ -47,17 +47,21 @@
     </div>
 </div>
 <div class="l-container">
-    <ul *ngFor="let depositor of depositorToDisplay">
+    <ul style="padding-right: 0px" *ngFor="let depositor of depositorToDisplay">
         <li class="list" data-name="JoeBrown">
             <div class="list__profile">
-                <div> <img src="https://img.icons8.com/officel/16/000000/contacts.png"/> </div>
+                <img class="pull-left img-circle nav-user-photo" width="90"
+                    src="../../../assets/img//faces/face-0.jpg" />  
                 <div class="list__label">
-                    <div class="list__label--header"> {{depositor.user.firstName}} - {{depositor.user.lastName}} </div>
-                    <div class="list__label--value"> {{depositor.deposit.sum}} </div>
+                    <div class="list__label--header">  {{depositor.user.firstName}}  {{depositor.user.lastName}} </div>
+                    <div class="list__label--value"> סכום הפקדה - {{depositor.deposite.sum}}  </div>
+                    <div class="list__label--value"> תאריך הפקדה - {{depositor.deposite.depositeDate | date:"dd/MM/yyyy"}}  </div>
+                    <div class="list__label--value"> תאריך סיום הפקדה - {{depositor.deposite.returnDate | date:"dd/MM/yyyy"}}  </div>
                 </div>
-            </div>
-            <div class="list__photos">
-                <button pButton type="button" label="הצג פרטים" icon="pi pi-info-circle" iconPos="right" (click)="showDetails(depositor)"></button>
+                <div >
+                    <button class='searchBtn' type="button" (click)="showDetails(depositor)">ערוך פרטים </button>
+                    <button data-toggle="modal" href="#myModal"  class='searchBtn' type="button" (click)="showConfirm()">מחק משתמש </button>
+                </div>
             </div>
         </li>
     </ul>

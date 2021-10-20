@@ -97,8 +97,8 @@ export class NewLoanComponent implements OnInit, AfterViewInit {
   }
   onFileChanged(event) {
     this.selectedFile = event.target.files[0];
-    if (this.selectedFile) {
-      this.shtarFD.append("shter", this.selectedFile);
+    if(this.selectedFile){
+      this.shtarFD.append("shtar", this.selectedFile);
     }
   }
   loanerDetailesUserForm: FormGroup = new FormGroup({

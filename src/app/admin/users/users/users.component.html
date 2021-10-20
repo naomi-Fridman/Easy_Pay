@@ -1,104 +1,86 @@
-<p>users works!</p>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-<div class="ad-sektion-top hidden-xs" style="margin-top:80px;">
-    <div class="container-fluid text-center">
-        <div class="row">
+<div id="top-filter" class="top-filter tfilter-box " data-spy="affix" data-offset-top="197">
+    <div class="row">
+        <div class="col">
+            <input [(ngModel)]="dto_user.identityNumber" #identityNumberInput class="form-control"
+                placeholder="תעודת זהות" type="text">
+        </div>
+        <div class="col">
+            <input [(ngModel)]="dto_user.firstName" #firstNameInput class="form-control" placeholder="שם פרטי"
+                type="text">
+        </div>
+        <div class="col">
+            <input [(ngModel)]="dto_user.lastName" #lastNameInput class="form-control" placeholder="שם משפחה"
+                type="text">
+        </div>
+        <div class="col">
+            <input [(ngModel)]="dto_user.address" #addressInput class="form-control" placeholder="כתובת" type="text">
+            <!-- <p-autoComplete [(ngModel)]="city" [suggestions]="filteredCitiesSingle"placeholder="כתובת" (completeMethod)="filterCitySingle($event)"></p-autoComplete> -->
+        </div>
+        <div class="col">
+            <input [(ngModel)]="dto_user.telephoneNumber" #telephoneNumberInput class="form-control" placeholder="טלפון"
+                type="text">
+        </div>
+        <div class="col">
+            <!-- <button type="button" class="btn btn-danger glyphicon glyphicon-search" (click)="getAllUsers()">חפש
+            </button> -->
+            <button class='searchBtn' type="button" (click)="getAllUsers()">חפש </button>
         </div>
     </div>
 </div>
-<div id="top-filter" class="top-filter tfilter-box hidden-xs" data-spy="affix" data-offset-top="197">
-    <div class="container">
-        <div class="row">
-            
-            <div class="col-sm-2">
-                <div class="row">
-                    <div class="col-md-12">
-                        <input [(ngModel)]="dto_user.firstName" #firstNameInput class="form-control" placeholder="שם פרטי" type="text">
+
+<div class="l-container">
+    <ul style="padding-right: 0px" *ngFor="let user of usersList">
+        <li class="list" data-name="JoeBrown">
+            <div class="list__profile">
+                <img class="pull-left img-circle nav-user-photo" width="90"
+                    src="../../../assets/img//faces/face-0.jpg" />  
+                <div class="list__label">
+                    <div class="list__label--header"> {{user.firstName}} - {{user.lastName}} </div>
+                    <div class="list__label--value"> {{user.telephoneNumber1}} / {{user.telephoneNumber2}} </div>
+                    <div class="list__label--value"> {{user.address}} {{user.city}} </div>
+                    <div class="list__label--value">
+                        <a class="userEmail" href="mailto:{{user.email}}">{{user.email}}</a>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-2">
-                <div class="row">
-                    <div class="col-md-12">
-                        <input [(ngModel)]="dto_user.lastName" #lastNameInput class="form-control" placeholder="שם משפחה" type="text">
-                    </div>
+                <div>
+                    <button class='searchBtn' type="button" (click)="edit(user)">ערוך פרטים </button>
+                    <button class='searchBtn' type="button" (click)="openPopup(user.id,user.firstName,user.lastName)">מחק משתמש </button>
                 </div>
             </div>
-            <div class="col-sm-5">
-                <div class="row">
-                    <div class="col-md-12">
-                        <p-autoComplete [(ngModel)]="city" [suggestions]="filteredCitiesSingle"placeholder="כתובת" (completeMethod)="filterCitySingle($event)"></p-autoComplete>
-                    </div>
-                </div>
+        </li>
+    </ul>
+</div>
+<div class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false"
+    [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button style="float: right; font-weight: bold; background-color: transparent;
+                border: none;" class="modal-title">x</button>
             </div>
-            <div class="col-sm-2">
-                <div class="row">
-                    <div class="col-md-12">
-                        <input [(ngModel)]="dto_user.telephoneNumber" #telephoneNumberInput class="form-control" placeholder="טלפון" type="text">
-                    </div>
-                </div>
+            <div class="modal-body">
+                <p style="float: right;"> האם אתה בטוח שברצונך למחוק את {{singleUserFirstName}} {{singleUserLastName}} לצמיתות?</p>
             </div>
-            <div class="col-sm-2">
-                <div class="row">
-                    <div class="col-md-12">
-                        <input [(ngModel)]="dto_user.email" #emailInput class="form-control" placeholder="כתובת מייל" type="text">
-                    </div>
-                </div>
-            </div>
-             <select style="width:max-content">
-                <ng-template ngFor [ngForOf]="cityList" [ngForTemplate]="itemTemplate"></ng-template>
-                <ng-template #itemTemplate let-element>
-                  <option value="{{element.id}}">{{element}}</option>
-                  <!-- <ng-template ngFor [ngForOf]="element.children" [ngForTemplate]="itemTemplate"></ng-template> -->
-                </ng-template>
-              </select>
-            <div class="col-sm-1">
-                <button type="button" class="btn btn-danger glyphicon glyphicon-search"
-                    (click)="getAllUsers()">חפש </button>
+            <div class="modal-footer">
+                <button style="background-color: #f1d57e; border-color: #e7d35d ;width: 87px; margin-right: 18px" type="button" class="searchBtn" (click)="closePopup()">
+                    ביטול
+                </button>
+                <button style="width: 87px; margin-right: 18px;" type="button" class="searchBtn" (click)="deleteUser()">
+                    אישור
+                </button>
             </div>
         </div>
     </div>
-</div> 
-
- <p-accordion *ngFor="let user of usersList">
-    <p-accordionTab  header={{user.firstName}}{{user.lastName}} [selected]="false">
-      <label class="p-col-fixed" style="width:100px">:תעודת זהות</label><br>
-      {{user.identityNumber}}<br>
-      <label class="p-col-fixed" style="width:100px">:1טלפון</label><br>
-      {{user.telephoneNumber1}}<br>
-      <label class="p-col-fixed" style="width:100px">:2טלפון</label><br>
-       {{user.telephoneNumber2}}<br>
-      <label class="p-col-fixed" style="width:100px">:דואר אלקטרוני</label><br>
-      {{user.email}}<br>
-      <label class="p-col-fixed" style="width:100px">:כתובת</label><br>
-      {{user.address}} {{user.city}}<br>
-      <label class="p-col-fixed" style="width:100px">:הערות</label><br>
-      {{user.comments}}<br>
-      <button pButton type="button" label="ערוך" icon="pi pi-pencil" iconPos="right" (click)="edit(user)" ></button>
-      <button type="button" pButton (click)="showConfirm()" label="מחק משתמש" class="ui-button-warning"></button>
-      <p-toast position="center" key="c" (onClose)="onReject()" [modal]="true" [baseZIndex]="5000">
-        <ng-template let-message pTemplate="message">
-            <div style="text-align: center">
-                <i class="pi pi-exclamation-triangle" style="font-size: 3em"></i>
-                <h3>האם אתה בטוח??</h3>
-                <p>למחוק?</p>
-            </div>
-            <div class="p-grid ui-fluid">
-                <div class="p-col-6">
-                    <button type="button" pButton (click)="onConfirm(user.id)" label="Yes" class="ui-button-success"></button>
-                </div>
-                <div class="p-col-6">
-                    <button type="button" pButton (click)="onReject()" label="No" class="ui-button-secondary"></button>
-                </div>
-            </div>
-        </ng-template>
-    </p-toast>  
-    </p-accordionTab> 
-    
-  </p-accordion>
-  
-    
+</div>

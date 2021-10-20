@@ -18,247 +18,247 @@
   <link href="../assets/demo/demo.css" rel="stylesheet" />
 </head>
 
-<body class="myBody">
-  <div class="wrapper ">
-    <div class="col-md-12 hello">
-      <div class="card card-user">
-        <div class="title">
-          <label class="card-title pull-right mainTitle"> הלוואה חדשה</label>
-        </div>
-        <div>
-          <label style="font-size: 15px; color: black;margin: 7px;" class="pull-right">שדות המסומנים בכוכבית (*) הם שדות
-            חובה</label>
-        </div>
-        <div class="subTitleDiv">
-          <label class="card-title pull-right subTitle"> פרטים אישיים</label>
-        </div>
-        <div class="card-body">
-          <form [formGroup]="loanerDetailesLoanForm" style="direction: rtl;">
-            <div class="row formRow">
-              <div class="col-md-3 pr-1">
-                <div class="form-group">
-                  <label for="loanDate" class="pull-right fileLabel required">תאריך הלוואה</label>
-                  <input formControlName="loanDate" id="loanDate" type="date" class="form-control"
-                    placeholder="loanDate">
-                </div>
-              </div>
-              <div class="col-md-3 px-1">
-                <div class="form-group">
-                  <label for="hebrewLoanDate" class="pull-right fileLabel">תאריך הלוואה עברי</label>
-                  <input type="text" formControlName="hebrewLoanDate" class="form-control" placeholder="hebrewLoanDate"
-                    id="hebrewLoanDate" value="תאריך הלוואה עבר">
-                </div>
-              </div>
-            </div>
-          </form>
-          <form [formGroup]="loanerDetailesUserForm" style="direction: rtl;">
-            <div class="row formRow">
-              <div class="col-md-3 pr-1">
-                <div class="form-group">
-                  <label for="identityNumber" class="pull-right fileLabel required">ת"ז/דרכון</label>
-                  <input type="text" formControlName="identityNumber" class="form-control"
-                    (blur)="checkUserForLoan($event)" id="identityNumber" placeholder="identityNumber">
-                </div>
-              </div>
-              <div class="col-md-3 px-1">
-                <div class="form-group">
-                  <label for="firstName" class="pull-right fileLabel required">שם פרטי</label>
-                  <input type="text" formControlName="firstName" id="firstName" class="form-control" required
-                    placeholder="firstName" [(ngModel)]="hero.firstName">
-                  <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
-
-                    <div *ngIf="firstName.errors?.required">
-                      firstName is required.
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3 pl-1">
-                <div class="form-group">
-                  <label for="lastName" class="pull-right fileLabel required">שם משפחה</label>
-                  <input type="text" formControlName="lastName" id="lastName" class="form-control"
-                    placeholder="lastName" value="שם משפחה">
-                </div>
-              </div>
-              <div class="col-md-3 pl-1">
-                <div class="form-group">
-                  <label for="email" class="pull-right fileLabel required">כתובת מייל</label>
-                  <input formControlName="email" id="email" type="email" class="form-control" placeholder="Email">
-                </div>
-              </div>
-            </div>
-
-
-            <div class="row formRow">
-              <div class="col-md-3 pr-1">
-                <div class="form-group">
-                  <label for="address" class="pull-right fileLabel required">כתובת</label>
-                  <input formControlName="address" id="address" type="text" class="form-control" placeholder="address"
-                    value="כתובת">
-                </div>
-              </div>
-              <div class="col-md-3 px-1">
-                <div class="form-group">
-                  <label for="city" class="pull-right fileLabel">עיר</label>
-                  <input formControlName="city" id="city" type="number" class="form-control" placeholder="city"
-                    value="עיר">
-                </div>
-              </div>
-              <div class="col-md-3 pl-1">
-                <div class="form-group">
-                  <label for="telephoneNumber1" class="pull-right fileLabel required">טלפון בית/נייד</label>
-                  <input type="text" formControlName="telephoneNumber1" id="telephoneNumber1" class="form-control"
-                    placeholder="telephoneNumber1">
-                </div>
-              </div>
-              <div class="col-md-3 pl-1">
-                <div class="form-group">
-                  <label for="telephoneNumber2" class="pull-right fileLabel">נייד/טלפון בית</label>
-                  <input formControlName="telephoneNumber2" id="telephoneNumber2" type="tel" class="form-control"
-                    placeholder="telephoneNumber2">
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="subTitleDiv">
-          <label class="card-title pull-right subTitle">פרטי הלוואה</label>
-        </div>
-        <div class="card-body">
-          <form [formGroup]="loanerDetailesLoanForm" style="direction: rtl;">
-            <div class="row formRow">
-              <div class="col-md-2 pr-1">
-                <div class="form-group">
-                  <label for="sum" class="pull-right fileLabel required">סכום הלוואה</label>
-                  <input formControlName="sum" id="sum" type="number" class="form-control" placeholder="sum">
-                </div>
-              </div>
-              <div class="col-md-1 pr-1">
-                <div class="form-group">
-                  <label for="currency" class="pull-right fileLabel required">מטבע</label>
-                  <select formControlName="currencyId" class="form-control">
-                    <option value=1>
-                      שקל
-                    </option>
-                    <option value=3 selected="selected">
-                      דולר
-                    </option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-3 pl-1">
-                <div class="form-group">
-                  <label for="repaymentDate" class="pull-right fileLabel required">תאריך החזר ההלוואה</label>
-                  <input formControlName="repaymentDate" id="repaymentDate" type="date" class="form-control"
-                    placeholder="repaymentDate">
-                </div>
-              </div>
-              <div class="col-md-3 px-1">
-                <div class="form-group">
-                  <label for="hebrewRepaymentDate" class="pull-right fileLabel"> תאריך החזר הלוואה עברי</label>
-                  <input formControlName="hebrewRepaymentDate" id="hebrewRepaymentDate" type="text" class="form-control"
-                    placeholder="hebrewRepaymentDate">
-                </div>
-              </div>
-              <div class="col-md-3 pl-1">
-                <div class="form-group">
-                  <label for="paymentsNumber" class="pull-right fileLabel required">מספר תשלומים </label>
-                  <input formControlName="paymentsNumber" id="paymentsNumber" type="number" class="form-control"
-                    placeholder="paymentsNumber">
-                </div>
-              </div>
-
-              <div class="col-md-3 pr-1">
-                <div class="form-group">
-                  <label for="monthlyPaymentDay" class="pull-right fileLabel required"> יום תשלום חודשי</label>
-                  <input formControlName="monthlyPaymentDay" id="monthlyPaymentDay" type="date" class="form-control"
-                    placeholder="monthlyPaymentDay">
-                </div>
-              </div>
-
-              <div class="col-md-3 px-1">
-                <div class="form-group">
-                  <label for="monthlyPaymentSum" class="pull-right fileLabel required"> סכום החזר חודשי</label>
-                  <input formControlName="monthlyPaymentSum" id="monthlyPaymentSum" type="number" class="form-control"
-                    placeholder="monthlyPaymentSum">
-                </div>
-              </div>
-
-              <div class="col-md-3 pl-1">
-                <div class="form-group">
-                  <label for="repaymentFirstDate" class="pull-right fileLabel required"> תאריך ראשון לפרעון</label>
-                  <input formControlName="repaymentFirstDate" id="repaymentFirstDate" type="date" class="form-control"
-                    placeholder="repaymentFirstDate">
-                </div>
-              </div>
-
-              <div class="col-md-3 pl-1 uploadDiv">
-                <div class="form-group">
-                  <input type="file" class="file-input" (change)="onFileChanged($event)" style="display: none;"
-                    #fileUpload>
-                  <div class="file-upload">
-                    <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
-                      העלה שטר
-                    </button>
-                    {{selectedFile.name || "No file uploaded yet."}}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-
-          <app-guaranty-details ></app-guaranty-details>
-          <app-guaranty-details ></app-guaranty-details>
-          <app-guaranty-details ></app-guaranty-details>
-          
-         
-        <div class="end">
-          <!-- <div class="card card-user"> -->
-          <div class="subTitleDiv">
-            <label class="card-title pull-right subTitle"> הערות</label>
+<div class="card card-user">
+  <div class="title">
+    <label class="card-title  mainTitle"> הלוואה חדשה</label>
+  </div>
+  <div>
+    <label style="font-size: 15px; color: black;margin-top: 9px; margin-bottom: 0px;" class="pull-right ">שדות המסומנים
+      בכוכבית (*) הם
+      שדות
+      חובה
+    </label>
+  </div>
+  <div class="subTitleDiv">
+    <label class="card-title pull-right subTitle"> פרטים אישיים</label>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="loanerDetailesLoanForm" style="direction: rtl;">
+      <div class="row formRow">
+        <div class="col-md-3 pr-1">
+          <div class="form-group">
+            <label for="loanDate" class="pull-right fileLabel required">תאריך הלוואה</label>
+            <input formControlName="loanDate" id="loanDate" type="date" class="form-control" placeholder="תאריך הלוואה">
           </div>
-          <div class="card-body">
-            <form [formGroup]="loanerDetailesUserForm" style="direction: rtl;">
-              
-              <div class="row formRow">
-                <div class="form-group">
-                  <div class="col-md-12">
-                    <label class="pull-right fileLabel">הערות</label>
-                    <textarea class="form-control textarea"></textarea>
-                  </div>
-                </div>
+        </div>
+        <div class="col-md-3 px-1">
+          <div class="form-group">
+            <label for="hebrewLoanDate" class="pull-right fileLabel">תאריך הלוואה עברי</label>
+            <input type="text" formControlName="hebrewLoanDate" class="form-control" placeholder="תאריך הלוואה עברי"
+              id="hebrewLoanDate" value="תאריך הלוואה עבר">
+          </div>
+        </div>
+      </div>
+    </form>
+    <form [formGroup]="loanerDetailesUserForm" style="direction: rtl;">
+      <div class="row formRow">
+        <div class="col-md-3 pr-1">
+          <div class="form-group">
+            <label for="identityNumber" class="pull-right fileLabel required">ת"ז/דרכון</label>
+            <input type="text" formControlName="identityNumber" class="form-control" (blur)="checkUserForLoan($event)"
+              id="identityNumber" placeholder='ת"ז/דרכון'>
+          </div>
+        </div>
+        <div class="col-md-3 px-1">
+          <div class="form-group">
+            <label for="firstName" class="pull-right fileLabel required">שם פרטי</label>
+            <input type="text" formControlName="firstName" id="firstName" class="form-control" required
+              placeholder="שם פרטי" [(ngModel)]="hero.firstName">
+            <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
+
+              <div *ngIf="firstName.errors?.required">
+                firstName is required.
               </div>
-              <div class="row formRow">
-                <div class="update ml-auto mr-auto">
-                  <button type="button" (click)="save()"
-                    class="btn btn-primary btn-primary btn-lg ladda-button saveBtn">
-                    שמור הלוואה</button>
-                </div>
-              </div>
-            </form>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 pl-1">
+          <div class="form-group">
+            <label for="lastName" class="pull-right fileLabel required">שם משפחה</label>
+            <input type="text" formControlName="lastName" id="lastName" class="form-control" placeholder="שם משפחה"
+              value="שם משפחה">
+          </div>
+        </div>
+        <div class="col-md-3 pl-1">
+          <div class="form-group">
+            <label for="email" class="pull-right fileLabel required">כתובת מייל</label>
+            <input formControlName="email" id="email" type="email" class="form-control" placeholder="כתובת מייל">
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row formRow">
+        <div class="col-md-3 pr-1">
+          <div class="form-group">
+            <label for="address" class="pull-right fileLabel required">כתובת</label>
+            <input formControlName="address" id="address" type="text" class="form-control" placeholder="כתובת"
+              value="כתובת">
+          </div>
+        </div>
+        <div class="col-md-3 px-1">
+          <div class="form-group">
+            <label for="city" class="pull-right fileLabel">עיר</label>
+            <input formControlName="city" id="city" type="number" class="form-control" placeholder="עיר" value="עיר">
+          </div>
+        </div>
+        <div class="col-md-3 pl-1">
+          <div class="form-group">
+            <label for="telephoneNumber1" class="pull-right fileLabel required">טלפון בית/נייד</label>
+            <input type="text" formControlName="telephoneNumber1" id="telephoneNumber1" class="form-control"
+              placeholder="נייד/טלפון בית">
+          </div>
+        </div>
+        <div class="col-md-3 pl-1">
+          <div class="form-group">
+            <label for="telephoneNumber2" class="pull-right fileLabel">נייד/טלפון בית</label>
+            <input formControlName="telephoneNumber2" id="telephoneNumber2" type="tel" class="form-control"
+              placeholder="נייד/טלפון בית">
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="subTitleDiv">
+    <label class="card-title pull-right subTitle">פרטי הלוואה</label>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="loanerDetailesLoanForm" style="direction: rtl;">
+      <div class="row formRow">
+        <div class="col-md-2 pr-1">
+          <div class="form-group">
+            <label for="sum" class="pull-right fileLabel required">סכום הלוואה</label>
+            <input formControlName="sum" id="sum" type="number" class="form-control" placeholder="סכום הלוואה">
+          </div>
+        </div>
+        <div class="col-md-1 pr-1">
+          <div class="form-group">
+            <label for="currency" class="pull-right fileLabel required">מטבע</label>
+            <select formControlName="currencyId" class="form-control">
+              <option value=1>
+                שקל
+              </option>
+              <option value=3 selected="selected">
+                דולר
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-3 pl-1">
+          <div class="form-group">
+            <label for="repaymentDate" class="pull-right fileLabel required">תאריך החזר ההלוואה</label>
+            <input formControlName="repaymentDate" id="repaymentDate" type="date" class="form-control"
+              placeholder="תאריך החזר ההלוואה">
+          </div>
+        </div>
+        <div class="col-md-3 px-1">
+          <div class="form-group">
+            <label for="hebrewRepaymentDate" class="pull-right fileLabel"> תאריך החזר הלוואה עברי</label>
+            <input formControlName="hebrewRepaymentDate" id="hebrewRepaymentDate" type="text" class="form-control"
+              placeholder="תאריך החזר הלוואה עברי">
+          </div>
+        </div>
+        <div class="col-md-3 pl-1">
+          <div class="form-group">
+            <label for="paymentsNumber" class="pull-right fileLabel required">מספר תשלומים </label>
+            <input formControlName="paymentsNumber" id="paymentsNumber" type="number" class="form-control"
+              placeholder="מספר תשלומים">
           </div>
         </div>
 
+        <div class="col-md-3 pr-1">
+          <div class="form-group">
+            <label for="monthlyPaymentDay" class="pull-right fileLabel required"> יום תשלום חודשי</label>
+            <input formControlName="monthlyPaymentDay" id="monthlyPaymentDay" type="date" class="form-control"
+              placeholder="יום תשלום חודשי">
+          </div>
+        </div>
+
+        <div class="col-md-3 px-1">
+          <div class="form-group">
+            <label for="monthlyPaymentSum" class="pull-right fileLabel required"> סכום החזר חודשי</label>
+            <input formControlName="monthlyPaymentSum" id="monthlyPaymentSum" type="number" class="form-control"
+              placeholder="סכום החזר חודשי">
+          </div>
+        </div>
+
+        <div class="col-md-3 pl-1">
+          <div class="form-group">
+            <label for="repaymentFirstDate" class="pull-right fileLabel required"> תאריך ראשון לפרעון</label>
+            <input formControlName="repaymentFirstDate" id="repaymentFirstDate" type="date" class="form-control"
+              placeholder="תאריך ראשון לפרעון">
+          </div>
+        </div>
+
+        <div class="col-md-3 pl-1 uploadDiv">
+
+          <form class="form">
+            <div class="file-upload-wrapper" data-text="בחר קובץ!">
+              <input name="file-upload-field" type="file" class="file-upload-field" value="">
+            </div>
+          </form>
+          <!-- <div class="form-group">
+            <input type="file" class="file-input" (change)="onFileChanged($event)" style="display: none;" #fileUpload>
+            <div class="file-upload">
+              <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+                העלה שטר
+              </button>
+              <label>{{selectedFile.name }}</label>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- <div class="wrapper "> -->
+  <div class="">
+    <app-guaranty-details></app-guaranty-details>
+    <app-guaranty-details></app-guaranty-details>
+    <app-guaranty-details></app-guaranty-details>
+    <app-guaranty-details></app-guaranty-details>
+    <app-guaranty-details></app-guaranty-details>
+    <div class="end">
+      <!-- <div class="card card-user"> -->
+      <div class="subTitleDiv">
+        <label class="card-title pull-right subTitle"> הערות</label>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="loanerDetailesUserForm" style="direction: rtl;">
+          <div class=" formRow">
+            <div class="form-group">
+              <div class="col-md-12">
+                <label style="margin-bottom: 10px;" class="pull-right fileLabel">הערות</label>
+                <textarea style="width: 100%;" class="form-control textarea"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row formRow">
+            <div class="update ml-auto mr-auto">
+              <button type="button" (click)="save()" class="btn btn-primary btn-primary btn-lg ladda-button saveBtn">
+                שמור הלוואה</button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-  <!--   Core JS Files   -->
-  <script src="../assets/js/core/jquery.min.js"></script>
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap.min.js"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-  <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-  <!-- Chart JS -->
-  <script src="../assets/js/plugins/chartjs.min.js"></script>
-  <!--  Notifications Plugin    -->
-  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
-  <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script>
-  <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-  <script src="../assets/demo/demo.js"></script>
-</body>
+</div>
+<!--   Core JS Files   -->
+<script src="../assets/js/core/jquery.min.js"></script>
+<script src="../assets/js/core/popper.min.js"></script>
+<script src="../assets/js/core/bootstrap.min.js"></script>
+<script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+<!--  Google Maps Plugin    -->
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!-- Chart JS -->
+<script src="../assets/js/plugins/chartjs.min.js"></script>
+<!--  Notifications Plugin    -->
+<script src="../assets/js/plugins/bootstrap-notify.js"></script>
+<!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="../assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script>
+<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+<script src="../assets/demo/demo.js"></script>
 
 </html>

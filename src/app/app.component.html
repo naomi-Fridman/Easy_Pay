@@ -1,32 +1,35 @@
 <div class="wrapper">
-  <div class="sidebar header-menu">
+  <!-- <div class="sidebar header-menu"> -->
+  <p-sidebar [style]="{height:'4em'}" [(visible)]="display" [modal]=false [showCloseIcon]=false position="top"
+    [baseZIndex]="10000">
     <ul class="nav ">
-      <li class="nav-item" [routerLinkActive]="['active']">
+      <li class="nav-item active" [routerLinkActive]="active">
         <a class="nav-link active" [routerLink]="['homePage']" aria-current="page" href="/homePage">פעילות יומית</a>
       </li>
-      <li class="nav-item" [routerLinkActive]="['active']">
+      <li class="nav-item" [routerLinkActive]="active">
         <a class="nav-link" [routerLink]="['loans']" href="/loans">הלוואות</a>
       </li>
-      <li class="nav-item" [routerLinkActive]="['active']">
+      <li class="nav-item" [routerLinkActive]="active">
         <a class="nav-link" [routerLink]="['payments']" href="/payments">תשלומים</a>
       </li>
-      <li class="nav-item" [routerLinkActive]="['active']">
+      <li class="nav-item" [routerLinkActive]="active">
         <a class="nav-link " [routerLink]="['deposites']" href="/deposites">פקדונות</a>
       </li>
-      <li class="nav-item" [routerLinkActive]="['active']">
+      <li class="nav-item" [routerLinkActive]="active">
         <a class="nav-link " [routerLink]="['users']" href="/users">משתמשים</a>
       </li>
     </ul>
-    <div class=" mainCard">
-          <button class='actionBtn' type="button" (click)="newLoan()">הלוואה חדשה </button>
-          <button class='actionBtn' type="button" (click)="newDeposite()">הפקדה חדשה </button>
-          <button class='actionBtn' type="button" (click)="newPayment()">החזר חוב </button>
-    </div>
+ 
+  <div class=" mainCard">
+    
+    <button class='actionBtn' type="button" (click)="newLoan()">הלוואה חדשה </button>
+    <button class='actionBtn' type="button" (click)="newDeposite()">הפקדה חדשה </button>
+    <button class='actionBtn' type="button" (click)="newPayment()">החזר חוב </button>
   </div>
+ </p-sidebar>
 
-  <div class="main-panel">
-    <router-outlet>
-    </router-outlet>
-  </div>
-  
+<div class="main-panel">
+  <router-outlet>
+  </router-outlet>
+</div>
 </div>
