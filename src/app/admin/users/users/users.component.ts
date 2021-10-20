@@ -21,8 +21,19 @@ export class UsersComponent implements OnInit {
   city: any;
   cities: any[];
   filteredCitiesSingle: any[];
-
-
+  displayStyle = "none";
+  singleUserId:number;
+  singleUserFirstName:string;
+  singleUserLastName:string;
+  openPopup(userId:number,firstName:string,lastName:string) {
+    this.singleUserId=userId;
+    this.singleUserFirstName=firstName;
+    this.singleUserLastName=lastName;
+    this.displayStyle = "block";
+  }
+  closePopup() {
+    this.displayStyle = "none";
+  }
   filterCitySingle(event) {
     let query = event.query;
         this.userService.getAddress(query).subscribe(c => {debugger
@@ -45,6 +56,9 @@ filterCity(query, cities: any[]):any[] {
 }
   edit(user: User) {
     this.router.navigate(['/editUserDetails', JSON.stringify(user.id)]);
+  }
+  deleteUser(){
+    this.userService.deleteUser(this.singleUserId).subscribe(() => {alert("deleted")},err=> {alert("not deleted")});
   }
   onConfirm(userId: number){
     this.userService.deleteUser(userId).subscribe(() => {alert("deleted")},err=> {alert("not deleted")});

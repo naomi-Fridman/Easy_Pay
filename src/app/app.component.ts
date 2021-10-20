@@ -13,6 +13,7 @@ export class AppComponent {
   items3: MenuItem[]
   currentChoice: string = "homePage";
   display = true;
+
   newLoan(){
     this.router.navigate(["/newLoan"]);
   }

@@ -54,71 +54,33 @@
                         <a class="userEmail" href="mailto:{{user.email}}">{{user.email}}</a>
                     </div>
                 </div>
-                <div >
+                <div>
                     <button class='searchBtn' type="button" (click)="edit(user)">ערוך פרטים </button>
-                    <button data-toggle="modal" href="#myModal"  class='searchBtn' type="button" (click)="showConfirm()">מחק משתמש </button>
+                    <button class='searchBtn' type="button" (click)="openPopup(user.id,user.firstName,user.lastName)">מחק משתמש </button>
                 </div>
             </div>
         </li>
     </ul>
 </div>
-<div id="myModal" class="modal fade in">
-    <div class="modal-dialog">
+<div class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false"
+    [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
-
             <div class="modal-header">
-                <a class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></a>
-                <h4 class="modal-title">Modal Heading</h4>
+                <button style="float: right; font-weight: bold; background-color: transparent;
+                border: none;" class="modal-title">x</button>
             </div>
             <div class="modal-body">
-                <h4>Text in a modal</h4>
-                <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+                <p style="float: right;"> האם אתה בטוח שברצונך למחוק את {{singleUserFirstName}} {{singleUserLastName}} לצמיתות?</p>
             </div>
             <div class="modal-footer">
-                <div class="btn-group">
-                    <button class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-                    <button class="btn btn-primary"><span class="glyphicon glyphicon-check"></span> Save</button>
-                </div>
+                <button style="background-color: #f1d57e; border-color: #e7d35d ;width: 87px; margin-right: 18px" type="button" class="searchBtn" (click)="closePopup()">
+                    ביטול
+                </button>
+                <button style="width: 87px; margin-right: 18px;" type="button" class="searchBtn" (click)="deleteUser()">
+                    אישור
+                </button>
             </div>
-
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dalog -->
+        </div>
+    </div>
 </div>
-<!-- <p-accordion *ngFor="let user of usersList">
-    <p-accordionTab header={{user.firstName}}{{user.lastName}} [selected]="false">
-        <label class="p-col-fixed" style="width:100px">:תעודת זהות</label><br>
-        {{user.identityNumber}}<br>
-        <label class="p-col-fixed" style="width:100px">:1טלפון</label><br>
-        {{user.telephoneNumber1}}<br>
-        <label class="p-col-fixed" style="width:100px">:2טלפון</label><br>
-        {{user.telephoneNumber2}}<br>
-        <label class="p-col-fixed" style="width:100px">:דואר אלקטרוני</label><br>
-        {{user.email}}<br>
-        <label class="p-col-fixed" style="width:100px">:כתובת</label><br>
-        {{user.address}} {{user.city}}<br>
-        <label class="p-col-fixed" style="width:100px">:הערות</label><br>
-        {{user.comments}}<br>
-        <button pButton type="button" label="ערוך" icon="pi pi-pencil" iconPos="right" (click)="edit(user)"></button>
-        <button type="button" pButton (click)="showConfirm()" label="מחק משתמש" class="ui-button-warning"></button>
-        <p-toast position="center" key="c" (onClose)="onReject()" [modal]="true" [baseZIndex]="5000">
-            <ng-template let-message pTemplate="message">
-                <div style="text-align: center">
-                    <i class="pi pi-exclamation-triangle" style="font-size: 3em"></i>
-                    <h3>האם אתה בטוח??</h3>
-                    <p>למחוק?</p>
-                </div>
-                <div class="p-grid ui-fluid">
-                    <div class="p-col-6">
-                        <button type="button" pButton (click)="onConfirm(user.id)" label="Yes"
-                            class="ui-button-success"></button>
-                    </div>
-                    <div class="p-col-6">
-                        <button type="button" pButton (click)="onReject()" label="No"
-                            class="ui-button-secondary"></button>
-                    </div>
-                </div>
-            </ng-template>
-        </p-toast>
-    </p-accordionTab>
-
-</p-accordion> -->

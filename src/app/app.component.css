@@ -18,6 +18,7 @@
 }
 .wrapper{
    direction: rtl;
+   background-color:#f4f4f4
 }
 .nav>li>a {
     color: #2f2f94;
@@ -59,3 +60,9 @@ a.nav-link.active {
     background-color: #5f5f9ad4;
     color: white !important;
 }
+::-webkit-scrollbar {
+    width: 0px;
+  } 
+  button{
+      cursor: pointer;
+  }

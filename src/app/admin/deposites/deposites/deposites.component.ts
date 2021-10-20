@@ -51,9 +51,12 @@ export class DepositesComponent implements OnInit {
             this.depositorToDisplay[i]= new Depositor()            
             this.depositorToDisplay[i].user=user;
             this.depositorToDisplay[i].deposite=deposit;
+            i++;
             }
           });     
         });
+        console.log(this.depositorToDisplay);
+        
     },err=>{
       this.userList=[];
     });
