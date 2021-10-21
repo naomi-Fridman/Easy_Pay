@@ -18,7 +18,8 @@
 }
 .wrapper{
    direction: rtl;
-   background-color:#f4f4f4
+   background-color:#f4f4f4;
+   height: 100%;
 }
 .nav>li>a {
     color: #2f2f94;

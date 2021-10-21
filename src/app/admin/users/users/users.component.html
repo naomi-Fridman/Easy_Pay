@@ -66,14 +66,14 @@
     [ngStyle]="{'display':displayStyle}">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div style="padding-top: 4px; padding-right: 4px; border-bottom: none;" class="modal-header">
                 <button style="float: right; font-weight: bold; background-color: transparent;
-                border: none;" class="modal-title">x</button>
+                border: none;" class="modal-title" (click)="closePopup()">x</button>
             </div>
-            <div class="modal-body">
-                <p style="float: right;"> האם אתה בטוח שברצונך למחוק את {{singleUserFirstName}} {{singleUserLastName}} לצמיתות?</p>
+            <div style="padding-top: 17px; padding-right: 30px; padding-bottom: 0px;" class="modal-body">
+                <p style="float: right; margin-top: 0; margin-bottom: 1rem;"> האם אתה בטוח שברצונך למחוק את {{singleUserFirstName}} {{singleUserLastName}} לצמיתות?</p>
             </div>
-            <div class="modal-footer">
+            <div style="border-top: none;" class="modal-footer">
                 <button style="background-color: #f1d57e; border-color: #e7d35d ;width: 87px; margin-right: 18px" type="button" class="searchBtn" (click)="closePopup()">
                     ביטול
                 </button>
