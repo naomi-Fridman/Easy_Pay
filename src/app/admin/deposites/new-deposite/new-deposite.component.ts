@@ -57,10 +57,6 @@ export class NewDepositeComponent implements OnInit {
         });
       })
     }
-    
-      
-      //his.router.navigate(["/adminl"]);
-    //}
   }
 
   ngOnInit() {

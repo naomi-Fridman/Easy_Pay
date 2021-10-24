@@ -15,6 +15,7 @@
     direction: rtl;
     position: relative;
     top: 50px;
+    background-color:#f4f4f4;
 }
 .wrapper{
    direction: rtl;
@@ -28,7 +29,7 @@
     background-color: transparent !important;
     border: none !important;
     position: absolute;
-    top: 9px;
+    top: 0.5rem;
     left: 0px;
 }
 .actionBtn{
@@ -48,18 +49,23 @@
     /* height: 4em; */
     background-color: #5f5f9ad4 !important;
     color: white;
+    height: 4.7rem;
     /* top: -9px; */
     /* padding-top: 15px; */
 }
-/* .nav>li>a:active{
-    background-color: #5f5f9ad4 !important;
-} */
-/* .nav>li>a{
-    height: 46px;
-} */
 a.nav-link.active {
     background-color: #5f5f9ad4;
     color: white !important;
+    height: 4.7rem;
+}
+.nav-link{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
+} 
+.nav{
+    padding-right: 0px;
 }
 ::-webkit-scrollbar {
     width: 0px;

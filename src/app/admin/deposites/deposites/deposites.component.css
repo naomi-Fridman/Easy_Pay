@@ -1,145 +1,54 @@
-.adbox-img {
-    padding:8px;
-    border-bottom: 1px solid #e2e2e2;
-    background-color : #f2f2f2;
-}
-.adbox-img img {
-    border: 1px solid #ababab;
-}
-/* Top Filter Box */
 .tfilter-box {
-    padding:15px 0px 15px 0px;
-    border: 1px solid #e2e2e2;
-    background-color : #f2f2f2;
-    z-index:1000;
-}
-
-.form-control, select {
-    display: block;
-    width: 100%;
-    height: 48px;
-    border: 1px solid #ededed;
-    border-radius: 0;
-    background-color: #fff;
-    background-image: none;
-    box-shadow: none;
-    color: #000;
-    font-size: 14px;
-    line-height: 1.42857143;
-}
-/******************** CARD CSS *******************/
-.card {
-    background: #fff none repeat scroll 0 0;
-    box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.16);
-    margin-bottom: 30px;
-    overflow: hidden;
-    display: block;
-    width: 100%;
-    position: relative;
-    border: 1px solid #e5e5e5;
-}
-.card:hover {box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);}
-.card-block {
-    padding: 15px 15px 0 15px;
-    background: #fff none repeat scroll 0 0;
-}
-.card-img {
-    border-radius: 0px 0px 0 0;
-    max-height: 180px;
-    overflow: hidden;
-}
-.card-footer {
-    background: #fff none repeat scroll 0 0;
-    overflow: hidden;
-    width: 100%;
-    border-top: 1px solid #e5e5e5;
-    padding:5px 0px 5px 5px;
-}
-.card-bid-btn {
-    display: inline-block;
-    margin-top: 8px;
-    padding-left: 14px;
-    margin-bottom: 0;
-}
-.card-footer ul li a {
-    border-left: 1px solid #e5e5e5;
-    display: block;
-    height: inherit;
-    margin-top: 8px;
-    text-align: center;
-    width: 30px;
-    padding-left:5px;
-}
-.card-footer ul li a:hover {background:#dd0000;}
-.card-footer ul li a:hover {background:#dd0000;}
-/* VARIABLES ==================== */
-/* BASE ==================== */
-@import "https://fonts.googleapis.com/css?family=Open+Sans";
-body {
-  margin: 0;
-  font-family: 'Open Sans', sans-serif;
-  background-color: #e0e0e0;
-}
-body ul {
-  padding: 0;
-  list-style-type: none;
-}
-
-img {
-  width: 75px;
-  margin: 7px 5px 5px 5px;
+  padding: 30px ;
+  border: 1px solid #77515124;
   border-radius: 5px;
+  z-index: 1000;
+  margin-left: 70px;
+  margin-right: 68px;
+  margin-top: 32px;
+  margin-bottom: 28px;
+  background-image: linear-gradient(to left,rgb(246 201 98 / 61%),rgb(255 223 79 / 76%)) !important;
 }
-
-button {
-  border: none;
-  font-size: 1em;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-  cursor: pointer;
+.form-control {
+  display: block;
+  width: 84%;
+  height: 34px;
+  border: 1px solid #7c7cac;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: none;
+  color: #6c757d;
+  font-size: 14px;
+  line-height: 1.42857143;
 }
-button:focus {
-  outline: 0;
+.form-control:focus{
+  border-color: #7c7cac !important;
+  box-shadow: 0 0 0 0.2rem rgb(124 124 172 / 38%) !important;
 }
-
-/* LAYOUT ==================== */
-.l-nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: fixed;
+.card {
+  background: #fff none repeat scroll 0 0;
+  box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.16);
+  margin-bottom: 30px;
+  overflow: hidden;
+  display: block;
   width: 100%;
-  height: 100px;
-  background-color: #242D33;
+  position: relative;
+  border: 1px solid #e5e5e5;
 }
-.l-nav__container, .l-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100%;
-  max-width: 980px;
-  margin: 0 auto;
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.l-container {
+  display: block;
 }
 @media screen and (max-width: 1050px) {
   .l-container {
     width: 95%;
   }
 }
-.l-container {
-  display: block;
-}
 .list {
   display: flex;
   background-color: white;
-  margin-right: 150px;
-  margin-left: 150px;
   height: 114px;
   padding: 15px;
   border-radius: 5px;
@@ -152,25 +61,12 @@ button:focus {
   cursor: pointer;
 }
 .list__profile {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
   flex-grow: 1;
-  text-align: left;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
 }
 .list__label {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -225,3 +121,83 @@ button:focus {
 .searchBtn:hover {
   background-color: #4e4e91a8;
 }
+.filter_title{
+  font-weight: bold;
+  font-feature-settings: "kern";
+  margin-right: 4px;
+  color: #7c7cac;
+  margin-top: 9px;
+  margin-bottom: 2px;
+}
+.filter_input{
+  margin-right: 4px;
+  width: 100%;
+}
+.card-header {
+  background-color: rgb(122 122 171 / 99%);
+  border-bottom: rgb(122 122 171 / 99%);
+  color: white;
+  padding: 0.15rem;
+}
+.card-body {
+  padding-right: 1.25rem !important;
+  padding-left: 1.25rem !important;
+  padding-bottom: 1.25rem !important;
+  padding-top: 1px !important;
+  background-color: white !important;
+}
+.modal{
+  background-color: #00000026 !important;
+}
+.modal-dialog {
+  right: 0;
+  left: 50%;
+  top: 28%;
+  width: 600px;
+}
+.boxes {
+  margin: auto;
+  padding: 9px;
+  background: #fff;
+}
+input[type="checkbox"] { 
+  display: none; 
+}
+input[type="checkbox"] + label {
+  display: inline-flex;
+  position: relative;
+  font: 13.5px 'Open Sans', Arial, sans-serif;
+  color: #000;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+input[type="checkbox"] + label:last-child { 
+  margin-bottom: 0; 
+}
+input[type="checkbox"] + label:before {
+  content: '';
+  display: block;
+  width: 13px;
+  height: 13px;
+  border: 1px solid #5f5f9a;
+  position: absolute;
+  left: 146px;
+  top: 4px;
+  opacity: .6;
+  -webkit-transition: all .12s, border-color .08s;
+  transition: all .12s, border-color .08s;
+}
+input[type="checkbox"]:checked + label:before {
+  width: 7px;
+  top: 1px;
+  left: 149px;
+  border-radius: 0;
+  opacity: 1;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+

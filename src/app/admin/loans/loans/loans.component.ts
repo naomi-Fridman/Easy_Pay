@@ -34,7 +34,18 @@ export class LoansComponent implements OnInit {
   dto_loans: DTO_loans = new DTO_loans();
   dtoUsersPrms: DTO_userParms = new DTO_userParms();
   selectedSum: string;
-  typId: number
+  typId: number;
+  displayStyle: string;
+  singleLone: Loan;
+  
+  openPopup(loan:Loan) {
+    this.singleLone=loan;
+    this.displayStyle = "block";
+  }
+  closePopup() {
+    this.displayStyle = "none";
+  }
+
   onChange(newValue: string) {
     if (newValue == "from") {
       this.dto_loans.sumExact = null;

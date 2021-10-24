@@ -104,11 +104,6 @@ div.card.card-user{
 .comment{
     float: right;
 }
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
 .row2{
     justify-content: start !important;
 }

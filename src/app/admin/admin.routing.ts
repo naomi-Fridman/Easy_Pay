@@ -8,7 +8,6 @@ import { ShowDetailsComponent } from './deposites/show-details/show-details.comp
 import { EditDetailsComponent } from './deposites/edit-details/edit-details.component';
 import { PaymentsComponent } from './payments/payments/payments.component';
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
-import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import { DailyActivityComponent } from './daily-activity/daily-activity.component';
 import { NewLoanComponent } from './loans/new-loan/new-loan.component';
 import { NewDepositeComponent } from './deposites/new-deposite/new-deposite.component';
@@ -16,7 +15,6 @@ import { NewPaymentComponent } from './payments/new-payment/new-payment.componen
 
 export const AdminRoutes: Routes = [
   // {path:'',component:DailyActivityComponent},
-  //   {path: "adminl",component: AdminLayoutComponent},
   { path: "deposites", component: DepositesComponent },
   { path: "newLoan", component: NewLoanComponent },
   { path: "newDeposite", component: NewDepositeComponent },
