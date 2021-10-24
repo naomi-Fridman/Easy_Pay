@@ -47,7 +47,7 @@
     font-size: 16px;
     color: #7878b1;
 }
-#paymentMethodId{
+#paymentMethodId ,#typeId{
     color: #0d0d72 !important;
     font-size: 14px !important;
     background-color: transparent;
@@ -55,7 +55,7 @@
     border: none;
     float: left;
 }
-#paymentMethodId:focus{
+#paymentMethodId:focus, #typeId:focus{
     background-color: transparent;
     color: #0d0d72 !important;
     border: none;
@@ -113,7 +113,25 @@
 #paymentDate , #inputDate{
     border: none;
     color: #0d0d72;
+    direction: ltr;
 }
+.paymentDateDiv{
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+}
+.fileLabel{
+    color: #0d0d72 !important;
+    font-size: 15px !important;
+    float: right;
+  }
+  textarea{
+      font-size:14px ;
+  }
+  .linkUser{
+    float: right;
+    color: #0d0d72 !important;
+  }
 
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px white inset;

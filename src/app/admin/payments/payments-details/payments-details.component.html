@@ -28,6 +28,19 @@
             </select>
         </div>
     </div>
+    <!-- <div class="row">
+        <div class="form-group" style="margin: 0;">
+            <select id="typeId" class="typeId" formControlName="typeId" class="form-control">
+                <option value=1>
+                   פרעון הלוואה
+                </option>
+                <option value=3 selected="selected">
+                    פקדון
+                </option>
+            </select>
+        </div> 
+
+    </div> -->
 
     <div class="row paymentManerDiv">
         <div class="form-group bankDPMDiv">
@@ -64,14 +77,17 @@
             <input class="bankD" formControlName="accountNumber" id="accountNumber" type="text" pInputText>
         </div>
     </div>
-    <div class="row paymentManerDiv" >
-        <div class="form-group bankDPMDiv" style="margin: 0;">
+    <div class="row paymentDateDiv" >
+        <div class="form-group" style="margin: 0;">
             <label class="bankDPM"> תאריך תשלום:</label>
         </div>
         <div class="form-group" style="margin: 0;">
             <input  formControlName="paymentDate" id="paymentDate" type="date">
         </div>
-        <div class="form-group bankDPMDiv" style="margin: 0;">
+        
+    </div>
+    <div class="row paymentDateDiv">
+        <div class="form-group" style="margin: 0;">
             <label class="bankDPM">  שולם בפועל:</label>
         </div>
         <div class="form-group" style="margin: 0;">
@@ -79,6 +95,17 @@
         </div>
 
     </div>
+
+    <div class="row">
+        <div class="col-md-12 pr-1">
+            <div class="form-group" style="padding: 13px;">
+                <label for="comments" class="fileLabel">הערות</label>
+                <textarea class="form-control textarea" formControlName="comments" id="comments" type="text" class="form-control" placeholder="הוסף הערה לתשלום..."></textarea>
+            </div>
+        </div>
+
+    </div>
+    <a class="linkUser" [routerLink]="['/editUserDetails/' ,_paymentUser.user.id]">לפרטי משתמש מלאים</a>
     <!-- 
 
 
@@ -89,33 +116,9 @@
         </div>
     </div>
 
-    <div class="p-field p-grid">
-        <label for="hebrewPaymentDate" class="p-col-fixed" style="width:100px">תאריך תשלום עברי</label>
-        <div class="p-col">
-            <input formControlName="hebrewPaymentDate" id="hebrewPaymentDate" type="text" pInputText>
-        </div>
-    </div>
 
-    <div class="p-field p-grid">
-        <label for="paymentDate" class="p-col-fixed" style="width:100px">תאריך תשלום</label>
-        <div class="p-col">
-            <input formControlName="paymentDate" id="paymentDate" type="text" pInputText>
-        </div>
-    </div>
+   
 
-    <div class="p-field p-grid">
-        <label for="inputDate" class="p-col-fixed" style="width:100px">תאריך קלט</label>
-        <div class="p-col">
-            <input formControlName="inputDate" id="inputDate" type="text" pInputText>
-        </div>
-    </div>
-
-    <div class="p-field p-grid">
-        <label for="deleted" class="p-col-fixed" style="width:100px"> האם התשלום קיים?</label>
-        <div class="p-col">
-            <p-checkbox [formControl]="paymentDetailesForm.controls['deleted']" [binary]="true" id="deleted">
-            </p-checkbox>
-        </div>
-    </div>
+    
     <button (click)="editDetails()">עדכן פרטים</button> -->
 </form>
