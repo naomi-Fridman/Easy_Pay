@@ -3,7 +3,6 @@ import { Payment } from 'src/app/models/Payment';
 import { PaymentsService } from '../../../services/payments.service';
 import { UsersService } from '../../../services/users.service';
 import { User } from 'src/app/models/User';
-//import {SelectItemGroup} from 'primeng/api';
 import { Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
 import { PaymentUser } from 'src/app/models/PaymentUser';
@@ -30,7 +29,16 @@ export class PaymentsComponent implements OnInit {
   dtoUsers:DTO_userParms=new DTO_userParms();
   userList: User[]
   selectedSum: string = "sum";
+  displayStyle = "none";
   
+
+  openPopup() {
+
+    this.displayStyle = "block";
+  }
+  closePopup() {
+    this.displayStyle = "none";
+  }
   onChange(newValue: string) {
     if (newValue == "from") {
       this.dtoPayments.collectionSumExact = null;
@@ -50,7 +58,8 @@ export class PaymentsComponent implements OnInit {
   }
   showDetails(_paymentUser: PaymentUser) {
     this.paymentUser1 = _paymentUser;
-    this.display = true;
+    this.displayStyle = "block";
+    // this.display = true;
   }
   getAllPayments() {
     this.paymentsService.getAllPayments(this.dtoPayments).subscribe(data => {
@@ -98,7 +107,6 @@ export class PaymentsComponent implements OnInit {
           this.paymentListToDisplayB = this.paymentListToDisplay;
         })
         this.datesArr = [
-          // {label: 'היום', value: Date},
           { label: 'אתמול', value: 'אתמול' },
           { label: 'בשבוע הנוכחי', value: 'בשבוע הנוכחי' },
           { label: 'בחודש האחרון', value: 'Honda' },

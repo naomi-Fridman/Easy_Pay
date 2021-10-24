@@ -1,14 +1,3 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 <div id="top-filter" class="top-filter tfilter-box " data-spy="affix" data-offset-top="197">
     <div class="row">
@@ -35,7 +24,7 @@
         <div class="col">
             <!-- <button type="button" class="btn btn-danger glyphicon glyphicon-search" (click)="getAllUsers()">חפש
             </button> -->
-            <button class='searchBtn' type="button" (click)="getAllUsers()">חפש </button>
+            <button class='searchBtn ' type="button" (click)="getAllUsers()"> חפש </button>
         </div>
     </div>
 </div>
@@ -61,26 +50,25 @@
             </div>
         </li>
     </ul>
-</div>
-<div class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false"
-    [ngStyle]="{'display':displayStyle}">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button style="float: right; font-weight: bold; background-color: transparent;
-                border: none;" class="modal-title">x</button>
-            </div>
-            <div class="modal-body">
-                <p style="float: right;"> האם אתה בטוח שברצונך למחוק את {{singleUserFirstName}} {{singleUserLastName}} לצמיתות?</p>
-            </div>
-            <div class="modal-footer">
-                <button style="background-color: #f1d57e; border-color: #e7d35d ;width: 87px; margin-right: 18px" type="button" class="searchBtn" (click)="closePopup()">
-                    ביטול
-                </button>
-                <button style="width: 87px; margin-right: 18px;" type="button" class="searchBtn" (click)="deleteUser()">
-                    אישור
-                </button>
-            </div>
+</div><div class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false"
+[ngStyle]="{'display':displayStyle}">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div style="padding-top: 4px; padding-right: 4px; border-bottom: none;" class="modal-header">
+            <button style="float: right; font-weight: bold; background-color: transparent;
+            border: none;" class="modal-title">x</button>
+        </div>
+        <div style="padding-top: 17px; padding-right: 30px; padding-bottom: 0px;" class="modal-body">
+            <p style="float: right; margin-top: 0; margin-bottom: 1rem;"> האם אתה בטוח שברצונך למחוק את {{singleUserFirstName}} {{singleUserLastName}} לצמיתות?</p>
+        </div>
+        <div style="border-top: none;" class="modal-footer">
+            <button style="background-color: #f1d57e; border-color: #e7d35d ;width: 87px; margin-right: 18px" type="button" class="searchBtn" (click)="closePopup()">
+                ביטול
+            </button>
+            <button style="width: 87px; margin-right: 18px;" type="button" class="searchBtn" (click)="deleteUser()">
+                אישור
+            </button>
         </div>
     </div>
+</div>
 </div>

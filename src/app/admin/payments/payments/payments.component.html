@@ -1,11 +1,3 @@
-<p>payments works!</p>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 <div class="ad-sektion-top hidden-xs" style="margin-top:80px;">
     <div class="container-fluid text-center">
@@ -87,9 +79,6 @@
             </div>
             <div  *ngIf="selectedDate=='fromD' || selectedDate=='rangeD'" class="col-sm-2">
                 <div class="row">
-                    <!-- <div class="col-md-12">
-                        <input [(ngModel)]="dtoPayments.dateFrom" #fromDateInput class="form-control" placeholder=" החל מ" type="datetime('dd/MM/yyyy')">
-                    </div> -->
 
                     <p-calendar [(ngModel)]="dateValue" [(ngModel)]="dtoPayments.dateFrom"  #fromDateInput   dateFormat="dd/mm/yy" showButtonBar="true"></p-calendar>
                 </div>
@@ -104,9 +93,6 @@
                 <div class="row">
                     <p-calendar [(ngModel)]="dateValue" [(ngModel)]="dtoPayments.dateExact"  #exactDateInput   dateFormat="dd/mm/yy" showButtonBar="true"></p-calendar>
 
-                    <!-- <div class="col-md-12">
-                        <input  [(ngModel)]="dtoPayments.dateExact" #exactDateInput class="form-control" placeholder=" סכום" type="text">
-                    </div> -->
                 </div>
             </div>
             <div class="col-sm-4">
@@ -137,30 +123,28 @@
         </li>
     </ul>
 </div>
-<!-- <p-orderList [value]="paymentListToDisplay" filterBy="payment.FirstName" name="paymentListToDisplay">
-    <ng-template  let-payment pTemplate="item">
-        <div class="ui-helper-clearfix">
-            <div style="font-size:14px;float:right;margin:15px 5px 0 0">
-                {{payment.payment.paymentDate | date:"dd/MM/yyyy" }} - {{payment.user.firstName}} -
-                {{payment.payment.collectionSum}}
-                <button pButton type="button" label="הצג פרטים" icon="pi pi-info-circle" iconPos="right"
-                    (click)="showDetails(payment)"></button>
+
+<div class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false"
+    [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div  class="modal-header">
+                <button style="float: right; font-weight: bold; background-color: transparent;
+                border: none;" class="modal-title">x</button>
+            </div>
+            <div style="padding-top: 17px; padding-right: 30px; padding-bottom: 0px;" class="modal-body">
+                <app-payments-details [payment]="paymentUser1"></app-payments-details>
+            </div>
+            <div style="border-top: none;" class="modal-footer">
+                <button style="background-color: #f1d57e; border-color: #e7d35d ;width: 87px; margin-right: 18px" type="button" class="searchBtn" (click)="closePopup()">
+                    ביטול
+                </button>
+                <button style="width: 87px; margin-right: 18px;" type="button" class="searchBtn" (click)="deleteUser()">
+                    אישור
+                </button>
             </div>
         </div>
-    </ng-template>
-</p-orderList> -->
-
-<p-dialog *ngIf="paymentUser1" header={{paymentUser1.user.firstName}} [(visible)]="display" modal="modal"
-    [style]="{width: '350px'}" [responsive]="true">
-    <span>
-        <app-payments-details [payment]="paymentUser1"></app-payments-details>
-    </span>
-    <p-footer>
-        <div class="ui-dialog-buttonpane ui-helper-clearfix">
-            <button type="button" pButton icon="pi pi-times" (click)="display=false" label="אישור"></button>
-        </div>
-    </p-footer>
-</p-dialog>
-
+    </div>
+</div>
 
 

@@ -199,3 +199,23 @@ button:focus {
     width: 170px;
   }
 }
+
+.modal{
+  background-color: #00000026 !important;
+}
+.modal-dialog {
+  right: 0;
+  left: 50%;
+  top: 4%;
+  width: 600px;
+  /* padding-top: 142px; */
+  /* padding-bottom: 30px; */
+}
+.modal-header{
+  padding-top: 4px;
+  padding-right: 4px;
+  border-bottom: none;
+  padding-bottom: 0;
+ 
+    
+}

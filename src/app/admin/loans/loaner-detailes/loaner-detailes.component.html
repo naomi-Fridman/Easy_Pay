@@ -3,7 +3,7 @@
     <b>{{_loaner.user.firstName}} {{_loaner.user.lastName}}</b><br>
      {{_loaner.user.telephoneNumber1}} | {{_loaner.user.telephoneNumber2}} <br>
     <a href="mailto:{{_loaner.user.email}}">לחץ כאן לשליחת מייל ללווה</a><br>
-    <a [routerLink]="['/editUserDetails/' ,_loaner.user.id]">לפרטי המשתמש המלאים</a>
+    <a [routerLink]="['/editUserDetails/' ,_loaner.user.id]">פרטי משתמש מלאים</a>
     <!-- <button [routerLink]="['/editUserDetails/' ,_loaner.user.id]" pButton type="button" label="פרטי המשתמש המלאים" icon="pi pi-user" iconPos="right" ></button> -->
 </div>
 <form [formGroup]="loanerDetailesForm" style="direction: rtl;">

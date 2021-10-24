@@ -4,7 +4,7 @@
     <!-- <label class="p-col-fixed" style="width:100px">טלפונים: </label> -->
         {{_depositor.user.telephoneNumber1}} | {{_depositor.user.telephoneNumber2}} <br>
     <a href="mailto:{{_depositor.user.email}}">לחץ כאן לשליחת מייל </a><br>
-    <a [routerLink]="['/editUserDetails/' ,_depositor.user.id]">לפרטי המשתמש המלאים</a>
+    <a [routerLink]="['/editUserDetails/' ,_depositor.user.id]">פרטי המשתמש מלאים</a>
 </div>
 <form [formGroup]="depositorDetailesForm">
 

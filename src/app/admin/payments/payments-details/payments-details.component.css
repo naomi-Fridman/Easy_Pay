@@ -1,0 +1,122 @@
+.userName, .userPhone , .userEmail{
+    justify-content: center;
+    display: flex;
+    color: #0d0d72;
+}
+.userName{
+    font-size: 19px;
+}
+#collectionSum{
+    border: none;
+    color: #7878b1;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    width: 124px;
+    margin: 0;
+    direction: ltr;
+    background-color: transparent;
+}
+.sumDiv{
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+}
+ #collectionSum.ui-inputtext:focus {
+    outline: 0 none !important;
+    outline-offset: 0 !important;
+    box-shadow:    none!important;
+    border-color: transparent !important;
+    background-color: transparent !important;
+    border:none !important
+}
+.rowSum{
+    border-radius: 6px;
+    margin: 23px;
+    margin-bottom: 10px !important;
+    background-color: #f1d57e82;
+    justify-content: center;
+    align-items: center;
+
+}
+.currency{
+    font-size: 16px;
+    color: #7878b1;
+}
+.currencyOption{
+    font-size: 16px;
+    color: #7878b1;
+}
+#paymentMethodId{
+    color: #0d0d72 !important;
+    font-size: 14px !important;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    float: left;
+}
+#paymentMethodId:focus{
+    background-color: transparent;
+    color: #0d0d72 !important;
+    border: none;
+    box-shadow: none;
+}
+
+#currency{
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    font-size: 24px;
+    color: #7878b1;
+}
+#currency:focus{
+    background-color: transparent;
+    color: #7878b1;
+    border: none;
+    box-shadow: none;
+}
+
+.pInputText{
+    width: 100px;
+    border: none;
+}
+.row{
+    direction: rtl;
+}
+.bankD{
+    border: none;
+    width: 4rem;
+}
+.paymentManerDiv{
+    display: flex;
+    justify-content: center;
+}
+.bankPD{
+    display: flex;
+    justify-content: center;
+}
+.bankDetailsLable{
+    margin: 0;
+    align-items: center;
+    display: flex;
+    color: #0d0d72;
+}
+.bankDPM{
+    color: #0d0d72;
+    margin: 0;
+}
+.bankDPMDiv{
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+#paymentDate , #inputDate{
+    border: none;
+    color: #0d0d72;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+  }
+  
+  

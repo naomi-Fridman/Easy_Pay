@@ -23,6 +23,7 @@ export class PaymentsDetailsComponent implements OnInit {
     if(this._paymentUser.payment.deleted)
       this.value=true;
     else this.value=false;
+    
     this.paymentDetailesForm.controls["accountNumber"].setValue(this._paymentUser.payment.accountNumber);
     this.paymentDetailesForm.controls["deleted"].setValue(this._paymentUser.payment.deleted);
     this.paymentDetailesForm.controls["collectionSum"].setValue(this._paymentUser.payment.collectionSum);
