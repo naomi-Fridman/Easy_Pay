@@ -7,7 +7,6 @@ import { UsersComponent } from './admin/users/users/users.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login/login.component';
 import { RegisterComponent } from './login/register/register.component';
-import { AdminLayoutComponent } from './admin/admin-layout/admin-layout.component';
 import { DailyActivityComponent } from './admin/daily-activity/daily-activity.component';
 import { PaymentsComponent } from './admin/payments/payments/payments.component';
 import { AppComponent } from './app.component';
@@ -18,13 +17,9 @@ const routes: Routes = [
   { path: "users", component: UsersComponent },
   { path: "payments", component: PaymentsComponent },
   { path: "homePage", component: DailyActivityComponent },
-  { path: "admin", redirectTo: 'adminl', pathMatch: 'full' },
   { path: "", component: AppComponent },
   // {path: "AdminComponent",loadChildren: "./admin/admin.module#AdminModule"},
   // {path: "register",component: RegisterComponent},
-  // {path:"admin" , redirectTo:'adminl' ,pathMatch:'full'},
-  // {path:"" , component:AdminLayoutComponent},
-  //  {path: '',component: AdminLayoutComponent,children: [{ path: 'info',loadChildren: './admin-layout/admin'}] }
   //{ path: "**", component: PageNotFoundComponent }
 ];
 

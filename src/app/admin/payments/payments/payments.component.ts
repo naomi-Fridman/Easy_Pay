@@ -30,7 +30,16 @@ export class PaymentsComponent implements OnInit {
   dtoUsers:DTO_userParms=new DTO_userParms();
   userList: User[]
   selectedSum: string = "sum";
+  singlePayment: Payment;
+  displayStyle: string;
   
+  openPopup(payment:Payment) {
+    this.singlePayment=payment;
+    this.displayStyle = "block";
+  }
+  closePopup() {
+    this.displayStyle = "none";
+  }
   onChange(newValue: string) {
     if (newValue == "from") {
       this.dtoPayments.collectionSumExact = null;

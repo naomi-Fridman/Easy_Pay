@@ -22,13 +22,10 @@ export class UsersComponent implements OnInit {
   cities: any[];
   filteredCitiesSingle: any[];
   displayStyle = "none";
-  singleUserId:number;
-  singleUserFirstName:string;
-  singleUserLastName:string;
-  openPopup(userId:number,firstName:string,lastName:string) {
-    this.singleUserId=userId;
-    this.singleUserFirstName=firstName;
-    this.singleUserLastName=lastName;
+  singleUser:User;
+
+  openPopup(user:User) {
+    this.singleUser=user;
     this.displayStyle = "block";
   }
   closePopup() {
@@ -58,7 +55,7 @@ filterCity(query, cities: any[]):any[] {
     this.router.navigate(['/editUserDetails', JSON.stringify(user.id)]);
   }
   deleteUser(){
-    this.userService.deleteUser(this.singleUserId).subscribe(() => {alert("deleted")},err=> {alert("not deleted")});
+    this.userService.deleteUser(this.singleUser.id).subscribe(() => {alert("deleted")},err=> {alert("not deleted")});
   }
   onConfirm(userId: number){
     this.userService.deleteUser(userId).subscribe(() => {alert("deleted")},err=> {alert("not deleted")});

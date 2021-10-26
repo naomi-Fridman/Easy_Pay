@@ -26,6 +26,17 @@ export class DepositesComponent implements OnInit {
   dtoUsersPrms:DTO_userParms=new DTO_userParms();
   // :Observable< Depositor[]>;
   display: boolean = false;
+  displayStyle: string;
+  singleDeposite: Deposit;
+
+  openPopup(deposite:Deposit) {
+    this.singleDeposite=deposite;
+    this.displayStyle = "block";
+  }
+  closePopup() {
+    this.displayStyle = "none";
+  }
+
   editDetails(depositor:Depositor){ 
     this.router.navigate(['/editDetails',JSON.stringify(depositor.deposite.id)]);
   }

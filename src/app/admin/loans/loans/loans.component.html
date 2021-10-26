@@ -1,89 +1,29 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<header>
-    <div id="top-filter" class=" tfilter-box hidden-xs" data-spy="affix" data-offset-top="197">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-2">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <input [(ngModel)]="dto_loans.firstName" #firstNameInput class="form-control"
-                                placeholder="שם פרטי" type="text">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <input [(ngModel)]="dto_loans.lastName" #lastNameInput class="form-control"
-                                placeholder="שם משפחה" type="text">
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="col-sm-2">
-                        <select (change)="onChange($event.target.value)" [(ngModel)]="selectedSum" class="form-control">
-                            <option value="sum">
-                                סכום מדויק
-                            </option>
-                            <option value="from">
-                                החל מ
-                            </option>
-                            <option value="till">
-                                עד
-                            </option>
-                            <option value="range">
-                                טווח
-                            </option>
-                        </select>
-                    </div>
-                    <div *ngIf="selectedSum=='from' || selectedSum=='range'" class="col-sm-2">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <input [(ngModel)]="dto_loans.sumFrom" #fromSumInput class="form-control"
-                                    placeholder=" החל מ" type="text">
-                            </div>
-                        </div>
-                    </div>
-                    <div *ngIf="selectedSum=='till' || selectedSum=='range' " class="col-sm-2">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <input [(ngModel)]="dto_loans.sumTill" #tillSumInput class="form-control"
-                                    placeholder="עד" type="text">
-                            </div>
-                        </div>
-                    </div>
-                    <div *ngIf="selectedSum=='sum'" class="col-sm-2">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <input [(ngModel)]="dto_loans.sumExact" #sumInput class="form-control"
-                                    placeholder=" סכום" type="text">
-                            </div>
-                        </div>
-                    </div> -->
-                <div class="col-sm-4">
-                    <button type="button" class="btn btn-danger glyphicon glyphicon-search"
-                        (click)="getAllPayments()">חפש
-                    </button>
-                </div>
-            </div>
+<div id="top-filter" class="top-filter tfilter-box " data-spy="affix" data-offset-top="197">
+    <div class="row">
+        <div class="col">
+            <input [(ngModel)]="dtoUsersPrms.identityNumber" #identityNumberInput class="form-control-top"
+                placeholder="תעודת זהות" type="text">
+        </div>
+        <div class="col">
+            <input [(ngModel)]="dtoUsersPrms.firstName" #firstNameInput class="form-control-top" placeholder="שם פרטי"
+                type="text">
+        </div>
+        <div class="col">
+            <input [(ngModel)]="dtoUsersPrms.lastName" #lastNameInput class="form-control-top" placeholder="שם משפחה"
+                type="text">
+        </div>
+        <div class="col">
+            <input [(ngModel)]="dtoUsersPrms.address" #addressInput class="form-control-top" placeholder="כתובת" type="text">
+        </div>
+        <div class="col">
+            <input [(ngModel)]="dtoUsersPrms.telephoneNumber" #telephoneNumberInput class="form-control-top" placeholder="טלפון"
+                type="text">
+        </div>
+        <div class="col*1">
+            <button class='searchBtn' type="button" (click)="getAllUsers()">חפש </button>
         </div>
     </div>
-</header>
+</div>
 <div style="display: flex; margin-top: 3rem;">
     <div class="col-2" style="margin-right: 5rem;">
         <div class="filterSide">
@@ -155,7 +95,6 @@
         </div>
     </div>
     <div class="col-9">
-        <div class="l-container">
             <ul style="padding-right: 0px" *ngFor="let loan of loanerToDisplay">
                 <li class="list" data-name="JoeBrown">
                     <div class="list__profile">
@@ -168,17 +107,36 @@
                             <div class="list__label--value"> {{loan.loanPaymantsStatus.rest}}סכום שנותר: </div>
                         </div>
                         <div>
-                            <button class='searchBtn' type="button" (click)="showDetails(loan)">ערוך פרטים </button>
-                            <button data-toggle="modal" href="#myModal" class='searchBtn' type="button"
-                                (click)="showConfirm()">מחק משתמש </button>
+                            <button class='searchBtn' type="button" (click)="edit(loan)">ערוך פרטים </button>
+                            <button class='searchBtn' type="button" (click)="openPopup(loan)">מחק הלוואה </button>
                         </div>
                     </div>
                 </li>
             </ul>
+    </div>
+</div>
+<div class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false"
+    [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div style="padding-top: 4px; padding-right: 4px; border-bottom: none;" class="modal-header">
+                <button style="float: right; font-weight: bold; background-color: transparent;
+                border: none;" class="modal-title" (click)="closePopup()">x</button>
+            </div>
+            <div style="padding-top: 17px; padding-right: 30px; padding-bottom: 0px;" class="modal-body">
+                <p style="float: right; margin-top: 0; margin-bottom: 1rem;"> האם אתה בטוח שברצונך למחוק את {{singleUser.firstName}} {{singleUser.lastName}} לצמיתות?</p>
+            </div>
+            <div style="border-top: none;" class="modal-footer">
+                <button style="background-color: #f1d57e; border-color: #e7d35d ;width: 87px; margin-right: 18px" type="button" class="searchBtn" (click)="closePopup()">
+                    ביטול
+                </button>
+                <button style="width: 87px; margin-right: 18px;" type="button" class="searchBtn" (click)="deleteUser()">
+                    אישור
+                </button>
+            </div>
         </div>
     </div>
 </div>
-
 <p-dialog *ngIf="loaner" header={{loaner.user.firstName}} [(visible)]="display" modal="modal" [style]="{width: '350px'}"
     [responsive]="true">
     <span>

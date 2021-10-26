@@ -17,14 +17,13 @@ import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import {TabMenuModule} from 'primeng/tabmenu';
 import { PaymentsModule } from './payments/payments.module';
-import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import { AdminRoutes } from './admin.routing';
 import { DailyActivityComponent } from './daily-activity/daily-activity.component';
 import { DialogComponent } from '../models-components/dialog/dialog.component';
 
 
 @NgModule({
-  declarations: [AdminComponent,AdminLayoutComponent, DailyActivityComponent,DialogComponent],
+  declarations: [AdminComponent, DailyActivityComponent],
   imports: [
     
     CommonModule,UsersModule,LoansModule,DepositesModule,HttpClientModule,OrderListModule,PaymentsModule,
@@ -47,6 +46,6 @@ import { DialogComponent } from '../models-components/dialog/dialog.component';
     MessageModule,
     RouterModule.forChild(AdminRoutes)
   ],
-   exports:[AdminLayoutComponent,AdminComponent,DialogComponent]
+   exports:[AdminComponent]
 })
 export class AdminModule { }

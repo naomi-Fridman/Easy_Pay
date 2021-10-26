@@ -7,7 +7,6 @@ import { ShowDetailsComponent } from './show-details/show-details.component';
 import { EditDetailsComponent } from './edit-details/edit-details.component';
 import {CalendarModule} from 'primeng/calendar';
 import { InputTextModule } from 'primeng/inputtext';
-import {  ReactiveFormsModule } from '@angular/forms';
 import {DialogModule} from 'primeng/dialog';
 import {AccordionModule} from 'primeng/accordion';
 import {MessagesModule} from 'primeng/messages';
@@ -16,6 +15,7 @@ import { CurrencyModule } from 'src/app/models-components/currency/currency.modu
 import { RouterModule } from '@angular/router';
 import { CheckboxModule } from 'primeng/checkbox';
 import { NewDepositeComponent } from './new-deposite/new-deposite.component';
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 
 
 
@@ -34,7 +34,8 @@ import { NewDepositeComponent } from './new-deposite/new-deposite.component';
     MessageModule,
     CurrencyModule,
     RouterModule,
-    CheckboxModule
+    CheckboxModule,
+    FormsModule
   ],
   exports:[
     EditDetailsComponent,DepositesComponent

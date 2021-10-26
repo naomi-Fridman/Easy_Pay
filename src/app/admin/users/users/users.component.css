@@ -10,9 +10,9 @@
     background-image: linear-gradient(to left,rgb(246 201 98 / 61%),rgb(255 223 79 / 76%)) !important;
 }
 .form-control {
-    display: block;
-    width: 100%;
+    /* display: block; */
     height: 43px;
+    width: unset;
     border: 1px solid #ededed;
     border-radius: 5px;
     background-color: #fff;
@@ -140,6 +140,4 @@
     left: 50%;
     top: 28%;
     width: 600px;
-    /* padding-top: 142px; */
-    /* padding-bottom: 30px; */
 }
