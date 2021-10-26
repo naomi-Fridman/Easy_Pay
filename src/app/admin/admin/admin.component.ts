@@ -4,7 +4,6 @@ import { Loan } from 'src/app/models/Loan';
 import { User } from 'src/app/models/User';
 import {MenuItem} from 'primeng/api';
 import { Payment } from 'src/app/models/Payment';
-import { PaymentUser } from 'src/app/models/PaymentUser';
 import { PaymentsService } from '../../services/payments.service';
 import { UsersService } from '../../services/users.service';
 import { Router } from '@angular/router';

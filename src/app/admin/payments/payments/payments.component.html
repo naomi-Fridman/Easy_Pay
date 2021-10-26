@@ -1,26 +1,30 @@
-<div id="top-filter" class="top-filter tfilter-box " >
+<div id="top-filter" class="top-filter tfilter-box ">
     <div class="row">
         <div class="col">
-            <input [(ngModel)]="dtoUsers.identityNumber" #identityNumberInput class="form-control-top" placeholder="תעודת זהות" type="text">
+            <input [(ngModel)]="dtoUsers.identityNumber" #identityNumberInput class="form-control-top"
+                placeholder="תעודת זהות" type="text">
         </div>
         <div class="col">
-            <input [(ngModel)]="dtoUsers.firstName" #firstNameInput class="form-control-top" placeholder="שם פרטי" type="text">
+            <input [(ngModel)]="dtoUsers.firstName" #firstNameInput class="form-control-top" placeholder="שם פרטי"
+                type="text">
         </div>
         <div class="col">
-            <input [(ngModel)]="dtoUsers.lastName" #lastNameInput class="form-control-top" placeholder="שם משפחה"  type="text">
+            <input [(ngModel)]="dtoUsers.lastName" #lastNameInput class="form-control-top" placeholder="שם משפחה"
+                type="text">
         </div>
         <div class="col">
-            <input [(ngModel)]="dtoUsers.address" #addressInput class="form-control-top" placeholder="כתובת" type="text">
+            <input [(ngModel)]="dtoUsers.address" #addressInput class="form-control-top" placeholder="כתובת"
+                type="text">
         </div>
         <div class="col">
-            <input [(ngModel)]="dtoUsers.telephoneNumber1" #telephoneNumberInput class="form-control-top" placeholder="טלפון" type="text">
+            <input [(ngModel)]="dtoUsers.telephoneNumber1" #telephoneNumberInput class="form-control-top"
+                placeholder="טלפון" type="text">
         </div>
         <div class="col">
             <button class='searchBtn' type="button" (click)="getAllUsers()">חפש </button>
         </div>
     </div>
 </div>
-
 <div style="display: flex; margin-top: 3rem;">
     <div class="col-2" style="margin-right: 5rem;">
         <div class="filterSide">
@@ -81,62 +85,48 @@
         </div>
     </div>
     <div class="col-9">
-        <div class="l-container">
-            <ul style="padding-right: 0px" *ngFor="let payment of paymentListToDisplay">
-                <li class="list" data-name="JoeBrown">
-                    <div class="list__profile">
-                        <img class="pull-left img-circle nav-user-photo" width="90"
-                            src="../../../assets/img//faces/face-0.jpg" />  
-                        <div class="list__label">
-                            <div class="list__label--header"> {{payment.user.firstName}} {{payment.user.lastName}}
-                            </div>
-                            <div class="list__label--value"> סכום - {{payment.payment.collectionSum}} </div>
-                            <div class="list__label--value"> תאריך - {{payment.payment.paymentDate | date:"dd/MM/yyyy"
-                                }} </div>
+        <ul style="padding-right: 0px" *ngFor="let payment of paymentListToDisplay">
+            <li class="list" data-name="JoeBrown">
+                <div class="list__profile">
+                    <img class="pull-left img-circle nav-user-photo" width="90"
+                        src="../../../assets/img//faces/face-0.jpg" />
+                    <div class="list__label">
+                        <div class="list__label--header"> {{payment.user.firstName}} {{payment.user.lastName}}
                         </div>
-                        <div>
-                            <button class='searchBtn' type="button" (click)="edit(payment)">ערוך פרטים </button>
-                            <button class='searchBtn' type="button" (click)="openPopup(payment)">מחק תשלום </button>
-                        </div>
+                        <div class="list__label--value"> סכום - {{payment.payment.collectionSum}} </div>
+                        <div class="list__label--value"> תאריך - {{payment.payment.paymentDate | date:"dd/MM/yyyy"
+                            }} </div>
                     </div>
-                </li>
-            </ul>
-        </div>
+                    <div>
+                        <button class='searchBtn' type="button" data-toggle="modal" data-target="#myModal"
+                            (click)="showDetails(payment)">ערוך פרטים </button>
+                        <button href="#myModal" class='searchBtn' type="button" (click)="showConfirm()">מחק משתמש
+                        </button>
+                    </div>
+                </div>
+            </li>
+        </ul>
     </div>
 </div>
-<div class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false"
-    [ngStyle]="{'display':displayStyle}">
-    <div class="modal-dialog" role="document">
+
+
+<div class="modal " id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog " role="document">
         <div class="modal-content">
-            <div style="padding-top: 4px; padding-right: 4px; border-bottom: none;" class="modal-header">
-                <button style="float: right; font-weight: bold; background-color: transparent;
-            border: none;" class="modal-title" (click)="closePopup()">x</button>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div style="padding-top: 17px; padding-right: 30px; padding-bottom: 0px;" class="modal-body">
-                <p style="float: right; margin-top: 0; margin-bottom: 1rem;"> האם אתה בטוח שברצונך למחוק את
-                    {{singleDeposite.firstName}} {{singleDeposite.lastName}} לצמיתות?</p>
+                <app-payments-details [payment]="paymentUser1"></app-payments-details>
             </div>
             <div style="border-top: none;" class="modal-footer">
-                <button style="background-color: #f1d57e; border-color: #e7d35d ;width: 87px; margin-right: 18px"
-                    type="button" class="searchBtn" (click)="closePopup()">
+                <button type="button" class=" searchBtn modalCancel" data-dismiss="modal" (click)="closePopup()">
                     ביטול
                 </button>
-                <button style="width: 87px; margin-right: 18px;" type="button" class="searchBtn" (click)="deleteUser()">
+                <button type="button" class=" searchBtn modalSaveBtn" data-dismiss="modal" (click)="deleteUser()">
                     אישור
                 </button>
             </div>
         </div>
     </div>
 </div>
-
-<p-dialog *ngIf="paymentUser1" header={{paymentUser1.user.firstName}} [(visible)]="display" modal="modal"
-    [style]="{width: '350px'}" [responsive]="true">
-    <span>
-        <app-payments-details [payment]="paymentUser1"></app-payments-details>
-    </span>
-    <p-footer>
-        <div class="ui-dialog-buttonpane ui-helper-clearfix">
-            <button type="button" pButton icon="pi pi-times" (click)="display=false" label="אישור"></button>
-        </div>
-    </p-footer>
-</p-dialog>

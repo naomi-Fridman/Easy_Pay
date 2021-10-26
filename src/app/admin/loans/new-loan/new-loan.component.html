@@ -1,4 +1,3 @@
-
 <div class="card card-user">
   <div class="title">
     <label class="card-title  mainTitle"> הלוואה חדשה</label>
@@ -118,10 +117,10 @@
             <label for="currency" class="pull-right fileLabel required">מטבע</label>
             <select formControlName="currencyId" class="form-control">
               <option value=1>
-                שקל
+                ש"ח
               </option>
               <option value=3 selected="selected">
-                דולר
+                $
               </option>
             </select>
           </div>
@@ -189,6 +188,47 @@
             </div>
           </div> -->
         </div>
+      </div>
+    </form>
+  </div>
+  <div class="subTitleDiv">
+    <label class="card-title pull-right subTitle"> פרטי בנק  </label>
+   <label class="ddLable">(לתשלום בהוראת קבע)</label>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="loanerDetailesLoanForm" style="direction: rtl;">
+      <div class="row formRow">
+        <div class="col-md-10 pr-1">
+          <div class="form-group">
+            <label for="sum" class="pull-right fileLabel ">שם המוטב  </label>
+            <input formControlName="sum" id="sum" type="text" class="form-control" placeholder="שם המוטב ">
+          </div>
+        </div>
+        
+       
+        <div class="col-md-4 px-1">
+          <div class="form-group">
+            <label for="hebrewRepaymentDate" class="pull-right fileLabel">    בנק</label>
+            <input formControlName="hebrewRepaymentDate" id="hebrewRepaymentDate" type="text" class="form-control"
+              placeholder="בנק">
+          </div>
+        </div>
+        <div class="col-md-3 pl-1">
+          <div class="form-group">
+            <label for="paymentsNumber" class="pull-right fileLabel ">מספר חשבון </label>
+            <input formControlName="paymentsNumber" id="paymentsNumber" type="number" class="form-control"
+              placeholder="מספר חשבון">
+          </div>
+        </div>
+
+        <div class="col-md-3 pr-1">
+          <div class="form-group">
+            <label for="monthlyPaymentDay" class="pull-right fileLabel "> סניף</label>
+            <input formControlName="monthlyPaymentDay" id="monthlyPaymentDay" type="text" class="form-control"
+              placeholder="סניף  ">
+          </div>
+        </div>
+
       </div>
     </form>
   </div>

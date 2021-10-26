@@ -76,17 +76,20 @@ margin: 24px;
 
 }
 .mainTitle{
-  color: white !important;
+  color: rgb(255 209 3 / 76%) !important;
   font-size: 20px !important;
   font-weight: 500 !important;
   justify-content: center;
   align-items: center;
   display: flex;
+  
 }
 div.card.card-user{
   margin-right: 10%;
   bottom: 21px;
   margin-top: 62px;
+  border-radius: 13px;
+
 }
 .formRow{
   width: 95%;
@@ -114,4 +117,9 @@ div.card.card-user{
 }
 input#file-upload-button{
   background-color: #285c7e !important;
+}
+.ddLable{
+  direction: rtl;
+    display: flex;
+    color: #285c7e;
 }

@@ -1,59 +1,135 @@
-<p>payments-details works!</p>
 <div style="direction: rtl;">
-    <b>{{_paymentUser.user.firstName}} {{_paymentUser.user.lastName}}</b><br>
-     {{_paymentUser.user.telephoneNumber1}} | {{_paymentUser.user.telephoneNumber2}} <br>
-    <a href="mailto:{{_paymentUser.user.email}}">לחץ כאן לשליחת מייל לבעל התשלום</a><br>
-    <a [routerLink]="['/editUserDetails/' ,_paymentUser.user.id]">לפרטי המשתמש המלאים</a>
-    <!-- <button [routerLink]="['/editUserDetails/' ,_loaner.user.id]" pButton type="button" label="פרטי המשתמש המלאים" icon="pi pi-user" iconPos="right" ></button> -->
+    <div class="userDetails">
+        <div class="userName">
+            {{_paymentUser.user.firstName}} {{_paymentUser.user.lastName}}
+        </div>
+        <div class="userPhone">
+            {{_paymentUser.user.telephoneNumber1}} | {{_paymentUser.user.telephoneNumber2}}
+        </div>
+        <div class="userEmail">
+            <a class="userEmail" href="mailto:{{_paymentUser.user.email}}">{{_paymentUser.user.email}}</a>
+        </div>
+    </div>
+
 </div>
 <form [formGroup]="paymentDetailesForm" style="direction: rtl;">
-  <div class="p-field p-grid">
-    <label for="accountNumber" class="p-col-fixed" style="width:100px">מספר חשבון</label>
-    <div class="p-col">
-        <input formControlName="accountNumber" id="accountNumber" type="text" pInputText> 
-    </div>
-    </div>
-
-    <div class="p-field p-grid">
-        <label for="collectionSum" class="p-col-fixed" style="width:100px">סכום לגבייה</label>
-        <div class="p-col">
-            <input formControlName="collectionSum" id="collectionSum" type="text" pInputText> 
+    <div class="row loanSumDiv">
+        
+        <div class="form-group" style="margin: 0;">
+            <label class="loanSumLable"> סכום הלוואה :</label>
         </div>
+        <div class="form-group" style="margin: 0;">
+            <label class="loanSumLable"> {{_paymentUser.loan.sum}}</label>
         </div>
 
-    <div class="p-field p-grid">
-    <label for="comments" class="p-col-fixed" style="width:100px">הערות</label>
-    <div class="p-col">
-        <input formControlName="comments" id="comments" type="text" pInputText> 
+        <label *ngIf="_paymentUser.loan.currencyId==1" class="loanSumLable" style="padding-left: 10px;"> ש"ח </label>
+        <label *ngIf="_paymentUser.loan.currencyId==3" class="loanSumLable"  style="padding-left: 10px;"> $ </label>
+
+        <div class="form-group" style="margin: 0;">
+            <label class="loanSumLable"> סכום תשלום חודשי :</label>
+        </div>
+        <div class="form-group" style="margin: 0;">
+            <label class="loanSumLable"> {{_paymentUser.loan.monthlyPaymentSum}}</label>
+        </div>
+
+        <label *ngIf="_paymentUser.loan.currencyId==1" class="loanSumLable"> ש"ח </label>
+        <label *ngIf="_paymentUser.loan.currencyId==3" class="loanSumLable"> $ </label>
+
     </div>
+    <div class="row rowSum">
+        <div class="sumDiv">
+            <input formControlName="collectionSum" id="collectionSum" type="text" pInputText>
+        </div>
+        <div class="form-group" style="margin: 0;">
+            <select id="currency" class="currency" formControlName="currencyId" class="form-control">
+                <option class="currencyOption" value=1>
+                    ש"ח
+                </option>
+                <option class="currencyOption" value=3 selected="selected">
+                    $
+                </option>
+            </select>
+        </div>
+    </div>
+    <!-- <div class="row">
+        <div class="form-group" style="margin: 0;">
+            <select id="typeId" class="typeId" formControlName="typeId" class="form-control">
+                <option value=1>
+                   פרעון הלוואה
+                </option>
+                <option value=3 selected="selected">
+                    פקדון
+                </option>
+            </select>
+        </div> 
+
+    </div> -->
+
+    <div class="row paymentManerDiv">
+        <div class="form-group bankDPMDiv">
+            <label class="bankDPM"> אופן תשלום:</label>
+        </div>
+
+        <div class="form-group" style="margin: 0;">
+
+            <select id="paymentMethodId" class="paymentMethodId" formControlName="paymentMethodId" class="form-control">
+                <option value=1>
+                    מזומן
+                </option>
+
+                <option value=2>
+                    הוראת קבע
+                </option>
+                <!-- <option value=3>
+                        אשראי
+                    </option> -->
+                <option value=4>
+                    המחאה
+                </option>
+            </select>
+        </div>
+
+    </div>
+    <div *ngIf="paymentDetailesForm.controls['paymentMethodId'].value==2">
+        <div class="row form-group bankPD">
+            <label class="bankDetailsLable"> בנק:</label>
+            <input class="bankD" formControlName="bankId" id="bankId" type="text" pInputText>
+            <label class="bankDetailsLable"> סניף:</label>
+            <input class="bankD" formControlName="branchNumberId" id="branchNumberId" type="text" pInputText>
+            <label class="bankDetailsLable"> מספר חשבון:</label>
+            <input class="bankD" formControlName="accountNumber" id="accountNumber" type="text" pInputText>
+        </div>
+    </div>
+    <div class="row paymentDateDiv">
+        <div class="form-group" style="margin: 6px;">
+            <label class="bankDPM"> תאריך תשלום:</label>
+        </div>
+        <div class="form-group" style="margin: 0;">
+            <input formControlName="paymentDate" id="paymentDate" type="date">
+        </div>
+
+    </div>
+    <div class="row paymentDateDiv">
+        <div class="form-group" style="margin: 7px;">
+            <label class="bankDPM"> שולם בפועל:</label>
+        </div>
+        <div class="form-group" style="margin: 0;">
+            <input formControlName="inputDate" id="inputDate" type="date">
+        </div>
+
     </div>
 
-    <div class="p-field p-grid">
-    <label for="hebrewPaymentDate" class="p-col-fixed" style="width:100px">תאריך תשלום עברי</label>
-    <div class="p-col">
-        <input formControlName="hebrewPaymentDate" id="hebrewPaymentDate" type="text" pInputText> 
-    </div>
-    </div>
+    <div class="row">
+        <div class="col-md-12 pr-1">
+            <div class="form-group" style="padding: 13px;">
+                <label for="comments" class="fileLabel">הערות</label>
+                <textarea class="form-control textarea" formControlName="comments" id="comments" type="text"
+                    class="form-control" placeholder="הוסף הערה לתשלום..."></textarea>
+            </div>
+        </div>
 
-    <div class="p-field p-grid">
-    <label for="paymentDate" class="p-col-fixed" style="width:100px">תאריך תשלום</label>
-    <div class="p-col">
-        <input formControlName="paymentDate" id="paymentDate" type="text" pInputText> 
     </div>
-    </div>
-
-    <div class="p-field p-grid">
-    <label for="inputDate" class="p-col-fixed" style="width:100px">תאריך קלט</label>
-    <div class="p-col">
-        <input formControlName="inputDate" id="inputDate" type="text" pInputText> 
-    </div>
-    </div>
-
-    <div class="p-field p-grid">
-    <label for="deleted" class="p-col-fixed" style="width:100px"> האם התשלום קיים?</label>
-    <div class="p-col">
-        <p-checkbox [formControl]="paymentDetailesForm.controls['deleted']" [binary]="true" id="deleted"></p-checkbox>
-    </div>
-    </div>
-    <button (click)="editDetails()">עדכן פרטים</button>
-  </form>
+    <a class="linkUser" [routerLink]="['/editUserDetails/' ,_paymentUser.user.id]">לפרטי משתמש מלאים</a>
+    <!-- 
+    <button (click)="editDetails()">עדכן פרטים</button> -->
+</form>

@@ -4,6 +4,7 @@ import { PaymentUser } from 'src/app/models/PaymentUser';
 import { ActivatedRoute } from '@angular/router';
 import { Payment } from 'src/app/models/Payment';
 import { PaymentsService } from '../../../services/payments.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-payments-details',
@@ -23,13 +24,14 @@ export class PaymentsDetailsComponent implements OnInit {
     if(this._paymentUser.payment.deleted)
       this.value=true;
     else this.value=false;
+    
     this.paymentDetailesForm.controls["accountNumber"].setValue(this._paymentUser.payment.accountNumber);
     this.paymentDetailesForm.controls["deleted"].setValue(this._paymentUser.payment.deleted);
     this.paymentDetailesForm.controls["collectionSum"].setValue(this._paymentUser.payment.collectionSum);
     this.paymentDetailesForm.controls["comments"].setValue(this._paymentUser.payment.comments);
     this.paymentDetailesForm.controls["hebrewPaymentDate"].setValue(this._paymentUser.payment.hebrewPaymentDate);
-    this.paymentDetailesForm.controls["inputDate"].setValue(this._paymentUser.payment.inputDate);
-    this.paymentDetailesForm.controls["paymentDate"].setValue(this._paymentUser.payment.paymentDate);
+    this.paymentDetailesForm.controls["inputDate"].setValue(formatDate(this._paymentUser.payment.inputDate, 'yyyy-MM-dd', 'en'));
+    this.paymentDetailesForm.controls["paymentDate"].setValue(formatDate(this._paymentUser.payment.paymentDate, 'yyyy-MM-dd', 'en'));
     this.paymentDetailesForm.controls["id"].setValue(this._paymentUser.payment.id);
     this.paymentDetailesForm.controls["typeId"].setValue(this._paymentUser.payment.typeId);
     this.paymentDetailesForm.controls["userId"].setValue(this._paymentUser.payment.userId);
@@ -43,6 +45,7 @@ export class PaymentsDetailsComponent implements OnInit {
     this.paymentDetailesForm.controls["reference"].setValue(this._paymentUser.payment.reference);
     this.paymentDetailesForm.controls["creditCardId"].setValue(this._paymentUser.payment.creditCardId);
     this.paymentDetailesForm.controls["paymentMethodId"].setValue(this._paymentUser.payment.paymentMethodId);
+    this.paymentDetailesForm.controls["loanSum"].setValue(this._paymentUser.loan.sum);
 
   }
   editDetails() {
@@ -72,6 +75,7 @@ export class PaymentsDetailsComponent implements OnInit {
     directDebitId:new FormControl(null),
     reference:new FormControl(null),
     creditCardId:new FormControl(null),
+    loanSum:new FormControl(null),
   });
   ngOnInit() {
   }
