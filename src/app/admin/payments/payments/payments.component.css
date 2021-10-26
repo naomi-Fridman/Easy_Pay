@@ -182,6 +182,14 @@ button:focus {
 .nav-user-photo {
   vertical-align: middle;
 }
+
+.modal-backdrop {
+  display: none;
+}
+
+.modal {
+  background-color: rgba(0,0,0,0)
+}
 @media screen and (max-width: 650px) {
   .list {
       -webkit-box-orient: vertical;
@@ -199,10 +207,21 @@ button:focus {
     width: 170px;
   }
 }
-
+/* @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
 .modal{
-  background-color: #00000026 !important;
+  -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.5);
 }
+} */
+/* .modal.fade {
+  opacity: 0;
+  filter: alpha(opacity=0);
+  }
+  .modal.in {
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  } */
 .modal-dialog {
   right: 0;
   left: 50%;
@@ -218,4 +237,14 @@ button:focus {
   padding-bottom: 0;
  
     
+}
+.modalCancel{
+  background-color: #f1d57e;
+  border-color: #e7d35d ;
+  width: 87px; 
+  margin-right: 18px
+}
+.modalSaveBtn{
+  width: 87px;
+   margin-right: 18px;
 }

@@ -13,6 +13,29 @@
 
 </div>
 <form [formGroup]="paymentDetailesForm" style="direction: rtl;">
+    <div class="row loanSumDiv">
+        
+        <div class="form-group" style="margin: 0;">
+            <label class="loanSumLable"> סכום הלוואה :</label>
+        </div>
+        <div class="form-group" style="margin: 0;">
+            <label class="loanSumLable"> {{_paymentUser.loan.sum}}</label>
+        </div>
+
+        <label *ngIf="_paymentUser.loan.currencyId==1" class="loanSumLable" style="padding-left: 10px;"> ש"ח </label>
+        <label *ngIf="_paymentUser.loan.currencyId==3" class="loanSumLable"  style="padding-left: 10px;"> $ </label>
+
+        <div class="form-group" style="margin: 0;">
+            <label class="loanSumLable"> סכום תשלום חודשי :</label>
+        </div>
+        <div class="form-group" style="margin: 0;">
+            <label class="loanSumLable"> {{_paymentUser.loan.monthlyPaymentSum}}</label>
+        </div>
+
+        <label *ngIf="_paymentUser.loan.currencyId==1" class="loanSumLable"> ש"ח </label>
+        <label *ngIf="_paymentUser.loan.currencyId==3" class="loanSumLable"> $ </label>
+
+    </div>
     <div class="row rowSum">
         <div class="sumDiv">
             <input formControlName="collectionSum" id="collectionSum" type="text" pInputText>
@@ -77,21 +100,21 @@
             <input class="bankD" formControlName="accountNumber" id="accountNumber" type="text" pInputText>
         </div>
     </div>
-    <div class="row paymentDateDiv" >
+    <div class="row paymentDateDiv">
         <div class="form-group" style="margin: 0;">
             <label class="bankDPM"> תאריך תשלום:</label>
         </div>
         <div class="form-group" style="margin: 0;">
-            <input  formControlName="paymentDate" id="paymentDate" type="date">
+            <input formControlName="paymentDate" id="paymentDate" type="date">
         </div>
-        
+
     </div>
     <div class="row paymentDateDiv">
         <div class="form-group" style="margin: 0;">
-            <label class="bankDPM">  שולם בפועל:</label>
+            <label class="bankDPM"> שולם בפועל:</label>
         </div>
         <div class="form-group" style="margin: 0;">
-            <input  formControlName="inputDate" id="inputDate" type="date">
+            <input formControlName="inputDate" id="inputDate" type="date">
         </div>
 
     </div>
@@ -100,25 +123,13 @@
         <div class="col-md-12 pr-1">
             <div class="form-group" style="padding: 13px;">
                 <label for="comments" class="fileLabel">הערות</label>
-                <textarea class="form-control textarea" formControlName="comments" id="comments" type="text" class="form-control" placeholder="הוסף הערה לתשלום..."></textarea>
+                <textarea class="form-control textarea" formControlName="comments" id="comments" type="text"
+                    class="form-control" placeholder="הוסף הערה לתשלום..."></textarea>
             </div>
         </div>
 
     </div>
     <a class="linkUser" [routerLink]="['/editUserDetails/' ,_paymentUser.user.id]">לפרטי משתמש מלאים</a>
     <!-- 
-
-
-    <div class="p-field p-grid">
-        <label for="comments" class="p-col-fixed" style="width:100px">הערות</label>
-        <div class="p-col">
-            <input formControlName="comments" id="comments" type="text" pInputText>
-        </div>
-    </div>
-
-
-   
-
-    
     <button (click)="editDetails()">עדכן פרטים</button> -->
 </form>

@@ -6,6 +6,23 @@
 .userName{
     font-size: 19px;
 }
+.loanSumLable{
+    margin: 0;
+    font-weight: 500;
+}
+.loanSumDiv{
+    justify-content: space-evenly;
+    font-size: 16px;
+    color: #5d5da9;
+    background-color: #7f97ff33;
+    padding: 6px;
+    margin: 24px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 17px !important;
+    border-radius: 3px;
+    font-weight: 500;
+}
 #collectionSum{
     border: none;
     color: #7878b1;
@@ -32,6 +49,7 @@
 }
 .rowSum{
     border-radius: 6px;
+    margin-top: 0 !important;
     margin: 23px;
     margin-bottom: 10px !important;
     background-color: #f1d57e82;
@@ -117,8 +135,12 @@
 }
 .paymentDateDiv{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     font-size: 16px;
+    width: 60%;
+    margin-right: 20%;
+
+    
 }
 .fileLabel{
     color: #0d0d72 !important;

@@ -116,30 +116,28 @@
                     <div class="list__label--value"> תאריך  - {{payment.payment.paymentDate | date:"dd/MM/yyyy" }}   </div>
                 </div>
                 <div >
-                    <button class='searchBtn' type="button" (click)="showDetails(payment)">ערוך פרטים </button>
-                    <button data-toggle="modal" href="#myModal"  class='searchBtn' type="button" (click)="showConfirm()">מחק משתמש </button>
+                    <button class='searchBtn' type="button" data-toggle="modal" data-target="#myModal" (click)="showDetails(payment)">ערוך פרטים </button>
+                    <button  href="#myModal"  class='searchBtn' type="button" (click)="showConfirm()">מחק משתמש </button>
                 </div>
             </div>
         </li>
     </ul>
 </div>
 
-<div class="modal" tabindex="-1" role="dialog"  data-backdrop="true"
-    [ngStyle]="{'display':displayStyle}">
-    <div class="modal-dialog" role="document">
+<div class="modal " id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog " role="document"  >
         <div class="modal-content">
             <div  class="modal-header">
-                <button style="float: right; font-weight: bold; background-color: transparent;
-                border: none;" class="modal-title">x</button>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div style="padding-top: 17px; padding-right: 30px; padding-bottom: 0px;" class="modal-body">
                 <app-payments-details [payment]="paymentUser1"></app-payments-details>
             </div>
             <div style="border-top: none;" class="modal-footer">
-                <button style="background-color: #f1d57e; border-color: #e7d35d ;width: 87px; margin-right: 18px" type="button" class="searchBtn" (click)="closePopup()">
+                <button  type="button" class=" searchBtn modalCancel" data-dismiss="modal"  (click)="closePopup()">
                     ביטול
                 </button>
-                <button style="width: 87px; margin-right: 18px;" type="button" class="searchBtn" (click)="deleteUser()">
+                <button  type="button" class=" searchBtn modalSaveBtn" data-dismiss="modal" (click)="deleteUser()">
                     אישור
                 </button>
             </div>

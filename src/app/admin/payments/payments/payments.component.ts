@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Payment } from 'src/app/models/Payment';
 import { PaymentsService } from '../../../services/payments.service';
 import { UsersService } from '../../../services/users.service';
@@ -8,6 +8,9 @@ import { SelectItem } from 'primeng/api';
 import { PaymentUser } from 'src/app/models/PaymentUser';
 import { DTO_Payments } from 'src/app/models/DTO_Payments';
 import { DTO_userParms } from 'src/app/models/DTO_userParms';
+import { LoansService } from 'src/app/services/loans.service';
+import { DTO_loans } from 'src/app/models/DTO_loans';
+import { Loan } from 'src/app/models/Loan';
 
 @Component({
   selector: 'app-payments',
@@ -19,6 +22,7 @@ export class PaymentsComponent implements OnInit {
   selectedSearchType: SelectItem
   allPayments: Payment[]
   paymentsUser: User[]
+  paymentsLoans: Loan[];
   paymentListToDisplay: PaymentUser[] = new Array()
   paymentListToDisplayB: PaymentUser[] = new Array()
   datesArr: SelectItem[]
@@ -26,17 +30,24 @@ export class PaymentsComponent implements OnInit {
   paymentUser1: PaymentUser
   display: boolean = false
   dtoPayments: DTO_Payments = new DTO_Payments();
-  dtoUsers:DTO_userParms=new DTO_userParms();
+  dtoUsers: DTO_userParms = new DTO_userParms();
+  dtoLoan: DTO_loans = new DTO_loans();
   userList: User[]
   selectedSum: string = "sum";
   displayStyle = "none";
-  
+
+  @ViewChild('myModal', { static: false }) myModal: ElementRef;
+
+  ngAfterViewInit() {
+   
+  }
+
 
   openPopup() {
-
-    this.displayStyle = "block";
+    // this.displayStyle = "block";
   }
   closePopup() {
+    // this.myModal.nativeElement.modal('hide');
     this.displayStyle = "none";
   }
   onChange(newValue: string) {
@@ -58,7 +69,7 @@ export class PaymentsComponent implements OnInit {
   }
   showDetails(_paymentUser: PaymentUser) {
     this.paymentUser1 = _paymentUser;
-    this.displayStyle = "block";
+    // this.displayStyle = "block";
     // this.display = true;
   }
   getAllPayments() {
@@ -83,7 +94,7 @@ export class PaymentsComponent implements OnInit {
     });
   }
 
-  constructor(private paymentsService: PaymentsService, private userService: UsersService, private router: Router) {
+  constructor(private paymentsService: PaymentsService, private userService: UsersService, private loanService: LoansService, private router: Router) {
     this.allPayments = new Array();
     this.paymentsService.getAllPayments(this.dtoPayments)
       .subscribe(data => {
@@ -94,16 +105,29 @@ export class PaymentsComponent implements OnInit {
           if (this.allPayments == []) {
             this.paymentListToDisplay = [];
           }
-          this.allPayments.forEach(payment => {
-            this.paymentsUser.forEach(user => {
-              if (payment.userId == user.id) {
-                this.paymentListToDisplay[i] = new PaymentUser();
-                this.paymentListToDisplay[i].payment = payment;
-                this.paymentListToDisplay[i].user = user;
-                i += 1;
-              }
+          else {
+            this.loanService.getAllLoans(this.dtoLoan).subscribe(loans => {
+              this.paymentsLoans = loans;
+              this.allPayments.forEach(payment => {
+                this.paymentsUser.forEach(user => {
+                  if (payment.userId == user.id) {
+                    this.paymentsLoans.forEach(loan => {
+                      if (loan.userId == user.id && loan.paidUp == false) {
+                        this.paymentListToDisplay[i] = new PaymentUser();
+                        this.paymentListToDisplay[i].payment = payment;
+                        this.paymentListToDisplay[i].user = user;
+                        this.paymentListToDisplay[i].loan = loan;
+                        i += 1;
+                      }
+                    })
+
+                  }
+                })
+              })
+
             })
-          })
+          }
+
           this.paymentListToDisplayB = this.paymentListToDisplay;
         })
         this.datesArr = [
@@ -123,7 +147,7 @@ export class PaymentsComponent implements OnInit {
       "לפי בחירה",
       "range"
     ];
-    
+
   }
   searchDyDate(date: Date) {
     this.router.navigate(['/search', JSON.stringify(date)]);

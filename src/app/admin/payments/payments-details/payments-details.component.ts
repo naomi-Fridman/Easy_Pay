@@ -45,6 +45,7 @@ export class PaymentsDetailsComponent implements OnInit {
     this.paymentDetailesForm.controls["reference"].setValue(this._paymentUser.payment.reference);
     this.paymentDetailesForm.controls["creditCardId"].setValue(this._paymentUser.payment.creditCardId);
     this.paymentDetailesForm.controls["paymentMethodId"].setValue(this._paymentUser.payment.paymentMethodId);
+    this.paymentDetailesForm.controls["loanSum"].setValue(this._paymentUser.loan.sum);
 
   }
   editDetails() {
@@ -74,6 +75,7 @@ export class PaymentsDetailsComponent implements OnInit {
     directDebitId:new FormControl(null),
     reference:new FormControl(null),
     creditCardId:new FormControl(null),
+    loanSum:new FormControl(null),
   });
   ngOnInit() {
   }
