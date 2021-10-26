@@ -25,6 +25,23 @@
   border-color: #7c7cac !important;
   box-shadow: 0 0 0 0.2rem rgb(124 124 172 / 38%) !important;
 }
+.form-control-top{
+  display: block;
+  height: 43px;
+  border: 1px solid #e1b54b;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: none;
+  color: #5f5f9a;
+  font-size: 14px;
+  line-height: 1.42857143;
+  padding-right: 5px;
+}
+.form-control-top:focus{
+  border-color: #ffe44e !important;
+  box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(194 137 4 / 56%) !important;
+  outline: 0 !important;
+}
 .card {
   background: #fff none repeat scroll 0 0;
   box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.16);
@@ -37,14 +54,6 @@
 }
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-.l-container {
-  display: block;
-}
-@media screen and (max-width: 1050px) {
-  .l-container {
-    width: 95%;
-  }
 }
 .list {
   display: flex;

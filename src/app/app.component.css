@@ -45,13 +45,18 @@
 .actionBtn:hover {
     background-color: #4e4e91a8;
 }
-.nav>li>a:hover, .nav>li>a:focus {
+.nav>li>a:focus {
     /* height: 4em; */
     background-color: #5f5f9ad4 !important;
     color: white;
     height: 4.7rem;
     /* top: -9px; */
     /* padding-top: 15px; */
+}
+.nav>li>a:hover{
+    background-color: #5f5f9a8a;
+    color: white;
+    height: 4.7rem;
 }
 a.nav-link.active {
     background-color: #5f5f9ad4;

@@ -1,25 +1,25 @@
 <div id="top-filter" class="top-filter tfilter-box " data-spy="affix" data-offset-top="197">
     <div class="row">
         <div class="col">
-            <input [(ngModel)]="dtoUsersPrms.identityNumber" #identityNumberInput class="form-control"
+            <input [(ngModel)]="dtoUsersPrms.identityNumber" #identityNumberInput class="form-control-top"
                 placeholder="תעודת זהות" type="text">
         </div>
         <div class="col">
-            <input [(ngModel)]="dtoUsersPrms.firstName" #firstNameInput class="form-control" placeholder="שם פרטי"
+            <input [(ngModel)]="dtoUsersPrms.firstName" #firstNameInput class="form-control-top" placeholder="שם פרטי"
                 type="text">
         </div>
         <div class="col">
-            <input [(ngModel)]="dtoUsersPrms.lastName" #lastNameInput class="form-control" placeholder="שם משפחה"
+            <input [(ngModel)]="dtoUsersPrms.lastName" #lastNameInput class="form-control-top" placeholder="שם משפחה"
                 type="text">
         </div>
         <div class="col">
-            <input [(ngModel)]="dtoUsersPrms.address" #addressInput class="form-control" placeholder="כתובת" type="text">
+            <input [(ngModel)]="dtoUsersPrms.address" #addressInput class="form-control-top" placeholder="כתובת" type="text">
         </div>
         <div class="col">
-            <input [(ngModel)]="dtoUsersPrms.telephoneNumber" #telephoneNumberInput class="form-control" placeholder="טלפון"
+            <input [(ngModel)]="dtoUsersPrms.telephoneNumber" #telephoneNumberInput class="form-control-top" placeholder="טלפון"
                 type="text">
         </div>
-        <div class="col">
+        <div class="col*1">
             <button class='searchBtn' type="button" (click)="getAllUsers()">חפש </button>
         </div>
     </div>
@@ -95,7 +95,6 @@
         </div>
     </div>
     <div class="col-9">
-        <div class="l-container">
             <ul style="padding-right: 0px" *ngFor="let loan of loanerToDisplay">
                 <li class="list" data-name="JoeBrown">
                     <div class="list__profile">
@@ -114,7 +113,6 @@
                     </div>
                 </li>
             </ul>
-        </div>
     </div>
 </div>
 <div class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false"

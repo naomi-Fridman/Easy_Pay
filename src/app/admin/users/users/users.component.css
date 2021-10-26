@@ -11,8 +11,8 @@
 }
 .form-control {
     /* display: block; */
-    width: 100%;
     height: 43px;
+    width: unset;
     border: 1px solid #ededed;
     border-radius: 5px;
     background-color: #fff;
