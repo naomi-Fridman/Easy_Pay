@@ -5,8 +5,6 @@
     box-shadow: 0 1px 6px rgb(0 0 0 / 16%);
 }
 .header-menu{
-    background-color: #ffffffc9;
-
     float: right;
     width: 100%;
     display: flex;
@@ -26,7 +24,6 @@
 }
 .nav>li>a {
     color: #2f2f94;
-    
 }
 .mainCard{
     background-color: transparent !important;
@@ -34,7 +31,6 @@
     position: absolute;
     top: 0.5rem;
     left: 0px;
-    
 }
 .actionBtn{
     width: 105px;
