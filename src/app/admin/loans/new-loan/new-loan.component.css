@@ -41,9 +41,10 @@ width: 100%;
 margin: 24px;
 }
 .fileLabel{
-  color: black !important;
+  color: #17178f !important;
   font-size: 15px !important;
-  
+  float: right;
+  font-weight: 500;
 }
 .required::before{
   content:" *";
@@ -122,4 +123,15 @@ input#file-upload-button{
   direction: rtl;
     display: flex;
     color: #285c7e;
+}
+
+.form-control:focus {
+  color: #5f5f9a;
+  background-color: #fff;
+  border-color: #f2db99;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgb(241 218 154);
+}
+.form-control{
+  font-size: 14px;
 }
