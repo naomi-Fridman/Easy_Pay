@@ -29,12 +29,12 @@
     background-color: transparent !important;
     border: none !important;
     position: absolute;
-    top: 0.5rem;
+    top: 7px;
     left: 0px;
 }
 .actionBtn{
     width: 105px;
-    height: 36px;
+    height: 32px;
     border: none;
     border-radius: 5px;
     background-color: #5f5f9a;
@@ -72,9 +72,6 @@ a.nav-link.active {
 .nav{
     padding-right: 0px;
 }
-::-webkit-scrollbar {
-    width: 0px;
-  } 
-  button{
+button{
       cursor: pointer;
-  }
+}
