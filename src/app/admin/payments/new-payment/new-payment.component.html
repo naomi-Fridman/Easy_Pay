@@ -16,8 +16,7 @@
                 <div class="col-md-3 pr-1">
                     <div class="form-group">
                         <label for="collectionSum" class="fileLabel required">סכום </label>
-                        <input formControlName="collectionSum" id="collectionSum" type="number" class="form-control"
-                            required>
+                        <input formControlName="collectionSum" id="collectionSum" type="number" class="form-control" required>
                         <div class="validate"
                             *ngIf="(PaymentDetailesFormControl.collectionSum.invalid && (PaymentDetailesFormControl.collectionSum.dirty || PaymentDetailesFormControl.collectionSum.touched || formSubmitAttempt)) && PaymentDetailesFormControl.collectionSum.errors.required ">
                             <div>

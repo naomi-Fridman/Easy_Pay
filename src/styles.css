@@ -4,10 +4,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .prg{
 
     /* background-image: url('/assets/img/StockSnap_WG9DCQX3J3.jpg') !important;
-    background-position: center;
+    background-position: center !important;
     background-repeat: no-repeat;
     background-size: cover; */
 }
 html, body { height: 100%; }
 
-body { background-color: #f4f4f4; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+    
+    background-color: #f4f4f4; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+
+}

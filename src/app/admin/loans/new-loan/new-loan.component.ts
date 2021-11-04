@@ -20,7 +20,7 @@ import { UsersService } from 'src/app/services/users.service';
   templateUrl: './new-loan.component.html',
   styleUrls: ['./new-loan.component.css']
 })
-export class NewLoanComponent implements OnInit, AfterViewInit {
+export class NewLoanComponent implements OnInit {
   newLoanDetailes: LoanDetailes = new LoanDetailes();
   loanCurrency: number = 3;
   returnCurrency: number = 1
@@ -30,7 +30,8 @@ export class NewLoanComponent implements OnInit, AfterViewInit {
   saveGuarantyEvent: boolean = false;
   shtarFD = new FormData();
   private shtarUploaded: boolean = false;
- 
+  formSubmitAttempt: boolean = false;
+
   l: DirectDebit = new DirectDebit();
   @ViewChildren(GuarantyDetailsComponent) guarantyDetailsComponent: QueryList<GuarantyDetailsComponent>;
   isExistUser: boolean = false;
@@ -38,12 +39,7 @@ export class NewLoanComponent implements OnInit, AfterViewInit {
 
   constructor(private userService: UsersService, private loansService: LoansService, private cd: ChangeDetectorRef, private route: Router) { }  //private messageService: MessageService
 
-  ngAfterViewInit() {
-    this.guarantyDetailsComponent.forEach(g => console.log(g));
-    //console.log(this.guarantyDetailsComponent);
-    //this.newLoanDetailes.guaranty.push(this.guarantyDetailsComponent.first.GuarantyDetailsForm.value) //<= This will set data
-    this.cd.detectChanges();
-  }
+
   saveGuaranty(g: Guaranty) {
     alert(g);
   }
@@ -53,11 +49,10 @@ export class NewLoanComponent implements OnInit, AfterViewInit {
         this.isExistUser = true;
         this.loanerDetailesUserForm.controls["firstName"].setValue(user.firstName);
         this.loanerDetailesUserForm.controls["lastName"].setValue(user.lastName);
-        this.loanerDetailesUserForm.controls["telephoneNumber1"].setValue(user.telephoneNumber1);
-        this.loanerDetailesUserForm.controls["telephoneNumber2"].setValue(user.telephoneNumber2);
+        this.loanerDetailesUserForm.controls["telephoneNumber"].setValue(user.telephoneNumber);
+        this.loanerDetailesUserForm.controls["cellphoneNumber"].setValue(user.cellphoneNumber);
         this.loanerDetailesUserForm.controls["email"].setValue(user.email);
         this.loanerDetailesUserForm.controls["address"].setValue(user.address);
-        this.loanerDetailesUserForm.controls["city"].setValue(user.city);
         this.loanerDetailesUserForm.controls["comments"].setValue(user.comments);
       }
     })
@@ -69,20 +64,24 @@ export class NewLoanComponent implements OnInit, AfterViewInit {
   //   this.returnCurrency=value;
   // }
   save() {
-    this.guarantyDetailsComponent.forEach(g =>
-      this.newLoanDetailes.guaranty.push(g.GuarantyDetailsForm.value));
-    this.newLoanDetailes.loaner = this.loanerDetailesLoanForm.value;
-    this.newLoanDetailes.directDebit = this.loanerDetailesDDForm.value;
-    this.newLoanDetailes.user = this.loanerDetailesUserForm.value;
-    debugger
-    const uploadData = new FormData();
-    uploadData.append('file', this.selectedFile);
-    uploadData.append('newLoaner', JSON.stringify(this.newLoanDetailes));
-    //check if exists
-    this.loansService.postLoan(uploadData).subscribe(e => {
-      this.route.navigate(["/homePage"]);
-    });
+    this.formSubmitAttempt=true;
+    if (this.loanerDetailesLoanForm.valid && this.loanerDetailesUserForm.valid) {
+      this.guarantyDetailsComponent.forEach(g =>
+        this.newLoanDetailes.guaranty.push(g.GuarantyDetailsForm.value));
+      this.newLoanDetailes.loaner = this.loanerDetailesLoanForm.value;
+      this.newLoanDetailes.directDebit = this.loanerDetailesDDForm.value;
+      this.newLoanDetailes.user = this.loanerDetailesUserForm.value;
+      debugger
+      const uploadData = new FormData();
+      uploadData.append('file', this.selectedFile);
+      uploadData.append('newLoaner', JSON.stringify(this.newLoanDetailes));
+      //check if exists
+      this.loansService.postLoan(uploadData).subscribe(e => {
+        this.route.navigate(["/homePage"]);
+      });
+    }
   }
+
 
 
 
@@ -97,47 +96,52 @@ export class NewLoanComponent implements OnInit, AfterViewInit {
   }
   onFileChanged(event) {
     this.selectedFile = event.target.files[0];
-    if(this.selectedFile){
+    if (this.selectedFile) {
       this.shtarFD.append("shtar", this.selectedFile);
     }
   }
+  get loanerDetailesUserFormControl() { return this.loanerDetailesUserForm.controls; }
+  get loanerDetailesLoanFormControl() { return this.loanerDetailesLoanForm.controls; }
+
+
   loanerDetailesUserForm: FormGroup = new FormGroup({
-    firstName: new FormControl(""),
-    lastName: new FormControl(""),
-    email: new FormControl(),
-    city: new FormControl(""),
-    address: new FormControl(""),
-    identityNumber: new FormControl(null),
-    password: new FormControl(""),
-    userName: new FormControl("", Validators.required,),
-    telephoneNumber1: new FormControl(),
-    telephoneNumber2: new FormControl(),
-    idUser: new FormControl(null),
+    firstName: new FormControl("", { validators: [Validators.required], updateOn: 'blur' }),
+    lastName: new FormControl("", { validators: [Validators.required], updateOn: 'blur' }),
+    email: new FormControl("", { validators: [Validators.email], updateOn: 'blur' }),
+    address: new FormControl("", { validators: [Validators.required], updateOn: 'blur' }),
+    identityNumber: new FormControl("", { validators: Validators.compose([Validators.required, Validators.minLength(9), Validators.maxLength(9)]), updateOn: 'blur' }),
+    telephoneNumber: new FormControl("", { validators: [Validators.minLength(7), Validators.maxLength(10)], updateOn: 'blur' }),
+    cellphoneNumber: new FormControl("", { validators: [Validators.required, Validators.minLength(10), Validators.maxLength(10)], updateOn: 'blur' }),
+    userId: new FormControl(null),
+    loanId: new FormControl(null),
+    depositId: new FormControl(null),
   });
 
+
   loanerDetailesLoanForm: FormGroup = new FormGroup({
-    userId: new FormControl(),
+
     id: new FormControl(),
-    sum: new FormControl(),
-    loanDate: new FormControl(),
-    hebrewLoanDate: new FormControl(),
-    repaymentDate: new FormControl(),
-    repaymentManner: new FormControl(),
-    hebrewRepaymentDate: new FormControl(),
-    paymentsNumber: new FormControl(),
-    currencyId: new FormControl(),
-    // currencyIdReturn: new FormControl(),
-    creditCardId: new FormControl(),
-    paidUp: new FormControl(),
-    directDebitId: new FormControl(),
-    monthlyPaymentSum: new FormControl(),
-    monthlyPaymentDay: new FormControl(),
-    repaymentFirstDate: new FormControl(),
-    guaranty: new FormControl(),
-    guarantyId2: new FormControl(),
+    userId: new FormControl(),
+    sum: new FormControl(null, { validators: [Validators.required], updateOn: 'blur' }),
+    currencyId: new FormControl(3, { validators: [Validators.required], updateOn: 'blur' }),
+    date: new FormControl(null, { validators: [Validators.required], updateOn: 'blur' }),
+    hebrewDate: new FormControl(""),
+    repaymentDate: new FormControl(null, { validators: [Validators.required], updateOn: 'blur' }),
+    repaymentManner: new FormControl(null, { validators: [Validators.required], updateOn: 'blur' }),
+    hebrewRepaymentDate: new FormControl(""),
+    directDebitId: new FormControl(null),
+    creditCardId: new FormControl(null),
+    paymentsNumber: new FormControl(null),
+    paidUp: new FormControl(false),
+    monthlyPaymentSum: new FormControl(null),
+    monthlyPaymentDay: new FormControl(null),
+    repaymentFirstDate: new FormControl(null),
+    guarantyId1: new FormControl(null, { validators: [Validators.required], updateOn: 'blur' }),
+    guarantyId2: new FormControl(null, { validators: [Validators.required], updateOn: 'blur' }),
     guarantyId3: new FormControl(),
     guarantyId4: new FormControl(),
-    guarantyId5: new FormControl()
+    guarantyId5: new FormControl(),
+    shtar: new FormControl("", { validators: [Validators.required], updateOn: 'blur' }),
   });
 
   loanerDetailesDDForm: FormGroup = new FormGroup({
@@ -158,7 +162,7 @@ export class NewLoanComponent implements OnInit, AfterViewInit {
 
   });
   ngOnInit() {
-   
+
   }
 
 }
