@@ -36,8 +36,8 @@ export class GuarantyDetailsComponent implements OnInit {
     email: new FormControl("", { validators: [Validators.email], updateOn: 'blur' }),
     city: new FormControl(""),
     address: new FormControl(""),
-    telephoneNumber1: new FormControl(),
-    telephoneNumber2: new FormControl(),
+    telephoneNumber: new FormControl(),
+    cellphoneNumber: new FormControl(),
     identityNumber: new FormControl(null, { validators: [Validators.required], updateOn: 'blur' }),
   })
   

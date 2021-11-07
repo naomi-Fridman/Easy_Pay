@@ -31,7 +31,7 @@ export class NewLoanComponent implements OnInit {
   shtarFD = new FormData();
   private shtarUploaded: boolean = false;
   formSubmitAttempt: boolean = false;
-
+  fileName: string = "";
   l: DirectDebit = new DirectDebit();
   @ViewChildren(GuarantyDetailsComponent) guarantyDetailsComponent: QueryList<GuarantyDetailsComponent>;
   isExistUser: boolean = false;
@@ -40,9 +40,9 @@ export class NewLoanComponent implements OnInit {
   constructor(private userService: UsersService, private loansService: LoansService, private cd: ChangeDetectorRef, private route: Router) { }  //private messageService: MessageService
 
 
-  saveGuaranty(g: Guaranty) {
-    alert(g);
-  }
+  // saveGuaranty(g: Guaranty) {
+  //   alert(g);
+  // }
   checkUserForLoan(event) {
     this.userService.getUserByIdentityNumber(event.target.value).subscribe(user => {
       if (user) {
@@ -57,14 +57,24 @@ export class NewLoanComponent implements OnInit {
       }
     })
   }
-  
-  save() {
-    this.formSubmitAttempt=true;
-    this.guarantyDetailsComponent.forEach(g =>
-      this.newLoanDetailes.guaranty.push(g.GuarantyDetailsForm.value));
 
-    if (this.loanerDetailesLoanForm.valid && this.loanerDetailesUserForm.valid) {
-      
+  save() {
+    let err: boolean = false;
+    let i: number = 0;
+    this.formSubmitAttempt = true;
+    this.guarantyDetailsComponent.forEach(g => {
+      if (i < 2) {
+        i++;
+        g.GuarantyDetailsForm.valid ?
+          this.newLoanDetailes.guaranty.push(g.GuarantyDetailsForm.value) : err = true;
+      }
+      else {
+        this.newLoanDetailes.guaranty.push(g.GuarantyDetailsForm.value)
+      }
+    })
+
+    if (this.loanerDetailesLoanForm.valid && this.loanerDetailesUserForm.valid && !err) {
+
       this.newLoanDetailes.loaner = this.loanerDetailesLoanForm.value;
       this.newLoanDetailes.directDebit = this.loanerDetailesDDForm.value;
       this.newLoanDetailes.user = this.loanerDetailesUserForm.value;
@@ -84,18 +94,17 @@ export class NewLoanComponent implements OnInit {
   id(event) {
     event.target.value;
   }
-  onUpload(event) {
-    for (let file of event.files) {
-      this.uploadedFiles.push(file);
-    }
-    // this.messageService.add({ severity: 'info', summary: 'File Uploaded', detail: '' });
-  }
-  onFileChanged(event) {
-    this.selectedFile = event.target.files[0];
-    if (this.selectedFile) {
-      this.shtarFD.append("shtar", this.selectedFile);
+
+  onFileSelected(event) {
+
+    const file: File = event.target.files[0];
+
+    if (file) {
+      this.selectedFile = file;
+      this.fileName = file.name;
     }
   }
+
   get loanerDetailesUserFormControl() { return this.loanerDetailesUserForm.controls; }
   get loanerDetailesLoanFormControl() { return this.loanerDetailesLoanForm.controls; }
 
@@ -105,7 +114,7 @@ export class NewLoanComponent implements OnInit {
     lastName: new FormControl("", { validators: [Validators.required], updateOn: 'blur' }),
     email: new FormControl("", { validators: [Validators.email], updateOn: 'blur' }),
     address: new FormControl("", { validators: [Validators.required], updateOn: 'blur' }),
-    identityNumber: new FormControl("", { validators:([Validators.required, Validators.minLength(9), Validators.maxLength(9)]), updateOn: 'blur' }),
+    identityNumber: new FormControl("", { validators: ([Validators.required, Validators.minLength(9), Validators.maxLength(9)]), updateOn: 'blur' }),
     telephoneNumber: new FormControl("", { validators: [Validators.minLength(7), Validators.maxLength(10)], updateOn: 'blur' }),
     cellphoneNumber: new FormControl("", { validators: [Validators.required, Validators.minLength(10), Validators.maxLength(10)], updateOn: 'blur' }),
     userId: new FormControl(null),
@@ -116,28 +125,30 @@ export class NewLoanComponent implements OnInit {
 
   loanerDetailesLoanForm: FormGroup = new FormGroup({
 
-    id: new FormControl(),
+    id: new FormControl(0),
     userId: new FormControl(),
     sum: new FormControl(null, { validators: [Validators.required], updateOn: 'blur' }),
     currencyId: new FormControl(3, { validators: [Validators.required], updateOn: 'blur' }),
     date: new FormControl(null, { validators: [Validators.required], updateOn: 'blur' }),
     hebrewDate: new FormControl(""),
     repaymentDate: new FormControl(null, { validators: [Validators.required], updateOn: 'blur' }),
-    repaymentManner: new FormControl(null),
+    repaymentManner: new FormControl(0),
     hebrewRepaymentDate: new FormControl(""),
     directDebitId: new FormControl(null),
-    creditCardId: new FormControl(null),
-    paymentsNumber: new FormControl(null),
+    paymentsNumber: new FormControl(1),
     paidUp: new FormControl(false),
-    monthlyPaymentSum: new FormControl(null),
-    monthlyPaymentDay: new FormControl(null),
+    guarantyId1: new FormControl(0),
+    guarantyId2: new FormControl(0),
+    guarantyId3: new FormControl(0),
+    guarantyId4: new FormControl(0),
+    guarantyId5: new FormControl(0),
+    creditCardId: new FormControl(null),
+    monthlyPaymentSum: new FormControl(0),
+    monthlyPaymentDay: new FormControl(1),
     repaymentFirstDate: new FormControl(null),
-    guarantyId1: new FormControl(),
-    guarantyId2: new FormControl(),
-    guarantyId3: new FormControl(),
-    guarantyId4: new FormControl(),
-    guarantyId5: new FormControl(),
-    shtar: new FormControl("", ),
+    shtar: new FormControl(),
+    paymentsIndex: new FormControl(0),
+
   });
 
   loanerDetailesDDForm: FormGroup = new FormGroup({

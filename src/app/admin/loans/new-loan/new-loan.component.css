@@ -135,3 +135,15 @@ input#file-upload-button{
   font-size: 13px;
   font-weight: 550;  float: right;
 }
+.file-input {
+  display: none;
+}
+.upload-btn{
+  background-color: #3c3c96db !important;
+    width: 84px;
+    height: 34px;
+}
+.uploadDiv{
+  padding-bottom: 9px;
+  
+}
