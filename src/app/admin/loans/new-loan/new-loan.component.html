@@ -26,7 +26,7 @@
           <div class="form-group">
             <label for="hebrewDate" class="pull-right fileLabel">תאריך הלוואה עברי</label>
             <input type="text" formControlName="hebrewDate" class="form-control" placeholder="תאריך הלוואה עברי"
-              id="hebrewDate" value="תאריך הלוואה עבר" required>
+              id="hebrewDate" value="תאריך הלוואה עבר" >
           </div>
         </div>
       </div>
@@ -96,7 +96,7 @@
         </div>
         <div class="col-md-3 pl-1">
           <div class="form-group">
-            <label for="cellphoneNumber" class="pull-right fileLabel">נייד</label>
+            <label for="cellphoneNumber" class="pull-right fileLabel required">נייד</label>
             <input formControlName="cellphoneNumber" id="cellphoneNumber" type="tel" class="form-control"
               placeholder="נייד/טלפון בית">
               <div class="validate"
@@ -117,7 +117,7 @@
         <div class="col-md-2 pr-1">
           <div class="form-group">
             <label for="sum" class="pull-right fileLabel required">סכום הלוואה</label>
-            <input formControlName="sum" id="sum" type="number" class="form-control" placeholder="סכום הלוואה">
+            <input formControlName="sum" id="sum" type="number" class="form-control" placeholder="סכום הלוואה" required>
             <div class="validate"
             *ngIf="(loanerDetailesLoanFormControl.sum.invalid && ( loanerDetailesLoanFormControl.sum.dirty ||  loanerDetailesLoanFormControl.sum.touched || formSubmitAttempt)) &&  loanerDetailesLoanFormControl.sum.errors.required ">
             <div>  זהו שדה חובה</div>
@@ -141,7 +141,7 @@
           <div class="form-group">
             <label for="repaymentDate" class="pull-right fileLabel required">תאריך החזר ההלוואה</label>
             <input formControlName="repaymentDate" id="repaymentDate" type="date" class="form-control"
-              placeholder="תאריך החזר ההלוואה">
+              placeholder="תאריך החזר ההלוואה" required>
               <div class="validate"
               *ngIf="(loanerDetailesLoanFormControl.repaymentDate.invalid && ( loanerDetailesLoanFormControl.repaymentDate.dirty ||  loanerDetailesLoanFormControl.repaymentDate.touched || formSubmitAttempt)) &&  loanerDetailesLoanFormControl.repaymentDate.errors.required ">
               <div>  זהו שדה חובה</div>
@@ -157,9 +157,9 @@
         </div>
         <div class="col-md-3 pl-1">
           <div class="form-group">
-            <label for="paymentsNumber" class="pull-right fileLabel required">מספר תשלומים </label>
+            <label for="paymentsNumber" class="pull-right fileLabel ">מספר תשלומים </label>
             <input formControlName="paymentsNumber" id="paymentsNumber" type="number" class="form-control"
-              placeholder="מספר תשלומים">
+              placeholder="מספר תשלומים" >
               <div class="validate"
               *ngIf="(loanerDetailesLoanFormControl.paymentsNumber.invalid && ( loanerDetailesLoanFormControl.paymentsNumber.dirty ||  loanerDetailesLoanFormControl.paymentsNumber.touched || formSubmitAttempt)) &&  loanerDetailesLoanFormControl.paymentsNumber.errors.required ">
               <div>  זהו שדה חובה</div>
@@ -197,10 +197,7 @@
             <div class="file-upload-wrapper" data-text="בחר קובץ!">
               <input name="file-upload-field" type="file" class="file-upload-field" value="">
             </div>
-            <div class="validate"
-              *ngIf="(loanerDetailesLoanFormControl.inputDate.invalid && ( loanerDetailesLoanFormControl.inputDate.dirty ||  loanerDetailesLoanFormControl.inputDate.touched || formSubmitAttempt)) &&  loanerDetailesLoanFormControl.inputDate.errors.required ">
-              <div>  זהו שדה חובה</div>
-            </div>
+            
           </form>
 
         </div>

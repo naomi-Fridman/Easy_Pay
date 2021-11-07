@@ -1,4 +1,64 @@
-<p>register works!</p>
-<button type="button" pButton (click)="deposit()" label="הפקדה" class="ui-button-success"></button>
-<button type="button" pButton (click)="loan()" label="הלוואה" class="ui-button-success"></button>
+
+<section class="vh-100" style="background-color: transparent;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+            <h3 class="mb-5">התחברות</h3>
+
+            <div class="form-outline mb-4">
+                <label class="form-label" for="userName">שם משתמש</label>
+                <input type="text" id="userName" class="form-control form-control-lg" />
+                
+              </div>
+            
+            <div class="form-outline mb-4">
+                <label class="form-label" for="firstName">שם פרטי</label>
+                <input type="text" id="firstName" class="form-control form-control-lg" />
+                
+              </div>
+
+              <div class="form-outline mb-4">
+                  <label class="form-label" for="lastName">שם משפחה</label>
+                <input type="text" id="lastName" class="form-control form-control-lg" />
+                
+              </div> 
+
+              <div class="form-outline mb-4">
+                  <label class="form-label" for="typePasswordX-2">סיסמא</label>
+                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" />
+                
+              </div>
+
+              <div class="form-outline mb-4"> 
+                  <label class="form-label" for="typeEmailX-2">מייל</label>
+                <input type="email" id="typeEmailX-2" class="form-control form-control-lg" />
+               
+              </div>
+  
+
+            <div class="form-check d-flex justify-content-start mb-4">
+                <label class="form-check-label" for="form1Example3" style="padding-right: 17px;"> שמירת סיסמא? </label>
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="form1Example3"
+              />
+              
+            </div>
+
+            <button class="btn btn-primary btn-lg btn-block register" type="submit">התחבר</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
 

@@ -105,7 +105,7 @@ export class LoansComponent implements OnInit {
   }
   culcLoanPadeUp(loaner: Loaner) {
     loaner.payments.forEach(p => {
-      if (p.paymentDate > loaner.loaner.loanDate) {
+      if (p.paymentDate > loaner.loaner.date) {
         loaner.loanPaymantsStatus.sumPadeUp += p.collectionSum;
       }
     }
@@ -166,7 +166,7 @@ export class LoansComponent implements OnInit {
                 this.loanerToDisplay[i].loanPaymantsStatus = new LoanPaymantsStatus();
                 this.loanerToDisplay[i].loanPaymantsStatus.sumPadeUp = 0;
                 this.loanerToDisplay[i].payments.forEach(p => {
-                  if (p.paymentDate > this.loanerToDisplay[i].loaner.loanDate) {
+                  if (p.paymentDate > this.loanerToDisplay[i].loaner.date) {
                     if (this.loanerToDisplay[i].loanPaymantsStatus.sumPadeUp == null) {
                       this.loanerToDisplay[i].loanPaymantsStatus.sumPadeUp += p.collectionSum;
                     }

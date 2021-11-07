@@ -18,8 +18,8 @@ export class LoanerDetailesComponent implements OnInit {
     this._loaner = value;
     // this._loaner.loaner.paidUp
     this.loanerDetailesForm.controls["sum"].setValue(this._loaner.loaner.sum);
-    this.loanerDetailesForm.controls["loanDate"].setValue(this._loaner.loaner.date);
-    this.loanerDetailesForm.controls["hebrewLoanDate"].setValue(this._loaner.loaner.hebrewDate);
+    this.loanerDetailesForm.controls["date"].setValue(this._loaner.loaner.date);
+    this.loanerDetailesForm.controls["hebrewDate"].setValue(this._loaner.loaner.hebrewDate);
     this.loanerDetailesForm.controls["repaymentDate"].setValue(this._loaner.loaner.repaymentDate);
     this.loanerDetailesForm.controls["hebrewRepaymentDate"].setValue(this._loaner.loaner.hebrewRepaymentDate);
     this.loanerDetailesForm.controls["paymentsNumber"].setValue(this._loaner.loaner.paymentsNumber);
@@ -42,8 +42,8 @@ export class LoanerDetailesComponent implements OnInit {
     // identityNumber:new FormControl(),
     currency: new FormControl(),
     sum: new FormControl(),
-    loanDate: new FormControl(),
-    hebrewLoanDate: new FormControl(),
+    date: new FormControl(),
+    hebrewDate: new FormControl(),
     repaymentDate: new FormControl(""),
     hebrewRepaymentDate: new FormControl(""),
     repaymentManner: new FormControl(),

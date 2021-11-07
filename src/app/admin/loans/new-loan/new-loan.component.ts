@@ -57,21 +57,17 @@ export class NewLoanComponent implements OnInit {
       }
     })
   }
-  // onChangeCurrencyLoan(value){
-  //   this.loanCurrency=value;
-  // }
-  // onChangeCurrencyReturn(value){
-  //   this.returnCurrency=value;
-  // }
+  
   save() {
     this.formSubmitAttempt=true;
+    this.guarantyDetailsComponent.forEach(g =>
+      this.newLoanDetailes.guaranty.push(g.GuarantyDetailsForm.value));
+
     if (this.loanerDetailesLoanForm.valid && this.loanerDetailesUserForm.valid) {
-      this.guarantyDetailsComponent.forEach(g =>
-        this.newLoanDetailes.guaranty.push(g.GuarantyDetailsForm.value));
+      
       this.newLoanDetailes.loaner = this.loanerDetailesLoanForm.value;
       this.newLoanDetailes.directDebit = this.loanerDetailesDDForm.value;
       this.newLoanDetailes.user = this.loanerDetailesUserForm.value;
-      debugger
       const uploadData = new FormData();
       uploadData.append('file', this.selectedFile);
       uploadData.append('newLoaner', JSON.stringify(this.newLoanDetailes));
@@ -109,7 +105,7 @@ export class NewLoanComponent implements OnInit {
     lastName: new FormControl("", { validators: [Validators.required], updateOn: 'blur' }),
     email: new FormControl("", { validators: [Validators.email], updateOn: 'blur' }),
     address: new FormControl("", { validators: [Validators.required], updateOn: 'blur' }),
-    identityNumber: new FormControl("", { validators: Validators.compose([Validators.required, Validators.minLength(9), Validators.maxLength(9)]), updateOn: 'blur' }),
+    identityNumber: new FormControl("", { validators:([Validators.required, Validators.minLength(9), Validators.maxLength(9)]), updateOn: 'blur' }),
     telephoneNumber: new FormControl("", { validators: [Validators.minLength(7), Validators.maxLength(10)], updateOn: 'blur' }),
     cellphoneNumber: new FormControl("", { validators: [Validators.required, Validators.minLength(10), Validators.maxLength(10)], updateOn: 'blur' }),
     userId: new FormControl(null),
@@ -127,7 +123,7 @@ export class NewLoanComponent implements OnInit {
     date: new FormControl(null, { validators: [Validators.required], updateOn: 'blur' }),
     hebrewDate: new FormControl(""),
     repaymentDate: new FormControl(null, { validators: [Validators.required], updateOn: 'blur' }),
-    repaymentManner: new FormControl(null, { validators: [Validators.required], updateOn: 'blur' }),
+    repaymentManner: new FormControl(null),
     hebrewRepaymentDate: new FormControl(""),
     directDebitId: new FormControl(null),
     creditCardId: new FormControl(null),
@@ -136,12 +132,12 @@ export class NewLoanComponent implements OnInit {
     monthlyPaymentSum: new FormControl(null),
     monthlyPaymentDay: new FormControl(null),
     repaymentFirstDate: new FormControl(null),
-    guarantyId1: new FormControl(null, { validators: [Validators.required], updateOn: 'blur' }),
-    guarantyId2: new FormControl(null, { validators: [Validators.required], updateOn: 'blur' }),
+    guarantyId1: new FormControl(),
+    guarantyId2: new FormControl(),
     guarantyId3: new FormControl(),
     guarantyId4: new FormControl(),
     guarantyId5: new FormControl(),
-    shtar: new FormControl("", { validators: [Validators.required], updateOn: 'blur' }),
+    shtar: new FormControl("", ),
   });
 
   loanerDetailesDDForm: FormGroup = new FormGroup({
