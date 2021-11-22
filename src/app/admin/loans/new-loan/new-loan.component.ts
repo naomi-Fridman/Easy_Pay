@@ -35,7 +35,18 @@ export class NewLoanComponent implements OnInit {
   l: DirectDebit = new DirectDebit();
   @ViewChildren(GuarantyDetailsComponent) guarantyDetailsComponent: QueryList<GuarantyDetailsComponent>;
   isExistUser: boolean = false;
+  displayStyle = "none";
 
+
+  openPopup() {
+    this.displayStyle = "block";
+    
+  }
+  closePopup() {
+    this.displayStyle = "none";
+    this.err = false;
+    this.formErr = false;
+  }
 
   constructor(private userService: UsersService, private loansService: LoansService, private cd: ChangeDetectorRef, private route: Router) { }  //private messageService: MessageService
 
@@ -57,23 +68,26 @@ export class NewLoanComponent implements OnInit {
       }
     })
   }
-
+  err: boolean = false;
+  formErr: boolean = false;
   save() {
-    let err: boolean = false;
+
     let i: number = 0;
     this.formSubmitAttempt = true;
     this.guarantyDetailsComponent.forEach(g => {
       if (i < 2) {
         i++;
         g.GuarantyDetailsForm.valid ?
-          this.newLoanDetailes.guaranty.push(g.GuarantyDetailsForm.value) : err = true;
+          this.newLoanDetailes.guaranty.push(g.GuarantyDetailsForm.value) : this.err = true;
       }
       else {
         this.newLoanDetailes.guaranty.push(g.GuarantyDetailsForm.value)
       }
     })
-
-    if (this.loanerDetailesLoanForm.valid && this.loanerDetailesUserForm.valid && !err) {
+    if (this.err) {
+      this.openPopup();
+    }
+    if (this.loanerDetailesLoanForm.valid && this.loanerDetailesUserForm.valid && !this.err) {
 
       this.newLoanDetailes.loaner = this.loanerDetailesLoanForm.value;
       this.newLoanDetailes.directDebit = this.loanerDetailesDDForm.value;
@@ -83,8 +97,12 @@ export class NewLoanComponent implements OnInit {
       uploadData.append('newLoaner', JSON.stringify(this.newLoanDetailes));
       //check if exists
       this.loansService.postLoan(uploadData).subscribe(e => {
-        this.route.navigate(["/homePage"]);
+        this.displayStyle = "block";
+
       });
+    }
+    else {
+      this.formErr = true
     }
   }
 
@@ -146,7 +164,7 @@ export class NewLoanComponent implements OnInit {
     monthlyPaymentSum: new FormControl(0),
     monthlyPaymentDay: new FormControl(1),
     repaymentFirstDate: new FormControl(null),
-    shtar: new FormControl(),
+    shtar: new FormControl("", { validators: [Validators.required], updateOn: 'blur' }),
     paymentsIndex: new FormControl(0),
 
   });

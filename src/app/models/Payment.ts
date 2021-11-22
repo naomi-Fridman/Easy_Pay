@@ -1,23 +1,17 @@
-export class Payment{
-    id:number;
-    typeId:number;
-    userId:number;
-    collectionSum:number;
-    currencyId:number;
-    exchangeRate:number;
-    fee:number;
-    feeDescriptionId:number;
-    paymentDate :Date;
-    paymentMethodId:number;
-    comments:string;
-    bankId:number;
-    branchNumberId:number;
-    accountNumber:number;
-    directDebitId:number;
-    reference:number;
-    inputDate:Date;
-    hebrewPaymentDate:string;
-    deleted:number;
-    creditCardId:number;
+export class Payment {
+    id: number;
+    userId: number;
+    date: Date;
+    sum: number
+    currencyId: number;
+    exchangeRate: number;
+    comments: string;
+    methodId: number;
+    directDebitId: number;
+    inputDate: Date;
+    hebrewPaymentDate: string;
+    creditCardId: number;
+    loanId: number
+    numOfPayments: number
 }
 

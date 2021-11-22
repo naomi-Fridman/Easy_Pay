@@ -15,10 +15,10 @@
             <div class="row formRow">
                 <div class="col-md-3 pr-1">
                     <div class="form-group">
-                        <label for="collectionSum" class="fileLabel required">סכום </label>
-                        <input formControlName="collectionSum" id="collectionSum" type="number" class="form-control" required>
+                        <label for="sum" class="fileLabel required">סכום </label>
+                        <input formControlName="sum" id="sum" type="number" class="form-control" required>
                         <div class="validate"
-                            *ngIf="(PaymentDetailesFormControl.collectionSum.invalid && (PaymentDetailesFormControl.collectionSum.dirty || PaymentDetailesFormControl.collectionSum.touched || formSubmitAttempt)) && PaymentDetailesFormControl.collectionSum.errors.required ">
+                            *ngIf="(PaymentDetailesFormControl.sum.invalid && (PaymentDetailesFormControl.sum.dirty || PaymentDetailesFormControl.sum.touched || formSubmitAttempt)) && PaymentDetailesFormControl.sum.errors.required ">
                             <div>
                                 זהו שדה חובה
                             </div>
@@ -120,3 +120,23 @@
         </div>
     </div>
 </div>
+
+
+
+
+<div class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="modal-title" (click)="closePopup()">x</button>
+        </div>
+        <div class="modal-body">
+            <p class="pmodal"> {{modalMessage}}</p>
+        </div>
+        <div style="border-top: none;" class="modal-footer">
+          <button type="button" class="searchBtn searchBtn1" (click)="closePopup()"> אישור</button>
+        
+        </div>
+      </div>
+    </div>
+  </div>

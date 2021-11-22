@@ -71,6 +71,10 @@
           <div class="form-group">
             <label for="email" class="pull-right fileLabel ">כתובת מייל</label>
             <input formControlName="email" id="email" type="email" class="form-control" placeholder="כתובת מייל">
+            <div class="validate"
+              *ngIf="(loanerDetailesUserFormControl.email.invalid && ( loanerDetailesUserFormControl.email.dirty ||  loanerDetailesUserFormControl.email.touched || formSubmitAttempt)) &&  loanerDetailesUserFormControl.email.errors.required ">
+              <div> כתובת המייל אינו תקין</div>
+            </div>
           </div>
         </div>
       </div>
@@ -193,19 +197,20 @@
         </div>
 
         <div class="col-md-3 pl-1 uploadDiv">
-
-          
-            <input formControlName="shtar" id="shtar" type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload >
-            <div class="file-upload">
-              {{fileName }}
-              <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
-                <!-- <mat-icon>attach_file</mat-icon> -->
-                צרף שטר
-              </button>
-            </div>
-        
-
+          <input formControlName="shtar" id="shtar" type="file" class="file-input" (change)="onFileSelected($event)"
+            #fileUpload required>
+          <div class="file-upload">
+            {{fileName }}
+            <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+              צרף שטר
+            </button>
+          </div>
+          <div class="validate"
+            *ngIf="(loanerDetailesLoanFormControl.shtar.invalid && ( loanerDetailesLoanFormControl.shtar.dirty ||  loanerDetailesLoanFormControl.shtar.touched || formSubmitAttempt)) &&  loanerDetailesLoanFormControl.shtar.errors.required ">
+            <div> זהו שדה חובה</div>
+          </div>
         </div>
+
       </div>
     </form>
   </div>
@@ -280,6 +285,37 @@
             </div>
           </div>
         </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="modal-title" (click)="closePopup()">x</button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="!err && formErr || err && formErr">
+          <p class="pmodal"> שגיאה בפרטי הלוואה</p>
+        </div>
+        <div *ngIf="err && !formErr">
+          <p  class="pmodal"> שגיאה בנתוני הערבים להלוואה</p>
+        </div>
+        <div *ngIf="!err && !formErr">
+          <p class="pmodal"> הלוואה חדשה נשמרה בהצלחה</p>
+        </div>
+        
+        
+      </div>
+      <div style="border-top: none;" class="modal-footer">
+        <button type="button" class="searchBtn searchBtn1" (click)="closePopup()"> אישור</button>
+      
       </div>
     </div>
   </div>
