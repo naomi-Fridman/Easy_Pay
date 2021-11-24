@@ -105,6 +105,8 @@
                             <div class="list__label--value"> - {{loan.loaner.sum}} סכום הלוואה: </div>
                             <div class="list__label--value"> {{loan.loanPaymantsStatus.sumPadeUp}}סכום ששולם: </div>
                             <div class="list__label--value"> {{loan.loanPaymantsStatus.rest}}סכום שנותר: </div>
+                            <!-- <div class="list__label--value"> תאריך הלוואה - {{loan.loaner.loanDate | date:"dd/MM/yyyy"}} </div>
+                            <div class="list__label--value"> תאריך החזר הלוואה - {{loan.loaner.repaymentDate | date:"dd/MM/yyyy"}} </div> -->
                         </div>
                         <div>
                             <button class='searchBtn' type="button" (click)="edit(loan)">ערוך פרטים </button>

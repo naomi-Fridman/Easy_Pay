@@ -1,22 +1,22 @@
 <div id="top-filter" class="top-filter tfilter-box " >
-    <div class="row">
-        <div class="col">
+    <div class="wrapper">
+        <div >
             <input [(ngModel)]="dtoUsers.identityNumber" #identityNumberInput class="form-control-top" placeholder="תעודת זהות" type="text">
         </div>
-        <div class="col">
+        <div >
             <input [(ngModel)]="dtoUsers.firstName" #firstNameInput class="form-control-top" placeholder="שם פרטי" type="text">
         </div>
-        <div class="col">
+        <div >
             <input [(ngModel)]="dtoUsers.lastName" #lastNameInput class="form-control-top" placeholder="שם משפחה"  type="text">
         </div>
-        <div class="col">
+        <div >
             <input [(ngModel)]="dtoUsers.address" #addressInput class="form-control-top" placeholder="כתובת" type="text">
         </div>
         
-        <div class="col">
+        <div >
             <input [(ngModel)]="dtoUsers.telephoneNumber1" #telephoneNumberInput class="form-control-top" placeholder="טלפון" type="text">
         </div>
-        <div class="col">
+        <div >
             <button class='searchBtn' type="button" (click)="getAllUsers()">חפש </button>
         </div>
     </div>
@@ -129,15 +129,23 @@
         </div>
     </div>
 </div>
-
-<p-dialog *ngIf="paymentUser1" header={{paymentUser1.user.firstName}} [(visible)]="display" modal="modal"
-    [style]="{width: '350px'}" [responsive]="true">
-    <span>
-        <app-payments-details [payment]="paymentUser1"></app-payments-details>
-    </span>
-    <p-footer>
-        <div class="ui-dialog-buttonpane ui-helper-clearfix">
-            <button type="button" pButton icon="pi pi-times" (click)="display=false" label="אישור"></button>
+<div class="modal" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog " role="document"  >
+        <div class="modal-content">
+            <div  class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div style="padding-top: 17px; padding-right: 30px; padding-bottom: 0px;" class="modal-body">
+                <app-payments-details [payment]="paymentUser1"></app-payments-details>
+            </div>
+            <div style="border-top: none;" class="modal-footer">
+                <button  type="button" class=" searchBtn modalCancel" data-dismiss="modal"  (click)="closePopup()">
+                    ביטול
+                </button>
+                <button  type="button" class=" searchBtn modalSaveBtn" data-dismiss="modal" (click)="deleteUser()">
+                    אישור
+                </button>
+            </div>
         </div>
-    </p-footer>
-</p-dialog>
+    </div>
+</div>

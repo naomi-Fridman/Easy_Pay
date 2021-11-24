@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { DepositesComponent } from './deposites/deposites.component';
 import {OrderListModule} from 'primeng/orderlist'; 
 import {ButtonModule} from 'primeng/button';
-import { ShowDetailsComponent } from './show-details/show-details.component';
 import { EditDetailsComponent } from './edit-details/edit-details.component';
 import {CalendarModule} from 'primeng/calendar';
 import { InputTextModule } from 'primeng/inputtext';
@@ -20,7 +19,7 @@ import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 
 
 @NgModule({
-  declarations: [DepositesComponent, ShowDetailsComponent, EditDetailsComponent, NewDepositeComponent],
+  declarations: [DepositesComponent, EditDetailsComponent, NewDepositeComponent],
   imports: [
     CommonModule,
     OrderListModule,

@@ -17,7 +17,6 @@ import { DTO_userParms } from 'src/app/models/DTO_userParms';
   styleUrls: ['./deposites.component.css']
 })
 export class DepositesComponent implements OnInit {
-  // @Output()
   depositsList:Deposit[];
   userList:User[];
   flag:boolean;

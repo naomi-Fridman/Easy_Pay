@@ -257,3 +257,8 @@ input[type="checkbox"]:checked + label:before {
   width: 87px;
   margin-right: 18px;
 }
+.wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}

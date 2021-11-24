@@ -8,7 +8,6 @@ import { UsersService } from '../../../services/users.service';
 import { DetailsService } from 'src/app/details.service';
 import { Currency } from 'src/app/models/Currency';
 import { CurrancyService } from 'src/app/services/currancy.service';
-import { DropdownModule } from 'primeng/dropdown';
 import { SelectItem } from 'primeng/api';
 
 

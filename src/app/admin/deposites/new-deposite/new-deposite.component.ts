@@ -75,7 +75,6 @@ export class NewDepositeComponent implements OnInit {
   get DepositorUserFormControl() { return this.DepositorDetailesUserForm.controls; }
   get DepositorDepositeFormControl() { return this.DepositorDetailesDepositeForm.controls; }
 
-
   DepositorDetailesUserForm: FormGroup = new FormGroup({
     id: new FormControl(0),
     password: new FormControl(""),
