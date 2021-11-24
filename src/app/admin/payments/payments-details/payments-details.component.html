@@ -4,7 +4,7 @@
             {{_paymentUser.user.firstName}} {{_paymentUser.user.lastName}}
         </div>
         <div class="userPhone">
-            {{_paymentUser.user.telephoneNumber1}} | {{_paymentUser.user.telephoneNumber2}}
+            {{_paymentUser.user.telephoneNumber}} | {{_paymentUser.user.cellphoneNumber}}
         </div>
         <div class="userEmail">
             <a class="userEmail" href="mailto:{{_paymentUser.user.email}}">{{_paymentUser.user.email}}</a>
@@ -38,7 +38,7 @@
     </div>
     <div class="row rowSum">
         <div class="sumDiv">
-            <input formControlName="collectionSum" id="collectionSum" type="text" pInputText>
+            <input formControlName="sum" id="sum" type="text" pInputText>
         </div>
         <div class="form-group" style="margin: 0;">
             <select id="currency" class="currency" formControlName="currencyId" class="form-control">
@@ -72,7 +72,7 @@
 
         <div class="form-group" style="margin: 0;">
 
-            <select id="paymentMethodId" class="paymentMethodId" formControlName="paymentMethodId" class="form-control">
+            <select id="methodId" class="methodId" formControlName="methodId" class="form-control">
                 <option value=1>
                     מזומן
                 </option>
@@ -90,7 +90,7 @@
         </div>
 
     </div>
-    <div *ngIf="paymentDetailesForm.controls['paymentMethodId'].value==2">
+    <div *ngIf="paymentDetailesForm.controls['methodId'].value==2">
         <div class="row form-group bankPD">
             <label class="bankDetailsLable"> בנק:</label>
             <input class="bankD" formControlName="bankId" id="bankId" type="text" pInputText>
@@ -129,7 +129,7 @@
         </div>
 
     </div>
-    <a class="linkUser" [routerLink]="['/editUserDetails/' ,_paymentUser.user.id]">לפרטי משתמש מלאים</a>
+    <a class="linkUser" [routerLink]="['/editUserDetails/' ,_paymentUser.user.id]" data-dismiss="modal">לפרטי המשתמש המלאים</a>
     <!-- 
     <button (click)="editDetails()">עדכן פרטים</button> -->
 </form>

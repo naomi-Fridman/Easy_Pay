@@ -155,12 +155,12 @@ export class PaymentsComponent implements OnInit {
   filterByDate(date: Date) {
     this.paymentListToDisplay = this.paymentListToDisplayB;
     this.paymentListToDisplay.filter(
-      payment => payment.payment.paymentDate === date);
+      payment => payment.payment.date === date);
   }
   rangeDates(dateA: Date, dateB: Date) {
     this.paymentListToDisplay = this.paymentListToDisplayB;
     this.paymentListToDisplay.filter(
-      payment => payment.payment.paymentDate >= dateA && payment.payment.paymentDate <= dateB);
+      payment => payment.payment.date >= dateA && payment.payment.date <= dateB);
   }
   ngOnInit() {
   }

@@ -23,11 +23,10 @@ export class NewDepositeComponent implements OnInit {
         this.DepositorDetailesUserForm.controls["id"].setValue(user.id);
         this.DepositorDetailesUserForm.controls["firstName"].setValue(user.firstName);
         this.DepositorDetailesUserForm.controls["lastName"].setValue(user.lastName);
-        this.DepositorDetailesUserForm.controls["telephoneNumber1"].setValue(user.telephoneNumber1);
-        this.DepositorDetailesUserForm.controls["telephoneNumber2"].setValue(user.telephoneNumber2);
+        this.DepositorDetailesUserForm.controls["telephoneNumber1"].setValue(user.telephoneNumber);
+        this.DepositorDetailesUserForm.controls["telephoneNumber2"].setValue(user.cellphoneNumber);
         this.DepositorDetailesUserForm.controls["email"].setValue(user.email);
         this.DepositorDetailesUserForm.controls["address"].setValue(user.address);
-        this.DepositorDetailesUserForm.controls["city"].setValue(user.city);
         this.DepositorDetailesUserForm.controls["comments"].setValue(user.comments);
       }
     })
@@ -83,7 +82,6 @@ export class NewDepositeComponent implements OnInit {
     firstName: new FormControl("", { validators: [Validators.required], updateOn: 'blur' }),
     lastName: new FormControl("", { validators: [Validators.required], updateOn: 'blur' }),
     address: new FormControl(""),
-    city: new FormControl(""),
     telephoneNumber1: new FormControl(),
     telephoneNumber2: new FormControl("", { validators: [Validators.required], updateOn: 'blur' }),
     email: new FormControl("", { validators: [Validators.email], updateOn: 'blur' }),

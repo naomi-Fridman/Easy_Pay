@@ -1,8 +1,7 @@
 
 export class Guaranty {
 
-  id:number;
-  userId :number;
-  accountNumber :number;
- comments :string;
+  id: number;
+  userId: number;
+  comments: string;
 }

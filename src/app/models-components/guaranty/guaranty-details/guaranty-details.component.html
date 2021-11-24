@@ -8,14 +8,22 @@
                 <div class="form-group">
                     <label for="identityNumber" class="pull-right required">ת"ז/דרכון</label>
                     <input formControlName="identityNumber" (blur)="checkUserForGuaranty($event)" id="identityNumber"
-                        type="text" class="form-control" placeholder='ת"ז/דרכון'>
+                        type="text" class="form-control" placeholder='ת"ז/דרכון' required>
+                    <div class="validate"
+                        *ngIf="(guarantyDetailsFormControl.identityNumber.invalid && ( guarantyDetailsFormControl.identityNumber.dirty ||  guarantyDetailsFormControl.identityNumber.touched || formSubmitAttempt)) &&  guarantyDetailsFormControl.identityNumber.errors.required ">
+                        <div> זהו שדה חובה</div>
+                    </div>
                 </div>
             </div>
             <div class="col-md-3 px-1">
                 <div class="form-group">
                     <label for="firstName" class="pull-right required">שם פרטי</label>
                     <input type="text" formControlName="firstName" id="firstName" class="form-control"
-                        placeholder="פרטי" id="firstName">
+                        placeholder="פרטי" id="firstName" required>
+                    <div class="validate"
+                        *ngIf="(guarantyDetailsFormControl.firstName.invalid && ( guarantyDetailsFormControl.firstName.dirty ||  guarantyDetailsFormControl.firstName.touched || formSubmitAttempt)) &&  guarantyDetailsFormControl.firstName.errors.required ">
+                        <div> זהו שדה חובה</div>
+                    </div>
                 </div>
             </div>
             <div class="col-md-3 px-1">
@@ -23,6 +31,10 @@
                     <label for="lastName" class="pull-right required">שם משפחה</label>
                     <input type="text" formControlName="lastName" class="form-control" placeholder="שם משפחה"
                         id="lastName">
+                    <div class="validate"
+                        *ngIf="(guarantyDetailsFormControl.lastName.invalid && ( guarantyDetailsFormControl.lastName.dirty ||  guarantyDetailsFormControl.lastName.touched || formSubmitAttempt)) &&  guarantyDetailsFormControl.lastName.errors.required ">
+                        <div> זהו שדה חובה</div>
+                    </div>
                 </div>
             </div>
             <div class="col-md-3 px-1">
@@ -39,16 +51,16 @@
             </div>
             <div class="col-md-3 px-1">
                 <div class="form-group">
-                    <label for="telephoneNumber1" class="pull-right ">טלפון בית</label>
-                    <input type="tel" formControlName="telephoneNumber1" class="form-control" placeholder="טלפון בית"
-                        id="telephoneNumber1">
+                    <label for="telephoneNumber" class="pull-right ">טלפון בית</label>
+                    <input type="tel" formControlName="telephoneNumber" class="form-control" placeholder="טלפון בית"
+                        id="telephoneNumber">
                 </div>
             </div>
             <div class="col-md-3 px-1">
                 <div class="form-group">
-                    <label for="telephoneNumber2" class="pull-right ">טל' נייד</label>
-                    <input type="tel" formControlName="telephoneNumber2" class="form-control" placeholder="טל' נייד"
-                        id="telephoneNumber2">
+                    <label for="cellphoneNumber" class="pull-right ">טל' נייד</label>
+                    <input type="tel" formControlName="cellphoneNumber" class="form-control" placeholder="טל' נייד"
+                        id="cellphoneNumber">
                 </div>
             </div>
         </div>

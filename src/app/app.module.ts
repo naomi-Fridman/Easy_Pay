@@ -10,6 +10,7 @@ import { LoginModule } from './login/login.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {TabMenuModule} from 'primeng/tabmenu';
 import {SidebarModule} from 'primeng/sidebar';
+
 // import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 // import { AccordionModule } from 'ngx-bootstrap/accordion';

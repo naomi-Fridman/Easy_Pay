@@ -9,12 +9,9 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   constructor(private router:Router) { }
-  deposit(){
-    this.router.navigate(['/deposit']);
-  }
-  loan(){
-    this.router.navigate(['/loan']);
-  }
+    // this.router.navigate(['/deposit']);
+ 
+  
   ngOnInit() {
   }
 
