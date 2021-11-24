@@ -21,16 +21,13 @@ export class EditUserDetailsComponent implements OnInit {
   set user(value: User) {
     this._user = value;
     this.userDetailesForm.controls["id"].setValue(this._user.id);
-    this.userDetailesForm.controls["password"].setValue(this._user.password);
-    this.userDetailesForm.controls["userName"].setValue(this._user.userName);
     this.userDetailesForm.controls["identityNumber"].setValue(this._user.identityNumber);
     this.userDetailesForm.controls["firstName"].setValue(this._user.firstName);
     this.userDetailesForm.controls["lastName"].setValue(this._user.lastName);
-    this.userDetailesForm.controls["telephoneNumber1"].setValue(this._user.telephoneNumber1);
-    this.userDetailesForm.controls["telephoneNumber2"].setValue(this._user.telephoneNumber2);
+    this.userDetailesForm.controls["telephoneNumber"].setValue(this._user.telephoneNumber);
+    this.userDetailesForm.controls["cellphoneNumber"].setValue(this._user.cellphoneNumber);
     this.userDetailesForm.controls["email"].setValue(this._user.email);
     this.userDetailesForm.controls["address"].setValue(this._user.address);
-    this.userDetailesForm.controls["city"].setValue(this._user.city);
     this.userDetailesForm.controls["comments"].setValue(this._user.comments);
   }
   userDetailesForm: FormGroup = new FormGroup({

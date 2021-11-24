@@ -1,0 +1,13 @@
+label{
+    float: right;
+    padding-right: 3px;
+    font-weight: 500;
+}
+section{
+    background-image: linear-gradient(to left,rgb(246 173 6 / 61%),rgb(253 214 34 / 76%)) !important;
+}
+
+.register{
+    background-color: #5f5f9a;
+    border-color: #5f5f9a;
+}

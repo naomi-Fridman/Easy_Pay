@@ -17,7 +17,8 @@ const routes: Routes = [
   { path: "payments", component: PaymentsComponent },
   { path: "homePage", component: DailyActivityComponent },
   { path: "", component: AppComponent },
-  // {path: "register",component: RegisterComponent},
+   {path: "AdminComponent",loadChildren: "./admin/admin.module#AdminModule"},
+   {path: "register",component: RegisterComponent},
   //{ path: "**", component: PageNotFoundComponent }
 ];
 
