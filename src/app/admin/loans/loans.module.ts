@@ -22,6 +22,7 @@ import {FileUploadModule} from 'primeng/fileupload';
 // import { AccordionModule } from 'ngx-bootstrap/accordion';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {AccordionModule} from 'primeng/accordion';
+import {MatButtonModule,MatCheckboxModule,MatToolbarModule,MatInputModule,MatProgressSpinnerModule,MatCardModule,MatMenuModule, MatIconModule} from '@angular/material';
 
 
 // import {VirtualScrollerModule} from 'primeng/virtualscroller';
@@ -48,6 +49,7 @@ import {AccordionModule} from 'primeng/accordion';
     ConfirmDialogModule,
     FileUploadModule,
     CalendarModule,
+    MatIconModule,
     // VirtualScrollerModule,
     RouterModule.forChild([
       {path:"loanerDetails/:loaner",component:LoanerDetailesComponent}

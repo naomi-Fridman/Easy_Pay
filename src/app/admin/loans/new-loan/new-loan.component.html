@@ -3,11 +3,7 @@
     <label class="card-title  mainTitle"> הלוואה חדשה</label>
   </div>
   <div>
-    <label style="font-size: 15px; color: #232389;margin-top: 9px; margin-bottom: 0px;" class="pull-right ">שדות המסומנים
-      בכוכבית (*) הם
-      שדות
-      חובה
-    </label>
+    <label class="commf">שדות המסומנים בכוכבית (*) הם שדות חובה</label>
   </div>
   <div class="subTitleDiv">
     <label class="card-title pull-right subTitle"> פרטים אישיים</label>
@@ -17,15 +13,21 @@
       <div class="row formRow">
         <div class="col-md-3 pr-1">
           <div class="form-group">
-            <label for="loanDate" class="pull-right fileLabel required">תאריך הלוואה</label>
-            <input formControlName="loanDate" id="loanDate" type="date" class="form-control" placeholder="תאריך הלוואה">
+            <label for="date" class="pull-right fileLabel required">תאריך הלוואה</label>
+            <input formControlName="date" id="date" type="date" class="form-control" placeholder="תאריך הלוואה"
+              required>
+            <div class="validate"
+              *ngIf="(loanerDetailesLoanFormControl.date.invalid && ( loanerDetailesLoanFormControl.date.dirty ||  loanerDetailesLoanFormControl.date.touched || formSubmitAttempt)) &&  loanerDetailesLoanFormControl.date.errors.required ">
+              <div>זהו שדה חובה</div>
+            </div>
           </div>
+
         </div>
         <div class="col-md-3 px-1">
           <div class="form-group">
-            <label for="hebrewLoanDate" class="pull-right fileLabel">תאריך הלוואה עברי</label>
-            <input type="text" formControlName="hebrewLoanDate" class="form-control" placeholder="תאריך הלוואה עברי"
-              id="hebrewLoanDate" value="תאריך הלוואה עבר">
+            <label for="hebrewDate" class="pull-right fileLabel">תאריך הלוואה עברי</label>
+            <input type="text" formControlName="hebrewDate" class="form-control" placeholder="תאריך הלוואה עברי"
+              id="hebrewDate" value="תאריך הלוואה עבר">
           </div>
         </div>
       </div>
@@ -36,20 +38,21 @@
           <div class="form-group">
             <label for="identityNumber" class="pull-right fileLabel required">ת"ז/דרכון</label>
             <input type="text" formControlName="identityNumber" class="form-control" (blur)="checkUserForLoan($event)"
-              id="identityNumber" placeholder='ת"ז/דרכון'>
+              id="identityNumber" placeholder='ת"ז/דרכון' required>
+            <div class="validate"
+              *ngIf="(loanerDetailesUserFormControl.identityNumber.invalid && ( loanerDetailesUserFormControl.identityNumber.dirty ||  loanerDetailesUserFormControl.identityNumber.touched || formSubmitAttempt)) &&  loanerDetailesUserFormControl.identityNumber.errors.required ">
+              <div>זהו שדה חובה</div>
+            </div>
           </div>
         </div>
         <div class="col-md-3 px-1">
           <div class="form-group">
             <label for="firstName" class="pull-right fileLabel required">שם פרטי</label>
             <input type="text" formControlName="firstName" id="firstName" class="form-control" required
-              placeholder="שם פרטי" [(ngModel)]="hero.firstName">
-            <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
-
-              <div *ngIf="firstName.errors?.required">
-                firstName is required.
-              </div>
-
+              placeholder="שם פרטי">
+            <div class="validate"
+              *ngIf="(loanerDetailesUserFormControl.firstName.invalid && ( loanerDetailesUserFormControl.firstName.dirty ||  loanerDetailesUserFormControl.firstName.touched || formSubmitAttempt)) &&  loanerDetailesUserFormControl.firstName.errors.required ">
+              <div> זהו שדה חובה</div>
             </div>
           </div>
         </div>
@@ -57,13 +60,21 @@
           <div class="form-group">
             <label for="lastName" class="pull-right fileLabel required">שם משפחה</label>
             <input type="text" formControlName="lastName" id="lastName" class="form-control" placeholder="שם משפחה"
-              value="שם משפחה">
+              required>
+            <div class="validate"
+              *ngIf="(loanerDetailesUserFormControl.lastName.invalid && ( loanerDetailesUserFormControl.lastName.dirty ||  loanerDetailesUserFormControl.lastName.touched || formSubmitAttempt)) &&  loanerDetailesUserFormControl.lastName.errors.required ">
+              <div> זהו שדה חובה</div>
+            </div>
           </div>
         </div>
         <div class="col-md-3 pl-1">
           <div class="form-group">
-            <label for="email" class="pull-right fileLabel required">כתובת מייל</label>
+            <label for="email" class="pull-right fileLabel ">כתובת מייל</label>
             <input formControlName="email" id="email" type="email" class="form-control" placeholder="כתובת מייל">
+            <div class="validate"
+              *ngIf="(loanerDetailesUserFormControl.email.invalid && ( loanerDetailesUserFormControl.email.dirty ||  loanerDetailesUserFormControl.email.touched || formSubmitAttempt)) &&  loanerDetailesUserFormControl.email.errors.required ">
+              <div> כתובת המייל אינו תקין</div>
+            </div>
           </div>
         </div>
       </div>
@@ -73,16 +84,14 @@
         <div class="col-md-3 pr-1">
           <div class="form-group">
             <label for="address" class="pull-right fileLabel required">כתובת</label>
-            <input formControlName="address" id="address" type="text" class="form-control" placeholder="כתובת"
-              value="כתובת">
+            <input formControlName="address" id="address" type="text" class="form-control" required>
+            <div class="validate"
+              *ngIf="(loanerDetailesUserFormControl.address.invalid && ( loanerDetailesUserFormControl.address.dirty ||  loanerDetailesUserFormControl.address.touched || formSubmitAttempt)) &&  loanerDetailesUserFormControl.address.errors.required ">
+              <div> זהו שדה חובה</div>
+            </div>
           </div>
         </div>
-        <div class="col-md-3 px-1">
-          <div class="form-group">
-            <label for="city" class="pull-right fileLabel">עיר</label>
-            <input formControlName="city" id="city" type="number" class="form-control" placeholder="עיר" value="עיר">
-          </div>
-        </div>
+
         <div class="col-md-3 pl-1">
           <div class="form-group">
             <label for="cellphoneNumber" class="pull-right fileLabel required">טלפון נייד</label>
@@ -109,7 +118,11 @@
         <div class="col-md-2 pr-1">
           <div class="form-group">
             <label for="sum" class="pull-right fileLabel required">סכום הלוואה</label>
-            <input formControlName="sum" id="sum" type="number" class="form-control" placeholder="סכום הלוואה">
+            <input formControlName="sum" id="sum" type="number" class="form-control" placeholder="סכום הלוואה" required>
+            <div class="validate"
+              *ngIf="(loanerDetailesLoanFormControl.sum.invalid && ( loanerDetailesLoanFormControl.sum.dirty ||  loanerDetailesLoanFormControl.sum.touched || formSubmitAttempt)) &&  loanerDetailesLoanFormControl.sum.errors.required ">
+              <div> זהו שדה חובה</div>
+            </div>
           </div>
         </div>
         <div class="col-md-1 pr-1">
@@ -129,7 +142,11 @@
           <div class="form-group">
             <label for="repaymentDate" class="pull-right fileLabel required">תאריך החזר ההלוואה</label>
             <input formControlName="repaymentDate" id="repaymentDate" type="date" class="form-control"
-              placeholder="תאריך החזר ההלוואה">
+              placeholder="תאריך החזר ההלוואה" required>
+            <div class="validate"
+              *ngIf="(loanerDetailesLoanFormControl.repaymentDate.invalid && ( loanerDetailesLoanFormControl.repaymentDate.dirty ||  loanerDetailesLoanFormControl.repaymentDate.touched || formSubmitAttempt)) &&  loanerDetailesLoanFormControl.repaymentDate.errors.required ">
+              <div> זהו שדה חובה</div>
+            </div>
           </div>
         </div>
         <div class="col-md-3 px-1">
@@ -141,23 +158,27 @@
         </div>
         <div class="col-md-3 pl-1">
           <div class="form-group">
-            <label for="paymentsNumber" class="pull-right fileLabel required">מספר תשלומים </label>
+            <label for="paymentsNumber" class="pull-right fileLabel ">מספר תשלומים </label>
             <input formControlName="paymentsNumber" id="paymentsNumber" type="number" class="form-control"
               placeholder="מספר תשלומים">
+            <div class="validate"
+              *ngIf="(loanerDetailesLoanFormControl.paymentsNumber.invalid && ( loanerDetailesLoanFormControl.paymentsNumber.dirty ||  loanerDetailesLoanFormControl.paymentsNumber.touched || formSubmitAttempt)) &&  loanerDetailesLoanFormControl.paymentsNumber.errors.required ">
+              <div> זהו שדה חובה</div>
+            </div>
           </div>
         </div>
 
         <div class="col-md-3 pr-1">
           <div class="form-group">
-            <label for="monthlyPaymentDay" class="pull-right fileLabel required"> יום תשלום חודשי</label>
-            <input formControlName="monthlyPaymentDay" id="monthlyPaymentDay" type="date" class="form-control"
+            <label for="monthlyPaymentDay" class="pull-right fileLabel "> יום תשלום חודשי</label>
+            <input formControlName="monthlyPaymentDay" id="monthlyPaymentDay" type="number" class="form-control"
               placeholder="יום תשלום חודשי">
           </div>
         </div>
 
         <div class="col-md-3 px-1">
           <div class="form-group">
-            <label for="monthlyPaymentSum" class="pull-right fileLabel required"> סכום החזר חודשי</label>
+            <label for="monthlyPaymentSum" class="pull-right fileLabel "> סכום החזר חודשי</label>
             <input formControlName="monthlyPaymentSum" id="monthlyPaymentSum" type="number" class="form-control"
               placeholder="סכום החזר חודשי">
           </div>
@@ -165,37 +186,35 @@
 
         <div class="col-md-3 pl-1">
           <div class="form-group">
-            <label for="repaymentFirstDate" class="pull-right fileLabel required"> תאריך ראשון לפרעון</label>
+            <label for="repaymentFirstDate" class="pull-right fileLabel "> תאריך ראשון לפרעון</label>
             <input formControlName="repaymentFirstDate" id="repaymentFirstDate" type="date" class="form-control"
               placeholder="תאריך ראשון לפרעון">
           </div>
         </div>
 
         <div class="col-md-3 pl-1 uploadDiv">
-
-          <form class="form">
-            <div class="file-upload-wrapper" data-text="בחר קובץ!">
-              <input name="file-upload-field" type="file" class="file-upload-field" value="">
-            </div>
-          </form>
-          <!-- <div class="form-group">
-            <input type="file" class="file-input" (change)="onFileChanged($event)" style="display: none;" #fileUpload>
-            <div class="file-upload">
-              <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
-                העלה שטר
-              </button>
-              <label>{{selectedFile.name }}</label>
-            </div>
-          </div> -->
+          <input formControlName="shtar" id="shtar" type="file" class="file-input" (change)="onFileSelected($event)"
+            #fileUpload required>
+          <div class="file-upload">
+            {{fileName }}
+            <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+              צרף שטר
+            </button>
+          </div>
+          <div class="validate"
+            *ngIf="(loanerDetailesLoanFormControl.shtar.invalid && ( loanerDetailesLoanFormControl.shtar.dirty ||  loanerDetailesLoanFormControl.shtar.touched || formSubmitAttempt)) &&  loanerDetailesLoanFormControl.shtar.errors.required ">
+            <div> זהו שדה חובה</div>
+          </div>
         </div>
+
       </div>
     </form>
   </div>
-  <div class="subTitleDiv">
+  <!-- <div class="subTitleDiv">
     <label class="card-title pull-right subTitle"> פרטי בנק  </label>
    <label class="ddLable">(לתשלום בהוראת קבע)</label>
-  </div>
-  <div class="card-body">
+  </div> -->
+  <!-- <div class="card-body">
     <form [formGroup]="loanerDetailesLoanForm" style="direction: rtl;">
       <div class="row formRow">
         <div class="col-md-10 pr-1">
@@ -231,7 +250,7 @@
 
       </div>
     </form>
-  </div>
+  </div> -->
 
   <!-- <div class="wrapper "> -->
   <div class="">
@@ -262,6 +281,37 @@
             </div>
           </div>
         </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="modal-title" (click)="closePopup()">x</button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="!err && formErr || err && formErr">
+          <p class="pmodal"> שגיאה בפרטי הלוואה</p>
+        </div>
+        <div *ngIf="err && !formErr">
+          <p  class="pmodal"> שגיאה בנתוני הערבים להלוואה</p>
+        </div>
+        <div *ngIf="!err && !formErr">
+          <p class="pmodal"> הלוואה חדשה נשמרה בהצלחה</p>
+        </div>
+        
+        
+      </div>
+      <div style="border-top: none;" class="modal-footer">
+        <button type="button" class="searchBtn searchBtn1" (click)="closePopup()"> אישור</button>
+      
       </div>
     </div>
   </div>

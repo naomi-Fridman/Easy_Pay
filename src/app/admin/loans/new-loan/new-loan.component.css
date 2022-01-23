@@ -124,6 +124,86 @@ input#file-upload-button{
     display: flex;
     color: #285c7e;
 }
+.commf{
+  font-size: 15px; 
+  color: black;
+  margin-top: 9px; 
+  margin-bottom: 0px;
+  float: right;
+}
+.validate{
+  color: #e83f3f;
+  font-size: 13px;
+  font-weight: 550;  float: right;
+}
+.file-input {
+  display: none;
+}
+.upload-btn{
+  background-color: #3c3c96db !important;
+    width: 84px;
+    height: 34px;
+}
+.uploadDiv{
+  padding-bottom: 9px;
+  
+}
+.modal-header{
+  padding-top: 4px; 
+  padding-right: 4px; 
+  border-bottom: none;
+}
+.modal-title{
+  float: right; 
+  font-weight: bold; 
+  background-color: transparent;
+  border: none;
+}
+.modal-body{
+  padding-top: 17px; 
+  padding-right: 30px; 
+  padding-bottom: 0px;
+}
+.pmodal{
+  float: right; 
+  margin-top: 0; 
+  margin-bottom: 1rem;
+}
+.searchBtn1{
+  background-color: #f1d57e; 
+  border-color: #e7d35d ;
+  width: 87px; 
+  margin-right: 18px
+}
+.searchBtn2{
+  width: 87px; 
+  margin-right: 18px;
+}
+.modal{
+  background-color: #00000026 !important;
+}
+.modal-dialog {
+  right: 0;
+  left: 50%;
+  top: 28%;
+  width: 600px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.searchBtn{
+  height: 36px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  margin-top: 3.5px;
+}
+.searchBtn:hover {
+  background-color: #4e4e91a8;
+}
 
 .form-control:focus {
   color: #5f5f9a;

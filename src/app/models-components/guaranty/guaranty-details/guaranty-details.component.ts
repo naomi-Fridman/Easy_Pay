@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, Input } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { EventEmitter } from '@angular/core';
 import { Guaranty } from 'src/app/models/Guaranty';
 import { UsersService } from 'src/app/services/users.service';
@@ -27,10 +27,13 @@ export class GuarantyDetailsComponent implements OnInit {
       }
     })
   }
+  get guarantyDetailsFormControl() { return this.GuarantyDetailsForm.controls; }
+
+
   GuarantyDetailsForm :FormGroup =new FormGroup({
-    firstName:new FormControl(""),
-    lastName: new FormControl(""),
-    email: new FormControl(),
+    firstName:new FormControl("", { validators: [Validators.required], updateOn: 'blur' }),
+    lastName: new FormControl("", { validators: [Validators.required], updateOn: 'blur' }),
+    email: new FormControl("", { validators: [Validators.email], updateOn: 'blur' }),
     city: new FormControl(""),
     address: new FormControl(""),
     cellphoneNumber: new FormControl(),
