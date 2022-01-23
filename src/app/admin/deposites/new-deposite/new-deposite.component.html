@@ -1,17 +1,14 @@
+<app-success-alert *ngIf="success" (close)="close()" [details]="massege"></app-success-alert>
 <div class="card card-user">
     <div class="title">
         <label class="card-title mainTitle"> הפקדה חדשה</label>
     </div>
     <div>
-        <label style="font-size: 15px; color: black;margin: 7px;" class="comment">שדות המסומנים בכוכבית (*) הם
-            שדות
-            חובה
-        </label>
+        <label class="comment">שדות המסומנים בכוכבית (*) הם שדות חובה</label>
     </div>
     <div class="subTitleDiv"></div>
     <div class="card-body">
         <form [formGroup]="DepositorDetailesDepositeForm" style="direction: rtl;">
-
             <div class="row formRow">
                 <div class="col-md-3 pr-1">
                     <div class="form-group">
@@ -19,63 +16,49 @@
                         <input formControlName="sum" id="sum" type="number" class="form-control" required>
                         <div class="validate"
                             *ngIf="(DepositorDepositeFormControl.sum.invalid && (DepositorDepositeFormControl.sum.dirty || DepositorDepositeFormControl.sum.touched || formSubmitAttempt)) && DepositorDepositeFormControl.sum.errors.required ">
-                            <div>
-                                זהו שדה חובה
-                            </div>
+                            זהו שדה חובה
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3 pr-1">
                     <div class="form-group">
-                        <label for="currency" class="  fileLabel currency required">מטבע</label>
-                        <select formControlName="currencyId" class="form-control" style="cursor: pointer" required>
-                            <option value=1>
-                                שקל
-                            </option>
-                            <option value=3 selected="selected">
-                                דולר
-                            </option>
+                        <label for="currency" class="fileLabel currency required">מטבע</label>
+                        <select formControlName="currencyId" class="form-control" style="cursor: pointer"  required>
+                            <option value=1> שקל</option>
+                            <option value=3 selected="selected"> דולר</option>
                         </select>
-                        
                     </div>
                 </div>
-
                 <div class="col-md-3 pr-1">
                     <div class="form-group">
-                        <label for="depositeDate" class="  fileLabel required">תאריך הפקדה</label>
-                        <input formControlName="depositeDate" id="depositeDate" type="date" class="form-control"
+                        <label for="date" class="  fileLabel required">תאריך הפקדה</label>
+                        <input formControlName="date" id="date" type="date" class="form-control"
                             required>
                         <div class="validate"
-                            *ngIf="(DepositorDepositeFormControl.depositeDate.invalid && (DepositorDepositeFormControl.depositeDate.dirty || DepositorDepositeFormControl.depositeDate.touched || formSubmitAttempt)) && DepositorDepositeFormControl.depositeDate.errors.required ">
-                            <div>
-                                זהו שדה חובה
-                            </div>
+                            *ngIf="(DepositorDepositeFormControl.date.invalid && (DepositorDepositeFormControl.date.dirty || DepositorDepositeFormControl.date.touched || formSubmitAttempt)) && DepositorDepositeFormControl.date.errors.required ">
+                            זהו שדה חובה
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3 px-1">
                     <div class="form-group">
-                        <label for="hebrewDepositeDate" class="  fileLabel">תאריך הפקדה עברי</label>
-                        <input type="text" formControlName="hebrewDepositeDate" class="form-control"
-                            id="hebrewDepositeDate">
+                        <label for="hebrewDate" class="  fileLabel">תאריך הפקדה עברי</label>
+                        <input type="text" formControlName="hebrewDate" class="form-control"
+                            id="hebrewDate">
                     </div>
                 </div>
             </div>
         </form>
-
         <form [formGroup]="DepositorDetailesUserForm" style="direction: rtl;">
-
             <div class="row formRow row2">
                 <div class="col-md-3 pr-1">
                     <div class="form-group">
                         <label for="identityNumber" class="  fileLabel required">ת"ז/דרכון</label>
                         <input formControlName="identityNumber" (blur)="checkUserForDeposite($event)"
-                            id="identityNumber" type="number" class="form-control" required>
-                        <div *ngIf="(DepositorUserFormControl.identityNumber.invalid && (DepositorUserFormControl.identityNumber.dirty || DepositorUserFormControl.identityNumber.touched || formSubmitAttempt)) && DepositorUserFormControl.identityNumber.errors.required  "
-                            class="validate">
-                            <div>
-                                זהו שדה חובה
-                            </div>
+                            id="identityNumber" type="string" class="form-control" required>
+                        <div class="validate"
+                            *ngIf="(DepositorUserFormControl.identityNumber.invalid && (DepositorUserFormControl.identityNumber.dirty || DepositorUserFormControl.identityNumber.touched || formSubmitAttempt)) && DepositorUserFormControl.identityNumber.errors.required">
+                            זהו שדה חובה
                         </div>
                     </div>
                 </div>
@@ -83,10 +66,9 @@
                     <div class="form-group">
                         <label for="firstName" class="  fileLabel required">שם פרטי</label>
                         <input formControlName="firstName" id="firstName" type="text" class="form-control" required>
-
                         <div *ngIf="(DepositorUserFormControl.firstName.invalid && (DepositorUserFormControl.firstName.dirty || DepositorUserFormControl.firstName.touched || formSubmitAttempt)) && DepositorUserFormControl.firstName.errors?.required "
                             class="validate">
-                            <div>זהו שדה חובה</div>
+                            זהו שדה חובה
                         </div>
                     </div>
                 </div>
@@ -96,9 +78,7 @@
                         <input formControlName="lastName" id="lastName" type="text" class="form-control" required>
                         <div class="validate"
                             *ngIf="(DepositorUserFormControl.lastName.invalid && (DepositorUserFormControl.lastName.dirty || DepositorUserFormControl.lastName.touched || formSubmitAttempt)) && DepositorUserFormControl.lastName.errors?.required ">
-                            <div>
-                                זהו שדה חובה
-                            </div>
+                            זהו שדה חובה
                         </div>
                     </div>
                 </div>
@@ -108,9 +88,7 @@
                         <input formControlName="email" id="email" type="email" class="form-control">
                         <div class="validate"
                             *ngIf="(DepositorUserFormControl.email.invalid && (DepositorUserFormControl.email.dirty || DepositorUserFormControl.email.touched || formSubmitAttempt)) && DepositorUserFormControl.email.errors?.email ">
-                            <div>
-                                כתובת דואר אלקטרוני לא תקינה
-                            </div>
+                            כתובת דואר אלקטרוני לא תקינה
                         </div>
                     </div>
                 </div>
@@ -122,87 +100,65 @@
                         <input formControlName="address" id="address" type="text" class="form-control" required>
                         <div class="validate"
                             *ngIf="(DepositorUserFormControl.address.invalid && (DepositorUserFormControl.address.dirty || DepositorUserFormControl.address.touched || formSubmitAttempt)) && DepositorUserFormControl.address.errors?.required ">
-                            <div>
-                                זהו שדה חובה
-                            </div>
+                            זהו שדה חובה
                         </div>
                     </div>
                 </div>
-
                 <div class="col-md-3 pr-1">
                     <div class="form-group">
-                        <label for="city" class="fileLabel required">עיר</label>
-                        <input formControlName="city" id="city" type="text" class="form-control">
+                        <label for="cellphoneNumber" class="  fileLabel required">טל' נייד</label>
+                        <input formControlName="cellphoneNumber" id="cellphoneNumber" type="string"
+                            class="form-control" required>
+                        <div class="validate"
+                            *ngIf="(DepositorUserFormControl.cellphoneNumber.invalid && (DepositorUserFormControl.cellphoneNumber.dirty || DepositorUserFormControl.cellphoneNumber.touched || formSubmitAttempt)) && DepositorUserFormControl.cellphoneNumber.errors?.required ">
+                            זהו שדה חובה
+                        </div>
                     </div>
                 </div>
-
                 <div class="col-md-3 pr-1">
                     <div class="form-group">
-                        <label for="telephoneNumber1" class="fileLabel">טלפון בית</label>
-                        <input formControlName="telephoneNumber1" id="telephoneNumber1" type="number"
+                        <label for="telephoneNumber" class="fileLabel">טלפון בית</label>
+                        <input formControlName="telephoneNumber" id="telephoneNumber" type="string"
                             class="form-control">
                     </div>
                 </div>
-
-                <div class="col-md-3 pr-1">
-                    <div class="form-group">
-                        <label for="telephoneNumber2" class="  fileLabel required">טל' נייד</label>
-                        <input formControlName="telephoneNumber2" id="telephoneNumber2" type="number"
-                            class="form-control" required>
-                        <div class="validate"
-                            *ngIf="(DepositorUserFormControl.telephoneNumber2.invalid && (DepositorUserFormControl.telephoneNumber2.dirty || DepositorUserFormControl.telephoneNumber2.touched || formSubmitAttempt)) && DepositorUserFormControl.telephoneNumber2.errors?.required ">
-                            <div>
-                                זהו שדה חובה
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </form>
-
-
         <form [formGroup]="DepositorDetailesDepositeForm">
             <div class="row formRow">
                 <div class="col-md-4 pr-1">
                     <div class="form-group">
                         <label for="returnDate" class="  fileLabel required">תאריך משיכת הפקדה</label>
                         <input formControlName="returnDate" id="returnDate" type="date" class="form-control" required>
-                        <div
+                        <div class="validate"
                             *ngIf="(DepositorDepositeFormControl.returnDate.invalid && (DepositorDepositeFormControl.returnDate.dirty || DepositorDepositeFormControl.returnDate.touched || formSubmitAttempt)) && DepositorDepositeFormControl.returnDate.errors?.required">
-                            <div class="validate">
-                                זהו שדה חובה
-                            </div>
+                            זהו שדה חובה
                         </div>
                     </div>
                 </div>
-
                 <div class="col-md-4 pr-1">
                     <div class="form-group">
-                        <label for="hebrewDepositeReturnDate" class="fileLabel">תאריך משיכת הפקדה עברי</label>
-                        <input formControlName="hebrewDepositeReturnDate" id="hebrewDepositeReturnDate" type="text"
+                        <label for="hebrewReturnDate" class="fileLabel">תאריך משיכת הפקדה עברי</label>
+                        <input formControlName="hebrewReturnDate" id="hebrewReturnDate" type="text"
                             class="form-control">
                     </div>
                 </div>
             </div>
         </form>
-
-
-
         <form [formGroup]="DepositorDetailesUserForm">
             <div class="row formRow">
                 <div class="col-md-12 pr-1">
                     <div class="form-group">
                         <label for="comments" class="fileLabel">הערות</label>
-                        <textarea class="form-control textarea" formControlName="comments" id="comments" type="text" class="form-control"></textarea>
+                        <textarea class="form-control textarea" formControlName="comments" id="comments" type="text"
+                            class="form-control"></textarea>
                     </div>
                 </div>
             </div>
         </form>
-
         <div class="row formRow">
             <div class="fileLabel"></div>
-            <button type="button" pButton (click)="save()" class="saveBtn">שמור</button>
+            <button [disabled]="!disableSave()" type="button" pButton (click)="save()" class="saveBtn">שמור</button>
         </div>
     </div>
 </div>

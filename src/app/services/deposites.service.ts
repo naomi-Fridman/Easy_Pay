@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { Deposit } from 'src/app/models/Deposit';
 import { Currency } from 'src/app/models/Currency';
 import { Depositor } from '../models/Depositor';
+import { Action } from 'rxjs/internal/scheduler/Action';
+import { Config } from 'protractor';
 
 @Injectable({
   providedIn: 'root'
@@ -26,4 +28,8 @@ export class DepositesService {
   getcurrancyTypeByCurrancyId(currancyId: number): Observable<Currency> {
     return this._http.get<Currency>("/api/CurrencyType/" + currancyId);
   }
+  deleteDepositor(depositeId: number):Observable<any>{
+    return this._http.delete(`/api/Deposit/${depositeId}`);
+  }
+  
 }

@@ -1,4 +1,6 @@
-<div id="top-filter" class="top-filter tfilter-box " >
+<app-success-alert *ngIf="success" (close)="close()" [details]="massege"></app-success-alert>
+
+<div id="top-filter" class="top-filter tfilter-box ">
     <div class="row">
         <div class="col">
             <input [(ngModel)]="dtoUsersPrms.identityNumber" #identityNumberInput class="form-control-top"
@@ -17,11 +19,11 @@
                 type="text">
         </div>
         <div class="col">
-            <input [(ngModel)]="dtoUsersPrms.telephoneNumber1" #telephoneNumberInput class="form-control-top"
+            <input [(ngModel)]="dtoUsersPrms.cellphoneNumber" #telephoneNumberInput class="form-control-top"
                 placeholder="טלפון" type="text">
         </div>
         <div class="col">
-            <button class='searchBtn'  type="button" (click)="getAllUsers()">חפש </button>
+            <button class='searchBtn' type="button" (click)="getAllUsers()">חפש </button>
         </div>
     </div>
 </div>
@@ -97,44 +99,49 @@
         </div>
     </div>
     <div class="col-9">
-            <ul style="padding-right: 0px" *ngFor="let depositor of depositorToDisplay">
-                <li class="list" data-name="JoeBrown">
-                    <div class="list__profile">
-                        <img class="pull-left img-circle nav-user-photo" width="90"
-                            src="../../../assets/img//faces/face-0.jpg" />  
-                        <div class="list__label">
-                            <div class="list__label--header"> {{depositor.user.firstName}} {{depositor.user.lastName}}
-                            </div>
-                            <div class="list__label--value"> סכום הפקדה - {{depositor.deposite.sum}} </div>
-                            <div class="list__label--value"> תאריך הפקדה - {{depositor.deposite.depositeDate | date:"dd/MM/yyyy"}} </div>
-                            <div class="list__label--value"> תאריך סיום הפקדה - {{depositor.deposite.returnDate | date:"dd/MM/yyyy"}} </div>
+        <ul style="padding-right: 0px" *ngFor="let depositor of depositorToDisplay">
+            <li class="list" data-name="JoeBrown">
+                <div class="list__profile">
+                    <img class="pull-left img-circle nav-user-photo" width="90"
+                        src="../../../assets/img//faces/face-0.jpg" />  
+                    <div class="list__label">
+                        <div class="list__label--header"> {{depositor.user.firstName}} {{depositor.user.lastName}}
                         </div>
-                        <div>
-                            <button class='searchBtn' type="button" (click)="edit(depositor)">ערוך פרטים </button>
-                            <button class='searchBtn' type="button" (click)="openPopup(depositor)">מחק הפקדה </button>
+                        <div class="list__label--value"> סכום הפקדה - {{depositor.deposite.sum}}
+                            {{depositor.currancyType}} </div>
+                        <div class="list__label--value"> תאריך הפקדה - {{depositor.deposite.date | date:"dd/MM/yyyy"}}
                         </div>
+                        <div class="list__label--value"> תאריך סיום הפקדה - {{depositor.deposite.returnDate |
+                            date:"dd/MM/yyyy"}} </div>
                     </div>
-                </li>
-            </ul>
+                    <div>
+                        <button class='searchBtn' type="button" (click)="edit(depositor)">ערוך פרטים </button>
+                        <button class='searchBtn' type="button" (click)="openPopup(depositor)">מחק הפקדה </button>
+                    </div>
+                </div>
+            </li>
+        </ul>
     </div>
 </div>
-<div class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" [ngStyle]="{'display':displayStyle}">
+<div class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false"
+    [ngStyle]="{'display':displayStyle}">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div style="padding-top: 4px; padding-right: 4px; border-bottom: none;" class="modal-header">
                 <button style="float: right; font-weight: bold; background-color: transparent;
             border: none;" class="modal-title" (click)="closePopup()">x</button>
             </div>
-            <div style="padding-top: 17px; padding-right: 30px; padding-bottom: 0px;" class="modal-body">
-                <p style="float: right; margin-top: 0; margin-bottom: 1rem;"> האם אתה בטוח שברצונך למחוק את
-                    {{singleDeposite.firstName}} {{singleDeposite.lastName}} לצמיתות?</p>
+            <div style="padding-bottom: 0px;" class="modal-body">
+                <p style="float: right; "> האם אתה בטוח שברצונך למחוק את ההפקדה של
+                    {{singleDeposite.user.firstName}} {{singleDeposite.user.lastName}} על סך
+                    {{singleDeposite.deposite.sum}} {{singleDeposite.currancyType}} לצמיתות ?</p>
             </div>
             <div style="border-top: none;" class="modal-footer">
                 <button style="background-color: #f1d57e; border-color: #e7d35d ;width: 87px; margin-right: 18px"
                     type="button" class="searchBtn" (click)="closePopup()">
                     ביטול
                 </button>
-                <button style="width: 87px; margin-right: 18px;" type="button" class="searchBtn" (click)="deleteUser()">
+                <button style="width: 87px; margin-right: 18px;" type="button" class="searchBtn" (click)="deleteDepositor(singleDeposite.deposite.id)">
                     אישור
                 </button>
             </div>

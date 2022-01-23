@@ -53,11 +53,10 @@ export class NewLoanComponent implements OnInit, AfterViewInit {
         this.isExistUser = true;
         this.loanerDetailesUserForm.controls["firstName"].setValue(user.firstName);
         this.loanerDetailesUserForm.controls["lastName"].setValue(user.lastName);
-        this.loanerDetailesUserForm.controls["telephoneNumber1"].setValue(user.telephoneNumber1);
-        this.loanerDetailesUserForm.controls["telephoneNumber2"].setValue(user.telephoneNumber2);
+        this.loanerDetailesUserForm.controls["cellphoneNumber"].setValue(user.cellphoneNumber);
+        this.loanerDetailesUserForm.controls["telephoneNumber"].setValue(user.telephoneNumber);
         this.loanerDetailesUserForm.controls["email"].setValue(user.email);
         this.loanerDetailesUserForm.controls["address"].setValue(user.address);
-        this.loanerDetailesUserForm.controls["city"].setValue(user.city);
         this.loanerDetailesUserForm.controls["comments"].setValue(user.comments);
       }
     })
@@ -105,13 +104,10 @@ export class NewLoanComponent implements OnInit, AfterViewInit {
     firstName: new FormControl(""),
     lastName: new FormControl(""),
     email: new FormControl(),
-    city: new FormControl(""),
     address: new FormControl(""),
-    identityNumber: new FormControl(null),
-    password: new FormControl(""),
-    userName: new FormControl("", Validators.required,),
-    telephoneNumber1: new FormControl(),
-    telephoneNumber2: new FormControl(),
+    identityNumber: new FormControl(""),
+    cellphoneNumber: new FormControl(),
+    telephoneNumber: new FormControl(),
     idUser: new FormControl(null),
   });
 

@@ -15,6 +15,8 @@ import { RouterModule } from '@angular/router';
 import { CheckboxModule } from 'primeng/checkbox';
 import { NewDepositeComponent } from './new-deposite/new-deposite.component';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { SuccessAlertComponent } from 'src/app/models-components/success-alert/success-alert.component';
+import { ModelsComponentsModule } from 'src/app/models-components/models-components.module';
 
 
 
@@ -35,6 +37,7 @@ import {ReactiveFormsModule, FormsModule} from '@angular/forms';
     RouterModule,
     CheckboxModule,
     FormsModule
+    ,ModelsComponentsModule
   ],
   exports:[
     EditDetailsComponent,DepositesComponent

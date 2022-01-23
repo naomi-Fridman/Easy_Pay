@@ -19,6 +19,8 @@ import { PaymentsModule } from './payments/payments.module';
 import { AdminRoutes } from './admin.routing';
 import { DailyActivityComponent } from './daily-activity/daily-activity.component';
 import { DialogComponent } from '../models-components/dialog/dialog.component';
+import { SuccessAlertComponent } from '../models-components/success-alert/success-alert.component';
+import { ModelsComponentsModule } from '../models-components/models-components.module';
 
 
 @NgModule({
@@ -43,7 +45,8 @@ import { DialogComponent } from '../models-components/dialog/dialog.component';
     DialogModule,
     MessagesModule,
     MessageModule,
-    RouterModule.forChild(AdminRoutes)
+    RouterModule.forChild(AdminRoutes),
+    ModelsComponentsModule
   ]
 })
 export class AdminModule { }

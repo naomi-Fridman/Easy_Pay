@@ -46,28 +46,22 @@
     background-color: #4e4e91a8;
 }
 .nav>li>a:focus {
-    /* height: 4em; */
     background-color: #5f5f9ad4 !important;
     color: white;
-    height: 4.7rem;
-    /* top: -9px; */
-    /* padding-top: 15px; */
 }
 .nav>li>a:hover{
     background-color: #5f5f9a8a;
     color: white;
-    height: 4.7rem;
 }
 a.nav-link.active {
     background-color: #5f5f9ad4;
     color: white !important;
-    height: 4.7rem;
 }
 .nav-link{
-    padding-top: 1rem;
+    padding-top: 0.7rem;
     padding-bottom: 1rem;
-    padding-right: 2rem;
-    padding-left: 2rem;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
 } 
 .nav{
     padding-right: 0px;

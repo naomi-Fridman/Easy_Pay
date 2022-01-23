@@ -5,7 +5,6 @@ import { Depositor } from 'src/app/models/Depositor';
 import { Message } from 'primeng/api/message';
 import { DepositesService } from '../../../services/deposites.service';
 import { UsersService } from '../../../services/users.service';
-import { DetailsService } from 'src/app/details.service';
 import { Currency } from 'src/app/models/Currency';
 import { CurrancyService } from 'src/app/services/currancy.service';
 import { SelectItem } from 'primeng/api';
@@ -35,10 +34,10 @@ export class EditDetailsComponent implements OnInit {
     this.depositorDetailesForm.controls["returnDate"].setValue(this._depositor.deposite.returnDate);
     this.depositorDetailesForm.controls["comment"].setValue(this._depositor.deposite.comment);
     this.depositorDetailesForm.controls["status"].setValue(this._depositor.deposite.status);
-    this.depositorDetailesForm.controls["hebrewDepositeDate"].setValue(this._depositor.deposite.hebrewDepositeDate);
-    this.depositorDetailesForm.controls["hebrewDepositeReturnDate"].setValue(this._depositor.deposite.hebrewDepositeReturnDate);
+    this.depositorDetailesForm.controls["hebrewDepositeDate"].setValue(this._depositor.deposite.hebrewDate);
+    this.depositorDetailesForm.controls["hebrewDepositeReturnDate"].setValue(this._depositor.deposite.hebrewReturnDate);
     this.depositorDetailesForm.controls["paymentsNumber"].setValue(this._depositor.deposite.paymentsNumber);
-    this.depositorDetailesForm.controls["depositeDate"].setValue(this._depositor.deposite.depositeDate);
+    this.depositorDetailesForm.controls["depositeDate"].setValue(this._depositor.deposite.date);
     this.depositorDetailesForm.controls["creditCardId"].setValue(this._depositor.deposite.creditCardId);
     this.depositorDetailesForm.controls["accountNumber"].setValue(0);
     this.depositorDetailesForm.controls["userId"].setValue(this._depositor.deposite.userId);
@@ -47,7 +46,7 @@ export class EditDetailsComponent implements OnInit {
     this.depositorDetailesForm.controls["currencyId"].setValue(this._depositor.deposite.currencyId);
 
   }
-  constructor(private currencyService: CurrancyService, private detailsS: DetailsService, private _acr: ActivatedRoute, private userService: UsersService, private depositesService: DepositesService) {
+  constructor(private currencyService: CurrancyService, private _acr: ActivatedRoute, private userService: UsersService, private depositesService: DepositesService) {
   // this.Depositor=new Depositor();
 
     

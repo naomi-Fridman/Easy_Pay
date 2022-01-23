@@ -1,3 +1,5 @@
+<app-success-alert *ngIf="success" (close)="close()" [details]="massege"></app-success-alert>
+
 <div id="top-filter" class="top-filter tfilter-box "  data-offset-top="197">
     <div class="row">
         <div class="col">
@@ -17,7 +19,7 @@
                 type="text">
         </div>
         <div class="col">
-            <input [(ngModel)]="dto_user.telephoneNumber1" #telephoneNumberInput class="form-control"
+            <input [(ngModel)]="dto_user.cellphoneNumber" #telephoneNumberInput class="form-control"
                 placeholder="טלפון" type="text">
         </div>
         <div class="col">
@@ -34,7 +36,7 @@
                     src="../../../assets/img//faces/face-0.jpg" />  
                 <div class="list__label">
                     <div class="list__label--header"> {{user.firstName}} {{user.lastName}} </div>
-                    <div class="list__label--value"> {{user.telephoneNumber1}} / {{user.telephoneNumber2}} </div>
+                    <div class="list__label--value"> {{user.cellphoneNumber}} / {{user.telephoneNumber}} </div>
                     <div class="list__label--value"> {{user.address}} {{user.city}} </div>
                     <div class="list__label--value">
                         <a class="userEmail" href="mailto:{{user.email}}">{{user.email}}</a>
@@ -59,14 +61,14 @@
         </div>
         <div style="padding-top: 17px; padding-right: 30px; padding-bottom: 0px;" class="modal-body">
             <p style="float: right; margin-top: 0; margin-bottom: 1rem;"> האם אתה בטוח שברצונך למחוק את
-                {{singleUser.firstName}} {{singleUser.lastName}} לצמיתות?</p>
+                {{singleUser.firstName}} {{singleUser.lastName}} ואת כל המידע הקשור אליו/ה לצמיתות?</p>
         </div>
         <div style="border-top: none;" class="modal-footer">
             <button style="background-color: #f1d57e; border-color: #e7d35d ;width: 87px; margin-right: 18px"
                 type="button" class="searchBtn" (click)="closePopup()">
                 ביטול
             </button>
-            <button style="width: 87px; margin-right: 18px;" type="button" class="searchBtn" (click)="deleteUser()">
+            <button style="width: 87px; margin-right: 18px;" type="button" class="searchBtn" (click)="deleteUser(singleUser.id)">
                 אישור
             </button>
         </div>
