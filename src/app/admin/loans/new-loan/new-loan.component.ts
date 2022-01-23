@@ -103,6 +103,7 @@ export class NewLoanComponent implements OnInit {
     }
     else {
       this.formErr = true
+      this.err=true
     }
   }
 
@@ -164,7 +165,7 @@ export class NewLoanComponent implements OnInit {
     monthlyPaymentSum: new FormControl(0),
     monthlyPaymentDay: new FormControl(1),
     repaymentFirstDate: new FormControl(null),
-    shtar: new FormControl("", { validators: [Validators.required], updateOn: 'blur' }),
+    shtar: new FormControl("", ),
     paymentsIndex: new FormControl(0),
 
   });
