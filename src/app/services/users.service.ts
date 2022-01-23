@@ -16,8 +16,8 @@ export class UsersService {
   getUserById(userId: number): Observable<User> {
     return this._http.get<User>("/api/User/" + userId);
   }
-  deleteUser(userId: number): Observable<void> {
-    return this._http.put<void>("/api/User/", userId);
+  deleteUser(userId: number):Observable<any>{
+    return this._http.delete(`/api/User/${userId}`);
   }
   updateUser(updateduser: User): Observable<User> {
     return this._http.put<User>("/api/User/", updateduser);
@@ -40,8 +40,6 @@ export class UsersService {
       dtoUserParms.lastName = null;
     if (dtoUserParms.address == "")
       dtoUserParms.lastName = null;
-    if (dtoUserParms.city == "")
-      dtoUserParms.lastName = null;
 
     return this._http.post<User[]>("/api/User", dtoUserParms);
   }
@@ -49,6 +47,7 @@ export class UsersService {
     return this._http.get<Array<string>>("/api/User/getAddress/"+JSON.stringify(text));
   }
   postUser(newUser:User):Observable<number>{
+    debugger
     return this._http.post<number>("/api/User/newUser", newUser);
   }
 }

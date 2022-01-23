@@ -94,20 +94,16 @@
 
         <div class="col-md-3 pl-1">
           <div class="form-group">
-            <label for="telephoneNumber" class="pull-right fileLabel ">טלפון בית/נייד</label>
-            <input type="text" formControlName="telephoneNumber" id="telephoneNumber" class="form-control"
-              placeholder="נייד/טלפון בית">
+            <label for="cellphoneNumber" class="pull-right fileLabel required">טלפון נייד</label>
+            <input type="text" formControlName="cellphoneNumber" id="cellphoneNumber" class="form-control"
+              placeholder="טלפון נייד ">
           </div>
         </div>
         <div class="col-md-3 pl-1">
           <div class="form-group">
-            <label for="cellphoneNumber" class="pull-right fileLabel required">נייד</label>
-            <input formControlName="cellphoneNumber" id="cellphoneNumber" type="tel" class="form-control"
-              placeholder="נייד/טלפון בית">
-            <div class="validate"
-              *ngIf="(loanerDetailesUserFormControl.cellphoneNumber.invalid && ( loanerDetailesUserFormControl.cellphoneNumber.dirty ||  loanerDetailesUserFormControl.cellphoneNumber.touched || formSubmitAttempt)) &&  loanerDetailesUserFormControl.cellphoneNumber.errors.required ">
-              <div> זהו שדה חובה</div>
-            </div>
+            <label for="telephoneNumber" class="pull-right fileLabel">טלפון בית</label>
+            <input formControlName="telephoneNumber" id="telephoneNumber" type="tel" class="form-control"
+              placeholder="טלפון בית">
           </div>
         </div>
       </div>

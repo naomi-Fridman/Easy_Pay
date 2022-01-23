@@ -29,12 +29,10 @@ export class LoanerDetailesComponent implements OnInit {
 
   }
   loanerDetailesForm: FormGroup = new FormGroup({
-    // password:new FormControl(""),
-    // userName:new FormControl(""),
     firstName: new FormControl(""),
     lastName: new FormControl(""),
-    telephoneNumber1: new FormControl(),
-    telephoneNumber2: new FormControl(),
+    cellphoneNumber: new FormControl(),
+    telephoneNumber: new FormControl(),
     email: new FormControl(""),
     // address:new FormControl(),
     // city :new FormControl(),

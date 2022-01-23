@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { DepositesComponent } from './deposites/deposites.component';
 import {OrderListModule} from 'primeng/orderlist'; 
 import {ButtonModule} from 'primeng/button';
-import { ShowDetailsComponent } from './show-details/show-details.component';
 import { EditDetailsComponent } from './edit-details/edit-details.component';
 import {CalendarModule} from 'primeng/calendar';
 import { InputTextModule } from 'primeng/inputtext';
@@ -16,11 +15,13 @@ import { RouterModule } from '@angular/router';
 import { CheckboxModule } from 'primeng/checkbox';
 import { NewDepositeComponent } from './new-deposite/new-deposite.component';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { SuccessAlertComponent } from 'src/app/models-components/success-alert/success-alert.component';
+import { ModelsComponentsModule } from 'src/app/models-components/models-components.module';
 
 
 
 @NgModule({
-  declarations: [DepositesComponent, ShowDetailsComponent, EditDetailsComponent, NewDepositeComponent],
+  declarations: [DepositesComponent, EditDetailsComponent, NewDepositeComponent],
   imports: [
     CommonModule,
     OrderListModule,
@@ -36,6 +37,7 @@ import {ReactiveFormsModule, FormsModule} from '@angular/forms';
     RouterModule,
     CheckboxModule,
     FormsModule
+    ,ModelsComponentsModule
   ],
   exports:[
     EditDetailsComponent,DepositesComponent

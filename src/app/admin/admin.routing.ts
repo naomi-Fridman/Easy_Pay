@@ -4,7 +4,6 @@ import { LoansComponent } from './loans/loans/loans.component';
 import { UsersComponent } from './users/users/users.component';
 import { EditUserDetailsComponent } from './users/edit-user-details/edit-user-details.component';
 import { LoanerDetailesComponent } from './loans/loaner-detailes/loaner-detailes.component';
-import { ShowDetailsComponent } from './deposites/show-details/show-details.component';
 import { EditDetailsComponent } from './deposites/edit-details/edit-details.component';
 import { PaymentsComponent } from './payments/payments/payments.component';
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
@@ -23,7 +22,6 @@ export const AdminRoutes: Routes = [
   { path: "users", component: UsersComponent },
   { path: "editUserDetails/:userId", component: EditUserDetailsComponent },
   { path: "loanerDetails/:loaner", component: LoanerDetailesComponent },
-  { path: "showDetails/:depositor", component: ShowDetailsComponent },
   { path: "editDetails/:depositorId", component: EditDetailsComponent },
   { path: "payments", component: PaymentsComponent },
   { path: "**", component: PageNotFoundComponent }

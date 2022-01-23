@@ -1,0 +1,15 @@
+.alert-success{
+    left: 37%;
+    z-index: 100000000;
+    text-align: center;
+    position: absolute;
+}
+.alert{
+    background-color: #f0e3bc;
+    border-color: #ffc107;
+    width: 25%;
+    color: #5f5f9a;
+}
+.close{
+    color: #deb53c;
+}

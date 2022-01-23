@@ -19,8 +19,8 @@ export class GuarantyDetailsComponent implements OnInit {
       if (user) {
         this.GuarantyDetailsForm.controls["firstName"].setValue(user.firstName);
         this.GuarantyDetailsForm.controls["lastName"].setValue(user.lastName);
-        this.GuarantyDetailsForm.controls["telephoneNumber1"].setValue(user.telephoneNumber);
-        this.GuarantyDetailsForm.controls["telephoneNumber2"].setValue(user.cellphoneNumber);
+        this.GuarantyDetailsForm.controls["cellphoneNumber"].setValue(user.cellphoneNumber);
+        this.GuarantyDetailsForm.controls["telephoneNumber"].setValue(user.telephoneNumber);
         this.GuarantyDetailsForm.controls["email"].setValue(user.email);
         this.GuarantyDetailsForm.controls["address"].setValue(user.address);
         this.GuarantyDetailsForm.controls["comments"].setValue(user.comments);
@@ -36,9 +36,9 @@ export class GuarantyDetailsComponent implements OnInit {
     email: new FormControl("", { validators: [Validators.email], updateOn: 'blur' }),
     city: new FormControl(""),
     address: new FormControl(""),
-    telephoneNumber: new FormControl(),
     cellphoneNumber: new FormControl(),
-    identityNumber: new FormControl(null, { validators: [Validators.required], updateOn: 'blur' }),
+    telephoneNumber: new FormControl(),
+    identityNumber: new FormControl(null),
   })
   
   ngOnInit() {

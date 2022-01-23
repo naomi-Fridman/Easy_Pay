@@ -4,10 +4,9 @@ import { Loan } from './Loan';
 export class DTO_userParms {
     firstName?: string
     lastName?: string
-    identityNumber?: number
-    tellephoneNumber1?: number
-    tellephoneNumber2?: number
+    identityNumber?: string
+    cellephoneNumber?: string
+    tellephoneNumber?: string
     address?: string
-    city?: string
     email?: EmailValidator
 }

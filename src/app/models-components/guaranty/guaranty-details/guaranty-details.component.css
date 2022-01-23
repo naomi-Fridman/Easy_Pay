@@ -30,21 +30,19 @@ div.card{
     background-image: linear-gradient(to left,rgb(246 201 98 / 61%),rgb(255 223 79 / 76%)) !important;
     height: 51px;
 }
-
 div.card.card-user{
   margin-right: 10%;
-
 }
 .formRow{
   width: 95%;
 }
-
-
 .required::before{
   content:" *";
   color: #db4848;
 }
-
+.pull-right{
+  float: right;
+}
 
 
 

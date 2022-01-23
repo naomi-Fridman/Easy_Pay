@@ -11,11 +11,11 @@ export class CurrancyService {
   
   constructor(private _http: HttpClient) { }
   getAllTypes():Observable<Currency[]>{
-    return this._http.get<Currency[]>("/api/Currencyt");
+    return this._http.get<Currency[]>("/api/CurrencyType");
   }
 
   getcurrancyTypeByCurrancyId(currancyId:number):Observable<Currency>{
-    return this._http.get<Currency>("/api/Currencyt/"+currancyId);
+    return this._http.get<Currency>("/api/CurrencyType/"+currancyId);
   }
   getExchangeRate():Observable<API_Obj>{
     return this._http.get<API_Obj>("/api/CurrencyType");

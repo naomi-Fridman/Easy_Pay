@@ -4,4 +4,5 @@ import { Deposit } from './Deposit';
 export class Depositor{
     user:User;
     deposite:Deposit;
+    currancyType: string;
   }

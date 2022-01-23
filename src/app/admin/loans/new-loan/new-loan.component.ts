@@ -60,8 +60,8 @@ export class NewLoanComponent implements OnInit {
         this.isExistUser = true;
         this.loanerDetailesUserForm.controls["firstName"].setValue(user.firstName);
         this.loanerDetailesUserForm.controls["lastName"].setValue(user.lastName);
-        this.loanerDetailesUserForm.controls["telephoneNumber"].setValue(user.telephoneNumber);
         this.loanerDetailesUserForm.controls["cellphoneNumber"].setValue(user.cellphoneNumber);
+        this.loanerDetailesUserForm.controls["telephoneNumber"].setValue(user.telephoneNumber);
         this.loanerDetailesUserForm.controls["email"].setValue(user.email);
         this.loanerDetailesUserForm.controls["address"].setValue(user.address);
         this.loanerDetailesUserForm.controls["comments"].setValue(user.comments);

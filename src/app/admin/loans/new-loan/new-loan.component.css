@@ -215,3 +215,6 @@ input::-webkit-inner-spin-button {
 .form-control{
   font-size: 14px;
 }
+.pull-right{
+  float: right;
+}
