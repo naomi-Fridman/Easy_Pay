@@ -29,7 +29,7 @@
 </div>
 
 <div class="l-container">
-    <ul style="padding-right: 0px" *ngFor="let user of usersList">
+    <ul style="padding-right: 0px" *ngFor="let user of usersList.slice().reverse()">
         <li class="list" data-name="JoeBrown">
             <div class="list__profile">
                 <img class="pull-left img-circle nav-user-photo" width="90"

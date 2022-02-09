@@ -11,6 +11,7 @@ import { DailyActivityComponent } from './daily-activity/daily-activity.componen
 import { NewLoanComponent } from './loans/new-loan/new-loan.component';
 import { NewDepositeComponent } from './deposites/new-deposite/new-deposite.component';
 import { NewPaymentComponent } from './payments/new-payment/new-payment.component';
+import { EditLoanDetailsComponent } from "./loans/edit-loan-details/edit-loan-details.component";
 
 export const AdminRoutes: Routes = [
   // {path:'',component:DailyActivityComponent},
@@ -21,8 +22,10 @@ export const AdminRoutes: Routes = [
   { path: "loans", component: LoansComponent },
   { path: "users", component: UsersComponent },
   { path: "editUserDetails/:userId", component: EditUserDetailsComponent },
+  { path: "editLoanDetails/:loanId", component: EditLoanDetailsComponent },
   { path: "loanerDetails/:loaner", component: LoanerDetailesComponent },
   { path: "editDetails/:depositorId", component: EditDetailsComponent },
   { path: "payments", component: PaymentsComponent },
-  { path: "**", component: PageNotFoundComponent }
+  { path: "**", component: PageNotFoundComponent },
+
 ];

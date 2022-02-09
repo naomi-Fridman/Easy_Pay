@@ -99,7 +99,7 @@
         </div>
     </div>
     <div class="col-9">
-        <ul style="padding-right: 0px" *ngFor="let depositor of depositorToDisplay">
+        <ul style="padding-right: 0px" *ngFor="let depositor of depositorToDisplay.slice().reverse()">
             <li class="list" data-name="JoeBrown">
                 <div class="list__profile">
                     <img class="pull-left img-circle nav-user-photo" width="90"

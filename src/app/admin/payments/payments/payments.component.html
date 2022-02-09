@@ -83,7 +83,7 @@
     </div>
     <div class="col-9">
         <div class="l-container">
-            <ul style="padding-right: 0px" *ngFor="let payment of paymentListToDisplay">
+            <ul style="padding-right: 0px" *ngFor="let payment of paymentListToDisplay.slice().reverse()">
                 <li class="list" data-name="JoeBrown">
                     <div class="list__profile">
                         <img class="pull-left img-circle nav-user-photo" width="90"
@@ -91,8 +91,8 @@
                         <div class="list__label">
                             <div class="list__label--header"> {{payment.user.firstName}} {{payment.user.lastName}}
                             </div>
-                            <div class="list__label--value"> סכום - {{payment.payment.collectionSum}} </div>
-                            <div class="list__label--value"> תאריך - {{payment.payment.paymentDate | date:"dd/MM/yyyy"
+                            <div class="list__label--value"> סכום - {{payment.payment.sum}} </div>
+                            <div class="list__label--value"> תאריך - {{payment.payment.date | date:"dd/MM/yyyy"
                                 }} </div>
                         </div>
                         <div>
@@ -114,15 +114,15 @@
             border: none;" class="modal-title" (click)="closePopup()">x</button>
             </div>
             <div style="padding-top: 17px; padding-right: 30px; padding-bottom: 0px;" class="modal-body">
-                <p style="float: right; margin-top: 0; margin-bottom: 1rem;"> האם אתה בטוח שברצונך למחוק את
-                    {{singleDeposite.firstName}} {{singleDeposite.lastName}} לצמיתות?</p>
+                <p style="float: right; margin-top: 0; margin-bottom: 1rem;"> האם אתה בטוח שברצונך למחוק תשלום זה
+                    לצמיתות?</p>
             </div>
             <div style="border-top: none;" class="modal-footer">
                 <button style="background-color: #f1d57e; border-color: #e7d35d ;width: 87px; margin-right: 18px"
                     type="button" class="searchBtn" (click)="closePopup()">
                     ביטול
                 </button>
-                <button style="width: 87px; margin-right: 18px;" type="button" class="searchBtn" (click)="deleteUser()">
+                <button style="width: 87px; margin-right: 18px;" type="button" class="searchBtn" (click)="deletePayment()">
                     אישור
                 </button>
             </div>

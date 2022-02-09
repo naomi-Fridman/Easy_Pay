@@ -1,0 +1,97 @@
+<p>edit-loan-details works!</p>
+<div class="card card-user">
+    <div class="title">
+        <label  class="card-title pull-right mainTitle">פרטי הלוואה   {{this.userDetailesForm.controls["firstName"].value}} {{this.userDetailesForm.controls["lastName"].value}}</label>
+    </div>
+    <div>
+        <label style="font-size: 15px; color: black;margin: 7px;" class="comment">שדות המסומנים בכוכבית (*) הם
+            שדות
+            חובה
+        </label>
+    </div>
+    <div class="subTitleDiv"></div>
+    <div class="card-body">
+        <form [formGroup]="userDetailesForm" style="direction: rtl;">
+            <div class="row formRow row2">
+                <div class="col-md-3 pr-1">
+                    <div class="form-group">
+                        <label for="identityNumber" class="fileLabel required">ת"ז/דרכון</label>
+                        <input formControlName="identityNumber" id="identityNumber" type="text" class="form-control" required>
+                        <div *ngIf="(userDetailesFormControl.identityNumber.invalid && (userDetailesFormControl.identityNumber.dirty || userDetailesFormControl.identityNumber.touched || formSubmitAttempt)) && userDetailesFormControl.identityNumber.errors.required  "
+                            class="validate">
+                            <div>זהו שדה חובה</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 pr-1">
+                    <div class="form-group">
+                        <label for="firstName" class="  fileLabel required">שם פרטי</label>
+                        <input formControlName="firstName" id="firstName" type="text" class="form-control" required>
+                        <div *ngIf="(userDetailesFormControl.firstName.invalid && (userDetailesFormControl.firstName.dirty || userDetailesFormControl.firstName.touched || formSubmitAttempt)) && userDetailesFormControl.firstName.errors?.required "
+                            class="validate">
+                            <div>זהו שדה חובה</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 pr-1">
+                    <div class="form-group">
+                        <label for="lastName" class="  fileLabel required">שם משפחה</label>
+                        <input formControlName="lastName" id="lastName" type="text" class="form-control" required>
+                        <div class="validate"
+                            *ngIf="(userDetailesFormControl.lastName.invalid && (userDetailesFormControl.lastName.dirty || userDetailesFormControl.lastName.touched || formSubmitAttempt)) && userDetailesFormControl.lastName.errors?.required ">
+                            <div>זהו שדה חובה</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 pr-1">
+                    <div class="form-group">
+                        <label for="lastName" class="  fileLabel ">דואר אלקטרוני</label>
+                        <input formControlName="email" id="email" type="email" class="form-control">
+                        <div class="validate"
+                            *ngIf="(userDetailesFormControl.email.invalid && (userDetailesFormControl.email.dirty || userDetailesFormControl.email.touched || formSubmitAttempt)) && userDetailesFormControl.email.errors?.email ">
+                            <div> כתובת דואר אלקטרוני לא תקינה</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row formRow">
+                <div class="col-md-3 pr-1">
+                    <div class="form-group">
+                        <label for="address" class="fileLabel ">כתובת</label>
+                        <input formControlName="address" id="address" type="text" class="form-control" required>
+                    </div>
+                </div>
+                <div class="col-md-3 pr-1">
+                    <div class="form-group">
+                        <label for="cellphoneNumber" class="fileLabel">טלפון נייד</label>
+                        <input formControlName="cellphoneNumber" id="cellphoneNumber" type="text"
+                            class="form-control">
+                    </div>
+                    <div class="validate"
+                            *ngIf="(userDetailesFormControl.cellphoneNumber.invalid && (userDetailesFormControl.cellphoneNumber.dirty || userDetailesFormControl.cellphoneNumber.touched || formSubmitAttempt)) && userDetailesFormControl.cellphoneNumber.errors?.required ">
+                            <div> זהו שדה חובה</div>
+                    </div>
+                </div>
+                <div class="col-md-3 pr-1">
+                    <div class="form-group">
+                        <label for="telephoneNumber" class="  fileLabel required">טלפון בית</label>
+                        <input formControlName="telephoneNumber" id="telephoneNumber" type="text"
+                            class="form-control" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row formRow">
+                <div class="col-md-12 pr-1">
+                    <div class="form-group">
+                        <label for="comments" class="fileLabel">הערות</label>
+                        <textarea class="form-control textarea" formControlName="comments" id="comments" type="text"
+                            class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row formRow">
+        <button [disabled]="!disableSave()" (click)="save()" class="saveBtn">שמור</button>
+    </div>
+</div>

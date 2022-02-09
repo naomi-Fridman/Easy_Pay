@@ -64,7 +64,7 @@ export class LoansComponent implements OnInit {
     }
   }
   editDetails(loaner: Loaner) {
-    this.router.navigate(['/loanerDetails', JSON.stringify(loaner.loaner.id)]);
+    this.router.navigate(['/editLoanDetails', JSON.stringify(loaner.loaner.id)]);
   }
   showDetails(_loaner: Loaner) {
     this.loaner = _loaner;

@@ -11,7 +11,6 @@ import { element } from 'protractor';
 })
 export class UsersService {
 
-
   constructor(private _http: HttpClient) { }
   getUserById(userId: number): Observable<User> {
     return this._http.get<User>("/api/User/" + userId);
@@ -22,18 +21,12 @@ export class UsersService {
   updateUser(updateduser: User): Observable<User> {
     return this._http.put<User>("/api/User/", updateduser);
   }
-  // getAllUsers():Observable< User[]>{
-  //   return this._http.get<User[]>("/api/User");
-  //   }
+ 
   getUserByIdentityNumber(identityNumber:number): Observable<User> {
     return this._http.get<User>("/api/User/getUserByIdentityNumber/" + identityNumber);
   }
   getAllUsers(dtoUserParms: DTO_userParms): Observable<User[]> {
     var temp;
-    //const dtoUserUserParmsListString=new Array(dtoUser.firstName,dtoUser.lastName,dtoUser.address,dtoUser.city) 
-    //const dtoUserUserParmsListNumber:Number[]=new Array(dtoUser.identityNumber,dtoUser.tellephoneNumber1,dtoUser.tellephoneNumber2) 
-    //dtoUserUserParmsListString.forEach(element=>{
- 
     if (dtoUserParms.firstName == "")
       dtoUserParms.firstName = null;
     if (dtoUserParms.lastName == "")

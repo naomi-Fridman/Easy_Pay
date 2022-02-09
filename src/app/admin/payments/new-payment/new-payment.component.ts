@@ -25,11 +25,11 @@ export class NewPaymentComponent implements OnInit {
   formSubmitAttempt: boolean = false;
   todaysDate = new Date();
   closeResult: string;
-  modalMessage="";
-  displayStyle="none"
+  modalMessage = "";
+  displayStyle = "none"
 
   constructor(private userService: UsersService, private paymentService: PaymentsService, private loanService: LoansService, private route: Router, private messageService: MessageService) { }
- 
+
 
   err: boolean = false;
   save() {
@@ -38,36 +38,53 @@ export class NewPaymentComponent implements OnInit {
       this.userService.getUserByIdentityNumber(this.PaymentDetailesUserForm.controls["identityNumber"].value).subscribe(user => {
         this.loanService.checkIfUserHasLoan(user.id).subscribe(loan => {
           if (loan) {
-            if (loan.monthlyPaymentSum != this.payment.sum) {
-              this.openPopup("the sum is not exact")
+            if (loan.monthlyPaymentSum != this.PaymentDetailesForm.value.sum) {
+              this.openPopup("הסכום אינו מדויק")
             }
+
             else {
-              this.payment = this.PaymentDetailesForm.value;
-              this.payment.userId = user.id;
-              this.payment.loanId = loan.id;
-              this.payment.numOfPayments = loan.paymentsIndex + 1;
-              this.paymentService.postPayment(this.payment).subscribe(data => {
-              })
+              if (loan.currencyId != this.PaymentDetailesForm.value.currencyId) {
+                this.openPopup("ערך מטבע שגוי")
+              }
+              else {
+                this.payment.date=this.payment.inputDate;
+                this.payment = this.PaymentDetailesForm.value;
+                this.payment.userId = user.id;
+                this.payment.loanId = loan.id;
+                this.payment.numOfPayments = loan.paymentsIndex + 1;
+                this.paymentService.postPayment(this.payment).subscribe(data => {
+                  if (data) {
+                    this.openPopup("התשלום נשמר בהצלחה")
+                  }
+                  else {
+                    this.openPopup("הפעולה נכשלה אנא נסה שנית")
+                  }
+                })
+                err => {
+                  this.openPopup("הפעולה נכשלה אנא נסה שנית")
+                }
+              }
+
             }
           }
           else {
-            this.openPopup("the user doesnt have a loan")
+            this.openPopup("סליחה! למשתמש זה אין הלוואה")
           }
         })
       })
       err => {
-        this.openPopup("the user does not exesit")
+        this.openPopup("משתמש זה אינו קיים במערכת")
       }
     }
-    else{
+    else {
       this.openPopup("יש שגיאה בהזנת הנתונים")
     }
 
   }
   openPopup(msg) {
-    this.modalMessage=msg;
+    this.modalMessage = msg;
     this.displayStyle = "block";
-    
+
   }
   closePopup() {
     this.displayStyle = "none";
@@ -87,7 +104,7 @@ export class NewPaymentComponent implements OnInit {
   PaymentDetailesForm: FormGroup = new FormGroup({
     id: new FormControl(0),
     userId: new FormControl(),
-    date: new FormControl(""),
+    date: new FormControl("2022-02-07"),
     currencyId: new FormControl(3, { validators: [Validators.required], updateOn: 'blur' }),
     sum: new FormControl(null, { validators: [Validators.required], updateOn: 'blur' }),
     comments: new FormControl(""),
