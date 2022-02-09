@@ -5,8 +5,6 @@
     box-shadow: 0 1px 6px rgb(0 0 0 / 16%);
 }
 .header-menu{
-    background-color: #ffffffc9;
-
     float: right;
     width: 100%;
     display: flex;
@@ -26,19 +24,17 @@
 }
 .nav>li>a {
     color: #2f2f94;
-    
 }
 .mainCard{
     background-color: transparent !important;
     border: none !important;
     position: absolute;
-    top: 0.5rem;
+    top: 7px;
     left: 0px;
-    
 }
 .actionBtn{
     width: 105px;
-    height: 36px;
+    height: 32px;
     border: none;
     border-radius: 5px;
     background-color: #5f5f9a;
@@ -50,35 +46,26 @@
     background-color: #4e4e91a8;
 }
 .nav>li>a:focus {
-    /* height: 4em; */
     background-color: #5f5f9ad4 !important;
     color: white;
-    height: 4.7rem;
-    /* top: -9px; */
-    /* padding-top: 15px; */
 }
 .nav>li>a:hover{
     background-color: #5f5f9a8a;
     color: white;
-    height: 4.7rem;
 }
 a.nav-link.active {
     background-color: #5f5f9ad4;
     color: white !important;
-    height: 4.7rem;
 }
 .nav-link{
-    padding-top: 1rem;
+    padding-top: 0.7rem;
     padding-bottom: 1rem;
-    padding-right: 2rem;
-    padding-left: 2rem;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
 } 
 .nav{
     padding-right: 0px;
 }
-::-webkit-scrollbar {
-    width: 0px;
-  } 
-  button{
+button{
       cursor: pointer;
-  }
+}

@@ -1,14 +1,15 @@
 export class User{
-    userName :string;
     id :number;
-    password :string;
     firstName:string;
     lastName :string;
-    email :string;
     address:string;
-    city :string;
-    telephoneNumber1 :number;
-    telephoneNumber2 :number;
+    cellphoneNumber :string;
+    telephoneNumber :string;
     comments :string  
-    identityNumber: number
+    identityNumber: string
+    email :string;
+    loanId :number
+    depositId :number
 }  
+
+

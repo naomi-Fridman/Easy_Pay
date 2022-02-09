@@ -12,65 +12,53 @@ import { MessageService } from 'primeng/api';
 })
 export class EditUserDetailsComponent implements OnInit {
   id: number;
-  user1: User;
-  _user: User;
-
-  get userDetailesFormControl() { return this.userDetailesForm.controls; }
-
-  @Input()
-  set user(value: User) {
-    this._user = value;
-    this.userDetailesForm.controls["id"].setValue(this._user.id);
-    this.userDetailesForm.controls["password"].setValue(this._user.password);
-    this.userDetailesForm.controls["userName"].setValue(this._user.userName);
-    this.userDetailesForm.controls["identityNumber"].setValue(this._user.identityNumber);
-    this.userDetailesForm.controls["firstName"].setValue(this._user.firstName);
-    this.userDetailesForm.controls["lastName"].setValue(this._user.lastName);
-    this.userDetailesForm.controls["telephoneNumber1"].setValue(this._user.telephoneNumber1);
-    this.userDetailesForm.controls["telephoneNumber2"].setValue(this._user.telephoneNumber2);
-    this.userDetailesForm.controls["email"].setValue(this._user.email);
-    this.userDetailesForm.controls["address"].setValue(this._user.address);
-    this.userDetailesForm.controls["city"].setValue(this._user.city);
-    this.userDetailesForm.controls["comments"].setValue(this._user.comments);
-  }
+  updateUser: User = new User();
   userDetailesForm: FormGroup = new FormGroup({
     password: new FormControl(""),
     id: new FormControl(""),
     userName: new FormControl(""),
     firstName: new FormControl("", { validators: [Validators.required], updateOn: 'blur' }),
     lastName: new FormControl("", { validators: [Validators.required], updateOn: 'blur' }),
-    identityNumber: new FormControl(null, { validators: [Validators.required], updateOn: 'blur' }),
+    identityNumber: new FormControl("", { validators: [Validators.required], updateOn: 'blur' }),
     address: new FormControl(""),
-    city: new FormControl(""),
-    telephoneNumber1: new FormControl(""),
-    telephoneNumber2: new FormControl("", { validators: [Validators.required], updateOn: 'blur' }),
+    cellphoneNumber: new FormControl("", { validators: [Validators.required], updateOn: 'blur' }),
+    telephoneNumber: new FormControl(""),
     email: new FormControl("", { validators: [Validators.email], updateOn: 'blur' }),
     comments: new FormControl("")
   });
-  updateUser: User;
+
+  get userDetailesFormControl() { return this.userDetailesForm.controls; }
+
+  @Input() user = new User();
 
   save() {
     this.updateUser = this.userDetailesForm.value;
-    if (this.userDetailesFormControl.valid && this.userDetailesFormControl.valid) {
-      alert("valid");
-      this.userService.updateUser(this.updateUser).subscribe(data => {
+      this.userService.updateUser(this.userDetailesForm.value).subscribe(data => {
       })
-    }
-    else {
-      alert("not valid");
-    }
   }
-  
-  constructor(private _acr: ActivatedRoute, private userService: UsersService, private messageService: MessageService) {
+  disableSave(){
+    if(this.userDetailesForm.status=='INVALID'  )return false;
+    return true;
+  }
+  constructor(private _acr: ActivatedRoute, private userService: UsersService, private messageService: MessageService) { }
+
+  ngOnInit() {
     this._acr.paramMap.subscribe(params => {
       this.id = JSON.parse(params.get("userId"));
       this.userService.getUserById(this.id).subscribe(data => {
-        this.user = data;
+        this.user = data
+        this.userDetailesForm.controls["id"].setValue(this.user.id);
+        this.userDetailesForm.controls["identityNumber"].setValue(this.user.identityNumber);
+        this.userDetailesForm.controls["firstName"].setValue(this.user.firstName);
+        this.userDetailesForm.controls["lastName"].setValue(this.user.lastName);
+        this.userDetailesForm.controls["cellphoneNumber"].setValue(this.user.cellphoneNumber);
+        this.userDetailesForm.controls["telephoneNumber"].setValue(this.user.telephoneNumber);
+        this.userDetailesForm.controls["email"].setValue(this.user.email);
+        this.userDetailesForm.controls["address"].setValue(this.user.address);
+        this.userDetailesForm.controls["comments"].setValue(this.user.comments);
       }), err => {
         this.user = null;
       }
     })
-  }
-  ngOnInit() {
   }
 }

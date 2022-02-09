@@ -19,72 +19,77 @@ import bootstrap from 'bootstrap'
   styleUrls: ['./new-payment.component.css'],
   providers: [MessageService]
 })
-export class NewPaymentComponent implements OnInit, AfterViewInit {
+export class NewPaymentComponent implements OnInit {
   payment: Payment = new Payment();
   identity: boolean = false;
   formSubmitAttempt: boolean = false;
   todaysDate = new Date();
   closeResult: string;
+  modalMessage = "";
+  displayStyle = "none"
 
   constructor(private userService: UsersService, private paymentService: PaymentsService, private loanService: LoansService, private route: Router, private messageService: MessageService) { }
-  @ViewChild('myModal', { static: false }) myModal: ElementRef;
-  // ngAfterViewInit(): void {
-  //   this.myModal.nativeElement.click();;
-  // }
-  ngAfterViewInit() {
-    this.myModal.nativeElement.click();;
-  }
 
-  // @ViewChild('content', {static : true}) content: any;
 
-  open() {
-
-  }
+  err: boolean = false;
   save() {
     this.formSubmitAttempt = true;
     if (this.PaymentDetailesForm.valid && this.PaymentDetailesUserForm.valid) {
-      alert("valid")
       this.userService.getUserByIdentityNumber(this.PaymentDetailesUserForm.controls["identityNumber"].value).subscribe(user => {
         this.loanService.checkIfUserHasLoan(user.id).subscribe(loan => {
           if (loan) {
-            if (this.PaymentDetailesForm.controls["currencyId"].value == "3")
-              this.PaymentDetailesForm.controls["currencyId"].setValue(JSON.parse(this.PaymentDetailesForm.controls["currencyId"].value))
-            else if (this.PaymentDetailesForm.controls["currencyId"].value == "1")
-              this.PaymentDetailesForm.controls["currencyId"].setValue(JSON.parse(this.PaymentDetailesForm.controls["currencyId"].value))
-            this.payment.userId = user.id;
-            this.payment.typeId = 1;
-            this.payment.inputDate = this.PaymentDetailesForm.controls["inputDate"].value;
-            this.payment.hebrewPaymentDate = this.PaymentDetailesForm.controls["hebrewPaymenteDate"].value;
-            this.payment.currencyId = this.PaymentDetailesForm.controls["currencyId"].value;
-            this.payment.collectionSum = this.PaymentDetailesForm.controls["collectionSum"].value;
-            this.payment.comments = this.PaymentDetailesForm.controls["comments"].value;
-            this.payment.paymentMethodId = 1//1 is cash but we have another option of 2 - chek - so we have to check it
-            if (loan.monthlyPaymentSum > this.payment.collectionSum) {
-              alert("שים לב: סכום התשלום החודשי הוא:" + loan.monthlyPaymentSum + "האם אתה בטוח שאתה רוצה להכיס את הסכום המבוקש?")
-              this.payment.comments += " הוכנס תשלום נמוך מהתשלום החודשי"
+            if (loan.monthlyPaymentSum != this.PaymentDetailesForm.value.sum) {
+              this.openPopup("הסכום אינו מדויק")
             }
-            else if (loan.monthlyPaymentSum < this.payment.collectionSum) {
-              alert("שים לב: סכום התשלום החודשי הוא:" + loan.monthlyPaymentSum + "האם אתה בטוח שאתה רוצה להכיס את הסכום המבוקש?")
-              this.payment.comments += " הוכנס תשלום גבוה מהתשלום החודשי"
-            }
+
             else {
-              this.paymentService.postPayment(this.payment).subscribe(data => {
-                alert("ההלוואה עודכנה סכום היתרה הוא" + data)
-              })
+              if (loan.currencyId != this.PaymentDetailesForm.value.currencyId) {
+                this.openPopup("ערך מטבע שגוי")
+              }
+              else {
+                this.payment.date=this.payment.inputDate;
+                this.payment = this.PaymentDetailesForm.value;
+                this.payment.userId = user.id;
+                this.payment.loanId = loan.id;
+                this.payment.numOfPayments = loan.paymentsIndex + 1;
+                this.paymentService.postPayment(this.payment).subscribe(data => {
+                  if (data) {
+                    this.openPopup("התשלום נשמר בהצלחה")
+                  }
+                  else {
+                    this.openPopup("הפעולה נכשלה אנא נסה שנית")
+                  }
+                })
+                err => {
+                  this.openPopup("הפעולה נכשלה אנא נסה שנית")
+                }
+              }
+
             }
           }
           else {
-            this.identity = true;
+            this.openPopup("סליחה! למשתמש זה אין הלוואה")
           }
         })
       })
       err => {
-        alert("אופס , היתה תקלה וההלוואה לא עודכנה")
+        this.openPopup("משתמש זה אינו קיים במערכת")
       }
     }
-    // else {
-    // }
+    else {
+      this.openPopup("יש שגיאה בהזנת הנתונים")
+    }
+
   }
+  openPopup(msg) {
+    this.modalMessage = msg;
+    this.displayStyle = "block";
+
+  }
+  closePopup() {
+    this.displayStyle = "none";
+  }
+
   ngOnInit() {
 
   }
@@ -98,11 +103,31 @@ export class NewPaymentComponent implements OnInit, AfterViewInit {
   });
   PaymentDetailesForm: FormGroup = new FormGroup({
     id: new FormControl(0),
-    paymentDate: new FormControl(""),
+    userId: new FormControl(),
+    date: new FormControl("2022-02-07"),
     currencyId: new FormControl(3, { validators: [Validators.required], updateOn: 'blur' }),
-    collectionSum: new FormControl(null, { validators: [Validators.required], updateOn: 'blur' }),
+    sum: new FormControl(null, { validators: [Validators.required], updateOn: 'blur' }),
     comments: new FormControl(""),
     hebrewPaymenteDate: new FormControl(""),
-    inputDate: new FormControl("", { validators: [Validators.required], updateOn: 'blur' })
+    inputDate: new FormControl("", { validators: [Validators.required], updateOn: 'blur' }),
+    exchangeRate: new FormControl(0),
+    methodId: new FormControl(1),
+    directDebitId: new FormControl(0),
+    creditCardId: new FormControl(0),
+    loanId: new FormControl(),
+    numOfPayments: new FormControl(),
   });
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

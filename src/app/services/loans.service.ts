@@ -40,8 +40,8 @@ export class LoansService {
   updateLoan(loan:Loan):Observable<void>{
     return this._http.put<void>("/api/Loans",loan)
   }
-  postLoan(newLoan:FormData):Observable<void>{
-    return this._http.post<void>("/api/Loans/uploadShtar",newLoan)
+  postLoan(newLoan:FormData):Observable<DTO_loans>{
+    return this._http.post<DTO_loans>("/api/Loans/postNewLoan",newLoan)
   }
   checkIfUserHasLoan(userId:number):Observable<Loan>{
     return this._http.get<Loan>("/api/Loans/checkIfUserHasLoan/"+userId)

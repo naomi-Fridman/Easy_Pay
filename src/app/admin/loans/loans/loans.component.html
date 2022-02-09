@@ -16,10 +16,10 @@
             <input [(ngModel)]="dtoUsersPrms.address" #addressInput class="form-control-top" placeholder="כתובת" type="text">
         </div>
         <div class="col">
-            <input [(ngModel)]="dtoUsersPrms.telephoneNumber" #telephoneNumberInput class="form-control-top" placeholder="טלפון"
+            <input [(ngModel)]="dtoUsersPrms.cellphoneNumber" #telephoneNumberInput class="form-control-top" placeholder="טלפון"
                 type="text">
         </div>
-        <div class="col*1">
+        <div class="col">
             <button class='searchBtn' type="button" (click)="getAllUsers()">חפש </button>
         </div>
     </div>
@@ -95,7 +95,7 @@
         </div>
     </div>
     <div class="col-9">
-            <ul style="padding-right: 0px" *ngFor="let loan of loanerToDisplay">
+            <ul style="padding-right: 0px" *ngFor="let loan of loanerToDisplay.slice().reverse()">
                 <li class="list" data-name="JoeBrown">
                     <div class="list__profile">
                         <img class="pull-left img-circle nav-user-photo" width="90"
@@ -105,9 +105,10 @@
                             <div class="list__label--value"> - {{loan.loaner.sum}} סכום הלוואה: </div>
                             <div class="list__label--value"> {{loan.loanPaymantsStatus.sumPadeUp}}סכום ששולם: </div>
                             <div class="list__label--value"> {{loan.loanPaymantsStatus.rest}}סכום שנותר: </div>
+                           
                         </div>
                         <div>
-                            <button class='searchBtn' type="button" (click)="edit(loan)">ערוך פרטים </button>
+                            <button class='searchBtn' type="button" (click)="editDetails(loan)">ערוך פרטים </button>
                             <button class='searchBtn' type="button" (click)="openPopup(loan)">מחק הלוואה </button>
                         </div>
                     </div>
@@ -141,30 +142,11 @@
     [responsive]="true">
     <span>
         <app-loaner-detailes [loaner]="loaner"></app-loaner-detailes>
-        <!-- <label  class="p-col-fixed" style="width:100px">שם פרטי</label>
-            {{loaner.user.firstName}}
-            <br/> -->
+     
         <button type="button" pButton (click)="getPaymentsForLoan(loaner.user.id)"
             label="צפה בתשלומים שנכנסו עבור הלוואה זו"></button>
         <button type="button" pButton (click)="getGuarantiesForLoan()" label="ערבים"></button>
-        <!-- <div *ngIf="loaner.payments"></div> -->
-        <!-- <p-virtualScroller *ngIf="loaner.payments" [value]="loaner.payments" scrollHeight="500px" [itemSize]="150">
-            <ng-template pTemplate="item" let-car>
-                Car content
-            </ng-template>
-        </p-virtualScroller> -->
-        <!-- <p-listbox *ngIf="loaner.payments" [options]="loaner.payments"  [(ngModel)]="selectedPayment" [listStyle]="{'max-height':'250px'}">
-            <ng-template let-loan pTemplate="item" >
-                <div  class="ui-helper-clearfix">
-                    <span style="float:right;margin:20px 10px 0 0">
-                        {{loan.collectionSum}} - {{loan.paymentDate}} - {{loan.inputDate}}
-                    </span>
-                </div>
-            </ng-template>
-           <p-footer>
-                selectedPayment: {{selectedPayment||'none'}}
-            </p-footer>
-        </p-listbox>  -->
+     
         <button type="button" (click)="selectedPayment=null" pButton icon="pi pi-times"
             label="Clear Selected Car"></button> -->
         <p-orderList *ngIf="loaner.payments" [value]="loaner.payments">

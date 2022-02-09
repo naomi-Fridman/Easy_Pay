@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AdminComponent } from './admin/admin/admin.component'
 import { DepositesComponent } from './admin/deposites/deposites/deposites.component';
 import { LoansComponent } from './admin/loans/loans/loans.component';
 import { UsersComponent } from './admin/users/users/users.component';
@@ -18,8 +17,8 @@ const routes: Routes = [
   { path: "payments", component: PaymentsComponent },
   { path: "homePage", component: DailyActivityComponent },
   { path: "", component: AppComponent },
-  // {path: "AdminComponent",loadChildren: "./admin/admin.module#AdminModule"},
-  // {path: "register",component: RegisterComponent},
+   {path: "AdminComponent",loadChildren: "./admin/admin.module#AdminModule"},
+   {path: "register",component: RegisterComponent},
   //{ path: "**", component: PageNotFoundComponent }
 ];
 

@@ -41,14 +41,23 @@ export class PaymentsComponent implements OnInit {
   ngAfterViewInit() {
    
   }
+  deletePayment(){
+    let pymntId=this.paymentUser1.payment.id;
+    let paymentIndex = this.paymentListToDisplay.findIndex(p=>p.payment.id=pymntId)
+this.paymentsService.deletePayment(pymntId).subscribe(data=>{
+  this.paymentListToDisplay.splice(paymentIndex,1);
+  this.closePopup();
+})
+  }
 
-
-  openPopup() {
-    // this.displayStyle = "block";
+  openPopup(_paymentUser:PaymentUser) {
+     this.displayStyle = "block";
+     this.paymentUser1 = _paymentUser;
   }
   closePopup() {
     // this.myModal.nativeElement.modal('hide');
     this.displayStyle = "none";
+
   }
   onChange(newValue: string) {
     if (newValue == "from") {
@@ -112,7 +121,7 @@ export class PaymentsComponent implements OnInit {
                 this.paymentsUser.forEach(user => {
                   if (payment.userId == user.id) {
                     this.paymentsLoans.forEach(loan => {
-                      if (loan.userId == user.id && loan.paidUp == false) {
+                      if (payment.loanId==loan.id && loan.paidUp == false) {
                         this.paymentListToDisplay[i] = new PaymentUser();
                         this.paymentListToDisplay[i].payment = payment;
                         this.paymentListToDisplay[i].user = user;
@@ -155,12 +164,12 @@ export class PaymentsComponent implements OnInit {
   filterByDate(date: Date) {
     this.paymentListToDisplay = this.paymentListToDisplayB;
     this.paymentListToDisplay.filter(
-      payment => payment.payment.paymentDate === date);
+      payment => payment.payment.date === date);
   }
   rangeDates(dateA: Date, dateB: Date) {
     this.paymentListToDisplay = this.paymentListToDisplayB;
     this.paymentListToDisplay.filter(
-      payment => payment.payment.paymentDate >= dateA && payment.payment.paymentDate <= dateB);
+      payment => payment.payment.date >= dateA && payment.payment.date <= dateB);
   }
   ngOnInit() {
   }

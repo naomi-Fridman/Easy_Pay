@@ -12,22 +12,6 @@ export class PaymentsService {
 
   constructor(private _http: HttpClient) { }
 
-  // getAllPayments(dtoPayments:DTO_Payments):Observable< Payment[]>{
-  //   const params = new HttpParams()
-  //   .set('collectionSumFrom', JSON.stringify(dtoPayments.collectionSumFrom))
-  //   .set('collectionSumTill', JSON.stringify(dtoPayments.collectionSumTill));
-  //   // params:{
-  //   //   collectionSumFrom:dtoPayments.collectionSumFrom
-  //   //   collectionSumTill:dtoPayments.collectionSumTill
-  //   // }
-
-  //     // params = params.set('collectionSumFrom', JSON.stringify(dtoPayments.collectionSumFrom));
-  //     // params = params.set('collectionSumTill', JSON.stringify(dtoPayments.collectionSumTill));
-  // =
-  //   // /Payments?dtoPayments?=[object%20Object]
-  //    return this._http.get<Payment[]>("/api/Payments/", { params:  params});
-  //   //return this._http.get<Payment[]>("/api/Payments",params: {dtoPayments:dtoPayments});
-  // }
   getAllPayments(dtoPayments: DTO_Payments): Observable<Payment[]> {
     var temp;
     if (dtoPayments.firstName == "")
@@ -48,22 +32,24 @@ export class PaymentsService {
     return this._http.put<Payment>("/api/Payments", updatedPayment);
   }
   getAllPaymentsThatWerentPadeByDate(paymentDay: Date): Observable<DTO_User[]> {
-    //return this._http.get<Payment[]>(`/api/Payments/${paymentDay}`);
-    //return this._http.get<Payment[]>(`/api/Payments/${paymentDay}`);
+
     return this._http.get<DTO_User[]>("/api/Payments/getAllPaymentsThatWerentPadeByDate?paymentDay=" + paymentDay.toISOString());
   }
   getAllIncomingPaymentsToday(dtoPayments: DTO_Payments): Observable<Payment[]> {
     return this._http.post<Payment[]>("/api/Payments", dtoPayments);
   }
   postPayment(newPayment: Payment): Observable<number> {
-    return this._http.post<number>("/api/Payments/newPayment", newPayment);
+    return this._http.post<number>("/api/Payments/newPayment",newPayment);
   }
+  
   getTheLastPayment(): Observable<Payment> {
     return this._http.get<Payment>("/api/Payments");
   }
   getPaymentForLoan(userId: number, typeId): Observable<Payment[]> {
-    //return this._http.get<Payment[]>(`/api/Payments/${userId}/${typeId}`);
     return this._http.get<Payment[]>("/api/Payments/"+{userId}+"/"+{typeId});
+  }
+  deletePayment(paymentId: number):Observable<any>{
+    return this._http.delete(`/api/Payments/${paymentId}`);
   }
 }
 

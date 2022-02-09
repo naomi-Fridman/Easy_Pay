@@ -2,7 +2,7 @@
     <div  class="container-fluid">
         <div class='card dollarRate'>
             <div >
-               שער הדולר:{{currencyValue}}$
+            שער הדולר:{{currencyValue}} &#8362;
             </div>
         </div>
         <div class="topDaily row">
@@ -19,7 +19,7 @@
                                 </div>
                                 <div class="panel-body">
                                     <div class="table-container">
-                                        <table *ngFor="let user of todaysUsersListThatWerentPaid" class="table-users table"
+                                        <table *ngFor="let user of todaysUsersListThatWerentPaid.slice().reverse()" class="table-users table"
                                             style="border: none ; direction: rtl;">
                                             <tbody>
                                                 <tr>
@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="panel-body">
                                     <div class="table-container">
-                                        <table *ngFor="let userPayment of userPaymentList" class="table-users table"
+                                        <table *ngFor="let userPayment of userPaymentList.slice().reverse()" class="table-users table"
                                             style="border: none ; direction: rtl;">
                                             <tbody>
                                                 <tr>
@@ -101,7 +101,7 @@
                                 </div>
                                 <div class="panel-body">
                                     <div class="table-container">
-                                        <table *ngFor="let loaner of loanerList" class="table-users table"
+                                        <table *ngFor="let loaner of loanerList.slice().reverse()" class="table-users table"
                                             style="border: none ; direction: rtl;">
                                             <tbody>
                                                 <tr>

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdminComponent } from './admin/admin.component';
 import { UsersModule } from './users/users.module';
 import { LoansModule } from './loans/loans.module';
 import { DepositesModule } from './deposites/deposites.module';
@@ -20,10 +19,12 @@ import { PaymentsModule } from './payments/payments.module';
 import { AdminRoutes } from './admin.routing';
 import { DailyActivityComponent } from './daily-activity/daily-activity.component';
 import { DialogComponent } from '../models-components/dialog/dialog.component';
+import { SuccessAlertComponent } from '../models-components/success-alert/success-alert.component';
+import { ModelsComponentsModule } from '../models-components/models-components.module';
 
 
 @NgModule({
-  declarations: [AdminComponent, DailyActivityComponent],
+  declarations: [ DailyActivityComponent],
   imports: [
     
     CommonModule,UsersModule,LoansModule,DepositesModule,HttpClientModule,OrderListModule,PaymentsModule,
@@ -44,8 +45,8 @@ import { DialogComponent } from '../models-components/dialog/dialog.component';
     DialogModule,
     MessagesModule,
     MessageModule,
-    RouterModule.forChild(AdminRoutes)
-  ],
-   exports:[AdminComponent]
+    RouterModule.forChild(AdminRoutes),
+    ModelsComponentsModule
+  ]
 })
 export class AdminModule { }

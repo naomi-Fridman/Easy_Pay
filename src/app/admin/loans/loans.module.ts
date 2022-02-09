@@ -22,12 +22,14 @@ import {FileUploadModule} from 'primeng/fileupload';
 // import { AccordionModule } from 'ngx-bootstrap/accordion';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {AccordionModule} from 'primeng/accordion';
+import {MatButtonModule,MatCheckboxModule,MatToolbarModule,MatInputModule,MatProgressSpinnerModule,MatCardModule,MatMenuModule, MatIconModule} from '@angular/material';
+import { EditLoanDetailsComponent } from './edit-loan-details/edit-loan-details.component';
 
 
 // import {VirtualScrollerModule} from 'primeng/virtualscroller';
 
 @NgModule({
-  declarations: [LoansComponent, LoanerDetailesComponent, NewLoanComponent,NewLoanComponent],
+  declarations: [LoansComponent, LoanerDetailesComponent, NewLoanComponent,NewLoanComponent, EditLoanDetailsComponent],
   imports: [
     // NgbModule,
     GuarantyModule,
@@ -48,6 +50,7 @@ import {AccordionModule} from 'primeng/accordion';
     ConfirmDialogModule,
     FileUploadModule,
     CalendarModule,
+    MatIconModule,
     // VirtualScrollerModule,
     RouterModule.forChild([
       {path:"loanerDetails/:loaner",component:LoanerDetailesComponent}

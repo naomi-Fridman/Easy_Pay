@@ -161,8 +161,7 @@
 .modal-dialog {
   right: 0;
   left: 50%;
-  top: 28%;
-  width: 600px;
+  top: 34%;
 }
 .boxes {
   margin: auto;
@@ -210,3 +209,6 @@ input[type="checkbox"]:checked + label:before {
   transform: rotate(45deg);
 }
 
+.modal-content{
+  width: max-content;
+}
