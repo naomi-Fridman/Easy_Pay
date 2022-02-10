@@ -129,17 +129,17 @@
         </div>
     </div>
 </div>
-<div class="modal" id="myModal" tabindex="-1" role="dialog">
+<div class="modal" id="myModal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayEditModal}">
     <div class="modal-dialog " role="document"  >
         <div class="modal-content">
             <div  class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <button type="button" class="close" data-dismiss="modal"  (click)="closeEditModal()">&times;</button>
             </div>
             <div style="padding-top: 17px; padding-right: 30px; padding-bottom: 0px;" class="modal-body">
                 <app-payments-details [payment]="paymentUser1"></app-payments-details>
             </div>
             <div style="border-top: none;" class="modal-footer">
-                <button  type="button" class=" searchBtn modalCancel" data-dismiss="modal"  (click)="closePopup()">
+                <button  type="button" class=" searchBtn modalCancel" data-dismiss="modal"  (click)="closeEditModal()">
                     ביטול
                 </button>
                 <button  type="button" class=" searchBtn modalSaveBtn" data-dismiss="modal" (click)="deleteUser()">
