@@ -35,7 +35,8 @@ export class PaymentsComponent implements OnInit {
   userList: User[]
   selectedSum: string = "sum";
   displayStyle = "none";
-  displayEditModal="none";
+  displayEditModal = "none";
+  modalMessage = "האם אתה בטוח שברצןנך למחוק תשלום זה לצמיתות?"
 
   @ViewChild('myModal', { static: false }) myModal: ElementRef;
 
@@ -46,8 +47,14 @@ export class PaymentsComponent implements OnInit {
     let pymntId = this.paymentUser1.payment.id;
     let paymentIndex = this.paymentListToDisplay.findIndex(p => p.payment.id = pymntId)
     this.paymentsService.deletePayment(pymntId).subscribe(data => {
-      this.paymentListToDisplay.splice(paymentIndex, 1);
-      this.closePopup();
+      if (data == 1) {
+        this.paymentListToDisplay.splice(paymentIndex, 1);
+        this.modalMessage = "התשלום נמחק בהצלחה"
+      }
+      else{
+        this.modalMessage = "הפעולה נכשלה"
+      }
+
     })
   }
 
@@ -57,14 +64,14 @@ export class PaymentsComponent implements OnInit {
   }
   closePopup() {
     this.displayStyle = "none";
-
+    this.modalMessage = "האם אתה בטוח שברצןנך למחוק תשלום זה לצמיתות?"
   }
-  closeEditModal(){
+  closeEditModal() {
     this.displayEditModal = "none";
   }
-  edit(payment:PaymentUser){
+  edit(payment: PaymentUser) {
     this.paymentUser1 = payment;
-    this.displayEditModal="block";
+    this.displayEditModal = "block";
   }
 
   onChange(newValue: string) {
@@ -84,7 +91,7 @@ export class PaymentsComponent implements OnInit {
       this.dtoPayments.collectionSumExact = null;
     }
   }
- 
+
   getAllPayments() {
     this.paymentsService.getAllPayments(this.dtoPayments).subscribe(data => {
       this.allPayments = data;
