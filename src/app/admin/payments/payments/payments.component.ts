@@ -35,30 +35,38 @@ export class PaymentsComponent implements OnInit {
   userList: User[]
   selectedSum: string = "sum";
   displayStyle = "none";
+  displayEditModal="none";
 
   @ViewChild('myModal', { static: false }) myModal: ElementRef;
 
   ngAfterViewInit() {
-   
+
   }
-  deletePayment(){
-    let pymntId=this.paymentUser1.payment.id;
-    let paymentIndex = this.paymentListToDisplay.findIndex(p=>p.payment.id=pymntId)
-this.paymentsService.deletePayment(pymntId).subscribe(data=>{
-  this.paymentListToDisplay.splice(paymentIndex,1);
-  this.closePopup();
-})
+  deletePayment() {
+    let pymntId = this.paymentUser1.payment.id;
+    let paymentIndex = this.paymentListToDisplay.findIndex(p => p.payment.id = pymntId)
+    this.paymentsService.deletePayment(pymntId).subscribe(data => {
+      this.paymentListToDisplay.splice(paymentIndex, 1);
+      this.closePopup();
+    })
   }
 
-  openPopup(_paymentUser:PaymentUser) {
-     this.displayStyle = "block";
-     this.paymentUser1 = _paymentUser;
+  openPopup(_paymentUser: PaymentUser) {
+    this.displayStyle = "block";
+    this.paymentUser1 = _paymentUser;
   }
   closePopup() {
-    // this.myModal.nativeElement.modal('hide');
     this.displayStyle = "none";
 
   }
+  closeEditModal(){
+    this.displayEditModal = "none";
+  }
+  edit(payment:PaymentUser){
+    this.paymentUser1 = payment;
+    this.displayEditModal="block";
+  }
+
   onChange(newValue: string) {
     if (newValue == "from") {
       this.dtoPayments.collectionSumExact = null;
@@ -76,11 +84,7 @@ this.paymentsService.deletePayment(pymntId).subscribe(data=>{
       this.dtoPayments.collectionSumExact = null;
     }
   }
-  showDetails(_paymentUser: PaymentUser) {
-    this.paymentUser1 = _paymentUser;
-    // this.displayStyle = "block";
-    // this.display = true;
-  }
+ 
   getAllPayments() {
     this.paymentsService.getAllPayments(this.dtoPayments).subscribe(data => {
       this.allPayments = data;
@@ -121,7 +125,7 @@ this.paymentsService.deletePayment(pymntId).subscribe(data=>{
                 this.paymentsUser.forEach(user => {
                   if (payment.userId == user.id) {
                     this.paymentsLoans.forEach(loan => {
-                      if (payment.loanId==loan.id && loan.paidUp == false) {
+                      if (payment.loanId == loan.id && loan.paidUp == false) {
                         this.paymentListToDisplay[i] = new PaymentUser();
                         this.paymentListToDisplay[i].payment = payment;
                         this.paymentListToDisplay[i].user = user;
