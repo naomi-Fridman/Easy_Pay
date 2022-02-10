@@ -13,18 +13,14 @@ import { formatDate } from '@angular/common';
 })
 export class PaymentsDetailsComponent implements OnInit {
 
-  constructor(private _acr: ActivatedRoute,private paymentService:PaymentsService) {
+  constructor(private _acr: ActivatedRoute, private paymentService: PaymentsService) {
   }
   private _paymentUser: PaymentUser
-  updatePayment:Payment
-  value:boolean;
+  updatePayment: Payment
+  value: boolean;
   @Input()
-  set payment(value: PaymentUser) {
-    this._paymentUser = value;
-    // if(this._paymentUser.payment.deleted)
-    //   this.value=true;
-    // else this.value=false;
-    
+  set payment(payment: PaymentUser) {
+    this._paymentUser = payment;
     this.paymentDetailesForm.controls["sum"].setValue(this._paymentUser.payment.sum);
     this.paymentDetailesForm.controls["comments"].setValue(this._paymentUser.payment.comments);
     this.paymentDetailesForm.controls["hebrewPaymentDate"].setValue(this._paymentUser.payment.hebrewPaymentDate);
@@ -37,10 +33,9 @@ export class PaymentsDetailsComponent implements OnInit {
     this.paymentDetailesForm.controls["exchangeRate"].setValue(this._paymentUser.payment.exchangeRate);
     this.paymentDetailesForm.controls["directDebitId"].setValue(this._paymentUser.payment.directDebitId);
     this.paymentDetailesForm.controls["creditCardId"].setValue(this._paymentUser.payment.creditCardId);
-    this.paymentDetailesForm.controls["methodId"].setValue(this._paymentUser.payment.methodId);
-    this.paymentDetailesForm.controls["loanSum"].setValue(this._paymentUser.loan.sum);
-   
-//להוסיף נתונים של דיירקט דבט במידה והוא בחר תאפשרות- מחקי את זה בטעות מהפורם
+    //this.paymentDetailesForm.controls["loanSum"].setValue(this._paymentUser.loan.sum);
+
+    //להוסיף נתונים של דיירקט דבט במידה והוא בחר תאפשרות- מחקי את זה בטעות מהפורם
   }
   editDetails() {
     this.updatePayment = this.paymentDetailesForm.value;
@@ -48,27 +43,21 @@ export class PaymentsDetailsComponent implements OnInit {
     })
   }
   paymentDetailesForm: FormGroup = new FormGroup({
-    accountNumber: new FormControl(),
-    deleted: new FormControl(),
-    collectionSum: new FormControl(),
+    sum: new FormControl(),
     comments: new FormControl(),
     hebrewPaymentDate: new FormControl(),
     inputDate: new FormControl(),
-    paymentDate: new FormControl(),
-    currencyId:new FormControl(null),
-    id:new FormControl(null),
-    typeId:new FormControl(null),
-    userId:new FormControl(null),
-    exchangeRate:new FormControl(null),
-    fee:new FormControl(null),
-    feeDescriptionId:new FormControl(null),
-    paymentMethodId:new FormControl(null),
-    bankId:new FormControl(null),
-    branchNumberId:new FormControl(null),
-    directDebitId:new FormControl(null),
-    reference:new FormControl(null),
-    creditCardId:new FormControl(null),
-    loanSum:new FormControl(null),
+    date: new FormControl(),
+    id: new FormControl(null),
+    userId: new FormControl(null),
+    currencyId: new FormControl(null),
+    exchangeRate: new FormControl(null),
+    directDebitId: new FormControl(null),
+    methodId: new FormControl(null),
+    creditCardId: new FormControl(null),
+    //loanSum: new FormControl(null),
+    loanId: new FormControl(null),
+    numOfPayments: new FormControl(null)
   });
   ngOnInit() {
   }
