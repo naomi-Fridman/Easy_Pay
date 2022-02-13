@@ -92,7 +92,7 @@
                             <div class="list__label--header"> {{payment.user.firstName}} {{payment.user.lastName}}
                             </div>
                             <div class="list__label--value"> סכום - {{payment.payment.sum}} </div>
-                            <div class="list__label--value"> תאריך - {{payment.payment.date | date:"dd/MM/yyyy"
+                            <div class="list__label--value"> תאריך - {{payment.payment.inputDate | date:"dd/MM/yyyy"
                                 }} </div>
                         </div>
                         <div>
@@ -121,7 +121,7 @@
                     type="button" class="searchBtn" (click)="closePopup()">
                     ביטול
                 </button>
-                <button style="width: 87px; margin-right: 18px;" type="button" class="searchBtn" (click)="deletePayment()">
+                <button style="width: 87px; margin-right: 18px;" type="button" class="searchBtn" (click)="close()">
                     אישור
                 </button>
             </div>
@@ -141,7 +141,7 @@
                 <button  type="button" class=" searchBtn modalCancel" data-dismiss="modal"  (click)="closeEditModal()">
                     ביטול
                 </button>
-                <button  type="button" class=" searchBtn modalSaveBtn" data-dismiss="modal" (click)="deleteUser()">
+                <button  type="button" class=" searchBtn modalSaveBtn" data-dismiss="modal" (click)="editPayment()">
                     אישור
                 </button>
             </div>

@@ -11,6 +11,7 @@ import { DTO_userParms } from 'src/app/models/DTO_userParms';
 import { LoansService } from 'src/app/services/loans.service';
 import { DTO_loans } from 'src/app/models/DTO_loans';
 import { Loan } from 'src/app/models/Loan';
+import { PaymentsDetailsComponent } from '../payments-details/payments-details.component';
 
 @Component({
   selector: 'app-payments',
@@ -38,7 +39,9 @@ export class PaymentsComponent implements OnInit {
   displayEditModal = "none";
   modalMessage = "האם אתה בטוח שברצןנך למחוק תשלום זה לצמיתות?"
 
-  @ViewChild('myModal', { static: false }) myModal: ElementRef;
+  @ViewChild(PaymentsDetailsComponent, { static: false })
+  paymentDetailsComponent: PaymentsDetailsComponent;
+
 
   ngAfterViewInit() {
 
@@ -51,13 +54,27 @@ export class PaymentsComponent implements OnInit {
         this.paymentListToDisplay.splice(paymentIndex, 1);
         this.modalMessage = "התשלום נמחק בהצלחה"
       }
-      else{
+      else {
         this.modalMessage = "הפעולה נכשלה"
       }
 
     })
   }
-
+  
+   editPayment() {
+      this.paymentDetailsComponent.editDetails().subscribe(res=>{
+      if(res==1){
+        this.modalMessage="התשלום עודכן בהצלחה"
+        this.closeEditModal()
+        this.openPopup(this.paymentUser1);
+      }
+      else{
+        this.modalMessage="העדכון נכשל! נסה שנית!"
+        this.closeEditModal()
+        this.openPopup(this.paymentUser1);
+       }
+    }); 
+  }
   openPopup(_paymentUser: PaymentUser) {
     this.displayStyle = "block";
     this.paymentUser1 = _paymentUser;
@@ -73,7 +90,14 @@ export class PaymentsComponent implements OnInit {
     this.paymentUser1 = payment;
     this.displayEditModal = "block";
   }
-
+  close(){
+    if (this.modalMessage=="האם אתה בטוח שברצונך למחוק תשלום זה לצמיתות?") {
+      this.deletePayment();
+    }
+    else{
+      this.closePopup();
+    }
+  }
   onChange(newValue: string) {
     if (newValue == "from") {
       this.dtoPayments.collectionSumExact = null;
