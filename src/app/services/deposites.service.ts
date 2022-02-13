@@ -22,7 +22,6 @@ export class DepositesService {
     return this._http.get<Deposit[]>("/api/Deposit");
   }
   updateDepositor(updatedDepositor: Deposit): Observable<Deposit> {
-
     return this._http.put<Deposit>("/api/Deposit", updatedDepositor);
   }
   getcurrancyTypeByCurrancyId(currancyId: number): Observable<Currency> {

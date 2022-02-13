@@ -28,8 +28,8 @@ export class PaymentsService {
     dtoPayments.dateFrom = temp
     return this._http.post<Payment[]>("/api/Payments", dtoPayments);
   }
-  updatePayment(updatedPayment: Payment): Observable<Payment> {
-    return this._http.put<Payment>("/api/Payments", updatedPayment);
+  updatePayment(updatedPayment: Payment): Observable<number> {
+    return this._http.put<number>("/api/Payments", updatedPayment);
   }
   getAllPaymentsThatWerentPadeByDate(paymentDay: Date): Observable<DTO_User[]> {
 

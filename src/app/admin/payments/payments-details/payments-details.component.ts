@@ -1,10 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { PaymentUser } from 'src/app/models/PaymentUser';
 import { ActivatedRoute } from '@angular/router';
 import { Payment } from 'src/app/models/Payment';
 import { PaymentsService } from '../../../services/payments.service';
 import { formatDate } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-payments-details',
@@ -15,6 +16,7 @@ export class PaymentsDetailsComponent implements OnInit {
 
   constructor(private _acr: ActivatedRoute, private paymentService: PaymentsService) {
   }
+  paymentUserEdit: EventEmitter<PaymentUser> = new EventEmitter()
   private _paymentUser: PaymentUser
   updatePayment: Payment
   value: boolean;
@@ -33,15 +35,28 @@ export class PaymentsDetailsComponent implements OnInit {
     this.paymentDetailesForm.controls["exchangeRate"].setValue(this._paymentUser.payment.exchangeRate);
     this.paymentDetailesForm.controls["directDebitId"].setValue(this._paymentUser.payment.directDebitId);
     this.paymentDetailesForm.controls["creditCardId"].setValue(this._paymentUser.payment.creditCardId);
-    //this.paymentDetailesForm.controls["loanSum"].setValue(this._paymentUser.loan.sum);
+    this.paymentDetailesForm.controls["loanId"].setValue(this._paymentUser.loan.id);
 
     //להוסיף נתונים של דיירקט דבט במידה והוא בחר תאפשרות- מחקי את זה בטעות מהפורם
   }
-  editDetails() {
+  // async editDetails():Promise<number> {
+  //   this.updatePayment = this.paymentDetailesForm.value;
+  //  await this.paymentService.updatePayment(this.updatePayment).subscribe(data => {
+  //     if (data) {
+  //       return 1;
+  //     }
+  //     return 0;
+
+  //   },err=>{
+  //     return 0;
+  //   });
+  //   return 1;
+  // }
+  editDetails(): Observable<number>{
     this.updatePayment = this.paymentDetailesForm.value;
-    this.paymentService.updatePayment(this.updatePayment).subscribe(data => {
-    })
+    return this.paymentService.updatePayment(this.updatePayment);
   }
+
   paymentDetailesForm: FormGroup = new FormGroup({
     sum: new FormControl(),
     comments: new FormControl(),
