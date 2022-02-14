@@ -51,9 +51,6 @@ export class NewLoanComponent implements OnInit {
   constructor(private userService: UsersService, private loansService: LoansService, private cd: ChangeDetectorRef, private route: Router) { }  //private messageService: MessageService
 
 
-  // saveGuaranty(g: Guaranty) {
-  //   alert(g);
-  // }
   checkUserForLoan(event) {
     this.userService.getUserByIdentityNumber(event.target.value).subscribe(user => {
       if (user) {

@@ -63,8 +63,11 @@ export class LoansComponent implements OnInit {
       this.dto_loans.sumExact = null;
     }
   }
+  deleteLoan(){
+    
+  }
   editDetails(loaner: Loaner) {
-    this.router.navigate(['/editLoanDetails', JSON.stringify(loaner.loaner.id)]);
+    this.router.navigate(['/editLoanDetails',{"loaner":JSON.stringify(loaner) } ]);
   }
   showDetails(_loaner: Loaner) {
     this.loaner = _loaner;
@@ -152,13 +155,15 @@ export class LoansComponent implements OnInit {
                 this.loanerToDisplay[i] = new Loaner()
                 this.loanerToDisplay[i].user = user;
                 this.loanerToDisplay[i].loaner = loan;
+                
               }
             });
             this.paymentList.forEach(p => {
-              if (p.userId == loan.userId && p.methodId == this.typId)
-              this.loanerToDisplay[i].payments = [];
+              if (p.loanId == loan.id ){
+                this.loanerToDisplay[i].payments = [];
               this.loanerToDisplay[i].payments[j] = new Payment();
               this.loanerToDisplay[i].payments[j++] = p;
+              }
             });
 
             if (loan.paidUp == false) {

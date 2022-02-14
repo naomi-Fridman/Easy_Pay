@@ -91,7 +91,7 @@ export class PaymentsComponent implements OnInit {
     this.displayEditModal = "block";
   }
   close(){
-    if (this.modalMessage=="האם אתה בטוח שברצונך למחוק תשלום זה לצמיתות?") {
+    if (this.modalMessage=="האם אתה בטוח שברצןנך למחוק תשלום זה לצמיתות?") {
       this.deletePayment();
     }
     else{

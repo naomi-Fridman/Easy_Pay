@@ -36,45 +36,47 @@ export class NewPaymentComponent implements OnInit {
     this.formSubmitAttempt = true;
     if (this.PaymentDetailesForm.valid && this.PaymentDetailesUserForm.valid) {
       this.userService.getUserByIdentityNumber(this.PaymentDetailesUserForm.controls["identityNumber"].value).subscribe(user => {
-        this.loanService.checkIfUserHasLoan(user.id).subscribe(loan => {
-          if (loan) {
-            if (loan.monthlyPaymentSum != this.PaymentDetailesForm.value.sum) {
-              this.openPopup("הסכום אינו מדויק")
-            }
-
-            else {
-              if (loan.currencyId != this.PaymentDetailesForm.value.currencyId) {
-                this.openPopup("ערך מטבע שגוי")
+        if(user){
+          this.loanService.checkIfUserHasLoan(user.id).subscribe(loan => {
+            if (loan) {
+              if (loan.monthlyPaymentSum != this.PaymentDetailesForm.value.sum) {
+                this.openPopup("הסכום אינו מדויק")
               }
+  
               else {
-                this.payment.date=this.payment.inputDate;
-                this.payment = this.PaymentDetailesForm.value;
-                this.payment.userId = user.id;
-                this.payment.loanId = loan.id;
-                this.payment.numOfPayments = loan.paymentsIndex + 1;
-                this.paymentService.postPayment(this.payment).subscribe(data => {
-                  if (data) {
-                    this.openPopup("התשלום נשמר בהצלחה")
-                  }
-                  else {
+                if (loan.currencyId != this.PaymentDetailesForm.value.currencyId) {
+                  this.openPopup("ערך מטבע שגוי")
+                }
+                else {
+                  this.payment.date=this.payment.inputDate;
+                  this.payment = this.PaymentDetailesForm.value;
+                  this.payment.userId = user.id;
+                  this.payment.loanId = loan.id;
+                  this.payment.numOfPayments = loan.paymentsIndex + 1;
+                  this.paymentService.postPayment(this.payment).subscribe(data => {
+                    if (data) {
+                      this.openPopup("התשלום נשמר בהצלחה")
+                    }
+                    else {
+                      this.openPopup("הפעולה נכשלה אנא נסה שנית")
+                    }
+                  })
+                  err => {
                     this.openPopup("הפעולה נכשלה אנא נסה שנית")
                   }
-                })
-                err => {
-                  this.openPopup("הפעולה נכשלה אנא נסה שנית")
                 }
+  
               }
-
             }
-          }
-          else {
-            this.openPopup("סליחה! למשתמש זה אין הלוואה")
-          }
-        })
+            else {
+              this.openPopup("סליחה! למשתמש זה אין הלוואה")
+            }
+          })
+        }
+        else{
+          this.openPopup("משתמש זה אינו קיים במערכת")
+        }
       })
-      err => {
-        this.openPopup("משתמש זה אינו קיים במערכת")
-      }
     }
     else {
       this.openPopup("יש שגיאה בהזנת הנתונים")

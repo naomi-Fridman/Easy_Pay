@@ -39,19 +39,7 @@ export class PaymentsDetailsComponent implements OnInit {
 
     //להוסיף נתונים של דיירקט דבט במידה והוא בחר תאפשרות- מחקי את זה בטעות מהפורם
   }
-  // async editDetails():Promise<number> {
-  //   this.updatePayment = this.paymentDetailesForm.value;
-  //  await this.paymentService.updatePayment(this.updatePayment).subscribe(data => {
-  //     if (data) {
-  //       return 1;
-  //     }
-  //     return 0;
-
-  //   },err=>{
-  //     return 0;
-  //   });
-  //   return 1;
-  // }
+ 
   editDetails(): Observable<number>{
     this.updatePayment = this.paymentDetailesForm.value;
     return this.paymentService.updatePayment(this.updatePayment);

@@ -22,7 +22,7 @@ export const AdminRoutes: Routes = [
   { path: "loans", component: LoansComponent },
   { path: "users", component: UsersComponent },
   { path: "editUserDetails/:userId", component: EditUserDetailsComponent },
-  { path: "editLoanDetails/:loanId", component: EditLoanDetailsComponent },
+  { path: "editLoanDetails", component: EditLoanDetailsComponent },
   { path: "loanerDetails/:loaner", component: LoanerDetailesComponent },
   { path: "editDetails/:depositorId", component: EditDetailsComponent },
   { path: "payments", component: PaymentsComponent },
