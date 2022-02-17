@@ -1,10 +1,70 @@
 <p>login works!</p>
+
+<section class="vh-100" style="background-color: transparent;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+            <h3 class="mb-5">כניסה</h3>
+
+            <div class="form-outline mb-4">
+              <label class="form-label" for="userName">שם משתמש</label>
+              <input
+                type="text"
+                id="userName"
+                #userName
+                class="form-control form-control-lg"
+                (keyup)="updateValidations('userName',true)"
+                (blur)="updateValidations('userName',userName.value!= '')"
+              />
+              <div class="validate" *ngIf="!validations.userName">
+                <div>זהו שדה חובה</div>
+              </div>
+            </div>
+
+            <div class="form-outline mb-4">
+              <label class="form-label" for="typePasswordX-2">סיסמא</label>
+              <input
+                type="password"
+                id="typePasswordX-2"
+                #pass
+                class="form-control form-control-lg"
+                (keyup)="updateValidations('password',true)"
+                (blur)="updateValidations('password',pass.value!='')"
+              />
+              <div class="validate" *ngIf="!validations.password">
+                <div>זהו שדה חובה</div>
+              </div>
+            </div>
+
+            <div class="buttons">
+              <button
+                class="btn btn-primary btn-lg btn-block"
+                (click)="register()"
+              >
+                משתמש חדש
+              </button>
+              <button
+                class="btn btn-primary btn-lg btn-block"
+                (click)="LogIn(userName.value,pass.value)"
+              >
+                כניסה
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- <div>
     <input type="text" pInputText [(ngModel)]="property"/>
     סיסמא:<input id="password"/>
 <button (click)="LogIn(password,accessName)">></button>
 </div> -->
-<div class="p-field p-grid">
+<!-- <div class="p-field p-grid">
     <label for="userName" class="p-col-fixed" style="width:100px">שם משתמש</label>
     <div class="p-col"><input id="userName" type="text" pInputText> </div>
 </div>
@@ -13,4 +73,4 @@
     <div class="p-col"><input type="password" pPassword /> </div>
 </div>
 <button type="button" pButton (click)="enter()" label="כניסה" class="ui-button-success"></button>
-<button type="button" pButton (click)="register()" label="משתמש חדש" class="ui-button-success"></button>
+<button type="button" pButton (click)="register()" label="משתמש חדש" class="ui-button-success">משתמש חדש</button> -->
