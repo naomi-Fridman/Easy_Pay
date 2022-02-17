@@ -1,4 +1,5 @@
 import { formatDate } from '@angular/common';
+import { error } from '@angular/compiler/src/util';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -15,10 +16,10 @@ export class EditLoanDetailsComponent implements OnInit {
 
   selectedFile: File;
   formSubmitAttempt: boolean = false;
-  fileName: string="" ;
+  fileName: string = "";
   l: Loaner = new Loaner();
 
-  constructor(private _acr: ActivatedRoute, private loansService:LoansService) { }
+  constructor(private _acr: ActivatedRoute, private loansService: LoansService) { }
 
   get loanerDetailesLoanFormControl() { return this.loanerDetailesLoanForm.controls; }
 
@@ -57,13 +58,13 @@ export class EditLoanDetailsComponent implements OnInit {
     }
   }
   err: boolean = false;
-  formErr :boolean=false;
-  displayStyle:string='none';
+  formErr: boolean = false;
+  displayStyle: string = 'none';
 
 
   openPopup() {
     this.displayStyle = "block";
-    
+
   }
   closePopup() {
     this.displayStyle = "none";
@@ -71,20 +72,26 @@ export class EditLoanDetailsComponent implements OnInit {
     this.formErr = false;
   }
 
- 
-  save(){
-    this.formSubmitAttempt = true;
-    if (this.loanerDetailesLoanForm.valid  && !this.formErr) {
 
+  save() {
+    this.formSubmitAttempt = true;
+    if (this.loanerDetailesLoanForm.valid && !this.formErr) {
       this.l.loaner = this.loanerDetailesLoanForm.value;
-      this.l.loaner.shtar=this.fileName;
+      this.l.loaner.shtar = this.fileName;
       this.loansService.updateLoan(this.l.loaner).subscribe(e => {
-        this.displayStyle = "block";
-      });
+        if (e != null) {
+          this.displayStyle = "block";
+        }
+        else{
+          this.displayStyle = "block";
+          this.err = true
+        }
+
+      }, (err => this.err = true));
     }
     else {
       this.formErr = true
-      
+
     }
 
   }

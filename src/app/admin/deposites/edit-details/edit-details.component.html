@@ -1,70 +1,119 @@
-<p>edit-details works!</p>
-<div style="direction: rtl;">
-    <b>{{_depositor.user.firstName}} {{_depositor.user.lastName}}</b><br>
-    <!-- <label class="p-col-fixed" style="width:100px">טלפונים: </label> -->
-        {{_depositor.user.cellphoneNumber}} | {{_depositor.user.telephoneNumber}} <br>
-    <a href="mailto:{{_depositor.user.email}}">לחץ כאן לשליחת מייל </a><br>
-    <a [routerLink]="['/editUserDetails/' ,_depositor.user.id]">פרטי המשתמש מלאים</a>
+<app-success-alert *ngIf="success" (close)="close()" [details]="massege"></app-success-alert>
+<div class="card card-user">
+    <div class="title">
+        <label class="card-title mainTitle"> פרטי הפקדה</label>
+    </div>
+    <div>
+        <label class="comment">שדות המסומנים בכוכבית (*) הם שדות חובה</label>
+    </div>
+    <div class="subTitleDiv"></div>
+    <div class="card-body">
+        <form [formGroup]="DepositorDetailesDepositeForm" style="direction: rtl;">
+            <div class="row formRow">
+                <div class="col-md-3 pr-1">
+                    <div class="form-group">
+                        <label for="sum" class="fileLabel required">סכום להפקדה</label>
+                        <input formControlName="sum" id="sum" type="number" class="form-control" required>
+                        <div class="validate"
+                            *ngIf="(DepositorDepositeFormControl.sum.invalid && (DepositorDepositeFormControl.sum.dirty || DepositorDepositeFormControl.sum.touched || formSubmitAttempt)) && DepositorDepositeFormControl.sum.errors.required ">
+                            זהו שדה חובה
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 pr-1">
+                    <div class="form-group">
+                        <label for="currency" class="fileLabel currency required">מטבע</label>
+                        <select formControlName="currencyId" class="form-control" style="cursor: pointer"  required>
+                            <option value=1> שקל</option>
+                            <option value=3 selected="selected"> דולר</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3 pr-1">
+                    <div class="form-group">
+                        <label for="date" class="  fileLabel required">תאריך הפקדה</label>
+                        <input formControlName="date" id="date" type="date" class="form-control"
+                            required>
+                        <div class="validate"
+                            *ngIf="(DepositorDepositeFormControl.date.invalid && (DepositorDepositeFormControl.date.dirty || DepositorDepositeFormControl.date.touched || formSubmitAttempt)) && DepositorDepositeFormControl.date.errors.required ">
+                            זהו שדה חובה
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 px-1">
+                    <div class="form-group">
+                        <label for="hebrewDate" class="  fileLabel">תאריך הפקדה עברי</label>
+                        <input type="text" formControlName="hebrewDate" class="form-control"
+                            id="hebrewDate">
+                    </div>
+                </div>
+            </div>      
+        
+            <div class="row formRow">
+                <div class="col-md-4 pr-1">
+                    <div class="form-group">
+                        <label for="returnDate" class="  fileLabel required">תאריך משיכת הפקדה</label>
+                        <input formControlName="returnDate" id="returnDate" type="date" class="form-control" required>
+                        <div class="validate"
+                            *ngIf="(DepositorDepositeFormControl.returnDate.invalid && (DepositorDepositeFormControl.returnDate.dirty || DepositorDepositeFormControl.returnDate.touched || formSubmitAttempt)) && DepositorDepositeFormControl.returnDate.errors?.required">
+                            זהו שדה חובה
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 pr-1">
+                    <div class="form-group">
+                        <label for="hebrewReturnDate" class="fileLabel">תאריך משיכת הפקדה עברי</label>
+                        <input formControlName="hebrewReturnDate" id="hebrewReturnDate" type="text"
+                            class="form-control">
+                    </div>
+                </div>
+            </div>
+        </form>
+        <form [formGroup]="DepositorDetailesUserForm">
+            <div class="row formRow">
+                <div class="col-md-12 pr-1">
+                    <div class="form-group">
+                        <label for="comments" class="fileLabel">הערות</label>
+                        <textarea class="form-control textarea" formControlName="comments" id="comments" type="text"
+                            class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="row formRow">
+            <div class="fileLabel"></div>
+            <button [disabled]="!disableSave()" type="button" pButton (click)="save()" class="saveBtn">שמור</button>
+        </div>
+    </div>
 </div>
-<form [formGroup]="depositorDetailesForm">
 
-    <div class="p-field p-grid" style="direction: rtl;">
-        <label for="sum" class="p-col-fixed" style="width:100px" >סכום ההפקדה</label>
-        <div class="p-col">
-            <input formControlName="sum" id="sum" type="text" pInputText>
-        </div>
-    </div>
 
-    <div class="p-field p-grid" style="direction: rtl;">
-        <label for="depositeDate" class="p-col-fixed" style="width:100px" >תאריך הפקדה</label>
-        <div class="p-col">
-            <input formControlName="depositeDate" id="depositeDate" type="text" pInputText>
-        </div>
-    </div>
-    
-    <div class="p-field p-grid" style="direction: rtl;">
-        <label for="hebrewDepositeDate" class="p-col-fixed" style="width:100px" >תאריך הפקדה עברי</label>
-        <div class="p-col">
-            <input formControlName="hebrewDepositeDate" id="hebrewDepositeDate" type="text" pInputText>
-        </div>
-    </div>
 
-    <div class="p-field p-grid" style="direction: rtl;">
-        <label for="returnDate" class="p-col-fixed" style="width:100px" >תאריך החזר</label>
-        <div class="p-col">
-            <input formControlName="returnDate" id="returnDate" type="text" pInputText>
-        </div>
-    </div>
 
-    <div class="p-field p-grid" style="direction: rtl;">
-        <label for="hebrewDepositeReturnDate" class="p-col-fixed" style="width:100px" >תאריך החזר עברי</label>
-        <div class="p-col">
-            <input formControlName="hebrewDepositeReturnDate" id="hebrewDepositeReturnDate" type="text" pInputText>
+<div class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="modal-title" (click)="closePopup()">x</button>
         </div>
-    </div>
-
-    <div class="p-field p-grid" style="direction: rtl;">
-        <label for="paymentsNumber" class="p-col-fixed" style="width:100px" >מספר תשלומים</label>
-        <div class="p-col">
-            <input formControlName="paymentsNumber" id="paymentsNumber" type="text" pInputText>
+        <div class="modal-body">
+          <div *ngIf="formErr ">
+            <p class="pmodal"> שגיאה בפרטי הפקדה</p>
+          </div>
+          
+          <div *ngIf="!err && !formErr">
+            <p class="pmodal"> ההפקדה עודכנה בהצלחה</p>
+          </div>
+          <div *ngIf="err">
+            <p class="pmodal"> הפעולה נכשלה. נסה שנית!</p>
+          </div>
+          
+          
         </div>
-    </div>
-    <div class="p-field p-grid" style="direction: rtl;">
-        <label for="status" class="p-col-fixed" style="width:100px" >מצב ההפקדה</label>
-        <div class="p-col">
-            <p-checkbox [formControl]="depositorDetailesForm.controls['status']" [binary]="true" id="status"></p-checkbox>
+        <div style="border-top: none;" class="modal-footer">
+          <button type="button" class="searchBtn searchBtn1 btn-sm" (click)="closePopup()"> אישור</button>
+        
         </div>
+      </div>
     </div>
-   
-
-    <div class="p-field p-grid" style="direction: rtl;">
-        <label for="comment" class="p-col-fixed" style="width:100px" >הערות</label>
-        <div class="p-col">
-            <input formControlName="comment" id="comment" type="text" pInputText>
-        </div>
-    </div>
-</form>
-
-<!-- <p-dropdown [options]="currencyArr" [(ngModel)]="currencyArr"></p-dropdown> -->
-
-<button style="direction: rtl;" type="button" pButton (click)="save()" label="שמור" class="ui-button-success"></button>
+  </div>

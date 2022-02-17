@@ -44,7 +44,6 @@ export class NewDepositeComponent implements OnInit {
     return true;
   }
   save() {
-    debugger
     this.formSubmitAttempt = true;
       if (this.isExistUser == true) {
         this.userService.updateUser(this.DepositorDetailesUserForm.value).subscribe(data => {
@@ -55,7 +54,6 @@ export class NewDepositeComponent implements OnInit {
             this.DepositorDetailesDepositeForm.controls["currencyId"].setValue(JSON.parse(this.DepositorDetailesDepositeForm.controls["currencyId"].value))
           this.depositeService.postDeposite(this.DepositorDetailesDepositeForm.value).subscribe(e => {
             this.success=true;
-            // this.route.navigate(["/homePage"]);
           });
         })
       }
@@ -68,6 +66,8 @@ export class NewDepositeComponent implements OnInit {
             this.DepositorDetailesDepositeForm.controls["currencyId"].setValue(JSON.parse(this.DepositorDetailesDepositeForm.controls["currencyId"].value))
           this.depositeService.postDeposite(this.DepositorDetailesDepositeForm.value).subscribe(e => {
             this.success=true;
+            // this.route.navigate(["/deposites"]);
+
             // this.route.navigate(["/homePage"]);
           });
         })

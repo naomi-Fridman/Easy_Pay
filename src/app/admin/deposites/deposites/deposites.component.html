@@ -115,7 +115,7 @@
                             date:"dd/MM/yyyy"}} </div>
                     </div>
                     <div>
-                        <button class='searchBtn' type="button" (click)="edit(depositor)">ערוך פרטים </button>
+                        <button class='searchBtn' type="button" (click)="editDetails(depositor)">ערוך פרטים </button>
                         <button class='searchBtn' type="button" (click)="openPopup(depositor)">מחק הפקדה </button>
                     </div>
                 </div>
@@ -148,6 +148,8 @@
         </div>
     </div>
 </div>
+
+<!-- 
 <p-dialog *ngIf='depositor1' header="{{depositor1.user.firstName}}" [(visible)]="display" modal="modal"
     [style]="{width: '350px'}" [responsive]="true">
     <span>
@@ -158,4 +160,4 @@
             </div>
         </p-footer>
     </span>
-</p-dialog>
+</p-dialog> -->

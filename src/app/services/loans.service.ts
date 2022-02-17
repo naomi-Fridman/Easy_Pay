@@ -46,4 +46,8 @@ export class LoansService {
   checkIfUserHasLoan(userId:number):Observable<Loan>{
     return this._http.get<Loan>("/api/Loans/checkIfUserHasLoan/"+userId)
   }
+  deleteLoan(loanId :number):Observable<any>{
+    return this._http.delete(`/api/Loans/${loanId}`);
+  }
+  
 }

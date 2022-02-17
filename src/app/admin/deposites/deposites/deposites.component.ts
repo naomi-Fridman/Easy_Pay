@@ -39,7 +39,7 @@ export class DepositesComponent implements OnInit {
     this.displayStyle = "none";
   }
   editDetails(depositor: Depositor) {
-    this.router.navigate(['/editDetails', JSON.stringify(depositor.deposite.id)]);
+    this.router.navigate(['/editDetails', { "depositor": JSON.stringify(depositor) }]);
   }
   showDetails(depositor: Depositor) {
     this.depositor1 = depositor;

@@ -36,14 +36,18 @@ export class LoansComponent implements OnInit {
   selectedSum: string;
   typId: number;
   displayStyle: string;
-  singleLone: Loan;
-  
-  openPopup(loan:Loan) {
-    this.singleLone=loan;
+  singleLone: Loaner;
+  modalMsg: string = " האם אתה בטוח שברצונך למחוק את הלוואה זו לצמיתות?"
+  delete: boolean = true;
+
+  openPopup(loan: Loaner) {
+    this.singleLone = loan;
     this.displayStyle = "block";
   }
   closePopup() {
     this.displayStyle = "none";
+    this.modalMsg = " האם אתה בטוח שברצונך למחוק את הלוואה זו לצמיתות?"
+    this.delete = true;
   }
 
   onChange(newValue: string) {
@@ -63,11 +67,26 @@ export class LoansComponent implements OnInit {
       this.dto_loans.sumExact = null;
     }
   }
-  deleteLoan(){
-    
+  deleteLoan() {
+    if (this.delete == true) {
+      let loanIndex = this.loanerToDisplay.findIndex(d => d.loaner.id = this.singleLone.loaner.id)
+      this.loanService.deleteLoan(this.singleLone.loaner.id).subscribe(l => {
+        
+        this.loanerToDisplay.splice(loanIndex, 1);
+        this.delete = false;
+        this.modalMsg = "ההלוואה נמחקה בהצלחה"
+        this.openPopup(this.singleLone);
+      },(e=>{
+        this.modalMsg="הפעולה נכשלה. נסה שנית.";
+        this.openPopup(this.singleLone)
+      }))
+    }
+    else {
+      this.closePopup();
+    }
   }
   editDetails(loaner: Loaner) {
-    this.router.navigate(['/editLoanDetails',{"loaner":JSON.stringify(loaner) } ]);
+    this.router.navigate(['/editLoanDetails', { "loaner": JSON.stringify(loaner) }]);
   }
   showDetails(_loaner: Loaner) {
     this.loaner = _loaner;
@@ -155,14 +174,14 @@ export class LoansComponent implements OnInit {
                 this.loanerToDisplay[i] = new Loaner()
                 this.loanerToDisplay[i].user = user;
                 this.loanerToDisplay[i].loaner = loan;
-                
+
               }
             });
             this.paymentList.forEach(p => {
-              if (p.loanId == loan.id ){
+              if (p.loanId == loan.id) {
                 this.loanerToDisplay[i].payments = [];
-              this.loanerToDisplay[i].payments[j] = new Payment();
-              this.loanerToDisplay[i].payments[j++] = p;
+                this.loanerToDisplay[i].payments[j] = new Payment();
+                this.loanerToDisplay[i].payments[j++] = p;
               }
             });
 

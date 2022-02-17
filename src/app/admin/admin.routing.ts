@@ -24,7 +24,7 @@ export const AdminRoutes: Routes = [
   { path: "editUserDetails/:userId", component: EditUserDetailsComponent },
   { path: "editLoanDetails", component: EditLoanDetailsComponent },
   { path: "loanerDetails/:loaner", component: LoanerDetailesComponent },
-  { path: "editDetails/:depositorId", component: EditDetailsComponent },
+  { path: "editDetails", component: EditDetailsComponent },
   { path: "payments", component: PaymentsComponent },
   { path: "**", component: PageNotFoundComponent },
 

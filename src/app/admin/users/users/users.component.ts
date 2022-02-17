@@ -40,7 +40,6 @@ export class UsersComponent implements OnInit {
   deleteUser(id: number) {
     let userIndex = this.usersList.findIndex(u => u.id = id)
     this.userService.deleteUser(id).subscribe(data => {
-      debugger
       this.usersList.splice(userIndex, 1);
       this.displayStyle = "none";
       this.success = true
@@ -65,7 +64,6 @@ export class UsersComponent implements OnInit {
   filterCitySingle(event) {
     let query = event.query;
     this.userService.getAddress(query).subscribe(c => {
-      debugger
       this.filteredCitiesSingle = this.filterCity(query, c);
     });
     // this.userService.autoComplet(event.query).subscribe((data: Array<string>) => {

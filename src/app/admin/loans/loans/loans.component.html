@@ -102,10 +102,10 @@
                             src="../../../assets/img//faces/face-0.jpg" />  
                         <div class="list__label">
                             <div class="list__label--header"> {{loan.user.firstName}} {{loan.user.lastName}}</div>
-                            <div class="list__label--value"> - {{loan.loaner.sum}} סכום הלוואה: </div>
-                            <div class="list__label--value"> {{loan.loanPaymantsStatus.sumPadeUp}}סכום ששולם: </div>
+                            <div class="list__label--value">  {{loan.loaner.sum}} </div>
+                            <!-- <div class="list__label--value"> {{loan.loanPaymantsStatus.sumPadeUp}}סכום ששולם: </div>
                             <div class="list__label--value"> {{loan.loanPaymantsStatus.rest}}סכום שנותר: </div>
-                           
+                            -->
                         </div>
                         <div>
                             <button class='searchBtn' type="button" (click)="editDetails(loan)">ערוך פרטים </button>
@@ -125,7 +125,7 @@
                 border: none;" class="modal-title" (click)="closePopup()">x</button>
             </div>
             <div style="padding-top: 17px; padding-right: 30px; padding-bottom: 0px;" class="modal-body">
-                <p style="float: right; margin-top: 0; margin-bottom: 1rem;"> האם אתה בטוח שברצונך למחוק את הלוואה זו לצמיתות?</p>
+                <p style="float: right; margin-top: 0; margin-bottom: 1rem;">{{modalMsg}}</p>
             </div>
             <div style="border-top: none;" class="modal-footer">
                 <button style="background-color: #f1d57e; border-color: #e7d35d ;width: 87px; margin-right: 18px" type="button" class="searchBtn" (click)="closePopup()">
