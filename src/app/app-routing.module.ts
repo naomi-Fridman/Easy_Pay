@@ -16,9 +16,10 @@ const routes: Routes = [
   { path: "users", component: UsersComponent },
   { path: "payments", component: PaymentsComponent },
   { path: "homePage", component: DailyActivityComponent },
+  {path: "AdminComponent",loadChildren: "./admin/admin.module#AdminModule"},
+  {path: "register",component: RegisterComponent},
+  {path: "login",component: LoginComponent},
   { path: "", component: AppComponent },
-   {path: "AdminComponent",loadChildren: "./admin/admin.module#AdminModule"},
-   {path: "register",component: RegisterComponent},
   //{ path: "**", component: PageNotFoundComponent }
 ];
 

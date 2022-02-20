@@ -1,25 +1,28 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
   display = true;
-
-  newLoan(){
+  get isLogin() {
+    const manager = localStorage.getItem("manager");
+    return manager != null;
+  }
+  newLoan() {
     this.router.navigate(["/newLoan"]);
   }
-  newDeposite(){
+  newDeposite() {
     this.router.navigate(["/newDeposite"]);
   }
-  newPayment(){
+  newPayment() {
     this.router.navigate(["/newPayment"]);
   }
-  constructor(private router: Router) {
-  }
+  constructor(private router: Router) {}
   ngOnInit() {
+    this.router.navigate(["/login"]);
   }
 }

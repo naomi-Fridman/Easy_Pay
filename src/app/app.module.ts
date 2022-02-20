@@ -9,6 +9,7 @@ import { LoginModule } from './login/login.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {TabMenuModule} from 'primeng/tabmenu';
 import {SidebarModule} from 'primeng/sidebar';
+import { FormsModule } from '@angular/forms';
 
 // import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -20,6 +21,8 @@ import {SidebarModule} from 'primeng/sidebar';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+
     AppRoutingModule,
     AdminModule,
     LoginModule,

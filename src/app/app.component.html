@@ -1,4 +1,5 @@
-  <div style="background-color: #f4f4f4;">
+
+ <div *ngIf="isLogin" style="background-color: #f4f4f4;">
     <p-sidebar [style]="{height:'3.5em' , direction:'rtl', paddingTop:'0px',paddingRight:'0px'}" [(visible)]="display" [modal]=false [showCloseIcon]=false position="top"
       [baseZIndex]="10000">
       <ul class="nav ">

@@ -1,64 +1,101 @@
-
 <section class="vh-100" style="background-color: transparent;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
         <div class="card shadow-2-strong" style="border-radius: 1rem;">
           <div class="card-body p-5 text-center">
-
             <h3 class="mb-5">התחברות</h3>
 
             <div class="form-outline mb-4">
-                <label class="form-label" for="userName">שם משתמש</label>
-                <input type="text" id="userName" class="form-control form-control-lg" />
-                
-              </div>
-            
-            <div class="form-outline mb-4">
-                <label class="form-label" for="firstName">שם פרטי</label>
-                <input type="text" id="firstName" class="form-control form-control-lg" />
-                
-              </div>
-
-              <div class="form-outline mb-4">
-                  <label class="form-label" for="lastName">שם משפחה</label>
-                <input type="text" id="lastName" class="form-control form-control-lg" />
-                
-              </div> 
-
-              <div class="form-outline mb-4">
-                  <label class="form-label" for="typePasswordX-2">סיסמא</label>
-                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" />
-                
-              </div>
-
-              <div class="form-outline mb-4"> 
-                  <label class="form-label" for="typeEmailX-2">מייל</label>
-                <input type="email" id="typeEmailX-2" class="form-control form-control-lg" />
-               
-              </div>
-  
-
-            <div class="form-check d-flex justify-content-start mb-4">
-                <label class="form-check-label" for="form1Example3" style="padding-right: 17px;"> שמירת סיסמא? </label>
+              <label class="form-label required" for="userName">שם משתמש</label>
               <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                id="form1Example3"
+                type="text"
+                required
+                id="userName"
+                [(ngModel)]="manager.UserName"
+                class="form-control form-control-lg"
+                (keyup)="updateValidations('userName',true)"
+                (blur)="updateValidations('userName',manager.UserName!=undefined && manager.UserName != '')"
               />
-              
+              <div class="validate" *ngIf="!validations.userName">
+                <div>זהו שדה חובה</div>
+              </div>
             </div>
 
-            <button class="btn btn-primary btn-lg btn-block register" type="submit">התחבר</button>
+            <div class="form-outline mb-4">
+              <label class="form-label" for="firstName">שם פרטי</label>
+              <input
+                type="text"
+                id="firstName"
+                [(ngModel)]="manager.FirstName"
+                class="form-control form-control-lg"
+                (keyup)="updateValidations('firstName',true)"
+                (blur)="updateValidations('firstName',manager.FirstName!=undefined && manager.FirstName != '')"
+              />
+              <div class="validate" *ngIf="!validations.firstName">
+                <div>זהו שדה חובה</div>
+              </div>
+            </div>
 
+            <div class="form-outline mb-4">
+              <label class="form-label" for="lastName">שם משפחה</label>
+              <input
+                type="text"
+                id="lastName"
+                [(ngModel)]="manager.LastName"
+                class="form-control form-control-lg"
+                (keyup)="updateValidations('lastName',true)"
+                (blur)="updateValidations('lastName',manager.LastName!=undefined && manager.LastName != '')"
+              />
+              <div class="validate" *ngIf="!validations.lastName">
+                <div>זהו שדה חובה</div>
+              </div>
+            </div>
+
+            <div class="form-outline mb-4">
+              <label class="form-label" for="typePasswordX-2">סיסמא</label>
+              <input
+                type="password"
+                id="typePasswordX-2"
+                [(ngModel)]="manager.Password"
+                class="form-control form-control-lg"
+                (keyup)="updateValidations('password',true)"
+                (blur)="updateValidations('password',manager.Password!=undefined && manager.Password != '')"
+              />
+              <div class="validate" *ngIf="!validations.password">
+                <div>זהו שדה חובה</div>
+              </div>
+            </div>
+
+            <div class="form-outline mb-4">
+              <label class="form-label" for="typeEmailX-2">מייל</label>
+              <input
+                type="email"
+                id="typeEmailX-2"
+                [(ngModel)]="manager.Email"
+                class="form-control form-control-lg"
+              />
+            </div>
+            <div class="form-outline mb-4">
+              <label class="form-label" for="typeEmailX-2">טלפון</label>
+              <input
+                type="tel"
+                id="telephone"
+                [(ngModel)]="manager.Telephone"
+                class="form-control form-control-lg"
+              />
+            </div>
+
+            <button
+              class="btn btn-primary btn-lg btn-block register"
+              type="submit"
+              (click)="save()"
+            >
+              התחבר
+            </button>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-
-
-
