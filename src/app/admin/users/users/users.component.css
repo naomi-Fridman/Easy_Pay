@@ -141,3 +141,9 @@
     top: 28%;
     width: 600px;
 }
+.edidD{
+    width: 10%;
+    align-items: center;
+    display: flex;
+    padding-left: 10px;
+}

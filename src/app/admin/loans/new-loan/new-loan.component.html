@@ -188,7 +188,11 @@
           <div class="form-group">
             <label for="repaymentFirstDate" class="pull-right fileLabel "> תאריך ראשון לפרעון</label>
             <input formControlName="repaymentFirstDate" id="repaymentFirstDate" type="date" class="form-control"
-              placeholder="תאריך ראשון לפרעון">
+              placeholder="תאריך ראשון לפרעון" required>
+              <div class="validate"
+              *ngIf="(loanerDetailesLoanFormControl.repaymentFirstDate.invalid && ( loanerDetailesLoanFormControl.repaymentFirstDate.dirty ||  loanerDetailesLoanFormControl.repaymentFirstDate.touched || formSubmitAttempt)) &&  loanerDetailesLoanFormControl.repaymentFirstDate.errors.required ">
+              <div> זהו שדה חובה</div>
+            </div>
           </div>
         </div>
 

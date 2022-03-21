@@ -1,7 +1,7 @@
 import { EmailValidator } from '@angular/forms'
 import { Loan } from './Loan';
 
-export class DTO_userParms {
+export class DTO_searchParms {
     firstName?: string
     lastName?: string
     identityNumber?: string
@@ -9,4 +9,6 @@ export class DTO_userParms {
     tellephoneNumber?: string
     address?: string
     email?: EmailValidator
+    sum?:number
+    date?:string
 }

@@ -58,6 +58,8 @@
 .list {
   display: flex;
   background-color: white;
+  margin-right: 150px;
+  margin-left: 150px;
   height: 114px;
   padding: 15px;
   border-radius: 5px;

@@ -19,86 +19,18 @@
                 type="text">
         </div>
         <div class="col">
-            <input [(ngModel)]="dtoUsersPrms.cellphoneNumber" #telephoneNumberInput class="form-control-top"
-                placeholder="טלפון" type="text">
+            <input [(ngModel)]="dtoUsersPrms.sum" #telephoneNumberInput class="form-control-top" placeholder="סכום"
+                type="number">
         </div>
         <div class="col">
-            <button class='searchBtn' type="button" (click)="getAllUsers()">חפש </button>
+            <button class='searchBtn'type type="button" (keyup.enter)="search()" (click)="search()">חפש </button>
         </div>
     </div>
 </div>
 
-<div style="display: flex; margin-top: 3rem;">
-    <div class="col-2" style="margin-right: 5rem;">
-        <div class="filterSide">
-            <article class="card-group-item">
-                <header class="card-header">
-                    <h4 style="text-align: center; margin: 0px 0px 0px;" class="title">סינון לפי סכום </h4>
-                </header>
-                <div class="filter-content">
-                    <div class="card-body">
-                        <div class="row filter_title">
-                            סכום מדויק
-                        </div>
-                        <div class="row filter_input">
-                            <input type="number" class="form-control" id="inputEmail4" placeholder="סכום מדויק">
-                        </div>
-                        <div class="row filter_title">
-                            החל מסכום
-                        </div>
-                        <div class="row filter_input">
-                            <input type="number" class="form-control" id="inputEmail4" placeholder="החל מסכום">
-                        </div>
-                        <div class="row filter_title">
-                            עד סכום
-                        </div>
-                        <div class="row filter_input">
-                            <input type="number" class="form-control" placeholder="עד סכום">
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <article class="card-group-item">
-                <header class="card-header">
-                    <h4 style="text-align: center;  margin: 0px 0px 0px;" class="title">סינון לפי תאריך </h4>
-                </header>
-                <div style="margin: 0px 0px 0px" class="filter-content">
-                    <div class="card-body">
-                        <div class="row filter_title">
-                            תאריך מדויק
-                        </div>
-                        <div class="row filter_input">
-                            <input type="date" class="form-control">
-                        </div>
-                        <div class="row filter_title">
-                            החל מתאריך
-                        </div>
-                        <div class="row filter_input">
-                            <input type="date" class="form-control">
-                        </div>
-                        <div class="row filter_title">
-                            עד לתאריך
-                        </div>
-                        <div class="row filter_input">
-                            <input type="date" class="form-control">
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <article class="card-group-item">
-                <header class="card-header">
-                    <h4 style="text-align: center; margin: 0px 0px 0px;" class="title">הלוואות פעילות </h4>
-                </header>
-                <div class="filter-content text-right">
-                    <div class="boxes">
-                        <input type="checkbox" id="box-1">
-                        <label style="right: 18px;" for="box-1">הצג את ההלוואות הפעילות</label>
-                    </div>
-                </div>
-            </article>
-        </div>
-    </div>
-    <div class="col-9">
+
+<div style=" margin-top: 3rem;">
+    <div class="l-container">
         <ul style="padding-right: 0px" *ngFor="let depositor of depositorToDisplay.slice().reverse()">
             <li class="list" data-name="JoeBrown">
                 <div class="list__profile">

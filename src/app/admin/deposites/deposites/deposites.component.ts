@@ -9,7 +9,7 @@ import { Message } from 'primeng/api/message';
 import { DepositesService } from '../../../services/deposites.service';
 import { Observable } from 'rxjs';
 import { UsersService } from '../../../services/users.service';
-import { DTO_userParms } from 'src/app/models/DTO_userParms';
+import { DTO_searchParms } from 'src/app/models/DTO_searchParms';
 
 @Component({
   selector: 'app-deposites',
@@ -18,11 +18,12 @@ import { DTO_userParms } from 'src/app/models/DTO_userParms';
 })
 export class DepositesComponent implements OnInit {
   depositsList: Deposit[];
+  tmpDepositsList: Depositor[];
   userList: User[];
   flag: boolean;
   depositorToDisplay: Depositor[];
   depositor1: Depositor;
-  dtoUsersPrms: DTO_userParms = new DTO_userParms();
+  dtoUsersPrms: DTO_searchParms = new DTO_searchParms();
   display: boolean = false;
   displayStyle: string;
   singleDeposite: Depositor;
@@ -53,6 +54,22 @@ export class DepositesComponent implements OnInit {
       this.success=true
     })
   }
+  search(){
+    this.depositorToDisplay=this.tmpDepositsList;
+    if(this.dtoUsersPrms.identityNumber!=undefined && this.dtoUsersPrms.identityNumber!="")
+    this.depositorToDisplay=this.depositorToDisplay.filter(item => item.user.identityNumber.indexOf(this.dtoUsersPrms.identityNumber) !== -1);
+    if(this.dtoUsersPrms.firstName!=undefined && this.dtoUsersPrms.firstName!="")
+    this.depositorToDisplay=this.depositorToDisplay.filter(item => item.user.firstName.indexOf(this.dtoUsersPrms.firstName) !== -1);
+    if(this.dtoUsersPrms.lastName!=undefined && this.dtoUsersPrms.lastName!="")
+    this.depositorToDisplay=this.depositorToDisplay.filter(item => item.user.lastName.indexOf(this.dtoUsersPrms.lastName) !== -1);
+    if(this.dtoUsersPrms.address!=undefined && this.dtoUsersPrms.address!="")
+    this.depositorToDisplay=this.depositorToDisplay.filter(item => item.user.address.indexOf(this.dtoUsersPrms.address) !== -1);
+    if(this.dtoUsersPrms.sum!=undefined && this.dtoUsersPrms.sum!=null)
+    this.depositorToDisplay=this.depositorToDisplay.filter(item => item.deposite.sum.toString().indexOf(this.dtoUsersPrms.sum.toString()) !== -1);
+    // if(this.dtoUsersPrms.date!=undefined && this.dtoUsersPrms.date!="")
+    // this.depositorToDisplay=this.depositorToDisplay.filter(item => item.deposite.date.toString().slice(0,).indexOf(this.dtoUsersPrms.date) !== -1);  
+  }
+__________
   constructor(private userService: UsersService, private router: Router, private depositesService: DepositesService) { }
 
   ngOnInit() {
@@ -76,6 +93,7 @@ export class DepositesComponent implements OnInit {
             }
           });
         });
+        this.tmpDepositsList=this.depositorToDisplay
         console.log(this.depositorToDisplay);
       }, err => {
         this.userList = [];

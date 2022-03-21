@@ -19,11 +19,11 @@
                 type="text">
         </div>
         <div class="col">
-            <input [(ngModel)]="dto_user.cellphoneNumber" #telephoneNumberInput class="form-control"
+            <input [(ngModel)]="dto_user.tellephoneNumber" #telephoneNumberInput class="form-control"
                 placeholder="טלפון" type="text">
         </div>
         <div class="col">
-            <button class='searchBtn' type="button" (click)="getAllUsers()">חפש </button>
+            <button class='searchBtn' type="button" (click)="search()">חפש </button>
         </div>
     </div>
 </div>
@@ -42,9 +42,8 @@
                         <a class="userEmail" href="mailto:{{user.email}}">{{user.email}}</a>
                     </div>
                 </div>
-                <div>
+                <div class="edidD">
                     <button class='searchBtn' type="button" (click)="edit(user)">ערוך פרטים </button>
-                    <!-- <button class='searchBtn' type="button" (click)="openPopup(user)">מחק משתמש </button> -->
                 </div>
             </div>
         </li>

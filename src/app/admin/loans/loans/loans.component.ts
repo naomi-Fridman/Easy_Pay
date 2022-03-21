@@ -8,7 +8,7 @@ import { LoansService } from '../../../services/loans.service';
 import { GuarantyUser } from 'src/app/models/GuarantyUser';
 import { UsersService } from '../../../services/users.service';
 import { DTO_loans } from 'src/app/models/DTO_loans';
-import { DTO_userParms } from 'src/app/models/DTO_userParms';
+import { DTO_searchParms } from 'src/app/models/DTO_searchParms';
 import { PaymentsService } from 'src/app/services/payments.service';
 import { LoanPaymantsStatus } from 'src/app/models/loanPaymantsStatus';
 import { error } from 'protractor';
@@ -25,6 +25,7 @@ export class LoansComponent implements OnInit {
   dtoPayments: DTO_Payments = new DTO_Payments();
   paymentList: Payment[];
   loanerToDisplay: Loaner[];
+  tmpLoaner: Loaner[];
   display: boolean = false;
   loaner: Loaner;
   guarantiesId: number[] = new Array();
@@ -32,7 +33,7 @@ export class LoansComponent implements OnInit {
   guaranty: GuarantyUser = new GuarantyUser();
   selectedPayment: Payment;
   dto_loans: DTO_loans = new DTO_loans();
-  dtoUsersPrms: DTO_userParms = new DTO_userParms();
+  dtoUsersPrms: DTO_searchParms = new DTO_searchParms();
   selectedSum: string;
   typId: number;
   displayStyle: string;
@@ -158,6 +159,19 @@ export class LoansComponent implements OnInit {
       })
     });
   }
+  search(){
+    this.loanerToDisplay=this.tmpLoaner;
+    if(this.dtoUsersPrms.identityNumber!=undefined && this.dtoUsersPrms.identityNumber!="")
+    this.loanerToDisplay=this.loanerToDisplay.filter(item => item.user.identityNumber.indexOf(this.dtoUsersPrms.identityNumber) !== -1);
+    if(this.dtoUsersPrms.firstName!=undefined && this.dtoUsersPrms.firstName!="")
+    this.loanerToDisplay=this.loanerToDisplay.filter(item => item.user.firstName.indexOf(this.dtoUsersPrms.firstName) !== -1);
+    if(this.dtoUsersPrms.lastName!=undefined && this.dtoUsersPrms.lastName!="")
+    this.loanerToDisplay=this.loanerToDisplay.filter(item => item.user.lastName.indexOf(this.dtoUsersPrms.lastName) !== -1);
+    if(this.dtoUsersPrms.address!=undefined && this.dtoUsersPrms.address!="")
+    this.loanerToDisplay=this.loanerToDisplay.filter(item => item.user.address.indexOf(this.dtoUsersPrms.address) !== -1);
+    if(this.dtoUsersPrms.sum!=undefined && this.dtoUsersPrms.sum!=null)
+    this.loanerToDisplay=this.loanerToDisplay.filter(item => item.loaner.sum== this.dtoUsersPrms.sum );
+  }
   constructor(private router: Router, private loanService: LoansService, private userService: UsersService, private paymentService: PaymentsService) {
     this.loanerToDisplay = new Array();
     this.paymentService.getAllPayments(this.dtoPayments).subscribe(data => {
@@ -234,6 +248,7 @@ export class LoansComponent implements OnInit {
     }, err => {
       this.loansList = [];
     });
+    this.tmpLoaner = this.loanerToDisplay
     console.log(this.loanerToDisplay)
   }
   ngOnInit() {

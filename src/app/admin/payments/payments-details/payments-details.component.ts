@@ -22,7 +22,8 @@ export class PaymentsDetailsComponent implements OnInit {
   value: boolean;
   @Input()
   set payment(payment: PaymentUser) {
-    this._paymentUser = payment;
+    if(payment != undefined){
+      this._paymentUser = payment;
     this.paymentDetailesForm.controls["sum"].setValue(this._paymentUser.payment.sum);
     this.paymentDetailesForm.controls["comments"].setValue(this._paymentUser.payment.comments);
     this.paymentDetailesForm.controls["hebrewPaymentDate"].setValue(this._paymentUser.payment.hebrewPaymentDate);
@@ -37,6 +38,8 @@ export class PaymentsDetailsComponent implements OnInit {
     this.paymentDetailesForm.controls["creditCardId"].setValue(this._paymentUser.payment.creditCardId);
     this.paymentDetailesForm.controls["loanId"].setValue(this._paymentUser.loan.id);
 
+    }
+    
     //להוסיף נתונים של דיירקט דבט במידה והוא בחר תאפשרות- מחקי את זה בטעות מהפורם
   }
  

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Deposit } from 'src/app/models/Deposit';
 import { User } from 'src/app/models/User';
-import { DTO_userParms } from 'src/app/models/DTO_userParms';
+import { DTO_userParms } from 'src/app/models/DTO_searchParms';
 import { element } from 'protractor';
 
 @Injectable({

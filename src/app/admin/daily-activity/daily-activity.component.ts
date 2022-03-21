@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DTO_User } from 'src/app/models/DTO_User';
 import { Payment } from 'src/app/models/Payment';
 import { DTO_Payments } from 'src/app/models/DTO_Payments';
-import { DTO_userParms } from 'src/app/models/DTO_userParms';
+import { DTO_searchParms } from 'src/app/models/DTO_searchParms';
 import { PaymentsService } from '../../services/payments.service';
 import { UsersService } from '../../services/users.service';
 import { Router } from '@angular/router';
@@ -28,7 +28,7 @@ export class DailyActivityComponent implements OnInit {
   loansListToday: Loan[] = new Array();
   loanerList: Loaner[] = new Array();
   loaner: Loaner;
-  dtoUsersPrms: DTO_userParms = new DTO_userParms()
+  dtoUsersPrms: DTO_searchParms = new DTO_searchParms()
   dtoPayment: DTO_Payments = new DTO_Payments()
   allIncomingPaymentsTodayList: Payment[];
   userPayment: PaymentUser;

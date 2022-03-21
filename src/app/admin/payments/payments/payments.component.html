@@ -1,108 +1,54 @@
-<div id="top-filter" class="top-filter tfilter-box " >
+<div id="top-filter" class="top-filter tfilter-box ">
     <div class="wrapper">
-        <div >
-            <input [(ngModel)]="dtoUsers.identityNumber" #identityNumberInput class="form-control-top" placeholder="תעודת זהות" type="text">
+        <div>
+            <input [(ngModel)]="dtoUsersPrms.identityNumber" #identityNumberInput class="form-control-top"
+                placeholder="תעודת זהות" type="text">
         </div>
-        <div >
-            <input [(ngModel)]="dtoUsers.firstName" #firstNameInput class="form-control-top" placeholder="שם פרטי" type="text">
+        <div>
+            <input [(ngModel)]="dtoUsersPrms.firstName" #firstNameInput class="form-control-top" placeholder="שם פרטי"
+                type="text">
         </div>
-        <div >
-            <input [(ngModel)]="dtoUsers.lastName" #lastNameInput class="form-control-top" placeholder="שם משפחה"  type="text">
+        <div>
+            <input [(ngModel)]="dtoUsersPrms.lastName" #lastNameInput class="form-control-top" placeholder="שם משפחה"
+                type="text">
         </div>
-        <div >
-            <input [(ngModel)]="dtoUsers.address" #addressInput class="form-control-top" placeholder="כתובת" type="text">
+        <div>
+            <input [(ngModel)]="dtoUsersPrms.address" #addressInput class="form-control-top" placeholder="כתובת"
+                type="text">
         </div>
-        
+
         <div >
-            <input [(ngModel)]="dtoUsers.cellphoneNumber" #telephoneNumberInput class="form-control-top" placeholder="טלפון" type="text">
+            <input [(ngModel)]="dtoUsersPrms.sum" #telephoneNumberInput class="form-control-top" placeholder="סכום"
+                type="number">
         </div>
-        <div >
-            <button class='searchBtn' type="button" (click)="getAllUsers()">חפש </button>
+        <div>
+            <button class='searchBtn' type="button" (click)="search()">חפש </button>
         </div>
     </div>
 </div>
 
-<div style="display: flex; margin-top: 3rem;">
-    <div class="col-2" style="margin-right: 5rem;">
-        <div class="filterSide">
-            <article class="card-group-item">
-                <header class="card-header">
-                    <h4 style="text-align: center; margin: 0px 0px 0px;" class="title">סינון לפי סכום </h4>
-                </header>
-                <div class="filter-content">
-                    <div class="card-body">
-                        <div class="row filter_title">
-                            סכום מדויק
+
+<div style=" margin-top: 3rem;">
+    <div class="l-container">
+        <ul style="padding-right: 0px" *ngFor="let payment of paymentListToDisplay.slice().reverse()">
+            <li class="list" data-name="JoeBrown">
+                <div class="list__profile">
+                    <img class="pull-left img-circle nav-user-photo" width="90"
+                        src="../../../assets/img//faces/face-0.jpg" />  
+                    <div class="list__label">
+                        <div class="list__label--header"> {{payment.user.firstName}} {{payment.user.lastName}}
                         </div>
-                        <div class="row filter_input">
-                            <input type="number" class="form-control" id="inputEmail4" placeholder="סכום מדויק">
-                        </div>
-                        <div class="row filter_title">
-                            החל מסכום
-                        </div>
-                        <div class="row filter_input">
-                            <input type="number" class="form-control" id="inputEmail4" placeholder="החל מסכום">
-                        </div>
-                        <div class="row filter_title">
-                            עד סכום
-                        </div>
-                        <div class="row filter_input">
-                            <input type="number" class="form-control" placeholder="עד סכום">
-                        </div>
+                        <div class="list__label--value"> סכום - {{payment.payment.sum}} </div>
+                        <div class="list__label--value"> תאריך - {{payment.payment.inputDate | date:"dd/MM/yyyy"
+                            }} </div>
+                    </div>
+                    <div>
+                        <button class='searchBtn' type="button" (click)="edit(payment)">ערוך פרטים </button>
+                        <button class='searchBtn' type="button" (click)="openPopup(payment)">מחק תשלום </button>
                     </div>
                 </div>
-            </article>
-            <article class="card-group-item">
-                <header class="card-header">
-                    <h4 style="text-align: center;  margin: 0px 0px 0px;" class="title">סינון לפי תאריך </h4>
-                </header>
-                <div style="margin: 0px 0px 0px" class="filter-content">
-                    <div class="card-body">
-                        <div class="row filter_title">
-                            תאריך מדויק
-                        </div>
-                        <div class="row filter_input">
-                            <input type="date" class="form-control">
-                        </div>
-                        <div class="row filter_title">
-                            החל מתאריך
-                        </div>
-                        <div class="row filter_input">
-                            <input type="date" class="form-control">
-                        </div>
-                        <div class="row filter_title">
-                            עד לתאריך
-                        </div>
-                        <div class="row filter_input">
-                            <input type="date" class="form-control">
-                        </div>
-                    </div>
-                </div>
-            </article>
-        </div>
-    </div>
-    <div class="col-9">
-        <div class="l-container">
-            <ul style="padding-right: 0px" *ngFor="let payment of paymentListToDisplay.slice().reverse()">
-                <li class="list" data-name="JoeBrown">
-                    <div class="list__profile">
-                        <img class="pull-left img-circle nav-user-photo" width="90"
-                            src="../../../assets/img//faces/face-0.jpg" />  
-                        <div class="list__label">
-                            <div class="list__label--header"> {{payment.user.firstName}} {{payment.user.lastName}}
-                            </div>
-                            <div class="list__label--value"> סכום - {{payment.payment.sum}} </div>
-                            <div class="list__label--value"> תאריך - {{payment.payment.inputDate | date:"dd/MM/yyyy"
-                                }} </div>
-                        </div>
-                        <div>
-                            <button class='searchBtn' type="button" (click)="edit(payment)">ערוך פרטים </button>
-                            <button class='searchBtn' type="button" (click)="openPopup(payment)">מחק תשלום </button>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
+            </li>
+        </ul>
     </div>
 </div>
 <div class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false"
@@ -129,19 +75,19 @@
     </div>
 </div>
 <div class="modal" id="myModal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayEditModal}">
-    <div class="modal-dialog " role="document"  >
+    <div class="modal-dialog " role="document">
         <div class="modal-content">
-            <div  class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"  (click)="closeEditModal()">&times;</button>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" (click)="closeEditModal()">&times;</button>
             </div>
             <div style="padding-top: 17px; padding-right: 30px; padding-bottom: 0px;" class="modal-body">
                 <app-payments-details [payment]="paymentUser1"></app-payments-details>
             </div>
             <div style="border-top: none;" class="modal-footer">
-                <button  type="button" class=" searchBtn modalCancel" data-dismiss="modal"  (click)="closeEditModal()">
+                <button type="button" class=" searchBtn modalCancel" data-dismiss="modal" (click)="closeEditModal()">
                     ביטול
                 </button>
-                <button  type="button" class=" searchBtn modalSaveBtn" data-dismiss="modal" (click)="editPayment()">
+                <button type="button" class=" searchBtn modalSaveBtn" data-dismiss="modal" (click)="editPayment()">
                     אישור
                 </button>
             </div>

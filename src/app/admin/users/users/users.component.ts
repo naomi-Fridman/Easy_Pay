@@ -4,7 +4,7 @@ import { AdminService } from '../../../services/admin.service';
 import { Router } from '@angular/router';
 import { UsersService } from '../../../services/users.service';
 import { MessageService } from 'primeng/api';
-import { DTO_userParms } from 'src/app/models/DTO_userParms';
+import { DTO_searchParms } from 'src/app/models/DTO_searchParms';
 
 @Component({
   selector: 'app-users',
@@ -15,7 +15,8 @@ export class UsersComponent implements OnInit {
 
   cityList: string[] = new Array('ב"ב', 'ירושלים');
   usersList: User[] = new Array();
-  dto_user: DTO_userParms = new DTO_userParms();
+  tmpUsersList: User[] = new Array();
+  dto_user: DTO_searchParms = new DTO_searchParms();
 
   address: boolean;
   listAddress: string[];
@@ -48,6 +49,7 @@ export class UsersComponent implements OnInit {
   getAllUsers() {
     this.userService.getAllUsers(this.dto_user).subscribe(data => {
       this.usersList = data;
+      this.tmpUsersList = data;
       if (this.usersList.length == 0) {
         this.usersList = []
       }
@@ -81,6 +83,23 @@ export class UsersComponent implements OnInit {
     }
     return filtered;
   }
+    
+search(){
+  this.usersList=this.tmpUsersList;
+  if(this.dto_user.identityNumber!=undefined && this.dto_user.identityNumber!="")
+  this.usersList=this.usersList.filter(item => item.identityNumber.indexOf(this.dto_user.identityNumber) !== -1);
+  if(this.dto_user.firstName!=undefined && this.dto_user.firstName!="")
+  this.usersList=this.usersList.filter(item => item.firstName.indexOf(this.dto_user.firstName) !== -1);
+  if(this.dto_user.lastName!=undefined && this.dto_user.lastName!="")
+  this.usersList=this.usersList.filter(item => item.lastName.indexOf(this.dto_user.lastName) !== -1);
+  if(this.dto_user.address!=undefined && this.dto_user.address!="")
+  this.usersList=this.usersList.filter(item => item.address.indexOf(this.dto_user.address) !== -1);
+  if(this.dto_user.tellephoneNumber!=undefined && this.dto_user.tellephoneNumber!=""){
+        this.usersList=this.tmpUsersList.filter(item => item.telephoneNumber.indexOf(this.dto_user.tellephoneNumber) !== -1);
+        var e=this.tmpUsersList.filter(item => item.cellphoneNumber.indexOf(this.dto_user.tellephoneNumber) !== -1);
+  }
+}
+
   constructor(private router: Router, private userService: UsersService, private messageService: MessageService) { }
 
   ngOnInit() {

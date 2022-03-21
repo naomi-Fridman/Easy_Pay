@@ -1,3 +1,4 @@
+<div *ngIf="_paymentUser">
 <div style="direction: rtl;">
     <div class="userDetails">
         <div class="userName">
@@ -12,7 +13,7 @@
     </div>
 
 </div>
-<form [formGroup]="paymentDetailesForm" style="direction: rtl;">
+<form  [formGroup]="paymentDetailesForm" style="direction: rtl;">
     <div class="row loanSumDiv">
         
         <div class="form-group" style="margin: 0;">
@@ -133,3 +134,4 @@
     <!-- 
     <button (click)="editDetails()">עדכן פרטים</button> -->
 </form>
+</div>

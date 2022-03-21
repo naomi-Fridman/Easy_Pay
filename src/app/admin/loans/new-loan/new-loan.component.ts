@@ -161,7 +161,7 @@ export class NewLoanComponent implements OnInit {
     creditCardId: new FormControl(null),
     monthlyPaymentSum: new FormControl(0),
     monthlyPaymentDay: new FormControl(1),
-    repaymentFirstDate: new FormControl(null),
+    repaymentFirstDate: new FormControl(null,{ validators: [Validators.required], updateOn: 'blur' }),
     shtar: new FormControl("", ),
     paymentsIndex: new FormControl(0),
 

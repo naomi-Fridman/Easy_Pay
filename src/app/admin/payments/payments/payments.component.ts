@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
 import { PaymentUser } from 'src/app/models/PaymentUser';
 import { DTO_Payments } from 'src/app/models/DTO_Payments';
-import { DTO_userParms } from 'src/app/models/DTO_userParms';
+import { DTO_searchParms } from 'src/app/models/DTO_searchParms';
 import { LoansService } from 'src/app/services/loans.service';
 import { DTO_loans } from 'src/app/models/DTO_loans';
 import { Loan } from 'src/app/models/Loan';
@@ -25,13 +25,14 @@ export class PaymentsComponent implements OnInit {
   paymentsUser: User[]
   paymentsLoans: Loan[];
   paymentListToDisplay: PaymentUser[] = new Array()
+  tmpPaymentList: PaymentUser[] = new Array()
   paymentListToDisplayB: PaymentUser[] = new Array()
   datesArr: SelectItem[]
   arr: string[]
   paymentUser1: PaymentUser
   display: boolean = false
   dtoPayments: DTO_Payments = new DTO_Payments();
-  dtoUsers: DTO_userParms = new DTO_userParms();
+  dtoUsersPrms: DTO_searchParms = new DTO_searchParms();
   dtoLoan: DTO_loans = new DTO_loans();
   userList: User[]
   selectedSum: string = "sum";
@@ -134,16 +135,29 @@ export class PaymentsComponent implements OnInit {
           }
         })
       })
+      this.tmpPaymentList = this.paymentListToDisplay;
       this.paymentListToDisplayB = this.paymentListToDisplay;
     });
   }
-
+  search(){
+    this.paymentListToDisplay=this.tmpPaymentList;
+    if(this.dtoUsersPrms.identityNumber!=undefined && this.dtoUsersPrms.identityNumber!="")
+    this.paymentListToDisplay=this.paymentListToDisplay.filter(item => item.user.identityNumber.indexOf(this.dtoUsersPrms.identityNumber) !== -1);
+    if(this.dtoUsersPrms.firstName!=undefined && this.dtoUsersPrms.firstName!="")
+    this.paymentListToDisplay=this.paymentListToDisplay.filter(item => item.user.firstName.indexOf(this.dtoUsersPrms.firstName) !== -1);
+    if(this.dtoUsersPrms.lastName!=undefined && this.dtoUsersPrms.lastName!="")
+    this.paymentListToDisplay=this.paymentListToDisplay.filter(item => item.user.lastName.indexOf(this.dtoUsersPrms.lastName) !== -1);
+    if(this.dtoUsersPrms.address!=undefined && this.dtoUsersPrms.address!="")
+    this.paymentListToDisplay=this.paymentListToDisplay.filter(item => item.user.address.indexOf(this.dtoUsersPrms.address) !== -1);
+    if(this.dtoUsersPrms.sum!=undefined && this.dtoUsersPrms.sum!=null)
+    this.paymentListToDisplay=this.paymentListToDisplay.filter(item => item.payment.sum== this.dtoUsersPrms.sum );
+  }
   constructor(private paymentsService: PaymentsService, private userService: UsersService, private loanService: LoansService, private router: Router) {
     this.allPayments = new Array();
     this.paymentsService.getAllPayments(this.dtoPayments)
       .subscribe(data => {
         this.allPayments = data;
-        this.userService.getAllUsers(this.dtoUsers).subscribe(users => {
+        this.userService.getAllUsers(this.dtoUsersPrms).subscribe(users => {
           this.paymentsUser = users;
           var i = 0;
           if (this.allPayments == []) {
@@ -168,7 +182,7 @@ export class PaymentsComponent implements OnInit {
                   }
                 })
               })
-
+              this.tmpPaymentList = this.paymentListToDisplay;
             })
           }
 
