@@ -14,18 +14,16 @@ export class LoansService {
 
   constructor(private _http: HttpClient) { }
   getAllLoans(dtoLoans:DTO_loans):Observable< Loan[]>{
-    var sum;
-    sum=dtoLoans.sumTill
-    dtoLoans.sumTill=parseInt(sum)
-    sum=dtoLoans.sumFrom
-    dtoLoans.sumFrom=parseInt(sum)
-    sum=dtoLoans.sumExact
-    dtoLoans.sumExact=parseInt(sum)
+    // var sum;
+    // sum=dtoLoans.sumTill
+    // dtoLoans.sumTill=parseInt(sum)
+    // sum=dtoLoans.sumFrom
+    // dtoLoans.sumFrom=parseInt(sum)
+    // sum=dtoLoans.sumExact
+    // dtoLoans.sumExact=parseInt(sum)
     return this._http.post<Loan[]>("/api/Loans",dtoLoans);
    }
-  // getAllLoans(dto_loans : DTO_loans):Observable< Loan[]>{
-  //   return this._http.post<Loan[]>("/api/Loans",dto_loans);
-  // }
+ 
   getPaymentIdByTypeName(typeName: string): Observable<number> {
     return this._http.get<number>(`/api/PaymentType/${typeName}`)
   }

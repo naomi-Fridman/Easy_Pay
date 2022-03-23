@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Deposit } from 'src/app/models/Deposit';
 import { User } from 'src/app/models/User';
-import { DTO_userParms } from 'src/app/models/DTO_searchParms';
+import { DTO_searchParms } from 'src/app/models/DTO_searchParms';
 import { element } from 'protractor';
 
 @Injectable({
@@ -25,7 +25,7 @@ export class UsersService {
   getUserByIdentityNumber(identityNumber:number): Observable<User> {
     return this._http.get<User>("/api/User/getUserByIdentityNumber/" + identityNumber);
   }
-  getAllUsers(dtoUserParms: DTO_userParms): Observable<User[]> {
+  getAllUsers(dtoUserParms: DTO_searchParms): Observable<User[]> {
     var temp;
     if (dtoUserParms.firstName == "")
       dtoUserParms.firstName = null;

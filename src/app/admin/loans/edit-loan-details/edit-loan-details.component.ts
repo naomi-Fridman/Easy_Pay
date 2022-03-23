@@ -84,7 +84,7 @@ export class EditLoanDetailsComponent implements OnInit {
         }
         else{
           this.displayStyle = "block";
-          this.err = true
+          // this.err = true
         }
 
       }, (err => this.err = true));

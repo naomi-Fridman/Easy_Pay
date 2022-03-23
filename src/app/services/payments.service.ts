@@ -13,19 +13,20 @@ export class PaymentsService {
   constructor(private _http: HttpClient) { }
 
   getAllPayments(dtoPayments: DTO_Payments): Observable<Payment[]> {
-    var temp;
-    if (dtoPayments.firstName == "")
-      dtoPayments.firstName = null;
-    if (dtoPayments.lastName == "")
-      dtoPayments.lastName = null;
-    temp = dtoPayments.collectionSumTill
-    dtoPayments.collectionSumTill = parseInt(temp)
-    temp = dtoPayments.collectionSumFrom
-    dtoPayments.collectionSumFrom = parseInt(temp)
-    temp = dtoPayments.collectionSumExact
-    dtoPayments.collectionSumExact = parseInt(temp)
-    temp = new Date(dtoPayments.dateFrom)
-    dtoPayments.dateFrom = temp
+    // var temp;
+    // if (dtoPayments.firstName == "")
+    //   dtoPayments.firstName = null;
+    // if (dtoPayments.lastName == "")
+    //   dtoPayments.lastName = null;
+    // temp = dtoPayments.collectionSumTill
+    // dtoPayments.collectionSumTill = parseInt(temp)
+    // temp = dtoPayments.collectionSumFrom
+    // dtoPayments.collectionSumFrom = parseInt(temp)
+    // temp = dtoPayments.collectionSumExact
+    // dtoPayments.collectionSumExact = parseInt(temp)
+    // temp = new Date(dtoPayments.dateFrom)
+    // dtoPayments.dateFrom = temp
+    
     return this._http.post<Payment[]>("/api/Payments", dtoPayments);
   }
   updatePayment(updatedPayment: Payment): Observable<number> {

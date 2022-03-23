@@ -20,7 +20,8 @@
                                 </div>
                                 <div class="panel-body">
                                     <div class="table-container">
-                                        <table *ngFor="let user of todaysUsersListThatWerentPaid.slice().reverse()" class="table-users table"
+                                        <div *ngIf="todaysUsersListThatWerentPaid">
+                                        <table  *ngFor="let user of todaysUsersListThatWerentPaid.slice().reverse()" class="table-users table"
                                             style="border: none ; direction: rtl;">
                                             <tbody>
                                                 <tr>
@@ -45,6 +46,7 @@
                                                 </tr>
                                             </tbody>
                                         </table>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
