@@ -9,7 +9,7 @@
         <div class="topDaily row">
             פעילות יומית
         </div>
-        <div style="margin-top: 62px;" class="row">
+        <div style="margin-top: 44px;" class="row">
             <div class="col-md-4">
                 <div class="blog-card blog-card-blog">
                     <div class="container">
@@ -24,7 +24,7 @@
                                         <table  *ngFor="let user of todaysUsersListThatWerentPaid.slice().reverse()" class="table-users table"
                                             style="border: none ; direction: rtl;">
                                             <tbody>
-                                                <tr>
+                                                <tr (click)="editLoanerDetails(user.loan[0])">
                                                     <td width="10">
                                                         <img class="pull-left img-circle nav-user-photo" width="40"
                                                             src="../../../assets/img//faces/face-0.jpg" />  
@@ -107,7 +107,7 @@
                                         <table *ngFor="let loaner of loanerList.slice().reverse()" class="table-users table"
                                             style="border: none ; direction: rtl;">
                                             <tbody>
-                                                <tr>
+                                                <tr (click)="editLoanerDetails(loaner)">
                                                     <td width="10">
                                                         <img class="pull-left img-circle nav-user-photo" width="40"
                                                             src="../../../assets/img//faces/face-0.jpg" />  

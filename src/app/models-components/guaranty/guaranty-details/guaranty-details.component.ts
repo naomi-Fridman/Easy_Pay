@@ -23,7 +23,7 @@ export class GuarantyDetailsComponent implements OnInit {
         this.GuarantyDetailsForm.controls["telephoneNumber"].setValue(user.telephoneNumber);
         this.GuarantyDetailsForm.controls["email"].setValue(user.email);
         this.GuarantyDetailsForm.controls["address"].setValue(user.address);
-        this.GuarantyDetailsForm.controls["comments"].setValue(user.comments);
+        // this.GuarantyDetailsForm.controls["comments"].setValue(user.comments);
       }
     })
   }

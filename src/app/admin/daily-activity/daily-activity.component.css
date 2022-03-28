@@ -101,9 +101,9 @@ i {
     justify-content: center;
     font-size: 25px;
     font-weight: bolder;
-    position: absolute;
-    top: 16px;
-    right: 44%;
+    position: relative;
+    top: 13px;
+    left: 4%;
     color:#5f5f9a;
 }
 .containerRow{
@@ -117,8 +117,8 @@ i {
     width: 209px;
     height: 35px;
     position: absolute;
-    left: 6.5vw;
-    top: 16px;
+    left: 1.5vw;
+    top: 10px;
     color: #5f5f9a;
     border-color: #5f5f9a !important;
     align-items: center;

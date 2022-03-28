@@ -74,4 +74,7 @@ export class DailyActivityComponent implements OnInit {
       })
     })
   }
+  editLoanerDetails(loaner: Loaner) {
+    this.router.navigate(['/editLoanDetails', { "loaner": JSON.stringify(loaner) }]);
+  }
 }

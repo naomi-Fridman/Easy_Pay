@@ -48,6 +48,7 @@ export class NewPaymentComponent implements OnInit {
                   this.openPopup("ערך מטבע שגוי")
                 }
                 else {
+                  this.PaymentDetailesForm.value.currencyId = Number(this.PaymentDetailesForm.value.currencyId)
                   this.payment.date=this.payment.inputDate;
                   this.payment = this.PaymentDetailesForm.value;
                   this.payment.userId = user.id;

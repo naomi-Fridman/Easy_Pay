@@ -61,7 +61,7 @@ export class NewLoanComponent implements OnInit {
         this.loanerDetailesUserForm.controls["telephoneNumber"].setValue(user.telephoneNumber);
         this.loanerDetailesUserForm.controls["email"].setValue(user.email);
         this.loanerDetailesUserForm.controls["address"].setValue(user.address);
-        this.loanerDetailesUserForm.controls["comments"].setValue(user.comments);
+        // this.loanerDetailesUserForm.controls["comments"].setValue(user.comments);
       }
     })
   }

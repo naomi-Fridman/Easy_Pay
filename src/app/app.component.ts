@@ -23,6 +23,8 @@ export class AppComponent {
   }
   constructor(private router: Router) {}
   ngOnInit() {
+    const manager = localStorage.getItem("manager");
+    if( manager == null)
     this.router.navigate(["/login"]);
   }
 }
